@@ -12,17 +12,30 @@ app.get("/", (req, res) => {
   res.send("I'm Here");
 });
 
-const isParamsValid = (userInput) => {
+const validInput = (userInput) => {
+  if (!userInput || !userInput?.persons || !userInput?.totals) return false;
+
+  const overall = userInput?.totals?.overall;
+  if (overall || typeof overall !== "number") return false;
+
+  const id = userInput?.persons[0]?.id;
+
+  if (!id) return false;
+
   return true;
 };
 
 app.post("/calculate", (req, res) => {
   const userInput = req.body;
+
+  if (!validInput(userInput)) {
+    res.status(400).send("Invalid user input");
+    return;
+  }
+
   const persons = userInput?.persons;
   const personsLen = persons.length;
   const totals = userInput?.totals;
-
-  // if (userInput?.)
 
   const output = {
     persons: [],
@@ -99,11 +112,17 @@ app.post("/calculate", (req, res) => {
 });
 
 const determinePercentage = (input) => {
-  if (!input || typeof input !== "number" || input < 0) {
+  if (!input || typeof input !== "number" || input <= 0) {
     return "0.00";
   }
+
+  return (input * 100).toFixed(2);
 };
 
 app.listen(PORT, () => {
   console.log(`Server live at port ${PORT}`);
 });
+
+module.exports = {
+  validInput,
+};
