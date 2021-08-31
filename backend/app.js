@@ -2,7 +2,7 @@ const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
 const app = express();
-const PORT = process.env?.PORT || 3001;
+const PORT = process.env?.PORT || 3002;
 
 app.use(express.json());
 app.use(cors());
@@ -16,10 +16,9 @@ const validInput = (userInput) => {
   if (!userInput || !userInput?.persons || !userInput?.totals) return false;
 
   const overall = userInput?.totals?.overall;
-  if (overall || typeof overall !== "number") return false;
+  if (!overall || typeof overall !== "number") return false;
 
   const id = userInput?.persons[0]?.id;
-
   if (!id) return false;
 
   return true;
@@ -82,13 +81,19 @@ app.post("/calculate", (req, res) => {
     output.persons.push(person);
   }
 
-  // Make sure to add validation if user types in wrong total overall
-
   output.totals.tipAndTax = output.totals.overall - output.totals.subtotals;
 
-  output.totals.tipPercentage = (
-    output.totals?.overall / output.totals?.subtotals
-  ).toFixed(2);
+  // Make sure to add validation if user types in wrong total overall
+  if (
+    output.totals.tipAndTax < 0 ||
+    output.totals.subtotals + output.totals.tipAndTax !== totals.overall
+  ) {
+    // user provided wrong overall
+    res.status(400).send("Totals do not match, please check your input");
+  }
+
+  const totalDecimalTip = output.totals?.overall / output.totals?.subtotals - 1;
+  output.totals.tipPercentage = (totalDecimalTip * 100).toFixed(2);
 
   for (let i = 0; i < personsLen; i++) {
     // for each person
@@ -110,14 +115,6 @@ app.post("/calculate", (req, res) => {
 
   res.json(output);
 });
-
-const determinePercentage = (input) => {
-  if (!input || typeof input !== "number" || input <= 0) {
-    return "0.00";
-  }
-
-  return (input * 100).toFixed(2);
-};
 
 app.listen(PORT, () => {
   console.log(`Server live at port ${PORT}`);
