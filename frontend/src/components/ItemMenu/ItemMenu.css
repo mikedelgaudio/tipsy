@@ -1,0 +1,12 @@
+.itemView {
+  display: flex;
+  max-width: 1440px;
+}
+
+.itemMenu {
+  width: 100%;
+  max-width: 1440px;
+  padding: 1em 2em;
+  background-color: hsl(0, 0%, 70%);
+  border-radius: var(--global-radius);
+}

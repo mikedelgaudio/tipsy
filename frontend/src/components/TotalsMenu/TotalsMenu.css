@@ -1,0 +1,8 @@
+.totalsMenuView {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: goldenrod;
+  border-radius: var(--global-radius);
+  padding: 0 2em;
+}
