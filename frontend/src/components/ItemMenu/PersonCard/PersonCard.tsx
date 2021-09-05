@@ -19,6 +19,21 @@ function PersonCard() {
           <span className="personItemPrice">$8.24</span>
         </li>
       </ul>
+
+      {/* <ul className="subtotalList">
+        <li>
+          <span>Before Tip and Tax</span>
+        </li>
+        <li>
+          <span>Tip and Tax % Due</span>
+        </li>
+        <li>
+          <span>Tip and Tax $ Due</span>
+        </li>
+        <li>
+          <span>Final subtotal</span>
+        </li>
+      </ul> */}
     </div>
   );
 }
