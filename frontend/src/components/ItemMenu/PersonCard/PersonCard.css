@@ -1,0 +1,39 @@
+.personCard {
+  border-bottom: 1px solid hsl(0, 0%, 79%);
+  padding: 1em 2em;
+  cursor: pointer;
+}
+
+.personCard:hover {
+  background-color: hsl(0, 0%, 90%);
+}
+
+.personCard:last-child {
+  border-bottom: 0;
+}
+
+.personCard > h2 {
+  margin: 0;
+  padding: 0 0 0.15em 0;
+  font-weight: 700;
+  letter-spacing: -0.33px;
+}
+
+.personItemList {
+  padding-inline-start: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.personItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.12em 0;
+  color: hsl(206, 6%, 44%);
+}
+
+.personItemDesc {
+}
+
+.personItemPrice {
+}

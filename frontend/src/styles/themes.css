@@ -1,0 +1,43 @@
+* {
+  /* light */
+  --brand-light: hsl(0, 0%, 100%);
+  --action-light: hsl(197, 100%, 84%);
+  --success-light: rgb(0, 200, 5);
+
+  /* dark */
+  --brand-dark: hsl(0, 0%, 100%);
+  --action-dark: hsl(197, 100%, 94%);
+}
+
+:root {
+  color-scheme: light;
+
+  /* set defaults */
+  --brand: var(--brand-light);
+  --action: var(--action-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    /* dark variant */
+    --brand: var(--brand-dark);
+    --menu: var(--menu-dark);
+  }
+}
+
+.lightmode {
+  color-scheme: light;
+
+  --brand: var(--brand-light);
+  --action: var(--action-light);
+}
+
+.darkmode {
+  color-scheme: dark;
+
+  /* dark variant */
+  --brand: var(--brand-dark);
+  --action: var(--action-dark);
+}

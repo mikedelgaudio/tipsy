@@ -1,5 +1,6 @@
 import CalculateBtn from "./components/CalculateBtn/CalculateBtn";
 import ItemMenu from "./components/ItemMenu/ItemMenu";
+import SharingRow from "./components/SharingRow/SharingRow";
 import TotalsMenu from "./components/TotalsMenu/TotalsMenu";
 import "./Home.css";
 
@@ -10,6 +11,7 @@ function Home() {
         <ItemMenu />
         <TotalsMenu />
         <CalculateBtn />
+        <SharingRow />
       </div>
     </div>
   );
