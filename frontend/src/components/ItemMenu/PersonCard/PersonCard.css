@@ -19,21 +19,30 @@
   letter-spacing: -0.33px;
 }
 
-.personItemList {
+.personItemList,
+.subtotalList {
   padding-inline-start: 0;
   list-style: none;
   margin: 0;
 }
 
-.personItem {
+.personItem,
+.subtotalItem {
   display: flex;
-  justify-content: space-between;
   padding: 0.12em 0;
   color: hsl(206, 6%, 44%);
+}
+
+.personItem {
+  justify-content: space-between;
 }
 
 .personItemDesc {
 }
 
 .personItemPrice {
+}
+
+.subtotalItem {
+  justify-content: flex-end;
 }

@@ -20,20 +20,24 @@ function PersonCard() {
         </li>
       </ul>
 
-      {/* <ul className="subtotalList">
-        <li>
+      <ul className="subtotalList">
+        <li className="subtotalItem">
           <span>Before Tip and Tax</span>
+          <span>$15.12</span>
         </li>
-        <li>
-          <span>Tip and Tax % Due</span>
+        <li className="subtotalItem">
+          <span>Tip and Tax %</span>
+          <span>12%</span>
         </li>
-        <li>
-          <span>Tip and Tax $ Due</span>
+        <li className="subtotalItem">
+          <span>Tip and Tax $</span>
+          <span>$2.45</span>
         </li>
-        <li>
+        <li className="subtotalItem">
           <span>Final subtotal</span>
+          <span>$17.57</span>
         </li>
-      </ul> */}
+      </ul>
     </div>
   );
 }
