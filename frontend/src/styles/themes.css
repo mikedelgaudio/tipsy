@@ -1,6 +1,7 @@
 * {
   /* light */
   --brand-light: hsl(0, 0%, 100%);
+  --brand-off-light: hsl(206, 6%, 44%);
   --action-light: hsl(197, 100%, 84%);
   --success-light: rgb(0, 200, 5);
 
@@ -14,23 +15,26 @@
 
   /* set defaults */
   --brand: var(--brand-light);
+  --brand-off: var(--brand-off-light);
   --action: var(--action-light);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
+/* @media (prefers-color-scheme: dark) { */
+/* :root { */
+/* color-scheme: dark; */
 
-    /* dark variant */
-    --brand: var(--brand-dark);
-    --menu: var(--menu-dark);
-  }
-}
+/* dark variant */
+/* --brand: var(--brand-dark); */
+/* --brand-off: var(--brand-off-light); */
+/* --menu: var(--menu-dark); */
+/* } */
+/* } */
 
 .lightmode {
   color-scheme: light;
 
   --brand: var(--brand-light);
+  --brand-off: var(--brand-off-light);
   --action: var(--action-light);
 }
 
@@ -39,5 +43,6 @@
 
   /* dark variant */
   --brand: var(--brand-dark);
+  --brand-off: var(--brand-off-dark);
   --action: var(--action-dark);
 }

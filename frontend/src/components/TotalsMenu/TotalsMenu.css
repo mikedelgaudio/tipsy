@@ -1,19 +1,42 @@
 .totalsMenuView {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
   align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   background-color: #f7f7f7;
   border-radius: var(--global-radius);
-  padding: 0 2em;
+  padding: 1em 2em;
+  gap: 1em;
 }
 
 .totalRow {
   display: flex;
+  gap: 1em;
+  justify-content: center;
   flex-flow: row wrap;
+}
+
+.totalText {
+  font-weight: 600;
+}
+
+.totalsBreakdownWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
 }
 
 .totalsBreakdownList {
   padding-inline-start: 0;
   margin: 0;
   list-style: none;
+}
+
+.totalsBreakdownList:nth-child(2) {
+  text-align: right;
+  font-weight: 600;
+}
+
+.totalBreakdownDesc {
+  color: var(--brand-off-light);
 }

@@ -1,6 +1,7 @@
 @import "./styles/normalize.css";
 @import "./styles/buttons.css";
 @import "./styles/shared.css";
+@import "./styles/themes.css";
 
 *,
 *::before,
