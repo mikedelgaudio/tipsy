@@ -1,3 +1,4 @@
+import PersonActions from "./PersonActions/PersonActions";
 import "./PersonCard.css";
 
 function PersonCard() {
@@ -5,16 +6,14 @@ function PersonCard() {
     <div className="personCard">
       <div className="personCardHeader">
         <h2>asdasdsadsadasdasdasdadsadsadsad</h2>
-        <div className="personCardActions">
-          <button>Edit</button>
-          <button>Delete</button>
-        </div>
+        <PersonActions />
       </div>
 
       <ul className="personItemList">
         <li className="personItem">
           <span className="personItemDesc">
-            Chicken asdsadasdsadsadasdsadsadsaSandwich
+            Chicken
+            asdsadasdsadsadasdsasdsadsdsdasdadasdsadasdasdasdasdsadasdasdasdsadasdasdasdsadadadsaadsadsaSandwich
           </span>
           <span className="personItemPrice">$8.24</span>
         </li>
