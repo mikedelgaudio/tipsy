@@ -4,8 +4,8 @@ function TotalsMenu() {
   return (
     <div className="totalsMenuView">
       <div className="totalRow">
-        <h1 className="totalText">Total</h1>
-        <h1 className="totalText">$1031.21</h1>
+        <h3 className="totalText">Total</h3>
+        <h3 className="totalText">$1031.21</h3>
       </div>
 
       <div className="totalsBreakdownWrapper">

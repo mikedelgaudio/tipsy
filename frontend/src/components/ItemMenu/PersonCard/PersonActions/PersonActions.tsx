@@ -6,18 +6,10 @@ function PersonActions() {
   return (
     <div className="personActions">
       <button type="button">
-        <img
-          className="icons"
-          src={editIcon}
-          alt="square with arrow pointing away to open sharing options"
-        />
+        <img className="icons" src={editIcon} alt="edit person" />
       </button>
       <button type="button">
-        <img
-          className="icons"
-          src={deleteIcon}
-          alt="square with arrow pointing away to open sharing options"
-        />
+        <img className="icons" src={deleteIcon} alt="delete person" />
       </button>
     </div>
   );

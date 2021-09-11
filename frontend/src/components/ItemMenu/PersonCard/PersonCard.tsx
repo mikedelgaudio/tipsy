@@ -27,16 +27,24 @@ function PersonCard() {
         </li>
       </ul>
 
-      <ul className="subtotalList">
-        <li className="subtotalItem">
-          <span>Tip and Tax</span>
-          <span>$2.45</span>
-        </li>
-        <li className="subtotalItem">
-          <span>Total Due</span>
-          <span>$17.57</span>
-        </li>
-      </ul>
+      <div className="subtotalView">
+        <ul className="subtotalList">
+          <li className="subtotalItem">
+            <span className="subtotalDesc">Tip and Tax</span>
+          </li>
+          <li className="subtotalItem">
+            <span className="subtotalDesc">Total Due</span>
+          </li>
+        </ul>
+        <ul className="subtotalList">
+          <li className="subtotalItem">
+            <span className="subtotalPrice">$12</span>
+          </li>
+          <li className="subtotalItem">
+            <span className="subtotalPrice">$1086.99</span>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
