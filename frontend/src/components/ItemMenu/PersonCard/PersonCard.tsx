@@ -3,11 +3,19 @@ import "./PersonCard.css";
 function PersonCard() {
   return (
     <div className="personCard">
-      <h2>Mike</h2>
+      <div className="personCardHeader">
+        <h2>asdasdsadsadasdasdasdadsadsadsad</h2>
+        <div className="personCardActions">
+          <button>Edit</button>
+          <button>Delete</button>
+        </div>
+      </div>
 
       <ul className="personItemList">
         <li className="personItem">
-          <span className="personItemDesc">Chicken Sandwich</span>
+          <span className="personItemDesc">
+            Chicken asdsadasdsadsadasdsadsadsaSandwich
+          </span>
           <span className="personItemPrice">$8.24</span>
         </li>
         <li className="personItem">
@@ -22,19 +30,11 @@ function PersonCard() {
 
       <ul className="subtotalList">
         <li className="subtotalItem">
-          <span>Before Tip and Tax</span>
-          <span>$15.12</span>
-        </li>
-        <li className="subtotalItem">
-          <span>Tip and Tax %</span>
-          <span>12%</span>
-        </li>
-        <li className="subtotalItem">
-          <span>Tip and Tax $</span>
+          <span>Tip and Tax</span>
           <span>$2.45</span>
         </li>
         <li className="subtotalItem">
-          <span>Final subtotal</span>
+          <span>Total Due</span>
           <span>$17.57</span>
         </li>
       </ul>

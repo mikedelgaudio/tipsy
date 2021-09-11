@@ -12,11 +12,24 @@
   border-bottom: 0;
 }
 
-.personCard > h2 {
+.personCardHeader > h2 {
   margin: 0;
   padding: 0 0 0.15em 0;
   font-weight: 700;
   letter-spacing: -0.33px;
+  word-break: break-word;
+}
+
+.personCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.personCardActions {
+  display: flex;
+  gap: 1em;
 }
 
 .personItemList,
@@ -38,6 +51,7 @@
 }
 
 .personItemDesc {
+  word-break: break-word;
 }
 
 .personItemPrice {

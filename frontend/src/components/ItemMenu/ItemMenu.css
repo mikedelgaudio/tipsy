@@ -16,6 +16,7 @@
   padding: 1em 2em;
   background-color: var(--action);
   border-bottom: 2px solid hsl(0, 0%, 0%);
+  gap: 2em;
 }
 
 .itemHeaderActions {
@@ -29,4 +30,6 @@
   font-weight: 700;
   letter-spacing: -0.33px;
   margin: 0;
+  word-break: break-word;
+  font-size: clamp(1.5em, 1.5em + 1vw, 2.5em);
 }
