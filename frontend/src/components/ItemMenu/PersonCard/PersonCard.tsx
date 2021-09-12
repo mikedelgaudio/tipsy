@@ -27,7 +27,7 @@ function PersonCard() {
         </li>
       </ul>
 
-      <div className="subtotalView">
+      <div className="subtotalWrapper">
         <ul className="subtotalList">
           <li className="subtotalItem">
             <span className="subtotalDesc">Tip and Tax</span>

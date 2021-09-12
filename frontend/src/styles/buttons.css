@@ -27,3 +27,14 @@ button {
 .btn-t-danger:hover {
   color: red;
 }
+
+.icons {
+  width: 20px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.icons:hover {
+  opacity: 1;
+}

@@ -1,13 +1,17 @@
 * {
   /* light */
-  --brand-light: hsl(0, 0%, 100%);
+  --brand-light: hsl(174, 36%, 44%);
+  --brand-x-light: hsl(195, 50%, 99%);
+  --brand-alt-light: hsl(174, 36%, 54%);
   --brand-off-light: hsl(206, 6%, 44%);
-  --action-light: hsl(197, 100%, 84%);
-  --success-light: rgb(0, 200, 5);
+  --background-light: hsl(0, 0%, 96%);
 
   /* dark */
-  --brand-dark: hsl(0, 0%, 100%);
-  --action-dark: hsl(197, 100%, 94%);
+  --brand-dark: hsl(174, 36%, 44%);
+  --brand-x-dark: hsl(195, 50%, 99%);
+  --brand-alt-dark: hsl(174, 36%, 54%);
+  --brand-off-dark: hsl(206, 6%, 44%);
+  --background-dark: hsl(0, 0%, 100%);
 }
 
 :root {
@@ -15,8 +19,10 @@
 
   /* set defaults */
   --brand: var(--brand-light);
+  --brand-x: var(--brand-x-light);
   --brand-off: var(--brand-off-light);
-  --action: var(--action-light);
+  --brand-alt: var(--brand-alt-light);
+  --background: var(--background-light);
 }
 
 /* @media (prefers-color-scheme: dark) { */
@@ -34,6 +40,7 @@
   color-scheme: light;
 
   --brand: var(--brand-light);
+  --brand-x: var(--brand-x-light);
   --brand-off: var(--brand-off-light);
   --action: var(--action-light);
 }
@@ -43,6 +50,7 @@
 
   /* dark variant */
   --brand: var(--brand-dark);
+  --brand-x: var(--brand-x-dark);
   --brand-off: var(--brand-off-dark);
   --action: var(--action-dark);
 }

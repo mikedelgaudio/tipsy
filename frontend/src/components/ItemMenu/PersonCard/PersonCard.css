@@ -1,7 +1,9 @@
 .personCard {
   border-bottom: 1px solid hsl(0, 0%, 79%);
   padding: 1em 2em;
-  cursor: pointer;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1.25em;
 }
 
 .personCard:hover {
@@ -14,7 +16,6 @@
 
 .personCardHeader > h2 {
   margin: 0;
-  padding: 0 0 0.3em 0;
   font-weight: 700;
   letter-spacing: -0.33px;
   word-break: break-word;
@@ -27,7 +28,6 @@
   align-items: center;
   flex-flow: row nowrap;
   gap: 2em;
-  padding: 0 0 1em 0;
 }
 
 .personItemList,
@@ -37,8 +37,7 @@
   margin: 0;
 }
 
-.personItem,
-.subtotalItem {
+.personItem {
   display: flex;
   padding: 0.3em 0;
   color: hsl(206, 6%, 44%);
@@ -52,15 +51,37 @@
 
 .personItemDesc {
   word-break: break-word;
+  max-width: 60%;
 }
 
 .personItemPrice {
 }
 
-.subtotalView {
+.subtotalWrapper {
   display: flex;
   justify-content: flex-end;
+  color: black;
+  gap: 2em;
+}
+
+.subtotalList {
+  padding-inline-start: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.subtotalList:nth-child(2) {
+  text-align: right;
+  font-weight: 600;
 }
 
 .subtotalItem {
+  padding: 0.15em 0;
+}
+
+.subtotalDesc {
+  color: var(--brand-off-light);
+}
+
+.subtotalPrice {
 }
