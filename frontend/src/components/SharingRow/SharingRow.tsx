@@ -8,16 +8,15 @@ function SharingRow() {
       <button type="button">
         <img
           className="icons"
-          src={shareIcon}
-          alt="square with arrow pointing away to open sharing options"
+          src={copyIcon}
+          alt="two document icons to copy contents to clipboard"
         />
       </button>
-
       <button type="button">
         <img
           className="icons"
-          src={copyIcon}
-          alt="two document icons to copy contents to clipboard"
+          src={shareIcon}
+          alt="square with arrow pointing away to open sharing options"
         />
       </button>
     </div>

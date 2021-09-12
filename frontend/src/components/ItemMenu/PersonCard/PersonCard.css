@@ -6,10 +6,6 @@
   gap: 1.25em;
 }
 
-.personCard:hover {
-  background-color: hsl(0, 0%, 90%);
-}
-
 .personCard:last-child {
   border-bottom: 0;
 }
@@ -40,7 +36,7 @@
 .personItem {
   display: flex;
   padding: 0.3em 0;
-  color: hsl(206, 6%, 44%);
+  color: var(--brand-off);
   gap: 1em;
   justify-content: space-between;
 }
@@ -80,7 +76,7 @@
 }
 
 .subtotalDesc {
-  color: var(--brand-off-light);
+  color: var(--brand-off);
 }
 
 .subtotalPrice {

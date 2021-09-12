@@ -1,4 +1,4 @@
-import CalculateBtn from "./components/CalculateBtn/CalculateBtn";
+import ResultsActions from "./components/ResultsActions/ResultsActions";
 import ItemMenu from "./components/ItemMenu/ItemMenu";
 import TotalsMenu from "./components/TotalsMenu/TotalsMenu";
 import "./Home.css";
@@ -9,7 +9,7 @@ function Home() {
       <div className="homeWrapper">
         <ItemMenu />
         <TotalsMenu />
-        <CalculateBtn />
+        <ResultsActions />
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ function ItemMenu() {
     <div className="itemView">
       <div className="itemMenu">
         <div className="itemHeaderWrapper">
-          <h1 className="itemHeader">ChickFilasdsaddsadasdasdasdasdasdasdA</h1>
+          <h1 className="itemHeader">A night out in town</h1>
           <div className="itemHeaderActions">
             <SharingRow />
           </div>
