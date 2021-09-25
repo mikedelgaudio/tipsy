@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import themeReducer from "./themeSlice";
+import viewReducer from "./viewSlice";
 
 export default configureStore({
   reducer: {
-    themes: themeReducer,
+    view: viewReducer,
   },
 });

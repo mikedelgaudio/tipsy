@@ -1,6 +1,6 @@
 import "./SharingRow.css";
-import shareIcon from "../../assets/icons/share-square-solid.svg";
-import copyIcon from "../../assets/icons/copy-regular.svg";
+import shareIcon from "../../../assets/icons/share-square-solid.svg";
+import copyIcon from "../../../assets/icons/copy-regular.svg";
 
 function SharingRow() {
   return (

@@ -1,16 +1,22 @@
-import ResultsActions from "./components/ResultsActions/ResultsActions";
-import ItemMenu from "./components/ItemMenu/ItemMenu";
-import TotalsMenu from "./components/TotalsMenu/TotalsMenu";
 import "./Home.css";
+import ResultsView from "./components/ResultsView/ResultsView";
+import { RootStateOrAny, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function Home() {
+  const currentTheme = useSelector(
+    (state: RootStateOrAny) => state?.themes?.selected
+  );
+  const displayInitView = useSelector(
+    (state: RootStateOrAny) => state?.view?.init
+  );
+  useEffect(() => {
+    localStorage.setItem("theme", currentTheme);
+  }, [currentTheme]);
+
   return (
-    <div className="home">
-      <div className="homeWrapper">
-        <ItemMenu />
-        <TotalsMenu />
-        <ResultsActions />
-      </div>
+    <div className={currentTheme + " home"}>
+      {displayInitView ? <ResultsView /> : null}
     </div>
   );
 }
