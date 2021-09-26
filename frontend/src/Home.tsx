@@ -2,6 +2,7 @@ import "./Home.css";
 import ResultsView from "./components/ResultsView/ResultsView";
 import { RootStateOrAny, useSelector } from "react-redux";
 import { useEffect } from "react";
+import InitView from "./components/InitView/InitView";
 
 function Home() {
   const currentTheme = useSelector(
@@ -16,7 +17,7 @@ function Home() {
 
   return (
     <div className={currentTheme + " home"}>
-      {displayInitView ? <ResultsView /> : null}
+      {displayInitView ? <InitView /> : <ResultsView />}
     </div>
   );
 }
