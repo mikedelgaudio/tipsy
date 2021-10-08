@@ -1,0 +1,40 @@
+button {
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+.btn-t-success {
+  transition: color 0.2s ease-in-out;
+  letter-spacing: -0.33px;
+  color: hsl(206, 6%, 44%);
+}
+
+.btn-t-success:hover {
+  color: green;
+}
+
+.btn-t-danger {
+  transition: color 0.2s ease-in-out;
+  background: transparent;
+  letter-spacing: -0.33px;
+  color: hsl(206, 6%, 44%);
+}
+
+.btn-t-danger:hover {
+  color: red;
+}
+
+.icons {
+  width: 20px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.icons:hover {
+  opacity: 1;
+}

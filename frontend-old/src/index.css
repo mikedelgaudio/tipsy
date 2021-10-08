@@ -1,7 +1,7 @@
 @import "./styles/normalize.css";
-@import "./styles/themes.css";
-@import "./styles/variables.css";
 @import "./styles/buttons.css";
+@import "./styles/shared.css";
+@import "./styles/themes.css";
 
 *,
 *::before,
@@ -22,9 +22,4 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--background);
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }

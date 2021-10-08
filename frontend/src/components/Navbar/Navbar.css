@@ -1,0 +1,18 @@
+nav {
+  background-color: var(--brand);
+}
+
+.nav-container {
+  margin: auto;
+  max-width: var(--max-width);
+}
+
+.nav-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 1em;
+  padding: 1em 2em;
+  color: var(--brand-x);
+}

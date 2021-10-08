@@ -1,0 +1,48 @@
+.totalsMenuView {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  background-color: var(--brand-x);
+  border: 1px solid var(--brand-off);
+  border-radius: var(--global-radius);
+  padding: 1em;
+}
+
+.totalRow {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+.totalText {
+  font-weight: 600;
+  font-size: clamp(1.5em, 1.5em + 1vw, 2em);
+  word-break: break-word;
+}
+
+.totalsBreakdownWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.totalsBreakdownList {
+  padding-inline-start: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.totalsBreakdownList:nth-child(2) {
+  text-align: right;
+  font-weight: 600;
+}
+
+.totalBreakdownItem {
+  padding: 0.15em 0;
+}
+
+.totalBreakdownDesc {
+  color: var(--brand-off-light);
+}

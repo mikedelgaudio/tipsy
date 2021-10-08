@@ -1,11 +1,11 @@
-import ItemMenu from "./ItemMenu/ItemMenu";
 import ResultsActions from "./ResultsActions/ResultsActions";
-import "./ResultsView.css";
+import ItemMenu from "./ItemMenu/ItemMenu";
 import TotalsMenu from "./TotalsMenu/TotalsMenu";
+import "./ResultsView.css";
 
 function ResultsView() {
   return (
-    <div className="results-view">
+    <div className="resultsWrapper">
       <ItemMenu />
       <TotalsMenu />
       <ResultsActions />

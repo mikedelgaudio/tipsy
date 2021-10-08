@@ -1,0 +1,8 @@
+.resultsWrapper {
+  max-width: 700px;
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}

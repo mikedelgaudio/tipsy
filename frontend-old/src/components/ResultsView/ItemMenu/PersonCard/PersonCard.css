@@ -1,0 +1,83 @@
+.personCard {
+  border-bottom: 1px solid hsl(0, 0%, 79%);
+  padding: 1em 2em;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1.25em;
+}
+
+.personCard:last-child {
+  border-bottom: 0;
+}
+
+.personCardHeader > h2 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.33px;
+  word-break: break-word;
+  font-size: clamp(1em, 1.25em + 1vw, 1.5em);
+}
+
+.personCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row nowrap;
+  gap: 2em;
+}
+
+.personItemList,
+.subtotalList {
+  padding-inline-start: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.personItem {
+  display: flex;
+  padding: 0.3em 0;
+  color: var(--brand-off);
+  gap: 1em;
+  justify-content: space-between;
+}
+
+.personItem {
+  justify-content: space-between;
+}
+
+.personItemDesc {
+  word-break: break-word;
+  max-width: 60%;
+}
+
+.personItemPrice {
+}
+
+.subtotalWrapper {
+  display: flex;
+  justify-content: flex-end;
+  color: black;
+  gap: 2em;
+}
+
+.subtotalList {
+  padding-inline-start: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.subtotalList:nth-child(2) {
+  text-align: right;
+  font-weight: 600;
+}
+
+.subtotalItem {
+  padding: 0.15em 0;
+}
+
+.subtotalDesc {
+  color: var(--brand-off);
+}
+
+.subtotalPrice {
+}
