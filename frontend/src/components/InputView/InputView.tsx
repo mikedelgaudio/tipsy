@@ -2,6 +2,7 @@ import { useState } from "react";
 import Greeting from "./Greeting/Greeting";
 import "./InputView.css";
 import { checkStr } from "../../utilities/error";
+import { sanitizeStr } from "../../utilities/sanitize";
 
 interface PersonItems {
   price: string;
@@ -29,24 +30,36 @@ const initFormData: TipsyForm = Object.freeze({
 });
 
 function InputView() {
-  // TODO make error handling functions
+  // Consider https://www.npmjs.com/package/react-toastify ?
 
   const [formData, updateFormData] = useState(initFormData);
 
-  const addSinglePersonItem = (id: string, price: string) => {
-    checkStr(id);
-    checkStr(price);
-    let persons: Person[] = [...formData.persons];
-    const indexOfPerson: number = persons.findIndex((person) => {
+  const getPersonIndex = (id: string): number => {
+    const indexOfPerson: number = formData.persons.findIndex((person) => {
       person.id === id;
     });
-    let person: Person = { ...persons[indexOfPerson] };
+    return indexOfPerson ? indexOfPerson : -1;
+  };
 
-    person.items.push({
-      price,
-    });
+  const addSinglePersonItem = (id: string, price: string) => {
+    // need to consider adding an item vs the handleChange function
+    // this function won't work directly from the event changes in its current form
+    // we may use this as a helper function i guess somehow need to figure out the ID of the
+    // person it is related too (we may need to make a function to generate person code blocks with TSX)
 
-    persons[indexOfPerson] = person;
+    const payloadId: string = sanitizeStr(id);
+
+    const payloadPrice: string = sanitizeStr(id);
+
+    const index = getPersonIndex(payloadId);
+    if (index === -1) throw new Error("Unable to find index of person");
+
+    const persons: Person[] = [...formData.persons];
+    let person: Person = { ...persons[index] };
+
+    person.items = [...person.items, { price: payloadPrice }];
+
+    persons[index] = person;
 
     updateFormData((prev) => ({
       ...prev,
@@ -54,14 +67,15 @@ function InputView() {
     }));
   };
 
-  const addPerson = (id: string) => {
-    checkStr(id);
+  const handleNewPerson = (e: any) => {
+    const payload: string = sanitizeStr(e.target.value);
+
     updateFormData((prev) => ({
       ...prev,
       persons: [
         ...formData.persons,
         {
-          id,
+          id: payload,
           items: [],
         },
       ],
@@ -69,8 +83,8 @@ function InputView() {
   };
 
   const handleTotalsChange = (e: any) => {
-    let payload: string = e.target.value.trim();
-    checkStr(payload);
+    const payload: string = sanitizeStr(e.target.value);
+
     updateFormData((prev) => ({
       ...prev,
       [e.target.name]: { ...formData.totals, overall: payload },
@@ -78,9 +92,11 @@ function InputView() {
   };
 
   const handleChange = (e: any) => {
+    const payload: string = sanitizeStr(e.target.value);
+
     updateFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value.trim(),
+      [e.target.name]: payload,
     }));
   };
 
@@ -88,6 +104,7 @@ function InputView() {
     e = e || window.event;
     e.preventDefault();
     console.log(formData);
+    throw new Error("Hello");
     updateFormData(initFormData);
     e.target.reset();
   };
@@ -122,7 +139,18 @@ function InputView() {
         <div className="question">
           <h2>Let's add people</h2>
           <label>Person name</label>
-          <input type="text" required />
+          {/* <input type="text" name="person" required onChange={addPerson} /> */}
+        </div>
+
+        <div className="question">
+          <h2>Price of item</h2>
+          <label>Person name</label>
+          <input
+            type="text"
+            name="price"
+            required
+            // onChange={addSinglePersonItem}
+          />
         </div>
 
         <button type="submit">Calculate</button>
