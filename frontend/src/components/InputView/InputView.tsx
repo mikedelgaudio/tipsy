@@ -26,13 +26,31 @@ const initFormData: TipsyForm = Object.freeze({
   totals: {
     overall: "$0.00",
   },
-  persons: [],
+  persons: [
+    {
+      id: "",
+      items: [{ price: "0.00" }],
+    },
+  ],
+});
+
+const initFormPersonData: Person = Object.freeze({
+  id: "Mike",
+  items: [
+    {
+      price: "0.00",
+    },
+    {
+      price: "120.00",
+    },
+  ],
 });
 
 function InputView() {
   // Consider https://www.npmjs.com/package/react-toastify ?
 
   const [formData, updateFormData] = useState(initFormData);
+  const [formPersons, updateFormPersons] = useState([initFormPersonData]);
 
   const getPersonIndex = (id: string): number => {
     const indexOfPerson: number = formData.persons.findIndex((person) => {
@@ -112,8 +130,8 @@ function InputView() {
     <div className="input-view">
       <Greeting />
 
-      <form onSubmit={handleSubmit}>
-        <div className="question">
+      {/* <form onSubmit={handleSubmit}> */}
+      {/* <div className="question">
           <h2>What was the name of the event?</h2>
           <label>Event name</label>
           <input
@@ -122,9 +140,9 @@ function InputView() {
             required
             onChange={handleChange}
           />
-        </div>
+        </div> */}
 
-        <div className="question">
+      {/* <div className="question">
           <h2>What was the final total amount?</h2>
           <small>Ensure this includes the tip and tax.</small>
           <label>Final total</label>
@@ -134,26 +152,59 @@ function InputView() {
             required
             onChange={handleTotalsChange}
           />
-        </div>
+        </div> */}
 
-        <div className="question">
+      {/* <div className="question">
           <h2>Let's add people</h2>
           <label>Person name</label>
-          {/* <input type="text" name="person" required onChange={addPerson} /> */}
-        </div>
+          <input type="text" name="person" required onChange={addPerson} />
+        </div> */}
 
-        <div className="question">
+      {/* <div className="question">
           <h2>Price of item</h2>
           <label>Person name</label>
           <input
             type="text"
             name="price"
             required
-            // onChange={addSinglePersonItem}
+            onChange={addSinglePersonItem}
           />
         </div>
 
+        <button>Add person</button>
+        <button>Add item</button>
         <button type="submit">Calculate</button>
+      </form> */}
+
+      <form onSubmit={handleSubmit}>
+        <h2>My special form</h2>
+
+        {formPersons.map((element, index) => {
+          return (
+            <div className="question" key={index}>
+              <div className="person-id-container">
+                <label>Person name {index} </label>
+                <input type="text" name="id" value={element.id || ""} />
+              </div>
+              {element.items.map((element, index) => {
+                return (
+                  <h1 key={index}>
+                    item:{element.price} {index}
+                    {index ? (
+                      <button
+                        type="button"
+                        className="button remove"
+                        onClick={() => alert(`removed item ${index}`)}
+                      >
+                        Remove
+                      </button>
+                    ) : null}
+                  </h1>
+                );
+              })}
+            </div>
+          );
+        })}
       </form>
     </div>
   );
