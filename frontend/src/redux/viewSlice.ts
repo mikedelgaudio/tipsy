@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  init: false,
+  init: true,
   selected: localStorage?.theme || "lightmode",
   list: [
     { id: 0, name: "lightmode", title: "Light Mode" },
