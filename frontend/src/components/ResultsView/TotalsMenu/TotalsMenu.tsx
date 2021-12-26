@@ -3,10 +3,10 @@ import "./TotalsMenu.css";
 
 function TotalsMenu({
   eventTotal,
-  eventTipTotal,
+  eventTipTaxTotal,
 }: {
   eventTotal: number;
-  eventTipTotal: number;
+  eventTipTaxTotal: number;
 }) {
   return (
     <div className="totalsMenuView">
@@ -18,7 +18,7 @@ function TotalsMenu({
         </ul>
         <ul className="totalsBreakdownList">
           <li className="totalBreakdownItem">
-            <span>${eventTipTotal}</span>
+            <span>${eventTipTaxTotal}</span>
           </li>
         </ul>
       </div>
@@ -33,7 +33,7 @@ function TotalsMenu({
 const mapStateToProps = (state: RootStateOrAny) => {
   return {
     eventTotal: state.calculation.eventTotal,
-    eventTipTotal: state.calculation.eventTipTotal,
+    eventTipTaxTotal: state.calculation.eventTipTaxTotal,
   };
 };
 
