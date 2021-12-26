@@ -1,4 +1,5 @@
 import * as actionTypes from "./calculation-types";
+import { v4 as uuidv4 } from "uuid";
 
 const INITIAL_STATE = {
   persons: [
@@ -19,8 +20,8 @@ const INITIAL_STATE = {
       price: 0.0,
     },
   ],
-  eventTitle: "Edit your event name",
-  eventTotal: 1000.0,
+  eventTitle: "Event Title",
+  eventTotal: 1,
   eventTipTaxTotal: 0.0,
 };
 
@@ -32,8 +33,8 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
         persons: [
           ...state.persons,
           {
-            id: action.payload.id,
-            name: action.payload.name,
+            id: uuidv4(),
+            name: `Person ${state.persons.length + 1}`,
             subtotal: 0.0,
             tipAndTax: 0.0,
             totalDue: 0.0,

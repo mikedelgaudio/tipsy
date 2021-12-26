@@ -1,9 +1,18 @@
 import { connect, RootStateOrAny } from "react-redux";
+import { Item, Person } from "../../../models/custom-models";
 import SharingRow from "../SharingRow/SharingRow";
 import "./ItemMenu.css";
 import PersonCard from "./PersonCard/PersonCard";
 
-function ItemMenu({ eventTitle }: { eventTitle: string }) {
+function ItemMenu({
+  eventTitle,
+  persons,
+  items,
+}: {
+  eventTitle: string;
+  persons: [];
+  items: [];
+}) {
   return (
     <div className="itemView">
       <div className="itemMenu">
@@ -13,9 +22,12 @@ function ItemMenu({ eventTitle }: { eventTitle: string }) {
             <SharingRow />
           </div>
         </div>
-
-        <PersonCard />
-        <PersonCard />
+        {persons.map((person: Person) => {
+          const itemsData = items.filter(
+            (item: Item) => person.id === item.personId
+          );
+          return <PersonCard personData={person} itemsData={itemsData} />;
+        })}
       </div>
     </div>
   );
@@ -24,6 +36,8 @@ function ItemMenu({ eventTitle }: { eventTitle: string }) {
 const mapStateToProps = (state: RootStateOrAny) => {
   return {
     eventTitle: state.calculation.eventTitle,
+    persons: state.calculation.persons,
+    items: state.calculation.items,
   };
 };
 

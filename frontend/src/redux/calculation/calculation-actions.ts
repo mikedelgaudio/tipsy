@@ -1,13 +1,10 @@
 import { Item, Person } from "../../models/custom-models";
 import * as actionTypes from "./calculation-types";
 
-export const addPerson = (personData: Person) => {
+export const addPerson = () => {
   return {
     type: actionTypes.ADD_PERSON,
-    payload: {
-      id: personData.id,
-      name: personData.name,
-    },
+    payload: {},
   };
 };
 

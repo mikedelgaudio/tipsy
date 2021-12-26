@@ -1,30 +1,26 @@
+import { Item } from "../../../../models/custom-models";
 import PersonActions from "./PersonActions/PersonActions";
 import "./PersonCard.css";
 
-function PersonCard() {
+function PersonCard({ personData, itemsData }: any) {
   return (
     <div className="personCard">
       <div className="personCardHeader">
-        <h2>asdasdsadsadasdasdasdadsadsadsad</h2>
+        <h2>{personData.name}</h2>
         <PersonActions />
       </div>
 
       <ul className="personItemList">
-        <li className="personItem">
-          <span className="personItemDesc">
-            Chicken
-            asdsadasdsadsadasdsasdsadsdsdasdadasdsadasdasdasdasdsadasdasdasdsadasdasdasdsadadadsaadsadsaSandwich
-          </span>
-          <span className="personItemPrice">$8.24</span>
-        </li>
-        <li className="personItem">
-          <span className="personItemDesc">Chicken Sandwich</span>
-          <span className="personItemPrice">$8.24</span>
-        </li>
-        <li className="personItem">
-          <span className="personItemDesc">Chicken Sandwich</span>
-          <span className="personItemPrice">$8.24</span>
-        </li>
+        {itemsData.map((item: Item) => {
+          return (
+            <>
+              <li className="personItem">
+                <span className="personItemDesc">{item.name}</span>
+                <span className="personItemPrice">${item.price}</span>
+              </li>
+            </>
+          );
+        })}
       </ul>
 
       <div className="subtotalWrapper">
@@ -38,10 +34,10 @@ function PersonCard() {
         </ul>
         <ul className="subtotalList">
           <li className="subtotalItem">
-            <span className="subtotalPrice">$12</span>
+            <span className="subtotalPrice">${personData.tipAndTax}</span>
           </li>
           <li className="subtotalItem">
-            <span className="subtotalPrice">$1086.99</span>
+            <span className="subtotalPrice">${personData.totalDue}</span>
           </li>
         </ul>
       </div>
