@@ -1,13 +1,14 @@
+import { connect, RootStateOrAny } from "react-redux";
 import SharingRow from "../SharingRow/SharingRow";
 import "./ItemMenu.css";
 import PersonCard from "./PersonCard/PersonCard";
 
-function ItemMenu() {
+function ItemMenu({ eventTitle }: { eventTitle: string }) {
   return (
     <div className="itemView">
       <div className="itemMenu">
         <div className="itemHeaderWrapper">
-          <h1 className="itemHeader">A night out in town</h1>
+          <h1 className="itemHeader">{eventTitle}</h1>
           <div className="itemHeaderActions">
             <SharingRow />
           </div>
@@ -20,4 +21,10 @@ function ItemMenu() {
   );
 }
 
-export default ItemMenu;
+const mapStateToProps = (state: RootStateOrAny) => {
+  return {
+    eventTitle: state.calculation.eventTitle,
+  };
+};
+
+export default connect(mapStateToProps)(ItemMenu);

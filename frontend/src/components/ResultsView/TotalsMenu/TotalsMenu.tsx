@@ -1,6 +1,13 @@
+import { connect, RootStateOrAny } from "react-redux";
 import "./TotalsMenu.css";
 
-function TotalsMenu() {
+function TotalsMenu({
+  eventTotal,
+  eventTipTotal,
+}: {
+  eventTotal: number;
+  eventTipTotal: number;
+}) {
   return (
     <div className="totalsMenuView">
       <div className="totalsBreakdownWrapper">
@@ -11,16 +18,23 @@ function TotalsMenu() {
         </ul>
         <ul className="totalsBreakdownList">
           <li className="totalBreakdownItem">
-            <span>$12</span>
+            <span>${eventTipTotal}</span>
           </li>
         </ul>
       </div>
       <div className="totalRow">
         <h3 className="totalText">Total</h3>
-        <h3 className="totalText">$1031.21</h3>
+        <h3 className="totalText">${eventTotal}</h3>
       </div>
     </div>
   );
 }
 
-export default TotalsMenu;
+const mapStateToProps = (state: RootStateOrAny) => {
+  return {
+    eventTotal: state.calculation.eventTotal,
+    eventTipTotal: state.calculation.eventTipTotal,
+  };
+};
+
+export default connect(mapStateToProps)(TotalsMenu);

@@ -20,8 +20,8 @@ const INITIAL_STATE = {
       price: 0.0,
     },
   ],
-  eventTitle: "Default Event",
-  eventTotal: 0.0,
+  eventTitle: "Edit your event name",
+  eventTotal: 1000.0,
   eventTipTotal: 0.0,
 };
 
