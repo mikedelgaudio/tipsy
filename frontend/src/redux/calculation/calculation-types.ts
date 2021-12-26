@@ -13,3 +13,4 @@ export const EDIT_ITEM_PRICE = "EDIT_ITEM_PRICE";
 // Events
 export const EDIT_EVENT_TITLE = "EDIT_EVENT_TITLE";
 export const EDIT_EVENT_TOTAL = "EDIT_EVENT_TOTAL";
+export const RESTART_EVENT = "RESTART_EVENT";

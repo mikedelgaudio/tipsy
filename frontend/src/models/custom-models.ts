@@ -5,6 +5,7 @@ export interface Person {
 
 export interface Item {
   id: string;
+  personId: string;
   name: string;
   qty: number;
   price: number;

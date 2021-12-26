@@ -1,4 +1,3 @@
-import { Item, Person } from "../../models/custom-models";
 import * as actionTypes from "./calculation-types";
 import { v4 as uuidv4 } from "uuid";
 import { PayloadAction } from "@reduxjs/toolkit";
@@ -6,18 +5,19 @@ import { PayloadAction } from "@reduxjs/toolkit";
 const INITIAL_STATE = {
   persons: [
     {
-      id: uuidv4(),
+      id: "1",
       name: "Your Name",
-      items: [
-        {
-          id: uuidv4(),
-          name: "First Food Item Name",
-          qty: 1,
-          price: 0.0,
-        },
-      ],
       subtotal: 0.0,
       totalDue: 0.0,
+    },
+  ],
+  items: [
+    {
+      id: "1a",
+      personId: "1",
+      name: "First Food Item Name",
+      qty: 1,
+      price: 0.0,
     },
   ],
   eventTitle: "Default Event",
@@ -46,6 +46,8 @@ const calculationReducer = (state = INITIAL_STATE, action: PayloadAction) => {
     case actionTypes.EDIT_EVENT_TITLE:
       return {};
     case actionTypes.EDIT_EVENT_TOTAL:
+      return {};
+    case actionTypes.RESTART_EVENT:
       return {};
     default:
       return state;

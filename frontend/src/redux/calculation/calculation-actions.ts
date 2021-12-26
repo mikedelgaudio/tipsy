@@ -37,6 +37,7 @@ export const addItem = (itemData: Item) => {
     type: actionTypes.ADD_ITEM,
     payload: {
       id: itemData.id,
+      personId: itemData.personId,
       name: itemData.name,
       qty: itemData.qty,
       price: itemData.price,
@@ -98,5 +99,12 @@ export const editEventTotal = (newTotal: number) => {
     payload: {
       total: newTotal,
     },
+  };
+};
+
+export const restartEvent = () => {
+  return {
+    type: actionTypes.RESTART_EVENT,
+    payload: {},
   };
 };
