@@ -13,12 +13,10 @@ function PersonCard({ personData, itemsData }: any) {
       <ul className="personItemList">
         {itemsData.map((item: Item) => {
           return (
-            <>
-              <li className="personItem">
-                <span className="personItemDesc">{item.name}</span>
-                <span className="personItemPrice">${item.price}</span>
-              </li>
-            </>
+            <li className="personItem" key={item.id}>
+              <span className="personItemDesc">{item.name}</span>
+              <span className="personItemPrice">${item.price}</span>
+            </li>
           );
         })}
       </ul>

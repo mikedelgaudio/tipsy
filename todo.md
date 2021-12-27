@@ -1,0 +1,4 @@
+- Refactor CSS into CSS Modules
+- Add Toastify Error Notifications
+- Add About Section or Walkthrough
+- Migrate Backend Logic into FE

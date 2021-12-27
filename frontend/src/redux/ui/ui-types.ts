@@ -1,0 +1,1 @@
+export const UI_EDIT_EVENT_TITLE = "UI_EDIT_EVENT_TITLE";
