@@ -2,7 +2,12 @@ import "./PersonActions.css";
 import editIcon from "../../../../../assets/icons/edit-regular.svg";
 import deleteIcon from "../../../../../assets/icons/trash-alt-regular.svg";
 
-function PersonActions() {
+// TODO:
+// Dispatch UI Edit State for Person's Props ID
+// Dispatch UI Cancel Edit State for Person's Props ID
+// Dispatch UI Delete Person for Person's Props ID
+
+function PersonActions({ personId }: any) {
   return (
     <div className="personActions">
       <button type="button">

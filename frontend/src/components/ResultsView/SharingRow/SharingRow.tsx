@@ -13,7 +13,7 @@ function SharingRow({ uiEditTitle, setUiEditTitle }: any) {
         onClick={() => setUiEditTitle(false)}
         title="Stop Editing Event Title"
       >
-        <img className="icons" src={checkIcon} alt="stop editing event title" />
+        <img className="icons" src={checkIcon} alt="Stop editing event title" />
       </button>
     );
   };
@@ -25,7 +25,7 @@ function SharingRow({ uiEditTitle, setUiEditTitle }: any) {
         onClick={() => setUiEditTitle(true)}
         title="Edit Event Title"
       >
-        <img className="icons" src={editIcon} alt="edit event title" />
+        <img className="icons" src={editIcon} alt="Edit event title" />
       </button>
     );
   };
@@ -34,11 +34,7 @@ function SharingRow({ uiEditTitle, setUiEditTitle }: any) {
     <div className="sharingRow">
       {!uiEditTitle ? editBtn() : closeBtn()}
       <button type="button">
-        <img
-          className="icons"
-          src={shareIcon}
-          alt="square with arrow pointing away to open sharing options"
-        />
+        <img className="icons" src={shareIcon} alt="Share" />
       </button>
     </div>
   );

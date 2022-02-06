@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Greeting from "./Greeting/Greeting";
 import "./InputView.css";
-import { checkStr } from "../../utilities/error";
-import { sanitizeStr } from "../../utilities/sanitize";
+import { checkStr } from "../../../utilities/error";
+import { sanitizeStr } from "../../../utilities/sanitize";
 
 interface PersonItems {
   price: string;

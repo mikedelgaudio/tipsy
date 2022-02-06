@@ -7,9 +7,13 @@ function PersonCard({ personData, itemsData }: any) {
     <div className="personCard">
       <div className="personCardHeader">
         <h2>{personData.name}</h2>
-        <PersonActions />
+        <PersonActions personId={personData.id} />
       </div>
 
+      {/* TOOD:
+          Listen for person edit state with current person id 
+          Turn into input fields 
+          Dispatch saved values to store and re-calculate */}
       <ul className="personItemList">
         {itemsData.map((item: Item) => {
           return (
