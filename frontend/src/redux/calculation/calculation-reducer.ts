@@ -9,6 +9,7 @@ const INITIAL_STATE = {
       subtotal: 0.0,
       tipAndTax: 0.0,
       totalDue: 0.0,
+      uiEditPerson: false,
     },
   ],
   items: [
@@ -42,15 +43,18 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
         ],
       };
     case actionTypes.REMOVE_PERSON:
-      return {
-        ...state,
-        persons: state.persons.filter(
-          (person) => person.id !== action.payload.id
-        ),
-        items: state.items.filter(
-          (item) => item.personId !== action.payload.id
-        ),
-      };
+      if (state.persons.length < 2) return state;
+      // display error?
+      else
+        return {
+          ...state,
+          persons: state.persons.filter(
+            (person) => person.id !== action.payload.id
+          ),
+          items: state.items.filter(
+            (item) => item.personId !== action.payload.id
+          ),
+        };
     case actionTypes.EDIT_PERSON_NAME:
       return {
         ...state,
