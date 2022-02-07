@@ -9,7 +9,6 @@ const INITIAL_STATE = {
       subtotal: 0.0,
       tipAndTax: 0.0,
       totalDue: 0.0,
-      uiEditPerson: false,
     },
   ],
   items: [

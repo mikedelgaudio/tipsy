@@ -42,6 +42,7 @@ function ItemMenu({
           </div>
         </div>
         {persons.map((person: Person) => {
+          console.log(person);
           const itemsData = items.filter(
             (item: Item) => person.id === item.personId
           );

@@ -8,3 +8,12 @@ export const uiEditEventTitle = (enabled: boolean) => {
     },
   };
 };
+
+export const uiEditPerson = (personId: string) => {
+  return {
+    type: actionTypes.UI_EDIT_PERSON,
+    payload: {
+      id: personId,
+    },
+  };
+};
