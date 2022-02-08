@@ -19,6 +19,13 @@ const INITIAL_STATE = {
       qty: 1,
       price: 0.0,
     },
+    {
+      id: "2a",
+      personId: "1",
+      name: "Second Food Item Name",
+      qty: 1,
+      price: 0.0,
+    },
   ],
   eventTitle: "Event Title",
   eventTotal: 1,

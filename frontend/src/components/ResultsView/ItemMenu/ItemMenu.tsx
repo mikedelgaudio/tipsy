@@ -42,16 +42,11 @@ function ItemMenu({
           </div>
         </div>
         {persons.map((person: Person) => {
-          console.log(person);
-          const itemsData = items.filter(
+          const data = items.filter(
             (item: Item) => person.id === item.personId
           );
           return (
-            <PersonCard
-              key={person.id}
-              personData={person}
-              itemsData={itemsData}
-            />
+            <PersonCard key={person.id} personData={person} itemsData={data} />
           );
         })}
       </div>

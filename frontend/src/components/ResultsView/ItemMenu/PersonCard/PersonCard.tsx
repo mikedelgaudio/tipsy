@@ -1,12 +1,43 @@
+import { useEffect, useState } from "react";
+import { connect, RootStateOrAny } from "react-redux";
 import { Item } from "../../../../models/custom-models";
+import { editPersonName } from "../../../../redux/calculation/calculation-actions";
 import PersonActions from "./PersonActions/PersonActions";
 import "./PersonCard.css";
 
-function PersonCard({ personData, itemsData }: any) {
+function PersonCard({
+  personData,
+  itemsData,
+  storeUiEditPersonId,
+  dispatchEditPersonName,
+}: any) {
+  // Is this person being edited?
+  const editing = storeUiEditPersonId === personData.id;
+
+  const [personNameInput, setPersonNameInput] = useState(personData.name);
+
+  const personNameInputHandler = (e: any) => {
+    setPersonNameInput(e.target.value);
+    //dispatch
+    dispatchEditPersonName(personData.id, e.target.value);
+  };
+
+  useEffect(() => {
+    setPersonNameInput(personData.name);
+  }, [personData.name]);
+
   return (
     <div className="personCard">
       <div className="personCardHeader">
-        <h2>{personData.name}</h2>
+        {!editing ? (
+          <h2>{personData.name}</h2>
+        ) : (
+          <input
+            type="text"
+            onChange={personNameInputHandler}
+            value={personNameInput || ""}
+          />
+        )}
         <PersonActions personId={personData.id} />
       </div>
 
@@ -47,4 +78,17 @@ function PersonCard({ personData, itemsData }: any) {
   );
 }
 
-export default PersonCard;
+const mapStateToProps = (state: RootStateOrAny) => {
+  return {
+    storeUiEditPersonId: state.ui.uiEditPersonId,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    dispatchEditPersonName: (personId: string, newName: string) =>
+      dispatch(editPersonName(personId, newName)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PersonCard);
