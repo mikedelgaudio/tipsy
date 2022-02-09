@@ -18,10 +18,22 @@
   background-color: var(--brand-off);
   color: var(--brand-x);
   border: 1px solid var(--brand-off);
+  transition: color, background-color 0.2s ease-in-out;
+}
+
+.btn-danger:hover {
+  background-color: var(--brand-x);
+  color: var(--brand-off);
 }
 
 .btn-success {
   background-color: var(--brand);
   color: var(--brand-x);
   border: 1px solid var(--brand);
+  transition: color, background-color 0.2s ease-in-out;
+}
+
+.btn-success:hover {
+  background-color: var(--brand-x);
+  color: var(--brand);
 }
