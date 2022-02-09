@@ -43,7 +43,7 @@ function ItemMenu({
         </div>
         {persons.map((person: Person) => {
           const data = items.filter(
-            (item: Item) => person.id === item.personId
+            (item: Item) => person?.id === item.personId
           );
           return (
             <PersonCard key={person.id} personData={person} itemsData={data} />

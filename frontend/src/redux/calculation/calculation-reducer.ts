@@ -65,9 +65,12 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
       return {
         ...state,
         persons: state.persons.map((person) => {
-          person.id === action.payload.id
-            ? { ...person, name: action.payload.name }
-            : person;
+          if (person.id === action.payload.id) {
+            return {
+              ...person,
+              name: action.payload.name,
+            };
+          } else return person;
         }),
       };
     case actionTypes.ADD_ITEM:
@@ -93,28 +96,31 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
       return {
         ...state,
         items: state.items.map((item) => {
-          item.id === action.payload.id
-            ? { ...item, name: action.payload.name }
-            : item;
+          if (item.id === action.payload.id) {
+            return {
+              ...item,
+              name: action.payload.name,
+            };
+          } else return item;
         }),
       };
     case actionTypes.EDIT_ITEM_QTY:
       return {
         ...state,
-        items: state.items.map((item) =>
-          item.id === action.payload.id
-            ? { ...item, qty: +action.payload.qty }
-            : item
-        ),
+        items: state.items.map((item) => {
+          if (item.id === action.payload.id) {
+            return { ...item, qty: +action.payload.qty };
+          } else return item;
+        }),
       };
     case actionTypes.EDIT_ITEM_PRICE:
       return {
         ...state,
-        items: state.items.map((item) =>
-          item.id === action.payload.id
-            ? { ...item, price: +action.payload.price }
-            : item
-        ),
+        items: state.items.map((item) => {
+          if (item.id === action.payload.id) {
+            return { ...item, price: +action.payload.price };
+          } else return item;
+        }),
       };
     case actionTypes.EDIT_EVENT_TITLE:
       return {
