@@ -1,6 +1,7 @@
 import * as actionTypes from "./calculation-types";
 import { v4 as uuidv4 } from "uuid";
 import { calculate } from "./math";
+import { notifyError } from "../../components/shared/toasts/toast";
 
 const INITIAL_STATE = {
   persons: [
@@ -50,9 +51,10 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
         ],
       };
     case actionTypes.REMOVE_PERSON:
-      if (state.persons.length < 2) return state;
-      // display error?
-      else
+      if (state.persons.length < 2) {
+        notifyError("You cannot remove the last person!");
+        return state;
+      } else
         return {
           ...state,
           persons: state.persons.filter(
@@ -136,6 +138,8 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
     case actionTypes.RESTART_EVENT:
       return INITIAL_STATE;
     case actionTypes.RECALCULATE_EVENT:
+      // Dispatch whenever items or the length of people arr is modified
+      // Preferably only when item numbers are modified
       return calculate(state);
     default:
       return state;
