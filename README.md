@@ -10,12 +10,6 @@ The best friend group payment calculator web app.
 - `npm install`
 - `npm run dev`
 
-## Development Backend
-
-- `cd backend`
-- `npm install`
-- `npm run dev`
-
 ## Roadmap
 
 ### Completed
