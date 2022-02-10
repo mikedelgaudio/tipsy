@@ -42,3 +42,5 @@ The best friend group payment calculator web app.
 - [ ] Add About or Walkthrough Section
 - [ ] Add https://reactjs.org/docs/error-boundaries.html
 - [ ] Save session / state to local storage
+- [ ] Ability to split an item with a person
+- [ ] Ability to share a link for 1 week

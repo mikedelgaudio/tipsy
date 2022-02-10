@@ -105,3 +105,10 @@ export const restartEvent = () => {
     payload: {},
   };
 };
+
+export const recalculateEvent = () => {
+  return {
+    type: actionTypes.RECALCULATE_EVENT,
+    payload: {},
+  };
+};

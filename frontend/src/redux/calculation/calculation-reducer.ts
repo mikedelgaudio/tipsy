@@ -1,5 +1,6 @@
 import * as actionTypes from "./calculation-types";
 import { v4 as uuidv4 } from "uuid";
+import { calculate } from "./math";
 
 const INITIAL_STATE = {
   persons: [
@@ -14,7 +15,7 @@ const INITIAL_STATE = {
   items: [
     {
       id: "1a",
-      personId: "1",
+      personId: "1", // splitting an item you would use an array
       name: "First Food Item Name",
       qty: 1,
       price: 0.0,
@@ -134,6 +135,8 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
       };
     case actionTypes.RESTART_EVENT:
       return INITIAL_STATE;
+    case actionTypes.RECALCULATE_EVENT:
+      return calculate(state);
     default:
       return state;
   }
