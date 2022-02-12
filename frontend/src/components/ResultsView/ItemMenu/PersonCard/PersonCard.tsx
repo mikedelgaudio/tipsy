@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { connect, RootStateOrAny } from "react-redux";
 import { Item } from "../../../../models/custom-models";
-import { editPersonName } from "../../../../redux/calculation/calculation-actions";
+import {
+  editPersonName,
+  removeItem,
+} from "../../../../redux/calculation/calculation-actions";
+import DeleteBtn from "../../../shared/buttons/DeleteBtn";
 import PersonActions from "./PersonActions/PersonActions";
 import "./PersonCard.css";
 
@@ -10,6 +14,7 @@ function PersonCard({
   itemsData,
   storeUiEditPersonId,
   dispatchEditPersonName,
+  dispatchRemoveItem,
 }: any) {
   // Is this person being edited?
   const editing = storeUiEditPersonId === personData.id;
@@ -18,7 +23,6 @@ function PersonCard({
 
   const personNameInputHandler = (e: any) => {
     setPersonNameInput(e.target.value);
-    //dispatch
     dispatchEditPersonName(personData.id, e.target.value);
   };
 
@@ -65,7 +69,11 @@ function PersonCard({
 
               <div className="personItemOptionRow">
                 <button>Split?</button>
-                <button>Delete</button>
+                <DeleteBtn
+                  clickSideEffect={dispatchRemoveItem}
+                  uid={item.id}
+                  ariaTitle={`Delete ${item.name}`}
+                />
               </div>
             </li>
           );
@@ -104,6 +112,7 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     dispatchEditPersonName: (personId: string, newName: string) =>
       dispatch(editPersonName(personId, newName)),
+    dispatchRemoveItem: (itemId: string) => dispatch(removeItem(itemId)),
   };
 };
 

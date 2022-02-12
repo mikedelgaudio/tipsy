@@ -16,7 +16,7 @@ const INITIAL_STATE = {
   items: [
     {
       id: "1a",
-      personId: "1", // splitting an item you would use an array
+      personId: "1", // to split an item, modify the current to half then add to each person
       name: "First Food Item Name",
       qty: 1,
       price: 0.0,

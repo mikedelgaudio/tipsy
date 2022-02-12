@@ -1,4 +1,3 @@
-import { Item, Person } from "../../models/custom-models";
 import * as actionTypes from "./calculation-types";
 
 export const addPerson = () => {
