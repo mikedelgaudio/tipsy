@@ -37,16 +37,27 @@ const INITIAL_STATE = {
 const calculationReducer = (state = INITIAL_STATE, action: any) => {
   switch (action.type) {
     case actionTypes.ADD_PERSON:
+      const seededPersonId = uuidv4();
       return {
         ...state,
         persons: [
           ...state.persons,
           {
-            id: uuidv4(),
+            id: seededPersonId,
             name: `Person ${state.persons.length + 1}`,
             subtotal: 0.0,
             tipAndTax: 0.0,
             totalDue: 0.0,
+          },
+        ],
+        items: [
+          ...state.items,
+          {
+            id: uuidv4(),
+            personId: seededPersonId,
+            name: `Person ${state.persons.length + 1}'s Item`,
+            qty: 1,
+            price: 0,
           },
         ],
       };

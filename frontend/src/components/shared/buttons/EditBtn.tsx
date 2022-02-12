@@ -1,4 +1,4 @@
-import editIcon from "../../../assets/icons/edit-regular.svg";
+import editIcon from "../../../assets/icons/pencil-solid.svg";
 
 function EditBtn({ clickSideEffect, ariaTitle }: any) {
   return (

@@ -1,4 +1,4 @@
-import checkIcon from "../../../assets/icons/check-square-regular.svg";
+import checkIcon from "../../../assets/icons/check-solid.svg";
 
 function CloseBtn({ clickSideEffect, ariaTitle }: any) {
   return (

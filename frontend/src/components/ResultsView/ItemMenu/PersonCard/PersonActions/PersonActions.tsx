@@ -1,11 +1,13 @@
 import "./PersonActions.css";
 import deleteIcon from "../../../../../assets/icons/trash-alt-regular.svg";
+import addItemIcon from "../../../../../assets/icons/plus-solid.svg";
 import { removePerson } from "../../../../../redux/calculation/calculation-actions";
 import { connect, RootStateOrAny } from "react-redux";
 import EditBtn from "../../../../shared/buttons/EditBtn";
 import { uiEditPerson } from "../../../../../redux/ui/ui-actions";
 import { useEffect, useState } from "react";
 import CloseBtn from "../../../../shared/buttons/CloseBtn";
+import AddBtn from "../../../../shared/buttons/AddBtn";
 
 function PersonActions({
   personId,
@@ -40,6 +42,8 @@ function PersonActions({
           ariaTitle={"Stop editing person"}
         />
       )}
+
+      <AddBtn clickSideEffect={alert} ariaTitle={"Add item to person"} />
 
       <button type="button" onClick={() => dispatchRemovePerson(personId)}>
         <img className="icons" src={deleteIcon} alt="delete person" />
