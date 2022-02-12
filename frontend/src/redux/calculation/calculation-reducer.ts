@@ -93,11 +93,11 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
         items: [
           ...state.items,
           {
-            id: action.payload.id,
+            id: uuidv4(),
             personId: action.payload.personId,
-            name: action.payload.name,
-            qty: action.payload.qty,
-            price: action.payload.price,
+            name: `Item ${state.items.length + 1}`,
+            qty: 1,
+            price: 0,
           },
         ],
       };

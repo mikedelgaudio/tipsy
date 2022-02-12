@@ -1,22 +1,23 @@
 import "./PersonActions.css";
-import deleteIcon from "../../../../../assets/icons/trash-alt-regular.svg";
-import addItemIcon from "../../../../../assets/icons/plus-solid.svg";
-import { removePerson } from "../../../../../redux/calculation/calculation-actions";
+import {
+  addItem,
+  removePerson,
+} from "../../../../../redux/calculation/calculation-actions";
 import { connect, RootStateOrAny } from "react-redux";
 import EditBtn from "../../../../shared/buttons/EditBtn";
 import { uiEditPerson } from "../../../../../redux/ui/ui-actions";
 import { useEffect, useState } from "react";
 import CloseBtn from "../../../../shared/buttons/CloseBtn";
 import AddBtn from "../../../../shared/buttons/AddBtn";
+import DeleteBtn from "../../../../shared/buttons/DeleteBtn";
 
 function PersonActions({
   personId,
   dispatchUiEditPerson,
   dispatchRemovePerson,
+  dispatchAddItem,
   storeUiEditPersonId,
 }: any) {
-  // const editing = storeUiEditPersonId === personData.id;
-
   const [editing, setUiEditPerson] = useState(storeUiEditPersonId);
 
   const eventEditHandler = (editing: boolean) => {
@@ -43,11 +44,17 @@ function PersonActions({
         />
       )}
 
-      <AddBtn clickSideEffect={alert} ariaTitle={"Add item to person"} />
+      <AddBtn
+        clickSideEffect={dispatchAddItem}
+        ariaTitle={"Add item to person"}
+        uid={personId}
+      />
 
-      <button type="button" onClick={() => dispatchRemovePerson(personId)}>
-        <img className="icons" src={deleteIcon} alt="delete person" />
-      </button>
+      <DeleteBtn
+        clickSideEffect={dispatchRemovePerson}
+        ariaTitle={"Delete person"}
+        uid={personId}
+      />
     </div>
   );
 }
@@ -63,6 +70,7 @@ const mapDispatchToProps = (dispatch: any) => {
       dispatch(uiEditPerson(personId)),
     dispatchRemovePerson: (personId: string) =>
       dispatch(removePerson(personId)),
+    dispatchAddItem: (personId: string) => dispatch(addItem(personId)),
   };
 };
 

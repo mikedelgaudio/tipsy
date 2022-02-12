@@ -29,15 +29,11 @@ export const editPersonName = (personId: string, newName: string) => {
 
 // Items
 
-export const addItem = (itemData: Item) => {
+export const addItem = (personId: string) => {
   return {
     type: actionTypes.ADD_ITEM,
     payload: {
-      id: itemData.id,
-      personId: itemData.personId,
-      name: itemData.name,
-      qty: itemData.qty,
-      price: itemData.price,
+      personId,
     },
   };
 };
