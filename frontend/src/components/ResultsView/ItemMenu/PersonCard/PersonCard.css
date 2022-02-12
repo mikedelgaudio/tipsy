@@ -34,6 +34,11 @@
 }
 
 .personItem {
+  display: grid;
+  padding: 0.3em 0;
+}
+
+.personItemInfoRow {
   display: flex;
   padding: 0.3em 0;
   color: var(--brand-off);
@@ -41,7 +46,9 @@
   justify-content: space-between;
 }
 
-.personItem {
+.personItemOptionRow {
+  display: flex;
+  padding: 0.3em 0;
   justify-content: space-between;
 }
 

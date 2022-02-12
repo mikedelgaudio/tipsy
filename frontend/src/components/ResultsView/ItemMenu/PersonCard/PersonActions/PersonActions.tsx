@@ -13,7 +13,9 @@ function PersonActions({
   dispatchRemovePerson,
   storeUiEditPersonId,
 }: any) {
-  const [uiEditingId, setUiEditPerson] = useState(storeUiEditPersonId);
+  // const editing = storeUiEditPersonId === personData.id;
+
+  const [editing, setUiEditPerson] = useState(storeUiEditPersonId);
 
   const eventEditHandler = (editing: boolean) => {
     let id = personId;
@@ -25,12 +27,12 @@ function PersonActions({
   };
 
   useEffect(() => {
-    setUiEditPerson(storeUiEditPersonId);
+    setUiEditPerson(storeUiEditPersonId === personId);
   }, [storeUiEditPersonId]);
 
   return (
     <div className="personActions">
-      {!uiEditingId ? (
+      {!editing ? (
         <EditBtn clickSideEffect={eventEditHandler} ariaTitle={"Edit person"} />
       ) : (
         <CloseBtn

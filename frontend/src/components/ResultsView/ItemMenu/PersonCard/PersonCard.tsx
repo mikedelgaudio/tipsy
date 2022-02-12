@@ -49,8 +49,15 @@ function PersonCard({
         {itemsData.map((item: Item) => {
           return (
             <li className="personItem" key={item.id}>
-              <span className="personItemDesc">{item.name}</span>
-              <span className="personItemPrice">${item.price}</span>
+              <div className="personItemInfoRow">
+                <span className="personItemDesc">{item.name}</span>
+                <span className="personItemPrice">${item.price}</span>
+              </div>
+
+              <div className="personItemOptionRow">
+                <button>Split?</button>
+                <button>Delete</button>
+              </div>
             </li>
           );
         })}
