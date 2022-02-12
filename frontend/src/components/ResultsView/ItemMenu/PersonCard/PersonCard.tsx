@@ -50,8 +50,17 @@ function PersonCard({
           return (
             <li className="personItem" key={item.id}>
               <div className="personItemInfoRow">
-                <span className="personItemDesc">{item.name}</span>
-                <span className="personItemPrice">${item.price}</span>
+                {!editing ? (
+                  <>
+                    <span className="personItemDesc">{item.name}</span>
+                    <span className="personItemPrice">${item.price}</span>
+                  </>
+                ) : (
+                  <>
+                    <input type="text" />
+                    <input type="text" />
+                  </>
+                )}
               </div>
 
               <div className="personItemOptionRow">
