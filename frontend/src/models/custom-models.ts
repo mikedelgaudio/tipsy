@@ -8,5 +8,5 @@ export interface Item {
   personId: string;
   name: string;
   qty: number;
-  price: number;
+  price: string;
 }

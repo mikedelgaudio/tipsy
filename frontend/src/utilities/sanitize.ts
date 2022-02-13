@@ -4,4 +4,10 @@ const sanitizeStr = (input: string): string => {
   return input.trim();
 };
 
-export { sanitizeStr };
+const validCurrency = (input: string): boolean => {
+  if (!input) return false;
+  const REGEX = /^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$/;
+  return REGEX.test(input);
+};
+
+export { sanitizeStr, validCurrency };

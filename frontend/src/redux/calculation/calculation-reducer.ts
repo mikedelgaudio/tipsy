@@ -19,19 +19,19 @@ const INITIAL_STATE = {
       personId: "1", // to split an item, modify the current to half then add to each person
       name: "First Food Item Name",
       qty: 1,
-      price: 0.0,
+      price: "0.00",
     },
     {
       id: "2a",
       personId: "1",
       name: "Second Food Item Name",
       qty: 1,
-      price: 0.0,
+      price: "0.00",
     },
   ],
   eventTitle: "Event Title",
   eventTotal: 1,
-  eventTipTaxTotal: 0.0,
+  eventTipTaxTotal: "0.00",
 };
 
 const calculationReducer = (state = INITIAL_STATE, action: any) => {
@@ -57,7 +57,7 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
             personId: seededPersonId,
             name: `Person ${state.persons.length + 1}'s Item`,
             qty: 1,
-            price: 0,
+            price: "0.00",
           },
         ],
       };
@@ -97,7 +97,7 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
             personId: action.payload.personId,
             name: `Item ${state.items.length + 1}`,
             qty: 1,
-            price: 0,
+            price: "0.00",
           },
         ],
       };
@@ -132,7 +132,7 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
         ...state,
         items: state.items.map((item) => {
           if (item.id === action.payload.id) {
-            return { ...item, price: +action.payload.price };
+            return { ...item, price: action.payload.price };
           } else return item;
         }),
       };
@@ -144,7 +144,7 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
     case actionTypes.EDIT_EVENT_TOTAL:
       return {
         ...state,
-        eventTotal: +action.payload.total,
+        eventTotal: action.payload.total,
       };
     case actionTypes.RESTART_EVENT:
       return INITIAL_STATE;

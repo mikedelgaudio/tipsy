@@ -1,7 +1,11 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Item } from "../../../../../models/custom-models";
-import { removeItem } from "../../../../../redux/calculation/calculation-actions";
+import {
+  editItemName,
+  editItemPrice,
+  removeItem,
+} from "../../../../../redux/calculation/calculation-actions";
 import DeleteBtn from "../../../../shared/buttons/DeleteBtn";
 
 const defaultItem: Item = {
@@ -9,10 +13,16 @@ const defaultItem: Item = {
   personId: "",
   name: "",
   qty: 1,
-  price: 0,
+  price: "0.00",
 };
 
-function ItemRow({ item, editing, dispatchRemoveItem }: any) {
+function ItemRow({
+  item,
+  editing,
+  dispatchRemoveItem,
+  dispatchEditItemName,
+  dispatchEditItemPrice,
+}: any) {
   const [itemInput, setItemsInput] = useState(defaultItem);
 
   const itemInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,14 +31,25 @@ function ItemRow({ item, editing, dispatchRemoveItem }: any) {
     switch (fieldName) {
       case "NAME":
         // dispatch edit item name
-        break;
-      case "QTY":
-        // dispatch edit item qty
+        setItemsInput({
+          ...itemInput,
+          name: e.target.value,
+        });
+        dispatchEditItemName(item.id, e.target.value);
         break;
       case "PRICE":
         // dispatch edit item price
+        // TODO
+        // Ensure valid currency is only allowed when calculated
+        setItemsInput({
+          ...itemInput,
+          price: e.target.value,
+        });
+        dispatchEditItemPrice(item.id, e.target.value);
         break;
-
+      case "QTY":
+        // dispatch edit item qty TBD
+        break;
       default:
         break;
     }
@@ -44,7 +65,7 @@ function ItemRow({ item, editing, dispatchRemoveItem }: any) {
         {!editing ? (
           <>
             <div className="personItemDetailsContainer">
-              <span className="personItemQty">{item.qty}</span>
+              {/* <span className="personItemQty">{item.qty}</span> */}
               <span className="personItemName">{item.name}</span>
             </div>
 
@@ -53,12 +74,12 @@ function ItemRow({ item, editing, dispatchRemoveItem }: any) {
         ) : (
           <>
             <div className="personItemDetailsContainer">
-              <input
+              {/* <input
                 type="text"
                 field-name="QTY"
                 onChange={itemInputHandler}
                 value={itemInput.qty || ""}
-              />
+              /> */}
               <input
                 type="text"
                 field-name="NAME"
@@ -92,6 +113,10 @@ function ItemRow({ item, editing, dispatchRemoveItem }: any) {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     dispatchRemoveItem: (itemId: string) => dispatch(removeItem(itemId)),
+    dispatchEditItemName: (itemId: string, newName: string) =>
+      dispatch(editItemName(itemId, newName)),
+    dispatchEditItemPrice: (itemId: string, newPrice: string) =>
+      dispatch(editItemPrice(itemId, newPrice)),
   };
 };
 

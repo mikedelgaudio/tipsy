@@ -66,7 +66,7 @@ export const editItemQty = (itemId: string, newQty: number) => {
   };
 };
 
-export const editItemPrice = (itemId: string, newPrice: number) => {
+export const editItemPrice = (itemId: string, newPrice: string) => {
   return {
     type: actionTypes.EDIT_ITEM_PRICE,
     payload: {
@@ -85,7 +85,7 @@ export const editEventTitle = (newTitle: string) => {
   };
 };
 
-export const editEventTotal = (newTotal: number) => {
+export const editEventTotal = (newTotal: string) => {
   return {
     type: actionTypes.EDIT_EVENT_TOTAL,
     payload: {
