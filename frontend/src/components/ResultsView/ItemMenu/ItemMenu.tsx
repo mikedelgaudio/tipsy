@@ -7,28 +7,28 @@ import { useState, useEffect } from "react";
 import { editEventTitle } from "../../../redux/calculation/calculation-actions";
 
 function ItemMenu({
-  eventTitle,
-  persons,
-  items,
-  editEventTitle,
-  uiEditTitle,
+  storeEventTitle,
+  storePersons,
+  storeItems,
+  dispatchEditEventTitle,
+  storeUiEditTitle,
 }: any) {
-  const [eventTitleInput, setEventTitleInput] = useState(eventTitle);
+  const [eventTitleInput, setEventTitleInput] = useState(storeEventTitle);
 
   const eventTitleInputHandler = (e: any) => {
     setEventTitleInput(e.target.value);
-    editEventTitle(e.target.value);
+    dispatchEditEventTitle(e.target.value);
   };
 
   useEffect(() => {
-    setEventTitleInput(eventTitle);
-  }, [eventTitle]);
+    setEventTitleInput(storeEventTitle);
+  }, [storeEventTitle]);
 
   return (
     <div className="itemView">
       <div className="itemMenu">
         <div className="itemHeaderWrapper">
-          {!uiEditTitle ? (
+          {!storeUiEditTitle ? (
             <h1 className="itemHeader">{eventTitleInput}</h1>
           ) : (
             <input
@@ -41,8 +41,8 @@ function ItemMenu({
             <SharingRow />
           </div>
         </div>
-        {persons.map((person: Person) => {
-          const data = items.filter(
+        {storePersons.map((person: Person) => {
+          const data = storeItems.filter(
             (item: Item) => person?.id === item.personId
           );
           return (
@@ -56,16 +56,16 @@ function ItemMenu({
 
 const mapStateToProps = (state: RootStateOrAny) => {
   return {
-    eventTitle: state.calculation.eventTitle,
-    persons: state.calculation.persons,
-    items: state.calculation.items,
-    uiEditTitle: state.ui.uiEditEventTitle,
+    storeEventTitle: state.calculation.eventTitle,
+    storePersons: state.calculation.persons,
+    storeItems: state.calculation.items,
+    storeUiEditTitle: state.ui.uiEditEventTitle,
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    editEventTitle: (title: string) => dispatch(editEventTitle(title)),
+    dispatchEditEventTitle: (title: string) => dispatch(editEventTitle(title)),
   };
 };
 

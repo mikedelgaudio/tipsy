@@ -30,7 +30,7 @@ const INITIAL_STATE = {
     },
   ],
   eventTitle: "Event Title",
-  eventTotal: 1,
+  eventTotal: "0.00",
   eventTipTaxTotal: "0.00",
 };
 

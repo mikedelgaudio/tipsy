@@ -1,10 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { connect, RootStateOrAny } from "react-redux";
 import { Item } from "../../../../models/custom-models";
-import {
-  editPersonName,
-  removeItem,
-} from "../../../../redux/calculation/calculation-actions";
+import { editPersonName } from "../../../../redux/calculation/calculation-actions";
 import ItemRow from "./ItemRow/ItemRow";
 import PersonActions from "./PersonActions/PersonActions";
 import "./PersonCard.css";

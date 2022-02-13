@@ -1,4 +1,5 @@
 export const UI_EDIT_EVENT_TITLE = "UI_EDIT_EVENT_TITLE";
+export const UI_EDIT_EVENT_TOTAL = "UI_EDIT_EVENT_TOTAL";
 
 // Person
 export const UI_EDIT_PERSON = "UI_EDIT_PERSON";

@@ -5,17 +5,17 @@ import { uiEditEventTitle } from "../../../redux/ui/ui-actions";
 import EditBtn from "../../shared/buttons/EditBtn";
 import CloseBtn from "../../shared/buttons/CloseBtn";
 
-function SharingRow({ uiEditTitle, setUiEditTitle }: any) {
+function SharingRow({ storeUiEditTitle, dispatchUiEditTitle }: any) {
   return (
     <div className="sharingRow">
-      {!uiEditTitle ? (
+      {!storeUiEditTitle ? (
         <EditBtn
-          clickSideEffect={setUiEditTitle}
+          clickSideEffect={dispatchUiEditTitle}
           ariaTitle={"Edit event title"}
         />
       ) : (
         <CloseBtn
-          clickSideEffect={setUiEditTitle}
+          clickSideEffect={dispatchUiEditTitle}
           ariaTitle={"Stop editing event title"}
         />
       )}
@@ -28,13 +28,14 @@ function SharingRow({ uiEditTitle, setUiEditTitle }: any) {
 
 const mapStateToProps = (state: RootStateOrAny) => {
   return {
-    uiEditTitle: state.ui.uiEditEventTitle,
+    storeUiEditTitle: state.ui.uiEditEventTitle,
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    setUiEditTitle: (enabled: boolean) => dispatch(uiEditEventTitle(enabled)),
+    dispatchUiEditTitle: (enabled: boolean) =>
+      dispatch(uiEditEventTitle(enabled)),
   };
 };
 

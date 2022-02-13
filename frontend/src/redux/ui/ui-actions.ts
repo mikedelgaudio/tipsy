@@ -17,3 +17,12 @@ export const uiEditPerson = (personId: string) => {
     },
   };
 };
+
+export const uiEditEventTotal = (enabled: boolean) => {
+  return {
+    type: actionTypes.UI_EDIT_EVENT_TOTAL,
+    payload: {
+      editing: enabled,
+    },
+  };
+};

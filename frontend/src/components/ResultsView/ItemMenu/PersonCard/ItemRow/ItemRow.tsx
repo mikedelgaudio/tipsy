@@ -6,6 +6,7 @@ import {
   editItemPrice,
   removeItem,
 } from "../../../../../redux/calculation/calculation-actions";
+import { currencyRegex } from "../../../../../utilities/sanitize";
 import DeleteBtn from "../../../../shared/buttons/DeleteBtn";
 
 const defaultItem: Item = {

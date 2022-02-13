@@ -10,4 +10,6 @@ const validCurrency = (input: string): boolean => {
   return REGEX.test(input);
 };
 
-export { sanitizeStr, validCurrency };
+const currencyRegex = /^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$/;
+
+export { sanitizeStr, validCurrency, currencyRegex };
