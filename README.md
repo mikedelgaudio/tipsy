@@ -1,6 +1,6 @@
 # Tipsy
 
-Your best night out calculator web app
+Your best night out partner calculator web app
 
 The best friend group payment calculator web app.
 
