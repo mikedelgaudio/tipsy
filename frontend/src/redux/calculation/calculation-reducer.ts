@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { calculate } from "./math";
 import { notifyError } from "../../components/shared/toasts/toast";
 import { CalculationState } from "../../models/custom-models";
+import { currencyToStr, sanitizeCurrency } from "../../utilities/sanitize";
 
 const INITIAL_STATE: CalculationState = {
   persons: [
@@ -150,22 +151,11 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
         ...state,
         items: state.items.map((item) => {
           if (item.id === action.payload.id) {
-            try {
-              const parsedFloat = parseFloat(action.payload.price);
-              if (!parsedFloat) {
-                // Display error to user?
-                return item;
-              }
-              console.log(action.payload.price);
-              console.log(parsedFloat);
-              return {
-                ...item,
-                price: action.payload.price,
-                priceFloat: parsedFloat,
-              };
-            } catch (e) {
-              return item;
-            }
+            return {
+              ...item,
+              price: action.payload.price,
+              priceFloat: sanitizeCurrency(action.payload.price),
+            };
           } else return item;
         }),
       };
@@ -178,6 +168,7 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
       return {
         ...state,
         eventTotal: action.payload.total,
+        eventTotalFloat: sanitizeCurrency(action.payload.total),
       };
     case actionTypes.RESTART_EVENT:
       return INITIAL_STATE;
