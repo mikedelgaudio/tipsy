@@ -16,7 +16,7 @@ function ResultsActions({
   return (
     <div className="resultsActionsWrapper">
       <button onClick={() => restartEvent()} className="btn-danger">
-        Start over
+        Reset
       </button>
       <button onClick={() => addPerson()} className="btn-success">
         Add person

@@ -23,7 +23,7 @@
 .itemHeaderActions {
   display: flex;
   justify-content: space-between;
-  flex-flow: column wrap;
+  flex-flow: row wrap; /* TODO use grid auto */
   gap: 1em;
 }
 

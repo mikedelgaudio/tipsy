@@ -32,6 +32,7 @@ const INITIAL_STATE = {
   eventTitle: "Event Title",
   eventTotal: "0.00",
   eventTipTaxTotal: "0.00",
+  eventId: uuidv4(),
 };
 
 const calculationReducer = (state = INITIAL_STATE, action: any) => {
