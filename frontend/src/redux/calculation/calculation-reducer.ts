@@ -2,15 +2,19 @@ import * as actionTypes from "./calculation-types";
 import { v4 as uuidv4 } from "uuid";
 import { calculate } from "./math";
 import { notifyError } from "../../components/shared/toasts/toast";
+import { CalculationState } from "../../models/custom-models";
 
-const INITIAL_STATE = {
+const INITIAL_STATE: CalculationState = {
   persons: [
     {
       id: "1",
       name: "Your Name",
-      subtotal: 0.0,
-      tipAndTax: 0.0,
-      totalDue: 0.0,
+      subtotal: "0.00",
+      subtotalFloat: 0.0,
+      tipAndTax: "0.00",
+      tipAndTaxFloat: 0.0,
+      totalDue: "0.00",
+      totalDueFloat: 0.0,
     },
   ],
   items: [
@@ -20,6 +24,7 @@ const INITIAL_STATE = {
       name: "First Food Item Name",
       qty: 1,
       price: "0.00",
+      priceFloat: 0.0,
     },
     {
       id: "2a",
@@ -27,11 +32,14 @@ const INITIAL_STATE = {
       name: "Second Food Item Name",
       qty: 1,
       price: "0.00",
+      priceFloat: 0.0,
     },
   ],
   eventTitle: "Event Title",
   eventTotal: "0.00",
+  eventTotalFloat: 0.0,
   eventTipTaxTotal: "0.00",
+  eventTipTaxTotalFloat: 0.0,
   eventId: uuidv4(),
 };
 
@@ -46,9 +54,12 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
           {
             id: seededPersonId,
             name: `Person ${state.persons.length + 1}`,
-            subtotal: 0.0,
-            tipAndTax: 0.0,
-            totalDue: 0.0,
+            subtotal: "0.00",
+            subtotalFloat: 0.0,
+            tipAndTax: "0.00",
+            tipAndTaxFloat: 0.0,
+            totalDue: "0.00",
+            totalDueFloat: 0.0,
           },
         ],
         items: [
@@ -59,6 +70,7 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
             name: `Person ${state.persons.length + 1}'s Item`,
             qty: 1,
             price: "0.00",
+            priceFloat: 0.0,
           },
         ],
       };
@@ -99,6 +111,7 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
             name: `Item ${state.items.length + 1}`,
             qty: 1,
             price: "0.00",
+            priceFloat: 0.0,
           },
         ],
       };
@@ -129,11 +142,30 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
         }),
       };
     case actionTypes.EDIT_ITEM_PRICE:
+      // TODO
+      // Rather than doing error checking in the calculation each time
+      // Perform it here in each edit scenario
+      // Alternatively dont trigger the parsing till the user exits the UI edit mode
       return {
         ...state,
         items: state.items.map((item) => {
           if (item.id === action.payload.id) {
-            return { ...item, price: action.payload.price };
+            try {
+              const parsedFloat = parseFloat(action.payload.price);
+              if (!parsedFloat) {
+                // Display error to user?
+                return item;
+              }
+              console.log(action.payload.price);
+              console.log(parsedFloat);
+              return {
+                ...item,
+                price: action.payload.price,
+                priceFloat: parsedFloat,
+              };
+            } catch (e) {
+              return item;
+            }
           } else return item;
         }),
       };
