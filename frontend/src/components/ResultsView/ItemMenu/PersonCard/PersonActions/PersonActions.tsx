@@ -1,6 +1,7 @@
 import "./PersonActions.css";
 import {
   addItem,
+  recalculateEvent,
   removePerson,
 } from "../../../../../redux/calculation/calculation-actions";
 import { connect, RootStateOrAny } from "react-redux";
@@ -17,6 +18,7 @@ function PersonActions({
   dispatchRemovePerson,
   dispatchAddItem,
   storeUiEditPersonId,
+  dispatchRecalculate,
 }: any) {
   const [editing, setUiEditPerson] = useState(storeUiEditPersonId);
 
@@ -24,6 +26,7 @@ function PersonActions({
     let id = personId;
     if (!editing) {
       id = "";
+      dispatchRecalculate();
     }
     setUiEditPerson(id);
     dispatchUiEditPerson(id);
@@ -71,6 +74,7 @@ const mapDispatchToProps = (dispatch: any) => {
     dispatchRemovePerson: (personId: string) =>
       dispatch(removePerson(personId)),
     dispatchAddItem: (personId: string) => dispatch(addItem(personId)),
+    dispatchRecalculate: () => dispatch(recalculateEvent()),
   };
 };
 

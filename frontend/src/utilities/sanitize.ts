@@ -28,7 +28,6 @@ const sanitizeCurrency = (input: string): number => {
 };
 
 const currencyToStr = (input: number): string => {
-  if (!input) return "0.00";
   return toFixed(input, 2);
 };
 

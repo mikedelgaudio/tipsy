@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { calculate } from "./math";
 import { notifyError } from "../../components/shared/toasts/toast";
 import { CalculationState } from "../../models/custom-models";
-import { currencyToStr, sanitizeCurrency } from "../../utilities/sanitize";
+import { sanitizeCurrency } from "../../utilities/sanitize";
 
 const INITIAL_STATE: CalculationState = {
   persons: [
@@ -41,6 +41,7 @@ const INITIAL_STATE: CalculationState = {
   eventTotalFloat: 0.0,
   eventTipTaxTotal: "0.00",
   eventTipTaxTotalFloat: 0.0,
+  eventSubtotalFloat: 0.0,
   eventId: uuidv4(),
 };
 

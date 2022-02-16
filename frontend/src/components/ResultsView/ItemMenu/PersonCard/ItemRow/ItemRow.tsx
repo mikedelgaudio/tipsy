@@ -6,7 +6,6 @@ import {
   editItemPrice,
   removeItem,
 } from "../../../../../redux/calculation/calculation-actions";
-import { currencyRegex } from "../../../../../utilities/sanitize";
 import DeleteBtn from "../../../../shared/buttons/DeleteBtn";
 
 const defaultItem: Item = {
@@ -15,6 +14,7 @@ const defaultItem: Item = {
   name: "",
   qty: 1,
   price: "0.00",
+  priceFloat: 0.0,
 };
 
 function ItemRow({

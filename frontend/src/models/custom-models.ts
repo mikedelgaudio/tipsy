@@ -26,5 +26,6 @@ export interface CalculationState {
   eventTotalFloat: number;
   eventTipTaxTotal: string;
   eventTipTaxTotalFloat: number;
+  eventSubtotalFloat: number;
   eventId: string;
 }
