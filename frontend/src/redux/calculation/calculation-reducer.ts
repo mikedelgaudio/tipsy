@@ -9,7 +9,7 @@ const INITIAL_STATE: CalculationState = {
   persons: [
     {
       id: "1",
-      name: "Your Name",
+      name: "Person 1",
       subtotal: "0.00",
       subtotalFloat: 0.0,
       tipAndTax: "0.00",

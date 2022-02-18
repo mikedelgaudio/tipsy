@@ -4,13 +4,19 @@ import {
   recalculateEvent,
   removePerson,
 } from "../../../../../redux/calculation/calculation-actions";
-import { connect, RootStateOrAny } from "react-redux";
+import {
+  connect,
+  RootStateOrAny,
+  shallowEqual,
+  useSelector,
+} from "react-redux";
 import EditBtn from "../../../../shared/buttons/EditBtn";
 import { uiEditPerson } from "../../../../../redux/ui/ui-actions";
 import { useEffect, useState } from "react";
 import CloseBtn from "../../../../shared/buttons/CloseBtn";
 import AddBtn from "../../../../shared/buttons/AddBtn";
 import DeleteBtn from "../../../../shared/buttons/DeleteBtn";
+import { CalculationState } from "../../../../../models/custom-models";
 
 function PersonActions({
   personId,
@@ -20,6 +26,10 @@ function PersonActions({
   storeUiEditPersonId,
   dispatchRecalculate,
 }: any) {
+  const personsLength = useSelector(
+    (state: CalculationState) => state.persons?.length,
+    shallowEqual
+  );
   const [editing, setUiEditPerson] = useState(storeUiEditPersonId);
 
   const eventEditHandler = (editing: boolean) => {
@@ -57,6 +67,7 @@ function PersonActions({
         clickSideEffect={dispatchRemovePerson}
         ariaTitle={"Delete person"}
         uid={personId}
+        isDisabled={personsLength < 2}
       />
     </div>
   );
