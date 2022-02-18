@@ -1,3 +1,7 @@
+import {
+  dismissAllToast,
+  warnToast,
+} from "../../components/shared/toasts/toast";
 import { CalculationState, Item } from "../../models/custom-models";
 import { currencyToStr } from "../../utilities/sanitize";
 
@@ -13,6 +17,7 @@ export const calculate = (data: CalculationState) => {
   // early on rather than waiting for this
   // expensive call to finish.
   const tempState = { ...data };
+  dismissAllToast();
 
   // Reset values
   tempState.eventSubtotalFloat = 0.0;
@@ -50,8 +55,8 @@ export const calculate = (data: CalculationState) => {
     tempState.eventSubtotalFloat + tempState.eventTipTaxTotalFloat !==
       tempState.eventTotalFloat
   ) {
-    console.error("TOTALS DO NOT ADD TOGETHER");
-    // throw new Error("Display values do not compute together");
+    warnToast("Check your values, the totals do not add up!");
+    return data;
   }
 
   tempState.persons.forEach((person) => {
@@ -60,8 +65,7 @@ export const calculate = (data: CalculationState) => {
       tempState.eventTipTaxTotalFloat;
 
     person.totalDueFloat = person.subtotalFloat + tipDollars;
-
-    person.tipAndTaxFloat = tipDollars / tempState.eventTipTaxTotalFloat;
+    person.tipAndTaxFloat = tipDollars;
 
     person.subtotal = currencyToStr(person.subtotalFloat);
     person.tipAndTax = currencyToStr(person.tipAndTaxFloat);

@@ -1,12 +1,8 @@
 const toFixed = (num: number, fixed: number): string => {
-  var re = new RegExp("^-?\\d+(?:.\\d{0," + (fixed || -1) + "})?");
+  const re = new RegExp("^-?\\d+(?:.\\d{0," + (fixed || -1) + "})?");
   const match = num.toString().match(re);
-
-  if (match) {
-    return match[0];
-  } else {
-    return "0.00";
-  }
+  if (!match) return "0.00";
+  return match[0];
 };
 
 const validCurrency = (input: string): boolean => {

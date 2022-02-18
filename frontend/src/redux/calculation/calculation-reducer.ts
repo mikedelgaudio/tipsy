@@ -1,7 +1,7 @@
 import * as actionTypes from "./calculation-types";
 import { v4 as uuidv4 } from "uuid";
 import { calculate } from "./math";
-import { notifyError } from "../../components/shared/toasts/toast";
+import { errorToast5ms } from "../../components/shared/toasts/toast";
 import { CalculationState } from "../../models/custom-models";
 import { sanitizeCurrency } from "../../utilities/sanitize";
 
@@ -78,7 +78,7 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
       };
     case actionTypes.REMOVE_PERSON:
       if (state.persons.length < 2) {
-        notifyError("You cannot remove the last person!");
+        errorToast5ms("You cannot remove the last person!");
         return state;
       } else
         return {
