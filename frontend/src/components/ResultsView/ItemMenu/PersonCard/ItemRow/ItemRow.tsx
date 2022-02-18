@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppStore, Item } from "../../../../../models/custom-models";
 import {
   editItemName,
