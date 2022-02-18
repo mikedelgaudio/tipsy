@@ -9,6 +9,7 @@ import "./PersonCard.css";
 function PersonCard({ personId }: any) {
   const dispatch = useDispatch();
 
+  // Store Selectors
   const storePersonData = useSelector((state: AppStore) => {
     return state.calculation.persons.find(
       (person: Person) => person.id === personId

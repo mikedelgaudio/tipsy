@@ -21,9 +21,16 @@ const defaultItem: Item = {
 function ItemRow({ itemId, editing }: any) {
   const dispatch = useDispatch();
 
+  // Store Selectors
   const storeItemData = useSelector((state: AppStore) => {
     return state.calculation.items.find((item: Item) => item.id === itemId);
   });
+
+  // Dispatchers
+  const dispatchRemoveItem = () => {
+    dispatch(removeItem(itemId));
+    dispatch(recalculateEvent());
+  };
 
   const [itemInput, setItemsInput] = useState(defaultItem);
 
@@ -51,11 +58,6 @@ function ItemRow({ itemId, editing }: any) {
       default:
         break;
     }
-  };
-
-  const dispatchRemoveItem = () => {
-    dispatch(removeItem(itemId));
-    dispatch(recalculateEvent());
   };
 
   useEffect(() => {

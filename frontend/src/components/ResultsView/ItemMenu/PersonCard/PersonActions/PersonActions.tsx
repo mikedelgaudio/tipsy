@@ -4,46 +4,52 @@ import {
   recalculateEvent,
   removePerson,
 } from "../../../../../redux/calculation/calculation-actions";
-import {
-  connect,
-  RootStateOrAny,
-  shallowEqual,
-  useSelector,
-} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import EditBtn from "../../../../shared/buttons/EditBtn";
 import { uiEditPerson } from "../../../../../redux/ui/ui-actions";
 import { useEffect, useState } from "react";
 import CloseBtn from "../../../../shared/buttons/CloseBtn";
 import AddBtn from "../../../../shared/buttons/AddBtn";
 import DeleteBtn from "../../../../shared/buttons/DeleteBtn";
-import { CalculationState } from "../../../../../models/custom-models";
+import { AppStore } from "../../../../../models/custom-models";
 
-function PersonActions({
-  personId,
-  dispatchUiEditPerson,
-  dispatchRemovePerson,
-  dispatchAddItem,
-  storeUiEditPersonId,
-  dispatchRecalculate,
-}: any) {
+function PersonActions({ personId }: any) {
+  const dispatch = useDispatch();
+
+  // Store Selectors
   const personsLength = useSelector(
-    (state: CalculationState) => state.persons?.length,
-    shallowEqual
+    (state: AppStore) => state.calculation.persons.length
   );
+
+  const storeUiEditPersonId = useSelector(
+    (state: AppStore) => state.ui.uiEditPersonId === personId
+  );
+
+  // Dispatchers
+  const dispatchRemovePerson = () => {
+    dispatch(removePerson(personId));
+    dispatch(recalculateEvent());
+  };
+
+  const dispatchAddItem = () => {
+    dispatch(addItem(personId));
+    dispatch(recalculateEvent());
+  };
+
   const [editing, setUiEditPerson] = useState(storeUiEditPersonId);
 
   const eventEditHandler = (editing: boolean) => {
     let id = personId;
     if (!editing) {
       id = "";
-      dispatchRecalculate();
+      dispatch(recalculateEvent());
     }
     setUiEditPerson(id);
-    dispatchUiEditPerson(id);
+    dispatch(uiEditPerson(id));
   };
 
   useEffect(() => {
-    setUiEditPerson(storeUiEditPersonId === personId);
+    setUiEditPerson(storeUiEditPersonId);
   }, [storeUiEditPersonId]);
 
   return (
@@ -60,39 +66,15 @@ function PersonActions({
       <AddBtn
         clickSideEffect={dispatchAddItem}
         ariaTitle={"Add item to person"}
-        uid={personId}
       />
 
       <DeleteBtn
         clickSideEffect={dispatchRemovePerson}
         ariaTitle={"Delete person"}
-        uid={personId}
         isDisabled={personsLength < 2}
       />
     </div>
   );
 }
-const mapStateToProps = (state: RootStateOrAny) => {
-  return {
-    storeUiEditPersonId: state.ui.uiEditPersonId,
-  };
-};
 
-// Need re-work to use the hooks instead
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    dispatchUiEditPerson: (personId: string) =>
-      dispatch(uiEditPerson(personId)),
-    dispatchRemovePerson: (personId: string) => {
-      dispatch(removePerson(personId));
-      dispatch(recalculateEvent());
-    },
-    dispatchAddItem: (personId: string) => {
-      dispatch(addItem(personId));
-      dispatch(recalculateEvent());
-    },
-    dispatchRecalculate: () => dispatch(recalculateEvent()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PersonActions);
+export default PersonActions;
