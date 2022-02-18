@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { Item } from "../../../../../models/custom-models";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { AppStore, Item } from "../../../../../models/custom-models";
 import {
   editItemName,
   editItemPrice,
@@ -18,13 +18,13 @@ const defaultItem: Item = {
   priceFloat: 0.0,
 };
 
-function ItemRow({
-  item,
-  editing,
-  dispatchRemoveItem,
-  dispatchEditItemName,
-  dispatchEditItemPrice,
-}: any) {
+function ItemRow({ itemId, editing }: any) {
+  const dispatch = useDispatch();
+
+  const storeItemData = useSelector((state: AppStore) => {
+    return state.calculation.items.find((item: Item) => item.id === itemId);
+  });
+
   const [itemInput, setItemsInput] = useState(defaultItem);
 
   const itemInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -37,36 +37,40 @@ function ItemRow({
           ...itemInput,
           name: e.target.value,
         });
-        dispatchEditItemName(item.id, e.target.value);
+        dispatch(editItemName(itemId, e.target.value));
         break;
       case "PRICE":
-        // dispatch edit item price
         // TODO
         // Ensure valid currency is only allowed when calculated
         setItemsInput({
           ...itemInput,
           price: e.target.value,
         });
-        dispatchEditItemPrice(item.id, e.target.value);
+        dispatch(editItemPrice(itemId, e.target.value));
         break;
       default:
         break;
     }
   };
 
+  const dispatchRemoveItem = () => {
+    dispatch(removeItem(itemId));
+    dispatch(recalculateEvent());
+  };
+
   useEffect(() => {
-    setItemsInput(item);
-  }, [item]);
+    setItemsInput(storeItemData || defaultItem);
+  }, [storeItemData]);
 
   return (
-    <li className="personItem" key={item.id}>
+    <li className="personItem" key={itemId}>
       <div className="personItemInfoRow">
         {!editing ? (
           <>
             <div className="personItemDetailsContainer">
-              <span className="personItemName">{item.name}</span>
+              <span className="personItemName">{storeItemData?.name}</span>
             </div>
-            <span className="personItemPrice">${item.price}</span>
+            <span className="personItemPrice">${storeItemData?.price}</span>
           </>
         ) : (
           <>
@@ -93,25 +97,11 @@ function ItemRow({
         <button>Split?</button>
         <DeleteBtn
           clickSideEffect={dispatchRemoveItem}
-          uid={item.id}
-          ariaTitle={`Delete ${item.name}`}
+          ariaTitle={`Delete ${storeItemData?.name}`}
         />
       </div>
     </li>
   );
 }
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    dispatchRemoveItem: (itemId: string) => {
-      dispatch(removeItem(itemId));
-      dispatch(recalculateEvent());
-    },
-    dispatchEditItemName: (itemId: string, newName: string) =>
-      dispatch(editItemName(itemId, newName)),
-    dispatchEditItemPrice: (itemId: string, newPrice: string) =>
-      dispatch(editItemPrice(itemId, newPrice)),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(ItemRow);
+export default ItemRow;

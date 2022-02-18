@@ -1,36 +1,47 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { connect, RootStateOrAny } from "react-redux";
-import { Item } from "../../../../models/custom-models";
+import { useDispatch, useSelector } from "react-redux";
+import { AppStore, Item, Person } from "../../../../models/custom-models";
 import { editPersonName } from "../../../../redux/calculation/calculation-actions";
 import ItemRow from "./ItemRow/ItemRow";
 import PersonActions from "./PersonActions/PersonActions";
 import "./PersonCard.css";
 
-function PersonCard({
-  personData,
-  itemsData,
-  storeUiEditPersonId,
-  dispatchEditPersonName,
-}: any) {
-  // Is this person being edited?
-  const editing = storeUiEditPersonId === personData.id;
+function PersonCard({ personId }: any) {
+  const dispatch = useDispatch();
 
-  const [personNameInput, setPersonNameInput] = useState(personData.name);
+  const storePersonData = useSelector((state: AppStore) => {
+    return state.calculation.persons.find(
+      (person: Person) => person.id === personId
+    );
+  });
+
+  const storeItemsIds = useSelector((state: AppStore) => {
+    return state.calculation.items.map((item: Item) => {
+      if (item.personId === personId) return item.id;
+    });
+  });
+
+  // Is this person being edited?
+  const editing = useSelector(
+    (state: AppStore) => state.ui.uiEditPersonId === personId
+  );
+
+  const [personNameInput, setPersonNameInput] = useState(storePersonData?.name);
 
   const personNameInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setPersonNameInput(e.target.value);
-    dispatchEditPersonName(personData.id, e.target.value);
+    dispatch(editPersonName(personId, e.target.value));
   };
 
   useEffect(() => {
-    setPersonNameInput(personData.name);
-  }, [personData.name]);
+    setPersonNameInput(storePersonData?.name);
+  }, [storePersonData?.name]);
 
   return (
     <div className="personCard">
       <div className="personCardHeader">
         {!editing ? (
-          <h2>{personData.name}</h2>
+          <h2>{storePersonData?.name}</h2>
         ) : (
           <input
             type="text"
@@ -38,15 +49,13 @@ function PersonCard({
             value={personNameInput || ""}
           />
         )}
-        <PersonActions personId={personData.id} />
+        <PersonActions personId={personId} />
       </div>
 
-      {/* TOOD:
-          Rather than sending as children props, 
-          send the item ID and use state in the component to render from store */}
       <ul className="personItemList">
-        {itemsData.map((item: Item) => {
-          return <ItemRow key={item.id} item={item} editing={editing} />;
+        {storeItemsIds.map((itemId: string | undefined) => {
+          if (itemId)
+            return <ItemRow key={itemId} itemId={itemId} editing={editing} />;
         })}
       </ul>
 
@@ -61,10 +70,10 @@ function PersonCard({
         </ul>
         <ul className="subtotalList">
           <li className="subtotalItem">
-            <span className="subtotalPrice">${personData.tipAndTax}</span>
+            <span className="subtotalPrice">${storePersonData?.tipAndTax}</span>
           </li>
           <li className="subtotalItem">
-            <span className="subtotalPrice">${personData.totalDue}</span>
+            <span className="subtotalPrice">${storePersonData?.totalDue}</span>
           </li>
         </ul>
       </div>
@@ -72,17 +81,4 @@ function PersonCard({
   );
 }
 
-const mapStateToProps = (state: RootStateOrAny) => {
-  return {
-    storeUiEditPersonId: state.ui.uiEditPersonId,
-  };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    dispatchEditPersonName: (personId: string, newName: string) =>
-      dispatch(editPersonName(personId, newName)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PersonCard);
+export default PersonCard;

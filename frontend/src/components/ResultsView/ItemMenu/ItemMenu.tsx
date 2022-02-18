@@ -44,12 +44,7 @@ function ItemMenu({
           </div>
         </div>
         {storePersons.map((person: Person) => {
-          const data = storeItems.filter(
-            (item: Item) => person?.id === item.personId
-          );
-          return (
-            <PersonCard key={person.id} personData={person} itemsData={data} />
-          );
+          return <PersonCard key={person.id} personId={person.id} />;
         })}
       </div>
     </div>

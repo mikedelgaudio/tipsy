@@ -1,6 +1,7 @@
+import { UIState } from "../../models/custom-models";
 import * as actionTypes from "./ui-types";
 
-const INITIAL_STATE = {
+const INITIAL_STATE: UIState = {
   uiEditEventTitle: false,
   uiEditPersonId: "",
   uiEditEventTotal: false,
