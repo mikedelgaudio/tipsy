@@ -67,13 +67,19 @@ const mapStateToProps = (state: RootStateOrAny) => {
   };
 };
 
+// Need re-work to use the hooks instead
 const mapDispatchToProps = (dispatch: any) => {
   return {
     dispatchUiEditPerson: (personId: string) =>
       dispatch(uiEditPerson(personId)),
-    dispatchRemovePerson: (personId: string) =>
-      dispatch(removePerson(personId)),
-    dispatchAddItem: (personId: string) => dispatch(addItem(personId)),
+    dispatchRemovePerson: (personId: string) => {
+      dispatch(removePerson(personId));
+      dispatch(recalculateEvent());
+    },
+    dispatchAddItem: (personId: string) => {
+      dispatch(addItem(personId));
+      dispatch(recalculateEvent());
+    },
     dispatchRecalculate: () => dispatch(recalculateEvent()),
   };
 };

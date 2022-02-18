@@ -4,6 +4,7 @@ import { Item } from "../../../../../models/custom-models";
 import {
   editItemName,
   editItemPrice,
+  recalculateEvent,
   removeItem,
 } from "../../../../../redux/calculation/calculation-actions";
 import DeleteBtn from "../../../../shared/buttons/DeleteBtn";
@@ -48,9 +49,6 @@ function ItemRow({
         });
         dispatchEditItemPrice(item.id, e.target.value);
         break;
-      case "QTY":
-        // dispatch edit item qty TBD
-        break;
       default:
         break;
     }
@@ -66,21 +64,13 @@ function ItemRow({
         {!editing ? (
           <>
             <div className="personItemDetailsContainer">
-              {/* <span className="personItemQty">{item.qty}</span> */}
               <span className="personItemName">{item.name}</span>
             </div>
-
             <span className="personItemPrice">${item.price}</span>
           </>
         ) : (
           <>
             <div className="personItemDetailsContainer">
-              {/* <input
-                type="text"
-                field-name="QTY"
-                onChange={itemInputHandler}
-                value={itemInput.qty || ""}
-              /> */}
               <input
                 type="text"
                 field-name="NAME"
@@ -113,7 +103,10 @@ function ItemRow({
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    dispatchRemoveItem: (itemId: string) => dispatch(removeItem(itemId)),
+    dispatchRemoveItem: (itemId: string) => {
+      dispatch(removeItem(itemId));
+      dispatch(recalculateEvent());
+    },
     dispatchEditItemName: (itemId: string, newName: string) =>
       dispatch(editItemName(itemId, newName)),
     dispatchEditItemPrice: (itemId: string, newPrice: string) =>

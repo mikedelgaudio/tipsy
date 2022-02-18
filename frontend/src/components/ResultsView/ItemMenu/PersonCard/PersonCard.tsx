@@ -42,9 +42,8 @@ function PersonCard({
       </div>
 
       {/* TOOD:
-          Listen for person edit state with current person id 
-          Turn into input fields 
-          Dispatch saved values to store and re-calculate */}
+          Rather than sending as children props, 
+          send the item ID and use state in the component to render from store */}
       <ul className="personItemList">
         {itemsData.map((item: Item) => {
           return <ItemRow key={item.id} item={item} editing={editing} />;

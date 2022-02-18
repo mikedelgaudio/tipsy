@@ -1,6 +1,10 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { connect, RootStateOrAny } from "react-redux";
-import { editEventTotal } from "../../../redux/calculation/calculation-actions";
+import { didMount } from "../../../hooks/didMount";
+import {
+  editEventTotal,
+  recalculateEvent,
+} from "../../../redux/calculation/calculation-actions";
 import { uiEditEventTotal } from "../../../redux/ui/ui-actions";
 import CloseBtn from "../../shared/buttons/CloseBtn";
 import EditBtn from "../../shared/buttons/EditBtn";
@@ -12,7 +16,16 @@ function TotalsMenu({
   storeUiEditEventTotal,
   dispatchUiEditEventTotal,
   dispatchEditEventTotal,
+  dispatchRecalculate,
 }: any) {
+  const didMountOnce = didMount();
+
+  useEffect(() => {
+    if (!didMountOnce && !storeUiEditEventTotal) {
+      dispatchRecalculate();
+    }
+  }, [storeUiEditEventTotal]);
+
   const [eventTotalInput, setEventTotalInput] = useState(storeEventTotal);
 
   const eventTotalInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -79,6 +92,7 @@ const mapDispatchToProps = (dispatch: any) => {
       dispatch(uiEditEventTotal(enabled)),
     dispatchEditEventTotal: (newTotal: string) =>
       dispatch(editEventTotal(newTotal)),
+    dispatchRecalculate: () => dispatch(recalculateEvent()),
   };
 };
 

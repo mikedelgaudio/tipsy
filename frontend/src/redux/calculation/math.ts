@@ -14,6 +14,10 @@ export const calculate = (data: CalculationState) => {
   // expensive call to finish.
   const tempState = { ...data };
 
+  // Reset values
+  tempState.eventSubtotalFloat = 0.0;
+  tempState.eventTipTaxTotalFloat = 0.0;
+
   tempState.persons.forEach((person) => {
     let subtotalBeforeTip = 0;
 
@@ -28,11 +32,15 @@ export const calculate = (data: CalculationState) => {
     });
     person.subtotalFloat = subtotalBeforeTip;
     tempState.eventSubtotalFloat += subtotalBeforeTip;
+
+    // Reset values
+    person.totalDueFloat = 0.0;
+    person.tipAndTaxFloat = 0.0;
   });
 
   // Calculate difference between total and subtotal
   tempState.eventTipTaxTotalFloat =
-    data.eventTotalFloat - tempState.eventSubtotalFloat;
+    tempState.eventTotalFloat - tempState.eventSubtotalFloat;
 
   tempState.eventTipTaxTotal = currencyToStr(tempState.eventTipTaxTotalFloat);
 
@@ -40,7 +48,7 @@ export const calculate = (data: CalculationState) => {
   if (
     tempState.eventTipTaxTotalFloat < 0 ||
     tempState.eventSubtotalFloat + tempState.eventTipTaxTotalFloat !==
-      data.eventTotalFloat
+      tempState.eventTotalFloat
   ) {
     console.error("TOTALS DO NOT ADD TOGETHER");
     // throw new Error("Display values do not compute together");

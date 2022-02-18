@@ -25,6 +25,7 @@ function ResultsActions({
   );
 }
 
+// may need to recalc
 const mapDispatchToProps = (dispatch: any) => {
   return {
     restartEvent: () => dispatch(restartEvent()),
