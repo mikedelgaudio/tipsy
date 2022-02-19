@@ -1,6 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { connect, RootStateOrAny } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { didMount } from "../../../hooks/didMount";
+import { AppStore } from "../../../models/custom-models";
 import {
   editEventTotal,
   recalculateEvent,
@@ -10,19 +11,25 @@ import CloseBtn from "../../shared/buttons/CloseBtn";
 import EditBtn from "../../shared/buttons/EditBtn";
 import "./TotalsMenu.css";
 
-function TotalsMenu({
-  storeEventTotal,
-  storeEventTipTaxTotal,
-  storeUiEditEventTotal,
-  dispatchUiEditEventTotal,
-  dispatchEditEventTotal,
-  dispatchRecalculate,
-}: any) {
+function TotalsMenu() {
   const didMountOnce = didMount();
+  const dispatch = useDispatch();
+
+  const storeEventTotal = useSelector(
+    (state: AppStore) => state.calculation.eventTotal
+  );
+
+  const storeEventTipTaxTotal = useSelector(
+    (state: AppStore) => state.calculation.eventTipTaxTotal
+  );
+
+  const storeUiEditEventTotal = useSelector(
+    (state: AppStore) => state.ui.uiEditEventTotal
+  );
 
   useEffect(() => {
     if (!didMountOnce && !storeUiEditEventTotal) {
-      dispatchRecalculate();
+      dispatch(recalculateEvent());
     }
   }, [storeUiEditEventTotal]);
 
@@ -30,7 +37,7 @@ function TotalsMenu({
 
   const eventTotalInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setEventTotalInput(e.target.value);
-    dispatchEditEventTotal(e.target.value);
+    dispatch(editEventTotal(e.target.value));
   };
 
   useEffect(() => {
@@ -64,12 +71,12 @@ function TotalsMenu({
         )}
         {!storeUiEditEventTotal ? (
           <EditBtn
-            clickSideEffect={dispatchUiEditEventTotal}
+            clickSideEffect={() => dispatch(uiEditEventTotal(true))}
             ariaTitle={"Edit event total"}
           />
         ) : (
           <CloseBtn
-            clickSideEffect={dispatchUiEditEventTotal}
+            clickSideEffect={() => dispatch(uiEditEventTotal(false))}
             ariaTitle={"Stop editing event total"}
           />
         )}
@@ -78,22 +85,4 @@ function TotalsMenu({
   );
 }
 
-const mapStateToProps = (state: RootStateOrAny) => {
-  return {
-    storeEventTotal: state.calculation.eventTotal,
-    storeEventTipTaxTotal: state.calculation.eventTipTaxTotal,
-    storeUiEditEventTotal: state.ui.uiEditEventTotal,
-  };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    dispatchUiEditEventTotal: (enabled: boolean) =>
-      dispatch(uiEditEventTotal(enabled)),
-    dispatchEditEventTotal: (newTotal: string) =>
-      dispatch(editEventTotal(newTotal)),
-    dispatchRecalculate: () => dispatch(recalculateEvent()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TotalsMenu);
+export default TotalsMenu;
