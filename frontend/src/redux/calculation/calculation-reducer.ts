@@ -22,7 +22,7 @@ const INITIAL_STATE: CalculationState = {
     {
       id: "1a",
       personId: "1", // to split an item, modify the current to half then add to each person
-      name: "First Food Item Name",
+      name: "Food Item 1",
       qty: 1,
       price: "0.00",
       priceFloat: 0.0,
@@ -30,7 +30,7 @@ const INITIAL_STATE: CalculationState = {
     {
       id: "2a",
       personId: "1",
-      name: "Second Food Item Name",
+      name: "Food Item 2",
       qty: 1,
       price: "0.00",
       priceFloat: 0.0,
@@ -174,8 +174,6 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
     case actionTypes.RESTART_EVENT:
       return INITIAL_STATE;
     case actionTypes.RECALCULATE_EVENT:
-      // Dispatch whenever items or the length of people arr is modified
-      // Preferably only when item numbers are modified
       return calculate(state);
     default:
       return state;

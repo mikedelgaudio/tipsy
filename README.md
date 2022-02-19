@@ -23,12 +23,13 @@ The best friend group payment calculator web app.
 - [x] EDIT_START Person
 - [x] EDIT_SAVE Person
 - [x] EDIT_STOP Person
+- [x] Rename all dispatch functions with new naming scheme for clarity (Redux Hooks useDispatch/useSelector)
+- [x] Fix component re-render when only updating the total value, all item rows must render new values
 
 ### Next steps
 
-- [ ] Rename all dispatch functions with new naming scheme for clarity
-- [ ] Fix component re-render when only updating the total value, all item rows must render new values
 - [ ] Fix error toast dismissed too early, need to useRef to specify which toast to remove from screen
+- [ ] Add error handling for invalid currency strings, this requires state to only be modified on save (not per char)
 
 ### Future ideas
 
