@@ -6,8 +6,10 @@ import PersonCard from "./PersonCard/PersonCard";
 import { useState, useEffect } from "react";
 import { editEventTitle } from "../../../redux/calculation/calculation-actions";
 import EventActions from "../EventActions/EventActions";
+import { didMount } from "../../../hooks/didMount";
 
 function ItemMenu() {
+  const didMountOnce = didMount();
   const dispatch = useDispatch();
 
   // Store Selectors
@@ -27,12 +29,18 @@ function ItemMenu() {
 
   const eventTitleInputHandler = (e: any) => {
     setEventTitleInput(e.target.value);
-    dispatch(editEventTitle(e.target.value));
   };
 
   useEffect(() => {
     setEventTitleInput(storeEventTitle);
   }, [storeEventTitle]);
+
+  // Works as intended, need to do research if this is a bad smell?
+  useEffect(() => {
+    if (!didMountOnce && !storeUiEditTitle) {
+      dispatch(editEventTitle(eventTitleInput));
+    }
+  }, [storeUiEditTitle]);
 
   return (
     <div className="itemView">

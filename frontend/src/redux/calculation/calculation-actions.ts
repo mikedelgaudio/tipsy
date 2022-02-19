@@ -80,7 +80,7 @@ export const editEventTitle = (newTitle: string) => {
   return {
     type: actionTypes.EDIT_EVENT_TITLE,
     payload: {
-      name: newTitle,
+      title: newTitle,
     },
   };
 };
