@@ -55,10 +55,13 @@ function PersonActions({ personId }: any) {
   return (
     <div className="personActions">
       {!editing ? (
-        <EditBtn clickSideEffect={eventEditHandler} ariaTitle={"Edit person"} />
+        <EditBtn
+          clickSideEffect={() => eventEditHandler(true)}
+          ariaTitle={"Edit person"}
+        />
       ) : (
         <CloseBtn
-          clickSideEffect={eventEditHandler}
+          clickSideEffect={() => eventEditHandler(false)}
           ariaTitle={"Stop editing person"}
         />
       )}

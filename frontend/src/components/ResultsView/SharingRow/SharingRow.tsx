@@ -1,21 +1,29 @@
 import "./SharingRow.css";
 import shareIcon from "../../../assets/icons/share-square-solid.svg";
-import { connect, RootStateOrAny } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uiEditEventTitle } from "../../../redux/ui/ui-actions";
 import EditBtn from "../../shared/buttons/EditBtn";
 import CloseBtn from "../../shared/buttons/CloseBtn";
+import { AppStore } from "../../../models/custom-models";
 
-function SharingRow({ storeUiEditTitle, dispatchUiEditTitle }: any) {
+function SharingRow() {
+  const dispatch = useDispatch();
+
+  // Store Selectors
+  const storeUiEditTitle = useSelector(
+    (state: AppStore) => state.ui.uiEditEventTitle
+  );
+
   return (
     <div className="sharingRow">
       {!storeUiEditTitle ? (
         <EditBtn
-          clickSideEffect={dispatchUiEditTitle}
+          clickSideEffect={() => dispatch(uiEditEventTitle(true))}
           ariaTitle={"Edit event title"}
         />
       ) : (
         <CloseBtn
-          clickSideEffect={dispatchUiEditTitle}
+          clickSideEffect={() => dispatch(uiEditEventTitle(false))}
           ariaTitle={"Stop editing event title"}
         />
       )}
@@ -26,17 +34,4 @@ function SharingRow({ storeUiEditTitle, dispatchUiEditTitle }: any) {
   );
 }
 
-const mapStateToProps = (state: RootStateOrAny) => {
-  return {
-    storeUiEditTitle: state.ui.uiEditEventTitle,
-  };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    dispatchUiEditTitle: (enabled: boolean) =>
-      dispatch(uiEditEventTitle(enabled)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SharingRow);
+export default SharingRow;
