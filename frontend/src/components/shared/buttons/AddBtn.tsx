@@ -1,4 +1,4 @@
-import addIcon from "../../../assets/icons/plus-solid.svg";
+import addIcon from "../../../assets/icons/add-item.svg";
 
 function AddBtn({ clickSideEffect, ariaTitle }: any) {
   return (
