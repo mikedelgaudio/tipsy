@@ -17,7 +17,7 @@ export const calculate = (data: CalculationState) => {
   // early on rather than waiting for this
   // expensive call to finish.
   const tempState = { ...data };
-  dismissAllToast();
+  dismissAllToast(); // this needs to be fixed
 
   // Reset values
   tempState.eventSubtotalFloat = 0.0;

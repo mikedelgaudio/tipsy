@@ -5,7 +5,7 @@ import "./ItemMenu.css";
 import PersonCard from "./PersonCard/PersonCard";
 import { useState, useEffect } from "react";
 import { editEventTitle } from "../../../redux/calculation/calculation-actions";
-import ResultsActions from "../ResultsActions/ResultsActions";
+import EventActions from "../EventActions/EventActions";
 
 function ItemMenu() {
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ function ItemMenu() {
             />
           )}
           <div className="itemHeaderActions">
-            <ResultsActions />
+            <EventActions />
             <SharingRow />
           </div>
         </div>
