@@ -1,5 +1,5 @@
-import { connect, RootStateOrAny } from "react-redux";
-import { Item, Person } from "../../../models/custom-models";
+import { useDispatch, useSelector } from "react-redux";
+import { AppStore, Person } from "../../../models/custom-models";
 import SharingRow from "../SharingRow/SharingRow";
 import "./ItemMenu.css";
 import PersonCard from "./PersonCard/PersonCard";
@@ -7,18 +7,27 @@ import { useState, useEffect } from "react";
 import { editEventTitle } from "../../../redux/calculation/calculation-actions";
 import ResultsActions from "../ResultsActions/ResultsActions";
 
-function ItemMenu({
-  storeEventTitle,
-  storePersons,
-  storeItems,
-  dispatchEditEventTitle,
-  storeUiEditTitle,
-}: any) {
+function ItemMenu() {
+  const dispatch = useDispatch();
+
+  // Store Selectors
+  const storeEventTitle = useSelector(
+    (state: AppStore) => state.calculation.eventTitle
+  );
+
+  const personIds = useSelector((state: AppStore) => {
+    return state.calculation.persons.map((person: Person) => person.id);
+  });
+
+  const storeUiEditTitle = useSelector(
+    (state: AppStore) => state.ui.uiEditEventTitle
+  );
+
   const [eventTitleInput, setEventTitleInput] = useState(storeEventTitle);
 
   const eventTitleInputHandler = (e: any) => {
     setEventTitleInput(e.target.value);
-    dispatchEditEventTitle(e.target.value);
+    dispatch(editEventTitle(e.target.value));
   };
 
   useEffect(() => {
@@ -43,27 +52,12 @@ function ItemMenu({
             <SharingRow />
           </div>
         </div>
-        {storePersons.map((person: Person) => {
-          return <PersonCard key={person.id} personId={person.id} />;
+        {personIds.map((id: string) => {
+          return <PersonCard key={id} personId={id} />;
         })}
       </div>
     </div>
   );
 }
 
-const mapStateToProps = (state: RootStateOrAny) => {
-  return {
-    storeEventTitle: state.calculation.eventTitle,
-    storePersons: state.calculation.persons,
-    storeItems: state.calculation.items,
-    storeUiEditTitle: state.ui.uiEditEventTitle,
-  };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    dispatchEditEventTitle: (title: string) => dispatch(editEventTitle(title)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ItemMenu);
+export default ItemMenu;
