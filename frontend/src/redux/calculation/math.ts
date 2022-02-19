@@ -59,19 +59,20 @@ export const calculate = (data: CalculationState) => {
     return data;
   }
 
+  // TODO:
+  // If the state is the same, maybe break out early to save time?
   tempState.persons.forEach((person) => {
     const tipDollars =
       (person.subtotalFloat / tempState.eventSubtotalFloat) *
       tempState.eventTipTaxTotalFloat;
 
-    person.totalDueFloat = person.subtotalFloat + tipDollars;
-    person.tipAndTaxFloat = tipDollars;
+    person.totalDueFloat = person.subtotalFloat + tipDollars || 0.0;
+    person.tipAndTaxFloat = tipDollars || 0.0;
 
     person.subtotal = currencyToStr(person.subtotalFloat);
     person.tipAndTax = currencyToStr(person.tipAndTaxFloat);
     person.totalDue = currencyToStr(person.totalDueFloat);
   });
 
-  console.log(tempState);
   return tempState;
 };

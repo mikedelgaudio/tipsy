@@ -1,7 +1,7 @@
 const toFixed = (num: number, fixed: number): string => {
   const re = new RegExp("^-?\\d+(?:.\\d{0," + (fixed || -1) + "})?");
   const match = num.toString().match(re);
-  if (!match) return "0.00";
+  if (!match || match[0] === "0") return "0.00";
   return match[0];
 };
 

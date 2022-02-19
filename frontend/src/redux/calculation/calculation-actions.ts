@@ -16,7 +16,10 @@ export const removePerson = (personId: string) => {
   };
 };
 
-export const editPersonName = (personId: string, newName: string) => {
+export const editPersonName = (
+  personId: string,
+  newName: string | undefined
+) => {
   return {
     type: actionTypes.EDIT_PERSON_NAME,
     payload: {

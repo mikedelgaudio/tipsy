@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { didMount } from "../../../../hooks/didMount";
 import { AppStore, Item, Person } from "../../../../models/custom-models";
 import { editPersonName } from "../../../../redux/calculation/calculation-actions";
 import ItemRow from "./ItemRow/ItemRow";
@@ -7,6 +8,7 @@ import PersonActions from "./PersonActions/PersonActions";
 import "./PersonCard.css";
 
 function PersonCard({ personId }: any) {
+  const didMountOnce = didMount();
   const dispatch = useDispatch();
 
   // Store Selectors
@@ -22,7 +24,6 @@ function PersonCard({ personId }: any) {
     });
   });
 
-  // Is this person being edited?
   const editing = useSelector(
     (state: AppStore) => state.ui.uiEditPersonId === personId
   );
@@ -31,12 +32,17 @@ function PersonCard({ personId }: any) {
 
   const personNameInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setPersonNameInput(e.target.value);
-    dispatch(editPersonName(personId, e.target.value));
   };
 
   useEffect(() => {
     setPersonNameInput(storePersonData?.name);
   }, [storePersonData?.name]);
+
+  useEffect(() => {
+    if (!didMountOnce && !editing) {
+      dispatch(editPersonName(personId, personNameInput));
+    }
+  }, [editing]);
 
   return (
     <div className="personCard">
