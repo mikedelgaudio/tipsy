@@ -1,4 +1,4 @@
-# Tipsy
+# Tipsy App
 
 Your best night out partner calculator web app
 
