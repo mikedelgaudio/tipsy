@@ -21,6 +21,8 @@ const defaultItem: Item = {
 function ItemRow({ itemId, editing }: any) {
   const dispatch = useDispatch();
 
+  // TODO Only dispatch state update once saving is complete.
+
   // Store Selectors
   const storeItemData = useSelector((state: AppStore) => {
     return state.calculation.items.find((item: Item) => item.id === itemId);
