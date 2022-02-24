@@ -27,22 +27,22 @@ function TotalsMenu() {
     (state: AppStore) => state.ui.uiEditEventTotal
   );
 
-  useEffect(() => {
-    if (!didMountOnce && !storeUiEditEventTotal) {
-      dispatch(recalculateEvent());
-    }
-  }, [storeUiEditEventTotal]);
-
   const [eventTotalInput, setEventTotalInput] = useState(storeEventTotal);
 
   const eventTotalInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setEventTotalInput(e.target.value);
-    dispatch(editEventTotal(e.target.value));
   };
 
   useEffect(() => {
     setEventTotalInput(storeEventTotal);
   }, [storeEventTotal]);
+
+  useEffect(() => {
+    if (!didMountOnce && !storeUiEditEventTotal) {
+      dispatch(editEventTotal(eventTotalInput));
+      dispatch(recalculateEvent());
+    }
+  }, [storeUiEditEventTotal]);
 
   return (
     <div className="totalsMenuView">

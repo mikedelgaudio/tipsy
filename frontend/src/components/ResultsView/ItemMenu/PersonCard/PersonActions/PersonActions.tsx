@@ -42,7 +42,6 @@ function PersonActions({ personId }: any) {
     let id = personId;
     if (!editing) {
       id = "";
-      dispatch(recalculateEvent());
     }
     setUiEditPerson(id);
     dispatch(uiEditPerson(id));

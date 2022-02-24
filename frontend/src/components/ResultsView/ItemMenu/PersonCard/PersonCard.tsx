@@ -2,7 +2,10 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { didMount } from "../../../../hooks/didMount";
 import { AppStore, Item, Person } from "../../../../models/custom-models";
-import { editPersonName } from "../../../../redux/calculation/calculation-actions";
+import {
+  editPersonName,
+  recalculateEvent,
+} from "../../../../redux/calculation/calculation-actions";
 import ItemRow from "./ItemRow/ItemRow";
 import PersonActions from "./PersonActions/PersonActions";
 import "./PersonCard.css";
@@ -40,7 +43,11 @@ function PersonCard({ personId }: any) {
 
   useEffect(() => {
     if (!didMountOnce && !editing) {
-      dispatch(editPersonName(personId, personNameInput));
+      // bad smell?
+      if (storePersonData?.name !== personNameInput) {
+        dispatch(editPersonName(personId, personNameInput));
+        dispatch(recalculateEvent());
+      }
     }
   }, [editing]);
 

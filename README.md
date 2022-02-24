@@ -25,11 +25,12 @@ The best friend group payment calculator web app.
 - [x] EDIT_STOP Person
 - [x] Rename all dispatch functions with new naming scheme for clarity (Redux Hooks useDispatch/useSelector)
 - [x] Fix component re-render when only updating the total value, all item rows must render new values
+- [x] State to only be modified on save (not per char) however this could maybe be refactored
 
 ### Next steps
 
 - [ ] Fix error toast dismissed too early, need to useRef to specify which toast to remove from screen
-- [ ] Add error handling for invalid currency strings, this requires state to only be modified on save (not per char)
+- [ ] Add error handling for invalid currency strings
 
 ### Future ideas
 
@@ -42,3 +43,5 @@ The best friend group payment calculator web app.
 - [ ] Ability to split an item with a person
 - [ ] Ability to share a link for 1 week
 - [ ] Ensure wording between delete/remove is consistent UX
+- [ ] Refactor how state is updated?
+- [ ] Create docker build and push GitHub Action to deploy alpha site

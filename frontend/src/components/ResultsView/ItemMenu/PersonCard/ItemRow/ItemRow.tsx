@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { didMount } from "../../../../../hooks/didMount";
 import { AppStore, Item } from "../../../../../models/custom-models";
 import {
   editItemName,
@@ -20,8 +21,7 @@ const defaultItem: Item = {
 
 function ItemRow({ itemId, editing }: any) {
   const dispatch = useDispatch();
-
-  // TODO Only dispatch state update once saving is complete.
+  const didMountOnce = didMount();
 
   // Store Selectors
   const storeItemData = useSelector((state: AppStore) => {
@@ -46,7 +46,6 @@ function ItemRow({ itemId, editing }: any) {
           ...itemInput,
           name: e.target.value,
         });
-        dispatch(editItemName(itemId, e.target.value));
         break;
       case "PRICE":
         // TODO
@@ -55,7 +54,6 @@ function ItemRow({ itemId, editing }: any) {
           ...itemInput,
           price: e.target.value,
         });
-        dispatch(editItemPrice(itemId, e.target.value));
         break;
       default:
         break;
@@ -65,6 +63,22 @@ function ItemRow({ itemId, editing }: any) {
   useEffect(() => {
     setItemsInput(storeItemData || defaultItem);
   }, [storeItemData]);
+
+  useEffect(() => {
+    if (!didMountOnce && !editing) {
+      // Check if price or name changed
+      // bad smell?
+      if (storeItemData?.price !== itemInput.price) {
+        dispatch(editItemPrice(itemId, itemInput.price));
+        dispatch(recalculateEvent());
+      }
+
+      if (storeItemData?.name !== itemInput.name) {
+        dispatch(editItemName(itemId, itemInput.name));
+        dispatch(recalculateEvent());
+      }
+    }
+  }, [editing]);
 
   return (
     <li className="personItem" key={itemId}>
