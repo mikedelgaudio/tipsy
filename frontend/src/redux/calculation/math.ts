@@ -1,7 +1,5 @@
-import {
-  dismissAllToast,
-  warnToast,
-} from "../../components/shared/toasts/toast";
+import { useRef } from "react";
+import { warnToast } from "../../components/shared/toasts/toast";
 import { CalculationState, Item } from "../../models/custom-models";
 import { currencyToStr } from "../../utilities/sanitize";
 
@@ -12,12 +10,7 @@ import { currencyToStr } from "../../utilities/sanitize";
  * @returns
  */
 export const calculate = (data: CalculationState) => {
-  // Relying upon error checking as the user
-  // exits UI edit mode. Catch the error
-  // early on rather than waiting for this
-  // expensive call to finish.
   const tempState = { ...data };
-  dismissAllToast(); // this needs to be fixed
 
   // Reset values
   tempState.eventSubtotalFloat = 0.0;
@@ -55,7 +48,7 @@ export const calculate = (data: CalculationState) => {
     tempState.eventSubtotalFloat + tempState.eventTipTaxTotalFloat !==
       tempState.eventTotalFloat
   ) {
-    warnToast("Check your values, the totals do not add up!");
+    warnToast(useRef(null), "Check your values, the totals do not add up!");
     return data;
   }
 

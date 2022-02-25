@@ -1,15 +1,22 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { didMount } from "../../../hooks/didMount";
-import { AppStore } from "../../../models/custom-models";
+import { AppStore, SanitizedCurrency } from "../../../models/custom-models";
 import {
   editEventTotal,
   recalculateEvent,
 } from "../../../redux/calculation/calculation-actions";
 import { uiEditEventTotal } from "../../../redux/ui/ui-actions";
+import { sanitizeCurrency } from "../../../utilities/sanitize";
 import CloseBtn from "../../shared/buttons/CloseBtn";
 import EditBtn from "../../shared/buttons/EditBtn";
+import { dismissToast, errorToast } from "../../shared/toasts/toast";
 import "./TotalsMenu.css";
+
+const defaultEventTotals: { eventTotal: string; eventTotalFloat: number } = {
+  eventTotal: "0.00",
+  eventTotalFloat: 0.0,
+};
 
 function TotalsMenu() {
   const didMountOnce = didMount();
@@ -17,6 +24,10 @@ function TotalsMenu() {
 
   const storeEventTotal = useSelector(
     (state: AppStore) => state.calculation.eventTotal
+  );
+
+  const storeEventTotalFloat = useSelector(
+    (state: AppStore) => state.calculation.eventTotalFloat
   );
 
   const storeEventTipTaxTotal = useSelector(
@@ -27,19 +38,54 @@ function TotalsMenu() {
     (state: AppStore) => state.ui.uiEditEventTotal
   );
 
-  const [eventTotalInput, setEventTotalInput] = useState(storeEventTotal);
+  const [toastId, setToastId] = useState(useRef(null));
+  const [eventTotalInput, setEventTotalInput] = useState(defaultEventTotals);
+  const [error, setError] = useState(false);
 
   const eventTotalInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setEventTotalInput(e.target.value);
+    const parsedPriceFloat: SanitizedCurrency = sanitizeCurrency(
+      e.target.value
+    );
+
+    if (parsedPriceFloat.error) {
+      setError(true);
+    } else {
+      setError(false);
+    }
+
+    setEventTotalInput({
+      ...eventTotalInput,
+      eventTotal: e.target.value,
+      eventTotalFloat: parsedPriceFloat.parsed,
+    });
   };
 
   useEffect(() => {
-    setEventTotalInput(storeEventTotal);
+    setEventTotalInput({
+      eventTotal: storeEventTotal || defaultEventTotals.eventTotal,
+      eventTotalFloat:
+        storeEventTotalFloat || defaultEventTotals.eventTotalFloat,
+    });
   }, [storeEventTotal]);
 
   useEffect(() => {
-    if (!didMountOnce && !storeUiEditEventTotal) {
-      dispatch(editEventTotal(eventTotalInput));
+    dismissToast(toastId);
+    if (error && !storeUiEditEventTotal) {
+      setToastId(
+        errorToast(
+          toastId,
+          "Invalid total price formatting. For example, only provide prices such as: 10.99"
+        )
+      );
+    }
+
+    if (!didMountOnce && !storeUiEditEventTotal && !error) {
+      dispatch(
+        editEventTotal(
+          eventTotalInput.eventTotal,
+          eventTotalInput.eventTotalFloat
+        )
+      );
       dispatch(recalculateEvent());
     }
   }, [storeUiEditEventTotal]);
@@ -66,7 +112,7 @@ function TotalsMenu() {
           <input
             type="text"
             onChange={eventTotalInputHandler}
-            value={eventTotalInput || ""}
+            value={eventTotalInput.eventTotal || ""}
           />
         )}
         {!storeUiEditEventTotal ? (

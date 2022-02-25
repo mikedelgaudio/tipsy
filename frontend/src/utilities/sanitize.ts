@@ -1,3 +1,5 @@
+import { SanitizedCurrency } from "../models/custom-models";
+
 const toFixed = (num: number, fixed: number): string => {
   const re = new RegExp("^-?\\d+(?:.\\d{0," + (fixed || -1) + "})?");
   const match = num.toString().match(re);
@@ -11,21 +13,18 @@ const validCurrency = (input: string): boolean => {
   return REGEX.test(input);
 };
 
-const sanitizeCurrency = (input: string): number => {
+const sanitizeCurrency = (input: string): SanitizedCurrency => {
   if (!validCurrency(input)) {
-    // display error?
-    return 0.0;
+    return { error: true, parsed: 0.0 };
   }
   try {
     const parsed = parseFloat(input);
     if (!parsed) {
-      // display error?
-      return 0.0;
+      return { error: true, parsed: 0.0 };
     }
-    return parsed;
+    return { error: false, parsed };
   } catch (e) {
-    // display error?
-    return 0.0;
+    return { error: true, parsed: 0.0 };
   }
 };
 

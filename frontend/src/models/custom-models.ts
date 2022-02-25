@@ -40,3 +40,8 @@ export interface AppStore {
   calculation: CalculationState;
   ui: UIState;
 }
+
+export interface SanitizedCurrency {
+  parsed: number;
+  error: boolean;
+}

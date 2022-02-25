@@ -1,14 +1,20 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { didMount } from "../../../../../hooks/didMount";
-import { AppStore, Item } from "../../../../../models/custom-models";
+import {
+  AppStore,
+  Item,
+  SanitizedCurrency,
+} from "../../../../../models/custom-models";
 import {
   editItemName,
   editItemPrice,
   recalculateEvent,
   removeItem,
 } from "../../../../../redux/calculation/calculation-actions";
+import { sanitizeCurrency } from "../../../../../utilities/sanitize";
 import DeleteBtn from "../../../../shared/buttons/DeleteBtn";
+import { dismissToast, errorToast } from "../../../../shared/toasts/toast";
 
 const defaultItem: Item = {
   id: "",
@@ -34,25 +40,35 @@ function ItemRow({ itemId, editing }: any) {
     dispatch(recalculateEvent());
   };
 
+  const [toastId, setToastId] = useState(useRef(null));
   const [itemInput, setItemsInput] = useState(defaultItem);
+  const [error, setError] = useState(false);
 
   const itemInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const attributeIndex = 1;
     const fieldName = e.target.attributes[attributeIndex].textContent;
     switch (fieldName) {
       case "NAME":
-        // dispatch edit item name
         setItemsInput({
           ...itemInput,
           name: e.target.value,
         });
         break;
       case "PRICE":
-        // TODO
-        // Ensure valid currency is only allowed when calculated
+        const parsedPriceFloat: SanitizedCurrency = sanitizeCurrency(
+          e.target.value
+        );
+
+        if (parsedPriceFloat.error) {
+          setError(true);
+        } else {
+          setError(false);
+        }
+
         setItemsInput({
           ...itemInput,
           price: e.target.value,
+          priceFloat: parsedPriceFloat.parsed,
         });
         break;
       default:
@@ -65,11 +81,22 @@ function ItemRow({ itemId, editing }: any) {
   }, [storeItemData]);
 
   useEffect(() => {
-    if (!didMountOnce && !editing) {
+    // highlight item in red?
+    dismissToast(toastId);
+    if (error && !editing) {
+      setToastId(
+        errorToast(
+          toastId,
+          `Invalid price formatting for ${storeItemData?.name}. For example, only provide prices such as: 10.99`
+        )
+      );
+    }
+
+    if (!didMountOnce && !editing && !error) {
       // Check if price or name changed
       // bad smell?
       if (storeItemData?.price !== itemInput.price) {
-        dispatch(editItemPrice(itemId, itemInput.price));
+        dispatch(editItemPrice(itemId, itemInput.price, itemInput.priceFloat));
         dispatch(recalculateEvent());
       }
 
@@ -109,14 +136,13 @@ function ItemRow({ itemId, editing }: any) {
             />
           </>
         )}
-      </div>
-
-      <div className="personItemOptionRow">
-        <button>Split?</button>
-        <DeleteBtn
-          clickSideEffect={dispatchRemoveItem}
-          ariaTitle={`Delete ${storeItemData?.name}`}
-        />
+        <div className="personItemOptionRow">
+          {/* <button>Split?</button> */}
+          <DeleteBtn
+            clickSideEffect={dispatchRemoveItem}
+            ariaTitle={`Delete ${storeItemData?.name}`}
+          />
+        </div>
       </div>
     </li>
   );

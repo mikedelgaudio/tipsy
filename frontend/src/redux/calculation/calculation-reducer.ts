@@ -1,9 +1,7 @@
 import * as actionTypes from "./calculation-types";
 import { v4 as uuidv4 } from "uuid";
 import { calculate } from "./math";
-import { errorToast5ms } from "../../components/shared/toasts/toast";
 import { CalculationState } from "../../models/custom-models";
-import { sanitizeCurrency } from "../../utilities/sanitize";
 
 const INITIAL_STATE: CalculationState = {
   persons: [
@@ -78,7 +76,6 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
       };
     case actionTypes.REMOVE_PERSON:
       if (state.persons.length < 2) {
-        errorToast5ms("You cannot remove the last person!");
         return state;
       } else
         return {
@@ -144,10 +141,6 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
         }),
       };
     case actionTypes.EDIT_ITEM_PRICE:
-      // TODO
-      // Rather than doing error checking in the calculation each time
-      // Perform it here in each edit scenario
-      // Alternatively dont trigger the parsing till the user exits the UI edit mode
       return {
         ...state,
         items: state.items.map((item) => {
@@ -155,7 +148,7 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
             return {
               ...item,
               price: action.payload.price,
-              priceFloat: sanitizeCurrency(action.payload.price),
+              priceFloat: action.payload.priceFloat,
             };
           } else return item;
         }),
@@ -169,7 +162,7 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
       return {
         ...state,
         eventTotal: action.payload.total,
-        eventTotalFloat: sanitizeCurrency(action.payload.total),
+        eventTotalFloat: action.payload.totalFloat,
       };
     case actionTypes.RESTART_EVENT:
       return INITIAL_STATE;

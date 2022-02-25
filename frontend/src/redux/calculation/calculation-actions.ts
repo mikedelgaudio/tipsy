@@ -69,12 +69,17 @@ export const editItemQty = (itemId: string, newQty: number) => {
   };
 };
 
-export const editItemPrice = (itemId: string, newPrice: string) => {
+export const editItemPrice = (
+  itemId: string,
+  newPrice: string,
+  newPriceFloat: number
+) => {
   return {
     type: actionTypes.EDIT_ITEM_PRICE,
     payload: {
       id: itemId,
       price: newPrice,
+      priceFloat: newPriceFloat,
     },
   };
 };
@@ -88,11 +93,12 @@ export const editEventTitle = (newTitle: string) => {
   };
 };
 
-export const editEventTotal = (newTotal: string) => {
+export const editEventTotal = (newTotal: string, newTotalFloat: number) => {
   return {
     type: actionTypes.EDIT_EVENT_TOTAL,
     payload: {
       total: newTotal,
+      totalFloat: newTotalFloat,
     },
   };
 };
