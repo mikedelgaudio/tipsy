@@ -7,7 +7,10 @@ import {
   recalculateEvent,
 } from "../../../redux/calculation/calculation-actions";
 import { uiEditEventTotal } from "../../../redux/ui/ui-actions";
-import { sanitizeCurrency } from "../../../utilities/sanitize";
+import {
+  removeDollarOrComma,
+  sanitizeCurrency,
+} from "../../../utilities/sanitize";
 import CloseBtn from "../../shared/buttons/CloseBtn";
 import EditBtn from "../../shared/buttons/EditBtn";
 import { dismissToast, errorToast } from "../../shared/toasts/toast";
@@ -43,10 +46,8 @@ function TotalsMenu() {
   const [error, setError] = useState(false);
 
   const eventTotalInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const inputWithoutDollarOrComma = e.target.value.replace(/\$|,/g, "");
-    const parsedPriceFloat: SanitizedCurrency = sanitizeCurrency(
-      inputWithoutDollarOrComma
-    );
+    const input = removeDollarOrComma(e.target.value);
+    const parsedPriceFloat: SanitizedCurrency = sanitizeCurrency(input);
 
     if (parsedPriceFloat.error) {
       setError(true);
@@ -56,7 +57,7 @@ function TotalsMenu() {
 
     setEventTotalInput({
       ...eventTotalInput,
-      eventTotal: inputWithoutDollarOrComma,
+      eventTotal: input,
       eventTotalFloat: parsedPriceFloat.parsed,
     });
   };

@@ -28,8 +28,12 @@ const sanitizeCurrency = (input: string): SanitizedCurrency => {
   }
 };
 
+const removeDollarOrComma = (input: string): string => {
+  return input.replace(/\$|,/g, "");
+};
+
 const currencyToStr = (input: number): string => {
   return toFixed(input, 2);
 };
 
-export { sanitizeCurrency, currencyToStr };
+export { sanitizeCurrency, currencyToStr, removeDollarOrComma };

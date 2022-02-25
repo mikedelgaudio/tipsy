@@ -12,7 +12,10 @@ import {
   recalculateEvent,
   removeItem,
 } from "../../../../../redux/calculation/calculation-actions";
-import { sanitizeCurrency } from "../../../../../utilities/sanitize";
+import {
+  removeDollarOrComma,
+  sanitizeCurrency,
+} from "../../../../../utilities/sanitize";
 import DeleteBtn from "../../../../shared/buttons/DeleteBtn";
 import { dismissToast, errorToast } from "../../../../shared/toasts/toast";
 
@@ -55,10 +58,8 @@ function ItemRow({ itemId, editing }: any) {
         });
         break;
       case "PRICE":
-        const inputWithoutDollarOrComma = e.target.value.replace(/\$|,/g, "");
-        const parsedPriceFloat: SanitizedCurrency = sanitizeCurrency(
-          inputWithoutDollarOrComma
-        );
+        const input = removeDollarOrComma(e.target.value);
+        const parsedPriceFloat: SanitizedCurrency = sanitizeCurrency(input);
 
         if (parsedPriceFloat.error) {
           setError(true);
@@ -68,7 +69,7 @@ function ItemRow({ itemId, editing }: any) {
 
         setItemsInput({
           ...itemInput,
-          price: inputWithoutDollarOrComma,
+          price: input,
           priceFloat: parsedPriceFloat.parsed,
         });
         break;
