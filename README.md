@@ -26,12 +26,14 @@ The best friend group payment calculator web app.
 - [x] Rename all dispatch functions with new naming scheme for clarity (Redux Hooks useDispatch/useSelector)
 - [x] Fix component re-render when only updating the total value, all item rows must render new values
 - [x] State to only be modified on save (not per char) however this could maybe be refactored
+- [x] Regardless of price errors, allow name changes to dispatch state
+- [x] Notify user $ and , not allowed or somehow display it to them and clean after
 
 ### Next steps
 
 - [ ] useRef to specify which WARN toast to remove from screen
-- [ ] Notify user $ and , not allowed or somehow display it to them and clean after
-- [ ] Regardless of price errors, allow name changes to dispatch state
+- [ ] Remove UI State for local useState to save dispatch steps
+- [ ] when error trigger a CSS class to highlight the line item rather than toast
 
 ### Future ideas
 

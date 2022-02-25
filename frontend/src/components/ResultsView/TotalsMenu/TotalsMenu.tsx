@@ -57,7 +57,7 @@ function TotalsMenu() {
 
     setEventTotalInput({
       ...eventTotalInput,
-      eventTotal: input,
+      eventTotal: e.target.value,
       eventTotalFloat: parsedPriceFloat.parsed,
     });
   };
@@ -84,7 +84,7 @@ function TotalsMenu() {
     if (!didMountOnce && !storeUiEditEventTotal && !error) {
       dispatch(
         editEventTotal(
-          eventTotalInput.eventTotal,
+          removeDollarOrComma(eventTotalInput.eventTotal),
           eventTotalInput.eventTotalFloat
         )
       );

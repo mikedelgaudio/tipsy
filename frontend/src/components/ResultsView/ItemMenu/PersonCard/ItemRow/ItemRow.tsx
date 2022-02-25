@@ -69,7 +69,7 @@ function ItemRow({ itemId, editing }: any) {
 
         setItemsInput({
           ...itemInput,
-          price: input,
+          price: e.target.value,
           priceFloat: parsedPriceFloat.parsed,
         });
         break;
@@ -98,7 +98,13 @@ function ItemRow({ itemId, editing }: any) {
       // Check if price or name changed
       // bad smell?
       if (!error && storeItemData?.price !== itemInput.price) {
-        dispatch(editItemPrice(itemId, itemInput.price, itemInput.priceFloat));
+        dispatch(
+          editItemPrice(
+            itemId,
+            removeDollarOrComma(itemInput.price),
+            itemInput.priceFloat
+          )
+        );
         dispatch(recalculateEvent());
       }
 
