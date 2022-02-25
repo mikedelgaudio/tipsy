@@ -19,7 +19,7 @@ const sanitizeCurrency = (input: string): SanitizedCurrency => {
   }
   try {
     const parsed = parseFloat(input);
-    if (!parsed) {
+    if (!parsed && parsed !== 0) {
       return { error: true, parsed: 0.0 };
     }
     return { error: false, parsed };

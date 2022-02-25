@@ -55,8 +55,9 @@ function ItemRow({ itemId, editing }: any) {
         });
         break;
       case "PRICE":
+        const inputWithoutDollarOrComma = e.target.value.replace(/\$|,/g, "");
         const parsedPriceFloat: SanitizedCurrency = sanitizeCurrency(
-          e.target.value
+          inputWithoutDollarOrComma
         );
 
         if (parsedPriceFloat.error) {
@@ -67,7 +68,7 @@ function ItemRow({ itemId, editing }: any) {
 
         setItemsInput({
           ...itemInput,
-          price: e.target.value,
+          price: inputWithoutDollarOrComma,
           priceFloat: parsedPriceFloat.parsed,
         });
         break;
@@ -87,15 +88,15 @@ function ItemRow({ itemId, editing }: any) {
       setToastId(
         errorToast(
           toastId,
-          `Invalid price formatting for ${storeItemData?.name}. For example, only provide prices such as: 10.99`
+          `Invalid price formatting for ${itemInput?.name}. Format prices such as: 10.99`
         )
       );
     }
 
-    if (!didMountOnce && !editing && !error) {
+    if (!didMountOnce && !editing) {
       // Check if price or name changed
       // bad smell?
-      if (storeItemData?.price !== itemInput.price) {
+      if (!error && storeItemData?.price !== itemInput.price) {
         dispatch(editItemPrice(itemId, itemInput.price, itemInput.priceFloat));
         dispatch(recalculateEvent());
       }

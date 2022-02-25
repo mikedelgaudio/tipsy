@@ -43,8 +43,9 @@ function TotalsMenu() {
   const [error, setError] = useState(false);
 
   const eventTotalInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const inputWithoutDollarOrComma = e.target.value.replace(/\$|,/g, "");
     const parsedPriceFloat: SanitizedCurrency = sanitizeCurrency(
-      e.target.value
+      inputWithoutDollarOrComma
     );
 
     if (parsedPriceFloat.error) {
@@ -55,7 +56,7 @@ function TotalsMenu() {
 
     setEventTotalInput({
       ...eventTotalInput,
-      eventTotal: e.target.value,
+      eventTotal: inputWithoutDollarOrComma,
       eventTotalFloat: parsedPriceFloat.parsed,
     });
   };

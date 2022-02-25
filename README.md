@@ -29,8 +29,9 @@ The best friend group payment calculator web app.
 
 ### Next steps
 
-- [ ] Fix error toast dismissed too early, need to useRef to specify which toast to remove from screen
-- [ ] Add error handling for invalid currency strings
+- [ ] useRef to specify which WARN toast to remove from screen
+- [ ] Notify user $ and , not allowed or somehow display it to them and clean after
+- [ ] Regardless of price errors, allow name changes to dispatch state
 
 ### Future ideas
 
