@@ -2,3 +2,20 @@
   color: var(--error);
   text-decoration: underline;
 }
+
+.inputWrapper {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 0.25em;
+}
+
+.inputWrapper label {
+  margin-left: 0.5em;
+  font-weight: 600;
+}
+
+input {
+  border-radius: var(--global-radius);
+  padding: 0.25em 1em;
+  border: 2px solid var(--brand-off);
+}

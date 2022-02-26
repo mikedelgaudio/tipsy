@@ -45,11 +45,15 @@ function ItemMenu() {
           {!editing ? (
             <h1 className="itemHeader">{eventTitleInput}</h1>
           ) : (
-            <input
-              type="text"
-              onChange={eventTitleInputHandler}
-              value={eventTitleInput || ""}
-            />
+            <div className="inputWrapper">
+              <label htmlFor="eventTitleInput">Event Title</label>
+              <input
+                id="eventTitleInput"
+                type="text"
+                onChange={eventTitleInputHandler}
+                value={eventTitleInput || ""}
+              />
+            </div>
           )}
           <div className="itemHeaderActions">
             <SharingRow editing={editing} setEditing={setEditing} />
