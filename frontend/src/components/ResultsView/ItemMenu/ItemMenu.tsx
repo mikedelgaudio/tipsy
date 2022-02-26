@@ -21,10 +21,7 @@ function ItemMenu() {
     return state.calculation.persons.map((person: Person) => person.id);
   });
 
-  const storeUiEditTitle = useSelector(
-    (state: AppStore) => state.ui.uiEditEventTitle
-  );
-
+  const [editing, setEditing] = useState(false);
   const [eventTitleInput, setEventTitleInput] = useState(storeEventTitle);
 
   const eventTitleInputHandler = (e: any) => {
@@ -37,16 +34,16 @@ function ItemMenu() {
 
   // Works as intended, need to do research if this is a bad smell?
   useEffect(() => {
-    if (!didMountOnce && !storeUiEditTitle) {
+    if (!didMountOnce && !editing) {
       dispatch(editEventTitle(eventTitleInput));
     }
-  }, [storeUiEditTitle]);
+  }, [editing]);
 
   return (
     <div className="itemView">
       <div className="itemMenu">
         <div className="itemHeaderWrapper">
-          {!storeUiEditTitle ? (
+          {!editing ? (
             <h1 className="itemHeader">{eventTitleInput}</h1>
           ) : (
             <input
@@ -57,7 +54,7 @@ function ItemMenu() {
           )}
           <div className="itemHeaderActions">
             <EventActions />
-            <SharingRow />
+            <SharingRow editing={editing} setEditing={setEditing} />
           </div>
         </div>
         {personIds.map((id: string) => {

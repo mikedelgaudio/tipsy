@@ -9,11 +9,6 @@ const INITIAL_STATE: UIState = {
 
 const uiReducer = (state = INITIAL_STATE, action: any) => {
   switch (action.type) {
-    case actionTypes.UI_EDIT_EVENT_TITLE:
-      return {
-        ...state,
-        uiEditEventTitle: action.payload.editing,
-      };
     case actionTypes.UI_EDIT_PERSON:
       return {
         ...state,
