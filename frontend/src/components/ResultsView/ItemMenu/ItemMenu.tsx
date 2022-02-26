@@ -5,7 +5,6 @@ import "./ItemMenu.css";
 import PersonCard from "./PersonCard/PersonCard";
 import { useState, useEffect } from "react";
 import { editEventTitle } from "../../../redux/calculation/calculation-actions";
-import EventActions from "../EventActions/EventActions";
 import { didMount } from "../../../hooks/didMount";
 
 function ItemMenu() {
@@ -53,7 +52,6 @@ function ItemMenu() {
             />
           )}
           <div className="itemHeaderActions">
-            <EventActions />
             <SharingRow editing={editing} setEditing={setEditing} />
           </div>
         </div>

@@ -14,14 +14,15 @@ button:disabled {
 }
 
 .btn-danger {
-  background-color: var(--brand-off);
-  color: var(--brand-x);
-  border: 1px solid var(--brand-off);
+  background-color: var(--brand-x);
+  color: var(--brand-off);
+  border: 1px solid var(--brand-x);
 }
 
 .btn-danger:hover {
-  background-color: var(--brand-x);
-  color: var(--brand-off);
+  background-color: var(--brand-off);
+  color: var(--brand-x);
+  border: 1px solid var(--brand-off);
 }
 
 .btn-success {
