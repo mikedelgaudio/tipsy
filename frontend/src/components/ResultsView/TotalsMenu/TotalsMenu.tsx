@@ -6,7 +6,6 @@ import {
   editEventTotal,
   recalculateEvent,
 } from "../../../redux/calculation/calculation-actions";
-import { uiEditEventTotal } from "../../../redux/ui/ui-actions";
 import {
   removeDollarOrComma,
   sanitizeCurrency,
@@ -36,10 +35,7 @@ function TotalsMenu() {
     (state: AppStore) => state.calculation.eventTipTaxTotal
   );
 
-  const storeUiEditEventTotal = useSelector(
-    (state: AppStore) => state.ui.uiEditEventTotal
-  );
-
+  const [editing, setEditing] = useState(false);
   const [eventTotalInput, setEventTotalInput] = useState(defaultEventTotals);
   const [error, setError] = useState(false);
 
@@ -69,7 +65,7 @@ function TotalsMenu() {
   }, [storeEventTotal]);
 
   useEffect(() => {
-    if (!didMountOnce && !storeUiEditEventTotal && !error) {
+    if (!didMountOnce && !editing && !error) {
       dispatch(
         editEventTotal(
           removeDollarOrComma(eventTotalInput.eventTotal),
@@ -78,7 +74,7 @@ function TotalsMenu() {
       );
       dispatch(recalculateEvent());
     }
-  }, [storeUiEditEventTotal]);
+  }, [editing]);
 
   return (
     <div className="totalsMenuView">
@@ -96,7 +92,7 @@ function TotalsMenu() {
       </div>
       <div className="totalRow">
         <h3 className="totalText">Total</h3>
-        {!storeUiEditEventTotal ? (
+        {!editing ? (
           <h3 className={`${error ? "errorText" : ""} totalText `}>
             ${storeEventTotal}
           </h3>
@@ -107,14 +103,14 @@ function TotalsMenu() {
             value={eventTotalInput.eventTotal || ""}
           />
         )}
-        {!storeUiEditEventTotal ? (
+        {!editing ? (
           <EditBtn
-            clickSideEffect={() => dispatch(uiEditEventTotal(true))}
+            clickSideEffect={() => setEditing(true)}
             ariaTitle={"Edit event total"}
           />
         ) : (
           <CloseBtn
-            clickSideEffect={() => dispatch(uiEditEventTotal(false))}
+            clickSideEffect={() => setEditing(false)}
             ariaTitle={"Stop editing event total"}
           />
         )}

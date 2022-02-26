@@ -28,12 +28,11 @@ The best friend group payment calculator web app.
 - [x] State to only be modified on save (not per char) however this could maybe be refactored
 - [x] Regardless of price errors, allow name changes to dispatch state
 - [x] Notify user $ and , not allowed or somehow display it to them and clean after
+- [x] when error trigger a CSS class to highlight the line item rather than toast
 
 ### Next steps
 
-- [ ] useRef to specify which WARN toast to remove from screen
 - [ ] Remove UI State for local useState to save dispatch steps
-- [ ] when error trigger a CSS class to highlight the line item rather than toast
 
 ### Future ideas
 

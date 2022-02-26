@@ -19,11 +19,6 @@ const uiReducer = (state = INITIAL_STATE, action: any) => {
         ...state,
         uiEditPersonId: action.payload.id,
       };
-    case actionTypes.UI_EDIT_EVENT_TOTAL:
-      return {
-        ...state,
-        uiEditEventTotal: action.payload.editing,
-      };
     default:
       return state;
   }
