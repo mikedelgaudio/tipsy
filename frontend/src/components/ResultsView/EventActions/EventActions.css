@@ -13,29 +13,3 @@
   padding: 0.5em;
   cursor: pointer;
 }
-
-button {
-  transition: color, background-color 0.2s ease-in-out;
-}
-
-.btn-danger {
-  background-color: var(--brand-off);
-  color: var(--brand-x);
-  border: 1px solid var(--brand-off);
-}
-
-.btn-danger:hover {
-  background-color: var(--brand-x);
-  color: var(--brand-off);
-}
-
-.btn-success {
-  background-color: var(--brand);
-  color: var(--brand-x);
-  border: 1px solid var(--brand);
-}
-
-.btn-success:hover {
-  background-color: var(--brand-x);
-  color: var(--brand);
-}

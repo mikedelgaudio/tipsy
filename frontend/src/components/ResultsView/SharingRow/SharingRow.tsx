@@ -1,7 +1,7 @@
 import "./SharingRow.css";
-import shareIcon from "../../../assets/icons/share-square-solid.svg";
 import EditBtn from "../../shared/buttons/EditBtn";
 import CloseBtn from "../../shared/buttons/CloseBtn";
+import ShareSquareIcon from "../../shared/icons/ShareSquareIcon";
 
 function SharingRow({ editing, setEditing }: any) {
   return (
@@ -10,15 +10,17 @@ function SharingRow({ editing, setEditing }: any) {
         <EditBtn
           clickSideEffect={() => setEditing(true)}
           ariaTitle={"Edit event title"}
+          className="icon-light"
         />
       ) : (
         <CloseBtn
           clickSideEffect={() => setEditing(false)}
           ariaTitle={"Stop editing event title"}
+          className="icon-light"
         />
       )}
-      <button type="button">
-        <img className="icons" src={shareIcon} alt="Share" />
+      <button>
+        <ShareSquareIcon className="icons icon-light" />
       </button>
     </div>
   );

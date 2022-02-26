@@ -8,8 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import EditBtn from "../../../../shared/buttons/EditBtn";
 import CloseBtn from "../../../../shared/buttons/CloseBtn";
 import AddBtn from "../../../../shared/buttons/AddBtn";
-import DeleteBtn from "../../../../shared/buttons/DeleteBtn";
 import { AppStore } from "../../../../../models/custom-models";
+import DeleteUserBtn from "../../../../shared/buttons/DeleteUserBtn";
 
 function PersonActions({ personId, editing, setEditing }: any) {
   const dispatch = useDispatch();
@@ -49,10 +49,11 @@ function PersonActions({ personId, editing, setEditing }: any) {
         ariaTitle={"Add item to person"}
       />
 
-      <DeleteBtn
+      <DeleteUserBtn
         clickSideEffect={dispatchRemovePerson}
         ariaTitle={"Delete person"}
         isDisabled={personsLength < 2}
+        className="icon-xl"
       />
     </div>
   );

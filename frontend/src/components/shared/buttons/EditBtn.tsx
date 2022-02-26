@@ -1,9 +1,9 @@
-import editIcon from "../../../assets/icons/pencil-solid.svg";
+import PencilIcon from "../icons/PencilIcon";
 
-function EditBtn({ clickSideEffect, ariaTitle }: any) {
+function EditBtn({ clickSideEffect, ariaTitle, className = "" }: any) {
   return (
     <button type="button" onClick={() => clickSideEffect()} title={ariaTitle}>
-      <img className="icons" src={editIcon} alt={ariaTitle} />
+      <PencilIcon className={`icons ${className ? className : ""}`} />
     </button>
   );
 }

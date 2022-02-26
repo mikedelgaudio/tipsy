@@ -1,9 +1,9 @@
-import addIcon from "../../../assets/icons/add-item.svg";
+import AddItemIcon from "../icons/AddItemIcon";
 
-function AddBtn({ clickSideEffect, ariaTitle }: any) {
+function AddBtn({ clickSideEffect, ariaTitle, className = "" }: any) {
   return (
-    <button type="button" onClick={() => clickSideEffect()} title={ariaTitle}>
-      <img className="icons" src={addIcon} alt={ariaTitle} />
+    <button onClick={() => clickSideEffect()} title={ariaTitle}>
+      <AddItemIcon className={`icons ${className ? className : ""}`} />
     </button>
   );
 }

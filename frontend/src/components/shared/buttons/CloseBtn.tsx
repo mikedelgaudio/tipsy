@@ -1,9 +1,9 @@
-import checkIcon from "../../../assets/icons/check-solid.svg";
+import CheckIcon from "../icons/CheckIcon";
 
-function CloseBtn({ clickSideEffect, ariaTitle }: any) {
+function CloseBtn({ clickSideEffect, ariaTitle, className = "" }: any) {
   return (
     <button type="button" onClick={() => clickSideEffect()} title={ariaTitle}>
-      <img className="icons" src={checkIcon} alt={ariaTitle} />
+      <CheckIcon className={`icons ${className ? className : ""}`} />
     </button>
   );
 }

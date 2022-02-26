@@ -1,17 +1,17 @@
 * {
   /* light */
-  --brand-light: hsl(174, 36%, 44%);
+  --brand-light: hsl(176 78% 32%);
   --brand-x-light: hsl(195, 50%, 99%);
   --brand-alt-light: hsl(174, 36%, 54%);
-  --brand-off-light: hsl(206, 6%, 44%);
-  --background-light: hsl(0, 0%, 96%);
+  --brand-off-light: hsl(255 30% 24%);
+  --background-light: #ffffff;
   --error-light: hsl(0, 95%, 54%);
 
   /* dark */
   --brand-dark: hsl(174, 36%, 44%);
   --brand-x-dark: hsl(195, 50%, 99%);
   --brand-alt-dark: hsl(174, 36%, 54%);
-  --brand-off-dark: hsl(206, 6%, 44%);
+  --brand-off-dark: hsl(206, 32%, 86%);
   --background-dark: hsl(0, 0%, 100%);
   --error-dark: hsl(0, 80%, 42%);
 }

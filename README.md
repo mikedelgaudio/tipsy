@@ -29,10 +29,13 @@ The best friend group payment calculator web app.
 - [x] Regardless of price errors, allow name changes to dispatch state
 - [x] Notify user $ and , not allowed or somehow display it to them and clean after
 - [x] when error trigger a CSS class to highlight the line item rather than toast
+- [x] Remove UI State for local useState to save dispatch steps
 
 ### Next steps
 
-- [ ] Remove UI State for local useState to save dispatch steps
+- [ ] Handle scenario where adding food items triggers toast too many times
+- [ ] Migrate all icons to React SVG components and use new CSS classes to colorize
+- [ ] Ensure input fields are a11y safe and in a form
 
 ### Future ideas
 

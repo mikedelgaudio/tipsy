@@ -5,6 +5,7 @@ button {
   text-decoration: none;
   cursor: pointer;
   background: transparent;
+  transition: color, background-color 0.2s ease-in-out;
 }
 
 button:disabled {
@@ -12,31 +13,39 @@ button:disabled {
   opacity: 0.5;
 }
 
-.btn-t-success {
-  transition: color 0.2s ease-in-out;
-  letter-spacing: -0.33px;
-  color: hsl(206, 6%, 44%);
+.btn-danger {
+  background-color: var(--brand-off);
+  color: var(--brand-x);
+  border: 1px solid var(--brand-off);
 }
 
-.btn-t-success:hover {
-  color: green;
+.btn-danger:hover {
+  background-color: var(--brand-x);
+  color: var(--brand-off);
 }
 
-.btn-t-danger {
-  transition: color 0.2s ease-in-out;
-  background: transparent;
-  letter-spacing: -0.33px;
-  color: hsl(206, 6%, 44%);
+.btn-success {
+  background-color: var(--brand);
+  color: var(--brand-x);
+  border: 1px solid var(--brand);
 }
 
-.btn-t-danger:hover {
-  color: red;
+.btn-success:hover {
+  background-color: var(--brand-x);
+  color: var(--brand);
 }
 
 .icons {
   width: 20px;
-  opacity: 0.85;
-  transition: opacity 0.25s ease-in-out;
+  fill: var(--brand-off);
+}
+
+.icon-xl {
+  width: 25px;
+}
+
+.icon-light {
+  fill: var(--brand-x);
 }
 
 .icons:hover {

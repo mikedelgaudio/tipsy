@@ -4,7 +4,7 @@ import {
   restartEvent,
 } from "../../../redux/calculation/calculation-actions";
 import "./EventActions.css";
-import addPersonIcon from "../../../assets/icons/add-person.svg";
+import AddPersonIcon from "../../shared/icons/AddPersonIcon";
 
 function EventActions() {
   const dispatch = useDispatch();
@@ -14,12 +14,8 @@ function EventActions() {
       <button onClick={() => dispatch(restartEvent())} className="btn-danger">
         Reset
       </button>
-      <button
-        onClick={() => dispatch(addPerson())}
-        className="btn-success"
-        aria-label="Add person"
-      >
-        <img className="icons" src={addPersonIcon} alt="Add person" />
+      <button onClick={() => dispatch(addPerson())} aria-label="Add person">
+        <AddPersonIcon className="icons icon-xl icon-light" />
       </button>
     </div>
   );

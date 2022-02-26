@@ -48,7 +48,7 @@ function PersonCard({ personId }: any) {
     <div className="personCard">
       <div className="personCardHeader">
         {!editing ? (
-          <h2>{storePersonData?.name}</h2>
+          <h2 className="personName">{storePersonData?.name}</h2>
         ) : (
           <input
             type="text"

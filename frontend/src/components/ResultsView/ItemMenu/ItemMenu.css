@@ -1,9 +1,6 @@
-.itemView {
-}
-
 .itemMenu {
   padding: 0;
-  background-color: hsl(0, 0%, 98%);
+  background-color: var(--background);
   border: 2px solid rgb(227, 233, 237);
   border-radius: var(--global-radius);
   overflow: hidden;

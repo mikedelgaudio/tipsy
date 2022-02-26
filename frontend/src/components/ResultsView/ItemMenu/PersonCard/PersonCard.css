@@ -4,6 +4,7 @@
   display: flex;
   flex-flow: column nowrap;
   gap: 1.25em;
+  color: var(--brand-off);
 }
 
 .personCard:last-child {
@@ -41,7 +42,7 @@
 .personItemInfoRow {
   display: flex;
   padding: 0.3em 0;
-  color: var(--brand-off);
+
   gap: 1em;
   justify-content: space-between;
   align-items: center;
