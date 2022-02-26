@@ -6,23 +6,17 @@ import {
 } from "../../../../../redux/calculation/calculation-actions";
 import { useDispatch, useSelector } from "react-redux";
 import EditBtn from "../../../../shared/buttons/EditBtn";
-import { uiEditPerson } from "../../../../../redux/ui/ui-actions";
-import { useEffect, useState } from "react";
 import CloseBtn from "../../../../shared/buttons/CloseBtn";
 import AddBtn from "../../../../shared/buttons/AddBtn";
 import DeleteBtn from "../../../../shared/buttons/DeleteBtn";
 import { AppStore } from "../../../../../models/custom-models";
 
-function PersonActions({ personId }: any) {
+function PersonActions({ personId, editing, setEditing }: any) {
   const dispatch = useDispatch();
 
   // Store Selectors
   const personsLength = useSelector(
     (state: AppStore) => state.calculation.persons.length
-  );
-
-  const storeUiEditPersonId = useSelector(
-    (state: AppStore) => state.ui.uiEditPersonId === personId
   );
 
   // Dispatchers
@@ -36,31 +30,16 @@ function PersonActions({ personId }: any) {
     dispatch(recalculateEvent());
   };
 
-  const [editing, setUiEditPerson] = useState(storeUiEditPersonId);
-
-  const eventEditHandler = (editing: boolean) => {
-    let id = personId;
-    if (!editing) {
-      id = "";
-    }
-    setUiEditPerson(id);
-    dispatch(uiEditPerson(id));
-  };
-
-  useEffect(() => {
-    setUiEditPerson(storeUiEditPersonId);
-  }, [storeUiEditPersonId]);
-
   return (
     <div className="personActions">
       {!editing ? (
         <EditBtn
-          clickSideEffect={() => eventEditHandler(true)}
+          clickSideEffect={() => setEditing(true)}
           ariaTitle={"Edit person"}
         />
       ) : (
         <CloseBtn
-          clickSideEffect={() => eventEditHandler(false)}
+          clickSideEffect={() => setEditing(false)}
           ariaTitle={"Stop editing person"}
         />
       )}

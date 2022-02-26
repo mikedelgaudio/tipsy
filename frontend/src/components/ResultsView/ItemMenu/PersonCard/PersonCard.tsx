@@ -2,10 +2,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { didMount } from "../../../../hooks/didMount";
 import { AppStore, Item, Person } from "../../../../models/custom-models";
-import {
-  editPersonName,
-  recalculateEvent,
-} from "../../../../redux/calculation/calculation-actions";
+import { editPersonName } from "../../../../redux/calculation/calculation-actions";
 import ItemRow from "./ItemRow/ItemRow";
 import PersonActions from "./PersonActions/PersonActions";
 import "./PersonCard.css";
@@ -27,10 +24,7 @@ function PersonCard({ personId }: any) {
     });
   });
 
-  const editing = useSelector(
-    (state: AppStore) => state.ui.uiEditPersonId === personId
-  );
-
+  const [editing, setEditing] = useState(false);
   const [personNameInput, setPersonNameInput] = useState(storePersonData?.name);
 
   const personNameInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +40,6 @@ function PersonCard({ personId }: any) {
       // bad smell?
       if (storePersonData?.name !== personNameInput) {
         dispatch(editPersonName(personId, personNameInput));
-        dispatch(recalculateEvent());
       }
     }
   }, [editing]);
@@ -63,7 +56,11 @@ function PersonCard({ personId }: any) {
             value={personNameInput || ""}
           />
         )}
-        <PersonActions personId={personId} />
+        <PersonActions
+          personId={personId}
+          editing={editing}
+          setEditing={setEditing}
+        />
       </div>
 
       <ul className="personItemList">
