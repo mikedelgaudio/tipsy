@@ -4,6 +4,7 @@
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   background-color: var(--brand-x);
   border: 1px solid var(--brand-off);
+  color: var(--brand-off);
   border-radius: var(--global-radius);
   padding: 1em;
 }
@@ -41,8 +42,4 @@
 
 .totalBreakdownItem {
   padding: 0.15em 0;
-}
-
-.totalBreakdownDesc {
-  color: var(--brand-off-light);
 }

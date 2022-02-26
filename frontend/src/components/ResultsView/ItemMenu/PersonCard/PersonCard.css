@@ -59,13 +59,10 @@
   max-width: 60%;
 }
 
-.personItemPrice {
-}
-
 .subtotalWrapper {
   display: flex;
   justify-content: flex-end;
-  color: black;
+  color: var(--brand-off);
   gap: 2em;
 }
 
@@ -82,11 +79,4 @@
 
 .subtotalItem {
   padding: 0.15em 0;
-}
-
-.subtotalTitle {
-  color: var(--brand-off);
-}
-
-.subtotalPrice {
 }
