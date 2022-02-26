@@ -1,0 +1,4 @@
+.errorText {
+  color: var(--error);
+  text-decoration: underline;
+}

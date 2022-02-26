@@ -13,7 +13,6 @@ import {
 } from "../../../utilities/sanitize";
 import CloseBtn from "../../shared/buttons/CloseBtn";
 import EditBtn from "../../shared/buttons/EditBtn";
-import { dismissToast, errorToast } from "../../shared/toasts/toast";
 import "./TotalsMenu.css";
 
 const defaultEventTotals: { eventTotal: string; eventTotalFloat: number } = {
@@ -41,7 +40,6 @@ function TotalsMenu() {
     (state: AppStore) => state.ui.uiEditEventTotal
   );
 
-  const [toastId, setToastId] = useState(useRef(null));
   const [eventTotalInput, setEventTotalInput] = useState(defaultEventTotals);
   const [error, setError] = useState(false);
 
@@ -71,16 +69,6 @@ function TotalsMenu() {
   }, [storeEventTotal]);
 
   useEffect(() => {
-    dismissToast(toastId);
-    if (error && !storeUiEditEventTotal) {
-      setToastId(
-        errorToast(
-          toastId,
-          "Invalid total price formatting. For example, only provide prices such as: 10.99"
-        )
-      );
-    }
-
     if (!didMountOnce && !storeUiEditEventTotal && !error) {
       dispatch(
         editEventTotal(
@@ -109,7 +97,9 @@ function TotalsMenu() {
       <div className="totalRow">
         <h3 className="totalText">Total</h3>
         {!storeUiEditEventTotal ? (
-          <h3 className="totalText">${storeEventTotal}</h3>
+          <h3 className={`${error ? "errorText" : ""} totalText `}>
+            ${storeEventTotal}
+          </h3>
         ) : (
           <input
             type="text"

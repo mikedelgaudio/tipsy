@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import { warnToast } from "../../components/shared/toasts/toast";
+import { dismissToast, warnToast } from "../../components/shared/toasts/toast";
 import { CalculationState, Item } from "../../models/custom-models";
 import { currencyToStr } from "../../utilities/sanitize";
 
@@ -11,6 +10,7 @@ import { currencyToStr } from "../../utilities/sanitize";
  */
 export const calculate = (data: CalculationState) => {
   const tempState = { ...data };
+  dismissToast();
 
   // Reset values
   tempState.eventSubtotalFloat = 0.0;
@@ -48,7 +48,7 @@ export const calculate = (data: CalculationState) => {
     tempState.eventSubtotalFloat + tempState.eventTipTaxTotalFloat !==
       tempState.eventTotalFloat
   ) {
-    warnToast(useRef(null), "Check your values, the totals do not add up!");
+    warnToast("Check your values, the totals do not add up!");
     return data;
   }
 

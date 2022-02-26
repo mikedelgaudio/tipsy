@@ -17,7 +17,6 @@ import {
   sanitizeCurrency,
 } from "../../../../../utilities/sanitize";
 import DeleteBtn from "../../../../shared/buttons/DeleteBtn";
-import { dismissToast, errorToast } from "../../../../shared/toasts/toast";
 
 const defaultItem: Item = {
   id: "",
@@ -43,7 +42,6 @@ function ItemRow({ itemId, editing }: any) {
     dispatch(recalculateEvent());
   };
 
-  const [toastId, setToastId] = useState(useRef(null));
   const [itemInput, setItemsInput] = useState(defaultItem);
   const [error, setError] = useState(false);
 
@@ -83,17 +81,6 @@ function ItemRow({ itemId, editing }: any) {
   }, [storeItemData]);
 
   useEffect(() => {
-    // highlight item in red?
-    dismissToast(toastId);
-    if (error && !editing) {
-      setToastId(
-        errorToast(
-          toastId,
-          `Invalid price formatting for ${itemInput?.name}. Format prices such as: 10.99`
-        )
-      );
-    }
-
     if (!didMountOnce && !editing) {
       // Check if price or name changed
       // bad smell?
@@ -123,7 +110,9 @@ function ItemRow({ itemId, editing }: any) {
             <div className="personItemDetailsContainer">
               <span className="personItemName">{storeItemData?.name}</span>
             </div>
-            <span className="personItemPrice">${storeItemData?.price}</span>
+            <span className={`${error ? "errorText" : ""} personItemPrice `}>
+              ${storeItemData?.price}
+            </span>
           </>
         ) : (
           <>

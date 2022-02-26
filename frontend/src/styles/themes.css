@@ -5,6 +5,7 @@
   --brand-alt-light: hsl(174, 36%, 54%);
   --brand-off-light: hsl(206, 6%, 44%);
   --background-light: hsl(0, 0%, 96%);
+  --error-light: hsl(0, 95%, 54%);
 
   /* dark */
   --brand-dark: hsl(174, 36%, 44%);
@@ -12,6 +13,7 @@
   --brand-alt-dark: hsl(174, 36%, 54%);
   --brand-off-dark: hsl(206, 6%, 44%);
   --background-dark: hsl(0, 0%, 100%);
+  --error-dark: hsl(0, 80%, 42%);
 }
 
 :root {
@@ -23,6 +25,7 @@
   --brand-off: var(--brand-off-light);
   --brand-alt: var(--brand-alt-light);
   --background: var(--background-light);
+  --error: var(--error-light);
 }
 
 /* @media (prefers-color-scheme: dark) { */
