@@ -24,15 +24,6 @@ button:disabled {
   color: var(--brand-x);
 }
 
-.btn-icon-light {
-  padding: 0.5em;
-  border-radius: var(--global-radius);
-}
-
-.btn-icon-light:hover {
-  background-color: var(--brand-off);
-}
-
 .icons {
   width: 20px;
   fill: var(--brand-off);

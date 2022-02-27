@@ -52,10 +52,12 @@ function ItemRow({ itemId, editing }: any) {
   const [error, setError] = useState(false);
 
   const itemInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const attributeIndex = 1;
+    const attributeIndex = 2;
     const fieldName = e.target.attributes[attributeIndex].textContent;
+    console.log(e.target, fieldName);
     switch (fieldName) {
       case "NAME":
+        console.log(e.target.value);
         setItemsInput({
           ...itemInput,
           name: e.target.value,

@@ -31,15 +31,16 @@ The best friend group payment calculator web app.
 - [x] when error trigger a CSS class to highlight the line item rather than toast
 - [x] Remove UI State for local useState to save dispatch steps
 - [x] Migrate all icons to React SVG components and use new CSS classes to colorize
+- [x] Ensure math for irrational decimals rounds up (RESOLVED BY num.toFixed())
 
 ### Next steps
 
 - [ ] Handle scenario where adding food items triggers toast too many times
-- [ ] Ensure input fields are a11y safe and in a form
-- [ ] Ensure math for irrational decimals rounds up
+- [ ] Protect names from bad string input
 
 ### Future ideas
 
+- [ ] Ensure input fields are a11y safe and in a form
 - [ ] Add undo functionality
 - [ ] Refactor CSS into CSS Modules
 - [ ] Icons need various colors / new color scheme
@@ -49,5 +50,5 @@ The best friend group payment calculator web app.
 - [ ] Ability to split an item with a person
 - [ ] Ability to share a link for 1 week
 - [ ] Ensure wording between delete/remove is consistent UX
-- [ ] Refactor how state is updated?
+- [ ] Refactor how state is updated, is recalculate a side effect?
 - [ ] Create docker build and push GitHub Action to deploy alpha site

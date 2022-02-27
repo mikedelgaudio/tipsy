@@ -28,9 +28,9 @@ function SharingRow({ editing, setEditing }: any) {
           iconClassName="icon-light icon-xl"
         />
       )}
-      <button className="btn-icon-light">
+      {/* <button className="btn-icon-light">
         <ShareSquareIcon className="icons icon-light icon-xl" />
-      </button>
+      </button> */}
       <button
         className="btn-icon-light"
         onClick={() => dispatch(addPerson())}

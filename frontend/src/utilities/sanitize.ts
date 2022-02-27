@@ -1,10 +1,11 @@
 import { SanitizedCurrency } from "../models/custom-models";
 
 const toFixed = (num: number, fixed: number): string => {
-  const re = new RegExp("^-?\\d+(?:.\\d{0," + (fixed || -1) + "})?");
-  const match = num.toString().match(re);
-  if (!match || match[0] === "0") return "0.00";
-  return match[0];
+  // const re = new RegExp("^-?\\d+(?:.\\d{0," + (fixed || -1) + "})?");
+  // const match = num.toString().match(re);
+  // if (!match || match[0] === "0") return "0.00";
+  // return match[0];
+  return num.toFixed(fixed);
 };
 
 const validCurrency = (input: string): boolean => {
