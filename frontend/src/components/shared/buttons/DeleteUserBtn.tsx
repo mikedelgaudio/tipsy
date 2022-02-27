@@ -8,7 +8,6 @@ function DeleteUserBtn({
 }: any) {
   return (
     <button
-      type="button"
       onClick={() => clickSideEffect()}
       title={ariaTitle}
       disabled={isDisabled}

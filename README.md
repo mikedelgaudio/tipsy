@@ -36,6 +36,7 @@ The best friend group payment calculator web app.
 
 - [ ] Handle scenario where adding food items triggers toast too many times
 - [ ] Ensure input fields are a11y safe and in a form
+- [ ] Ensure math for irrational decimals rounds up
 
 ### Future ideas
 
