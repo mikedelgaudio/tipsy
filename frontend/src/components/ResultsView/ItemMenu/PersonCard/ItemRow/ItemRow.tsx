@@ -36,6 +36,12 @@ function ItemRow({ itemId, editing }: any) {
     return state.calculation.items.find((item: Item) => item.id === itemId);
   });
 
+  const storeItemIndex = useSelector((state: AppStore) => {
+    return (
+      state.calculation.items.findIndex((item: Item) => item.id === itemId) + 1
+    );
+  });
+
   // Dispatchers
   const dispatchRemoveItem = () => {
     dispatch(removeItem(itemId));
@@ -108,29 +114,41 @@ function ItemRow({ itemId, editing }: any) {
         {!editing ? (
           <>
             <div className="personItemDetailsContainer">
-              <span className="personItemName">{storeItemData?.name}</span>
+              <p className="personItemName">{storeItemData?.name}</p>
             </div>
-            <span className={`${error ? "errorText" : ""} personItemPrice `}>
+            <p className={`${error ? "errorText" : ""} personItemPrice `}>
               ${storeItemData?.price}
-            </span>
+            </p>
           </>
         ) : (
           <>
             <div className="personItemDetailsContainer">
-              <input
-                type="text"
-                field-name="NAME"
-                onChange={itemInputHandler}
-                value={itemInput.name || ""}
-              />
+              <div className="inputWrapper">
+                <label htmlFor={`itemNameInput-${itemId}`}>
+                  Item {storeItemIndex} Name
+                </label>
+                <input
+                  id={`itemNameInput-${itemId}`}
+                  type="text"
+                  field-name="NAME"
+                  onChange={itemInputHandler}
+                  value={itemInput.name || ""}
+                />
+              </div>
             </div>
 
-            <input
-              type="text"
-              field-name="PRICE"
-              onChange={itemInputHandler}
-              value={itemInput.price || ""}
-            />
+            <div className="inputWrapper">
+              <label htmlFor={`itemPriceInput-${itemId}`}>
+                Item {storeItemIndex} Price
+              </label>
+              <input
+                id={`itemPriceInput-${itemId}`}
+                type="text"
+                field-name="PRICE"
+                onChange={itemInputHandler}
+                value={itemInput.price || ""}
+              />
+            </div>
           </>
         )}
         <div className="personItemOptionRow">

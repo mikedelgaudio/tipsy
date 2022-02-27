@@ -81,12 +81,12 @@ function TotalsMenu() {
       <div className="totalsBreakdownWrapper">
         <ul className="totalsBreakdownList">
           <li className="totalBreakdownItem">
-            <span className="totalBreakdownDesc">Total Tip and Tax</span>
+            <p className="totalBreakdownDesc">Total Tip and Tax</p>
           </li>
         </ul>
         <ul className="totalsBreakdownList">
           <li className="totalBreakdownItem">
-            <span>${storeEventTipTaxTotal}</span>
+            <p>${storeEventTipTaxTotal}</p>
           </li>
         </ul>
       </div>

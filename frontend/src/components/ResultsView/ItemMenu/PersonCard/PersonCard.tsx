@@ -24,6 +24,14 @@ function PersonCard({ personId }: any) {
     });
   });
 
+  const storePersonIndex = useSelector((state: AppStore) => {
+    return (
+      state.calculation.persons.findIndex(
+        (person: Person) => person.id === personId
+      ) + 1
+    );
+  });
+
   const [editing, setEditing] = useState(false);
   const [personNameInput, setPersonNameInput] = useState(storePersonData?.name);
 
@@ -50,11 +58,17 @@ function PersonCard({ personId }: any) {
         {!editing ? (
           <h2 className="personName">{storePersonData?.name}</h2>
         ) : (
-          <input
-            type="text"
-            onChange={personNameInputHandler}
-            value={personNameInput || ""}
-          />
+          <div className="inputWrapper">
+            <label htmlFor={`personNameInput-${personId}`}>
+              Person {storePersonIndex} Name
+            </label>
+            <input
+              id={`personNameInput-${personId}`}
+              type="text"
+              onChange={personNameInputHandler}
+              value={personNameInput || ""}
+            />
+          </div>
         )}
         <PersonActions
           personId={personId}
@@ -73,18 +87,18 @@ function PersonCard({ personId }: any) {
       <div className="subtotalWrapper">
         <ul className="subtotalList">
           <li className="subtotalItem">
-            <span className="subtotalTitle">Tip and Tax</span>
+            <p className="subtotalTitle">Tip and Tax</p>
           </li>
           <li className="subtotalItem">
-            <span className="subtotalTitle">Total Due</span>
+            <p className="subtotalTitle">Total Due</p>
           </li>
         </ul>
         <ul className="subtotalList">
           <li className="subtotalItem">
-            <span className="subtotalPrice">${storePersonData?.tipAndTax}</span>
+            <p className="subtotalPrice">${storePersonData?.tipAndTax}</p>
           </li>
           <li className="subtotalItem">
-            <span className="subtotalPrice">${storePersonData?.totalDue}</span>
+            <p className="subtotalPrice">${storePersonData?.totalDue}</p>
           </li>
         </ul>
       </div>
