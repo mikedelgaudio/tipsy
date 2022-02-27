@@ -19,3 +19,10 @@ input {
   padding: 0.25em 1em;
   border: 2px solid var(--brand-off);
 }
+
+a {
+  color: var(--brand-x);
+}
+a:hover {
+  color: var(--brand-off);
+}

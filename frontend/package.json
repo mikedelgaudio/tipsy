@@ -1,6 +1,6 @@
 {
   "name": "tipsy",
-  "version": "alpha-0.1.0",
+  "version": "0.1.0-alpha",
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
