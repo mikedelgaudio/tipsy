@@ -31,7 +31,6 @@ button:disabled {
   transition: opacity 0.2s ease-in-out;
 }
 .icons:hover {
-  fill: var(--brand);
   opacity: 0.75;
 }
 
@@ -39,7 +38,6 @@ button:disabled {
   fill: var(--brand-x);
 }
 .icon-light:hover {
-  opacity: 0.75;
   fill: var(--brand-x);
 }
 
