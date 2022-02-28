@@ -1,16 +1,22 @@
 import "./Navbar.css";
 import { APP_VERSION } from "../../utilities/variables";
+import ExternalLinkIcon from "../shared/icons/ExternalLinkIcon";
 
 function Navbar() {
   return (
     <nav>
       <div className="nav-container">
         <div className="nav-wrapper">
-          <h1>Tipsy</h1>
+          <a className="nav-logo" href="/">
+            Tipsy
+          </a>
           <div>
             <p>{APP_VERSION}</p>
             <a href="https://github.com/mikedelgaudio/tipsy" target="_blank">
-              @mikedelgaudio
+              GitHub
+              <span>
+                <ExternalLinkIcon className="icons icon-light icon-sm" />
+              </span>
             </a>
           </div>
         </div>

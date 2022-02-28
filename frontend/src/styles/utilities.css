@@ -7,7 +7,6 @@
   display: flex;
   flex-flow: column wrap;
   gap: 0.25em;
-  /* max-width: 90%; */
 }
 
 .inputWrapper label {
@@ -24,7 +23,10 @@ input {
 
 a {
   color: var(--brand-x);
+  opacity: 1;
+  text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
 }
 a:hover {
-  color: var(--brand-off);
+  opacity: 0.75;
 }

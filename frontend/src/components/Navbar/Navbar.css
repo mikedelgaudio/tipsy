@@ -17,6 +17,14 @@ nav {
   color: var(--brand-x);
 }
 
-.nav-wrapper h1 {
+.nav-logo {
   font-size: clamp(2em, 2.5em + 1vw, 3em);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav-wrapper a {
+  display: flex;
+  gap: 0.35em;
+  align-items: center;
 }

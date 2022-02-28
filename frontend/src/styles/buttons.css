@@ -5,7 +5,7 @@ button {
   text-decoration: none;
   cursor: pointer;
   background: transparent;
-  transition: color, fill, border, background-color 0.2s ease-in-out;
+  transition: color, fill, opacity, border, background-color 0.2s ease-in-out;
 }
 
 button:disabled {
@@ -27,16 +27,24 @@ button:disabled {
 .icons {
   width: 20px;
   fill: var(--brand-off);
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
 }
 .icons:hover {
   fill: var(--brand);
+  opacity: 0.75;
 }
 
 .icon-light {
   fill: var(--brand-x);
 }
 .icon-light:hover {
-  fill: var(--brand-alt);
+  opacity: 0.75;
+  fill: var(--brand-x);
+}
+
+.icon-sm {
+  width: 12px;
 }
 
 .icon-xl {
