@@ -111,16 +111,11 @@ function ItemRow({ itemId, editing }: any) {
   }, [editing]);
 
   return (
-    <li className="personItem" key={itemId}>
+    <li className={`personItem ${editing ? "editing" : ""} `} key={itemId}>
       <div className="personItemInfoRow">
         {!editing ? (
           <>
-            <div className="personItemDetailsContainer">
-              <p className="personItemName">{storeItemData?.name}</p>
-            </div>
-            <p className={`${error ? "errorText" : ""} personItemPrice `}>
-              ${storeItemData?.price}
-            </p>
+            <p className="personItemName">{storeItemData?.name}</p>
           </>
         ) : (
           <>
@@ -138,28 +133,33 @@ function ItemRow({ itemId, editing }: any) {
                 />
               </div>
             </div>
-
-            <div className="inputWrapper">
-              <label htmlFor={`itemPriceInput-${itemId}`}>
-                Item {storeItemIndex} Price
-              </label>
-              <input
-                id={`itemPriceInput-${itemId}`}
-                type="text"
-                field-name="PRICE"
-                onChange={itemInputHandler}
-                value={itemInput.price || ""}
-              />
-            </div>
           </>
         )}
-        <div className="personItemOptionRow">
-          {/* <button>Split?</button> */}
-          <DeleteBtn
-            clickSideEffect={dispatchRemoveItem}
-            ariaTitle={`Delete ${storeItemData?.name}`}
-          />
-        </div>
+        {!editing ? (
+          <p className={`${error ? "errorText" : ""} personItemPrice `}>
+            ${storeItemData?.price}
+          </p>
+        ) : (
+          <div className="inputWrapper">
+            <label htmlFor={`itemPriceInput-${itemId}`}>
+              Item {storeItemIndex} Price
+            </label>
+            <input
+              id={`itemPriceInput-${itemId}`}
+              type="text"
+              field-name="PRICE"
+              onChange={itemInputHandler}
+              value={itemInput.price || ""}
+            />
+          </div>
+        )}
+      </div>
+      <div className="personItemDetailsContainer">
+        {/* <button>Split?</button> */}
+        <DeleteBtn
+          clickSideEffect={dispatchRemoveItem}
+          ariaTitle={`Delete ${storeItemData?.name}`}
+        />
       </div>
     </li>
   );

@@ -2,7 +2,7 @@
   border-bottom: 1px solid var(--brand-off);
   padding: 1em 2em;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column wrap;
   gap: 1.25em;
   color: var(--brand-off);
 }
@@ -35,21 +35,43 @@
 }
 
 .personItem {
-  display: grid;
-  padding: 0.3em 0;
-}
-
-.personItemInfoRow {
   display: flex;
-  padding: 0.3em 0;
-
-  gap: 1em;
   justify-content: space-between;
   align-items: center;
+  padding: 0.75em 0;
+  gap: 2em;
+  border-bottom: 1px solid rgba(148, 148, 148, 0.406);
+}
+
+.personItem:last-child {
+  border-bottom: none;
+}
+
+.personItem.editing {
+  flex-flow: row;
+  justify-content: start;
+  align-items: center;
+}
+
+@media (min-width: 576px) {
+  .personItem.editing {
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+  }
 }
 
 .personItemDetailsContainer {
   display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.personItemInfoRow {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
   width: 100%;
   gap: 1em;
 }

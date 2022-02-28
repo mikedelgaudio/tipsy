@@ -1,9 +1,9 @@
 .sharingRow {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   flex-flow: row wrap;
   align-items: center;
-  gap: 2em;
+  gap: 0.5em 1.5em;
 }
 
 .sharingRow .btn-danger {

@@ -1,13 +1,12 @@
 .personActions {
   display: flex;
   gap: 1em;
-  flex-direction: column;
+  flex-flow: column wrap;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 376px) {
   .personActions {
-    display: flex;
-    gap: 2em;
-    flex-direction: row;
+    gap: 1.25em;
+    flex-flow: row;
   }
 }
