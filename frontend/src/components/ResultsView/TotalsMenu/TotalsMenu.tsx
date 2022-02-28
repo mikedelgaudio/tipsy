@@ -92,28 +92,30 @@ function TotalsMenu() {
       </div>
       <div className="totalRow">
         <h3 className="totalText">Total</h3>
-        {!editing ? (
-          <h3 className={`${error ? "errorText" : ""} totalText `}>
-            ${storeEventTotal}
-          </h3>
-        ) : (
-          <input
-            type="text"
-            onChange={eventTotalInputHandler}
-            value={eventTotalInput.eventTotal || ""}
-          />
-        )}
-        {!editing ? (
-          <EditBtn
-            clickSideEffect={() => setEditing(true)}
-            ariaTitle={"Edit event total"}
-          />
-        ) : (
-          <CloseBtn
-            clickSideEffect={() => setEditing(false)}
-            ariaTitle={"Stop editing event total"}
-          />
-        )}
+        <div className="totalInputWrapper">
+          {!editing ? (
+            <h3 className={`${error ? "errorText" : ""} totalText `}>
+              ${storeEventTotal}
+            </h3>
+          ) : (
+            <input
+              type="text"
+              onChange={eventTotalInputHandler}
+              value={eventTotalInput.eventTotal || ""}
+            />
+          )}
+          {!editing ? (
+            <EditBtn
+              clickSideEffect={() => setEditing(true)}
+              ariaTitle={"Edit event total"}
+            />
+          ) : (
+            <CloseBtn
+              clickSideEffect={() => setEditing(false)}
+              ariaTitle={"Stop editing event total"}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

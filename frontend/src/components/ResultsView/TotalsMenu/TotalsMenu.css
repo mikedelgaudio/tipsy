@@ -13,7 +13,7 @@
   display: flex;
   gap: 1em;
   justify-content: center;
-  flex-flow: row wrap;
+  flex-flow: row;
 }
 
 .totalText {
@@ -42,4 +42,11 @@
 
 .totalBreakdownItem {
   padding: 0.15em 0;
+}
+
+.totalInputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  max-width: 60%;
 }

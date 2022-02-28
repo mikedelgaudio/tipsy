@@ -14,7 +14,7 @@
   background-color: var(--brand);
   color: var(--brand-x);
   border-bottom: 2px solid var(--brand-off);
-  gap: 2em;
+  gap: 1em;
 }
 
 .itemHeaderActions {
