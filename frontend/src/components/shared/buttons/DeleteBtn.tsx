@@ -11,7 +11,6 @@ function DeleteBtn({
     
       onClick={() => clickSideEffect()}
       title={ariaTitle}
-
       disabled={isDisabled}>
       <TrashIcon className={`icons ${className ? className : ""}`} />
     </button>
