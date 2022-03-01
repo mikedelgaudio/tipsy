@@ -1,4 +1,8 @@
 import TrashIcon from "../icons/TrashIcon";
+const x = () => {
+  console.log("hello");
+  return "helllo";
+};
 
 function DeleteBtn({
   clickSideEffect,
@@ -10,8 +14,7 @@ function DeleteBtn({
     <button
       onClick={() => clickSideEffect()}
       title={ariaTitle}
-      disabled={isDisabled}
-    >
+      disabled={isDisabled}>
       <TrashIcon className={`icons ${className ? className : ""}`} />
     </button>
   );
