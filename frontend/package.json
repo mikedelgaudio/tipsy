@@ -7,12 +7,12 @@
     }
   },
   "lint-staged": {
-    "**/*.{ts,tsx}": [
+    "**/*.tsx": [
       "prettier --write",
       "eslint --fix",
       "git add"
     ],
-    "**/*.{html,css}": [
+    "**/*.css": [
       "prettier --write",
       "git add"
     ]
