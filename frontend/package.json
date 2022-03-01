@@ -5,8 +5,8 @@
     "dev": "vite --host",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "lint": "eslint .",
-    "lint-and-fix": "eslint . --fix"
+    "lint": "eslint --ext .ts,.tsx .",
+    "lint:fix": "eslint --fix --ext .ts,.tsx ."
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
