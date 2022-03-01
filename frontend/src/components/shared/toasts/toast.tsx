@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 
 // Use this for the error boundary
-export const errorToast = (msg: string = "") => {
+export const errorToast = (msg = "") => {
   toast.error(msg || "Unexpected error occurred.", {
     position: "top-right",
     autoClose: false,
@@ -13,7 +13,7 @@ export const errorToast = (msg: string = "") => {
   });
 };
 
-export const warnToast = (msg: string = "") => {
+export const warnToast = (msg = "") => {
   toast.warn(msg || "Unexpected warning occurred.", {
     position: "top-right",
     autoClose: false,

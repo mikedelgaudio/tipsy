@@ -2,7 +2,6 @@ import * as actionTypes from "./calculation-types";
 import { v4 as uuidv4 } from "uuid";
 import { calculate } from "./math";
 import { CalculationState } from "../../models/custom-models";
-import { Action } from "@reduxjs/toolkit";
 
 const INITIAL_STATE: CalculationState = {
   persons: [
@@ -83,17 +82,17 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
         return {
           ...state,
           persons: state.persons.filter(
-            (person) => person.id !== action.payload.id
+            person => person.id !== action.payload.id,
           ),
           items: state.items.filter(
-            (item) => item.personId !== action.payload.id
+            item => item.personId !== action.payload.id,
           ),
         };
     }
     case actionTypes.EDIT_PERSON_NAME: {
       return {
         ...state,
-        persons: state.persons.map((person) => {
+        persons: state.persons.map(person => {
           if (person.id === action.payload.id) {
             return {
               ...person,
@@ -122,13 +121,13 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
     case actionTypes.REMOVE_ITEM: {
       return {
         ...state,
-        items: state.items.filter((item) => item.id !== action.payload.id),
+        items: state.items.filter(item => item.id !== action.payload.id),
       };
     }
     case actionTypes.EDIT_ITEM_NAME: {
       return {
         ...state,
-        items: state.items.map((item) => {
+        items: state.items.map(item => {
           if (item.id === action.payload.id) {
             return {
               ...item,
@@ -141,7 +140,7 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
     case actionTypes.EDIT_ITEM_QTY: {
       return {
         ...state,
-        items: state.items.map((item) => {
+        items: state.items.map(item => {
           if (item.id === action.payload.id) {
             return { ...item, qty: +action.payload.qty };
           } else return item;
@@ -151,7 +150,7 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
     case actionTypes.EDIT_ITEM_PRICE: {
       return {
         ...state,
-        items: state.items.map((item) => {
+        items: state.items.map(item => {
           if (item.id === action.payload.id) {
             return {
               ...item,

@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { didMount } from "../../../../../hooks/didMount";
 import {
@@ -54,16 +54,15 @@ function ItemRow({ itemId, editing }: any) {
   const itemInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const attributeIndex = 2;
     const fieldName = e.target.attributes[attributeIndex].textContent;
-    console.log(e.target, fieldName);
     switch (fieldName) {
-      case "NAME":
-        console.log(e.target.value);
+      case "NAME": {
         setItemsInput({
           ...itemInput,
           name: e.target.value,
         });
         break;
-      case "PRICE":
+      }
+      case "PRICE": {
         const input = removeDollarOrComma(e.target.value);
         const parsedPriceFloat: SanitizedCurrency = sanitizeCurrency(input);
 
@@ -79,8 +78,10 @@ function ItemRow({ itemId, editing }: any) {
           priceFloat: parsedPriceFloat.parsed,
         });
         break;
-      default:
+      }
+      default: {
         break;
+      }
     }
   };
 
@@ -97,8 +98,8 @@ function ItemRow({ itemId, editing }: any) {
           editItemPrice(
             itemId,
             removeDollarOrComma(itemInput.price),
-            itemInput.priceFloat
-          )
+            itemInput.priceFloat,
+          ),
         );
         dispatch(recalculateEvent());
       }

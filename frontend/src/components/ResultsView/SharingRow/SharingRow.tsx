@@ -1,7 +1,6 @@
 import "./SharingRow.css";
 import EditBtn from "../../shared/buttons/EditBtn";
 import CloseBtn from "../../shared/buttons/CloseBtn";
-import ShareSquareIcon from "../../shared/icons/ShareSquareIcon";
 import { useDispatch } from "react-redux";
 import {
   addPerson,
@@ -26,9 +25,6 @@ function SharingRow({ editing, setEditing }: any) {
           iconClassName="icon-light icon-xl"
         />
       )}
-      {/* <button className="btn-icon-light">
-        <ShareSquareIcon className="icons icon-light icon-xl" />
-      </button> */}
       <button onClick={() => dispatch(addPerson())} aria-label="Add person">
         <AddPersonIcon className="icons icon-xl icon-light" />
       </button>

@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { didMount } from "../../../hooks/didMount";
 import { AppStore, SanitizedCurrency } from "../../../models/custom-models";
@@ -24,15 +24,15 @@ function TotalsMenu() {
   const dispatch = useDispatch();
 
   const storeEventTotal = useSelector(
-    (state: AppStore) => state.calculation.eventTotal
+    (state: AppStore) => state.calculation.eventTotal,
   );
 
   const storeEventTotalFloat = useSelector(
-    (state: AppStore) => state.calculation.eventTotalFloat
+    (state: AppStore) => state.calculation.eventTotalFloat,
   );
 
   const storeEventTipTaxTotal = useSelector(
-    (state: AppStore) => state.calculation.eventTipTaxTotal
+    (state: AppStore) => state.calculation.eventTipTaxTotal,
   );
 
   const [editing, setEditing] = useState(false);
@@ -69,8 +69,8 @@ function TotalsMenu() {
       dispatch(
         editEventTotal(
           removeDollarOrComma(eventTotalInput.eventTotal),
-          eventTotalInput.eventTotalFloat
-        )
+          eventTotalInput.eventTotalFloat,
+        ),
       );
       dispatch(recalculateEvent());
     }
