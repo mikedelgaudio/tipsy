@@ -2,6 +2,7 @@ import * as actionTypes from "./calculation-types";
 import { v4 as uuidv4 } from "uuid";
 import { calculate } from "./math";
 import { CalculationState } from "../../models/custom-models";
+import { Action } from "@reduxjs/toolkit";
 
 const INITIAL_STATE: CalculationState = {
   persons: [
@@ -45,7 +46,7 @@ const INITIAL_STATE: CalculationState = {
 
 const calculationReducer = (state = INITIAL_STATE, action: any) => {
   switch (action.type) {
-    case actionTypes.ADD_PERSON:
+    case actionTypes.ADD_PERSON: {
       const seededPersonId = uuidv4();
       return {
         ...state,
@@ -74,7 +75,8 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
           },
         ],
       };
-    case actionTypes.REMOVE_PERSON:
+    }
+    case actionTypes.REMOVE_PERSON: {
       if (state.persons.length < 2) {
         return state;
       } else
@@ -87,7 +89,8 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
             (item) => item.personId !== action.payload.id
           ),
         };
-    case actionTypes.EDIT_PERSON_NAME:
+    }
+    case actionTypes.EDIT_PERSON_NAME: {
       return {
         ...state,
         persons: state.persons.map((person) => {
@@ -99,7 +102,8 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
           } else return person;
         }),
       };
-    case actionTypes.ADD_ITEM:
+    }
+    case actionTypes.ADD_ITEM: {
       return {
         ...state,
         items: [
@@ -114,12 +118,14 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
           },
         ],
       };
-    case actionTypes.REMOVE_ITEM:
+    }
+    case actionTypes.REMOVE_ITEM: {
       return {
         ...state,
         items: state.items.filter((item) => item.id !== action.payload.id),
       };
-    case actionTypes.EDIT_ITEM_NAME:
+    }
+    case actionTypes.EDIT_ITEM_NAME: {
       return {
         ...state,
         items: state.items.map((item) => {
@@ -131,7 +137,8 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
           } else return item;
         }),
       };
-    case actionTypes.EDIT_ITEM_QTY:
+    }
+    case actionTypes.EDIT_ITEM_QTY: {
       return {
         ...state,
         items: state.items.map((item) => {
@@ -140,7 +147,8 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
           } else return item;
         }),
       };
-    case actionTypes.EDIT_ITEM_PRICE:
+    }
+    case actionTypes.EDIT_ITEM_PRICE: {
       return {
         ...state,
         items: state.items.map((item) => {
@@ -153,23 +161,29 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
           } else return item;
         }),
       };
-    case actionTypes.EDIT_EVENT_TITLE:
+    }
+    case actionTypes.EDIT_EVENT_TITLE: {
       return {
         ...state,
         eventTitle: action.payload.title,
       };
-    case actionTypes.EDIT_EVENT_TOTAL:
+    }
+    case actionTypes.EDIT_EVENT_TOTAL: {
       return {
         ...state,
         eventTotal: action.payload.total,
         eventTotalFloat: action.payload.totalFloat,
       };
-    case actionTypes.RESTART_EVENT:
+    }
+    case actionTypes.RESTART_EVENT: {
       return INITIAL_STATE;
-    case actionTypes.RECALCULATE_EVENT:
+    }
+    case actionTypes.RECALCULATE_EVENT: {
       return calculate(state);
-    default:
+    }
+    default: {
       return state;
+    }
   }
 };
 

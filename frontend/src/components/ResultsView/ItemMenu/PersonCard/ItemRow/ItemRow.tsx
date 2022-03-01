@@ -155,7 +155,6 @@ function ItemRow({ itemId, editing }: any) {
         )}
       </div>
       <div className="personItemDetailsContainer">
-        {/* <button>Split?</button> */}
         <DeleteBtn
           clickSideEffect={dispatchRemoveItem}
           ariaTitle={`Delete ${storeItemData?.name}`}
