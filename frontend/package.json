@@ -1,28 +1,13 @@
 {
   "name": "tipsy",
   "version": "0.1.0-alpha",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "**/*.tsx": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
-    ],
-    "**/*.css": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "lint": "eslint --ext .ts,.tsx .",
-    "lint:fix": "eslint --fix --ext .ts,.tsx ."
+    "lint:fix": "eslint --fix --ext .ts,.tsx .",
+    "prepare": "cd .. && husky install frontend/.husky"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
@@ -48,5 +33,9 @@
     "redux-devtools": "^3.7.0",
     "typescript": "^4.3.2",
     "vite": "^2.6.4"
+  },
+  "lint-staged": {
+    "*.{html,css}": "prettier --write",
+    "*.{js,jsx,ts,tsx}":["eslint --cache --fix", "prettier --write"]
   }
 }
