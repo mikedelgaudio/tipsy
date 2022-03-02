@@ -14,7 +14,7 @@ function PersonCard({ personId }: any) {
   // Store Selectors
   const storePersonData = useSelector((state: AppStore) => {
     return state.calculation.persons.find(
-      (person: Person) => person.id === personId
+      (person: Person) => person.id === personId,
     );
   });
 
@@ -27,7 +27,7 @@ function PersonCard({ personId }: any) {
   const storePersonIndex = useSelector((state: AppStore) => {
     return (
       state.calculation.persons.findIndex(
-        (person: Person) => person.id === personId
+        (person: Person) => person.id === personId,
       ) + 1
     );
   });

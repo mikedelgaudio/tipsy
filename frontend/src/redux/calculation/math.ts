@@ -16,15 +16,15 @@ export const calculate = (data: CalculationState) => {
   tempState.eventSubtotalFloat = 0.0;
   tempState.eventTipTaxTotalFloat = 0.0;
 
-  tempState.persons.forEach((person) => {
+  tempState.persons.forEach(person => {
     let subtotalBeforeTip = 0;
 
     // find items
     const personItems = tempState.items.filter(
-      (item: Item) => person.id === item.personId
+      (item: Item) => person.id === item.personId,
     );
 
-    personItems.forEach((item) => {
+    personItems.forEach(item => {
       subtotalBeforeTip += item.priceFloat;
       item.price = currencyToStr(item.priceFloat);
     });
@@ -54,7 +54,7 @@ export const calculate = (data: CalculationState) => {
 
   // TODO:
   // If the state is the same, maybe break out early to save time?
-  tempState.persons.forEach((person) => {
+  tempState.persons.forEach(person => {
     const tipDollars =
       (person.subtotalFloat / tempState.eventSubtotalFloat) *
       tempState.eventTipTaxTotalFloat;

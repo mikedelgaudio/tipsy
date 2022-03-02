@@ -8,11 +8,10 @@ function DeleteBtn({
 }: any) {
   return (
     <button
-    
       onClick={() => clickSideEffect()}
       title={ariaTitle}
-      
-      disabled={isDisabled}>
+      disabled={isDisabled}
+    >
       <TrashIcon className={`icons ${className ? className : ""}`} />
     </button>
   );

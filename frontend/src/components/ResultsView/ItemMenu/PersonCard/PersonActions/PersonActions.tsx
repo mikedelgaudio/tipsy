@@ -16,7 +16,7 @@ function PersonActions({ personId, editing, setEditing }: any) {
 
   // Store Selectors
   const personsLength = useSelector(
-    (state: AppStore) => state.calculation.persons.length
+    (state: AppStore) => state.calculation.persons.length,
   );
 
   // Dispatchers

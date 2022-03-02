@@ -18,7 +18,7 @@ export const removePerson = (personId: string) => {
 
 export const editPersonName = (
   personId: string,
-  newName: string | undefined
+  newName: string | undefined,
 ) => {
   return {
     type: actionTypes.EDIT_PERSON_NAME,
@@ -72,7 +72,7 @@ export const editItemQty = (itemId: string, newQty: number) => {
 export const editItemPrice = (
   itemId: string,
   newPrice: string,
-  newPriceFloat: number
+  newPriceFloat: number,
 ) => {
   return {
     type: actionTypes.EDIT_ITEM_PRICE,

@@ -13,7 +13,7 @@ function ItemMenu() {
 
   // Store Selectors
   const storeEventTitle = useSelector(
-    (state: AppStore) => state.calculation.eventTitle
+    (state: AppStore) => state.calculation.eventTitle,
   );
 
   const personIds = useSelector((state: AppStore) => {
