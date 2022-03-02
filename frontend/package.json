@@ -7,7 +7,7 @@
     "serve": "vite preview",
     "lint": "eslint --ext .ts,.tsx .",
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
-    "prepare": "cd .. && husky install frontend/.husky"
+    "husky:prepare": "cd .. && husky install frontend/.husky"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",

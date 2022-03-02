@@ -8,8 +8,13 @@ The best friend group payment calculator web app.
 
 - `cd frontend`
 - `npm install`
+- `npm run husky:prepare`
 - `npm run dev`
 
+
+## Contributions
+
+All contributions must utilize and abide by the husky pre-commit hooks.
 ## Roadmap
 
 ### Completed
