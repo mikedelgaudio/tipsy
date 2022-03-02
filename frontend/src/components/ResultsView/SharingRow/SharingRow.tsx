@@ -16,7 +16,7 @@ function SharingRow({ editing, setEditing }: any) {
         <EditBtn
           clickSideEffect={() => setEditing(true)}
           ariaTitle={"Edit event title"}
-          iconClassName="icon-light icon-xl"
+          iconClassName="icon-light"
         />
       ) : (
         <CloseBtn
@@ -28,9 +28,12 @@ function SharingRow({ editing, setEditing }: any) {
       <button onClick={() => dispatch(addPerson())} aria-label="Add person">
         <AddPersonIcon className="icons icon-xl icon-light" />
       </button>
-      <button className="btn-danger" onClick={() => dispatch(restartEvent())}>
-        Reset
-      </button>
+      <input
+        className="btn-danger"
+        type="reset"
+        onClick={() => dispatch(restartEvent())}
+        value="Reset"
+      />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 button {
   border: none;
-  padding: 0;
+  padding: 0.5em 0.75em;
   margin: 0;
   text-decoration: none;
   cursor: pointer;
@@ -28,7 +28,7 @@ button:disabled {
   width: 20px;
   fill: var(--brand-off);
   opacity: 1;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity, fill 0.2s ease-in-out;
 }
 .icons:hover {
   opacity: 0.75;
@@ -39,6 +39,10 @@ button:disabled {
 }
 .icon-light:hover {
   fill: var(--brand-x);
+}
+
+.icon-danger:hover {
+  fill: var(--error);
 }
 
 .icon-sm {

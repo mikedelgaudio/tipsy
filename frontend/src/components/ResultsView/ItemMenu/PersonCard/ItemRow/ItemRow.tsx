@@ -159,6 +159,7 @@ function ItemRow({ itemId, editing }: any) {
         <DeleteBtn
           clickSideEffect={dispatchRemoveItem}
           ariaTitle={`Delete ${storeItemData?.name}`}
+          iconClassName="icon-danger"
         />
       </div>
     </li>

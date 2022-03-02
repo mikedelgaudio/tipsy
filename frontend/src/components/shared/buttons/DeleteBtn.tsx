@@ -5,14 +5,16 @@ function DeleteBtn({
   ariaTitle,
   isDisabled,
   className = "",
+  iconClassName = "",
 }: any) {
   return (
     <button
       onClick={() => clickSideEffect()}
       title={ariaTitle}
       disabled={isDisabled}
+      className={`${className ? className : ""}`}
     >
-      <TrashIcon className={`icons ${className ? className : ""}`} />
+      <TrashIcon className={`icons ${iconClassName ? iconClassName : ""}`} />
     </button>
   );
 }

@@ -1,9 +1,15 @@
 .sharingRow {
   display: flex;
   justify-content: end;
-  flex-flow: row wrap;
+  flex-flow: column;
   align-items: center;
   gap: 0.5em 1.5em;
+}
+
+@media (min-width: 376px) {
+  .sharingRow {
+    flex-flow: row;
+  }
 }
 
 .sharingRow .btn-danger {

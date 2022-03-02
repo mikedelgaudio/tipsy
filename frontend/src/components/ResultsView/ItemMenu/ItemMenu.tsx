@@ -39,8 +39,8 @@ function ItemMenu() {
   }, [editing]);
 
   return (
-    <div className="itemView">
-      <div className="itemMenu">
+    <>
+      <form className="itemMenu">
         <div className="itemHeaderWrapper">
           {!editing ? (
             <h1 className="itemHeader">{eventTitleInput}</h1>
@@ -62,8 +62,8 @@ function ItemMenu() {
         {personIds.map((id: string) => {
           return <PersonCard key={id} personId={id} />;
         })}
-      </div>
-    </div>
+      </form>
+    </>
   );
 }
 
