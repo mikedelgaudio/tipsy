@@ -12,7 +12,6 @@ function DeleteBtn({
       title={ariaTitle}
       disabled={isDisabled}
     >
-      
       <TrashIcon className={`icons ${className ? className : ""}`} />
     </button>
   );
