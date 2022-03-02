@@ -40,5 +40,9 @@
       "eslint --cache --fix",
       "prettier --write"
     ]
+  },
+  "volta": {
+    "prettier": "2.5.1",
+    "node": "16.14.0"
   }
 }
