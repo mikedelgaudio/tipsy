@@ -6,11 +6,11 @@ import TotalsMenu from "./TotalsMenu/TotalsMenu";
 
 function ResultsView() {
   return (
-    <div className="results-view">
+    <form className="results-view">
       <ToastContainer />
       <ItemMenu />
       <TotalsMenu />
-    </div>
+    </form>
   );
 }
 
