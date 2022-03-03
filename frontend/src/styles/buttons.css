@@ -16,6 +16,8 @@ button:disabled {
 .btn {
   border-radius: 30px;
   font-weight: 600;
+  display: flex;
+  align-items: center;
 }
 
 .btn-primary {
@@ -65,10 +67,6 @@ button:disabled {
 }
 .icon-light:hover {
   fill: var(--brand-x);
-}
-
-.icon-danger:hover {
-  fill: var(--error);
 }
 
 .icon-sm {

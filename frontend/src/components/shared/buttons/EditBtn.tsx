@@ -8,6 +8,7 @@ function EditBtn({ clickSideEffect, ariaTitle, className = "" }: any) {
       title={ariaTitle}
     >
       <PencilIcon className="icons" />
+      <span className="btn-text">Edit</span>
     </button>
   );
 }

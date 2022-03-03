@@ -7,6 +7,7 @@ import {
   restartEvent,
 } from "../../../redux/calculation/calculation-actions";
 import AddPersonIcon from "../../shared/icons/AddPersonIcon";
+import AddPersonBtn from "../../shared/buttons/AddPersonBtn";
 
 function SharingRow({ editing, setEditing }: any) {
   const dispatch = useDispatch();
@@ -24,9 +25,11 @@ function SharingRow({ editing, setEditing }: any) {
           className="btn-success-dark"
         />
       )}
-      <button onClick={() => dispatch(addPerson())} aria-label="Add person">
-        <AddPersonIcon className="icons icon-xl icon-light" />
-      </button>
+      <AddPersonBtn
+        clickSideEffect={() => dispatch(addPerson())}
+        ariaTitle={"Add person"}
+        className="icon-xl icon-light"
+      />
       {/* <input
         className="btn-danger"
         type="reset"

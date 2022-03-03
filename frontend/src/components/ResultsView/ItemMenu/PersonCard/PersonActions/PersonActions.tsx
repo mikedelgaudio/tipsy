@@ -1,7 +1,7 @@
 import "./PersonActions.css";
 import {
   addItem,
-  removePerson,
+  deletePerson,
 } from "../../../../../redux/calculation/calculation-actions";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import EditBtn from "../../../../shared/buttons/EditBtn";
@@ -20,8 +20,8 @@ function PersonActions({ personId, editing, setEditing }: any) {
   );
 
   // Dispatchers
-  const dispatchRemovePerson = () => {
-    dispatch(removePerson(personId));
+  const dispatchDeletePerson = () => {
+    dispatch(deletePerson(personId));
   };
 
   const dispatchAddItem = () => {
@@ -49,7 +49,7 @@ function PersonActions({ personId, editing, setEditing }: any) {
       />
 
       <DeleteUserBtn
-        clickSideEffect={dispatchRemovePerson}
+        clickSideEffect={dispatchDeletePerson}
         ariaTitle={"Delete person"}
         isDisabled={personsLength < 2}
         className="icon-xl"

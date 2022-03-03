@@ -111,6 +111,7 @@ function TotalsMenu() {
             <EditBtn
               clickSideEffect={() => setEditing(true)}
               ariaTitle={"Edit event total"}
+              className="btn-primary-light"
             />
           ) : (
             <CloseBtn

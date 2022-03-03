@@ -1,3 +1,5 @@
+import CheckIcon from "../icons/CheckIcon";
+
 function CloseBtn({ clickSideEffect, ariaTitle, className = "" }: any) {
   return (
     <button
@@ -5,7 +7,8 @@ function CloseBtn({ clickSideEffect, ariaTitle, className = "" }: any) {
       onClick={() => clickSideEffect()}
       title={ariaTitle}
     >
-      Save
+      <CheckIcon className="icons" />
+      <span className="btn-text">Save</span>
     </button>
   );
 }

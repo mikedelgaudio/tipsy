@@ -75,7 +75,7 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
         ],
       };
     }
-    case actionTypes.REMOVE_PERSON: {
+    case actionTypes.DELETE_PERSON: {
       if (state.persons.length < 2) {
         return state;
       } else

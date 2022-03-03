@@ -1,4 +1,4 @@
-function RemovePersonIcon({ className }: { className: string }) {
+function DeletePersonIcon({ className }: { className: string }) {
   return (
     <svg
       className={className}
@@ -11,4 +11,4 @@ function RemovePersonIcon({ className }: { className: string }) {
   );
 }
 
-export default RemovePersonIcon;
+export default DeletePersonIcon;

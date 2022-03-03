@@ -7,9 +7,9 @@ export const addPerson = () => {
   };
 };
 
-export const removePerson = (personId: string) => {
+export const deletePerson = (personId: string) => {
   return {
-    type: actionTypes.REMOVE_PERSON,
+    type: actionTypes.DELETE_PERSON,
     payload: {
       id: personId,
     },

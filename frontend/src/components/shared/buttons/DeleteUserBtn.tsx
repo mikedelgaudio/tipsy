@@ -1,6 +1,6 @@
-import RemovePersonIcon from "../icons/RemovePersonIcon";
+import DeletePersonIcon from "../icons/DeletePersonIcon";
 
-function DeleteUserBtn({
+function DeletePersonBtn({
   clickSideEffect,
   ariaTitle,
   isDisabled,
@@ -11,10 +11,12 @@ function DeleteUserBtn({
       onClick={() => clickSideEffect()}
       title={ariaTitle}
       disabled={isDisabled}
+      className="btn"
     >
-      <RemovePersonIcon className={`icons ${className ? className : ""}`} />
+      <DeletePersonIcon className={`icons ${className ? className : ""}`} />
+      <span className="btn-text">Delete Person</span>
     </button>
   );
 }
 
-export default DeleteUserBtn;
+export default DeletePersonBtn;

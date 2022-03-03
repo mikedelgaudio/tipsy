@@ -1,6 +1,6 @@
 // People
 export const ADD_PERSON = "ADD_PERSON";
-export const REMOVE_PERSON = "REMOVE_PERSON";
+export const DELETE_PERSON = "DELETE_PERSON";
 export const EDIT_PERSON_NAME = "EDIT_PERSON_NAME";
 
 // Items
