@@ -34,6 +34,7 @@ function PersonActions({ personId, editing, setEditing }: any) {
         <EditBtn
           clickSideEffect={() => setEditing(true)}
           ariaTitle={"Edit person"}
+          className="btn-primary-light"
         />
       ) : (
         <CloseBtn

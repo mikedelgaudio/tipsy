@@ -1,5 +1,5 @@
 button {
-  border: none;
+  border: 0;
   padding: 0.5em 0.75em;
   margin: 0;
   text-decoration: none;
@@ -13,15 +13,41 @@ button:disabled {
   opacity: 0.5;
 }
 
-.btn-danger {
-  background-color: var(--brand-x);
-  color: var(--brand-off);
-  border: 0;
+.btn {
+  border-radius: 30px;
+  font-weight: 600;
 }
 
-.btn-danger:hover {
-  background-color: var(--brand-off);
+.btn-primary {
+  background-color: transparent;
   color: var(--brand-x);
+  opacity: 1;
+}
+.btn-primary:hover {
+  opacity: 0.75;
+}
+.btn-primary-light {
+  color: var(--brand-off);
+}
+
+.btn-success {
+  background-color: var(--brand);
+  color: var(--brand-x);
+  border: 3px solid var(--brand);
+}
+.btn-success:hover {
+  background-color: var(--brand-x);
+  color: var(--brand);
+}
+
+.btn-success-dark {
+  background-color: var(--brand-x);
+  color: var(--brand);
+  border: 3px solid transparent;
+  opacity: 1;
+}
+.btn-success-dark:hover {
+  opacity: 0.75;
 }
 
 .icons {

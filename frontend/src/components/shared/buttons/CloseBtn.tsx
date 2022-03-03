@@ -1,18 +1,11 @@
-import CheckIcon from "../icons/CheckIcon";
-
-function CloseBtn({
-  clickSideEffect,
-  ariaTitle,
-  className = "",
-  iconClassName = "",
-}: any) {
+function CloseBtn({ clickSideEffect, ariaTitle, className = "" }: any) {
   return (
     <button
-      className={`${className ? className : ""}`}
+      className={`btn btn-success ${className ? className : ""}`}
       onClick={() => clickSideEffect()}
       title={ariaTitle}
     >
-      <CheckIcon className={`icons ${iconClassName ? iconClassName : ""}`} />
+      Save
     </button>
   );
 }
