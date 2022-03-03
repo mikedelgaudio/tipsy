@@ -19,3 +19,4 @@
 - [x] Migrate all icons to React SVG components and use new CSS classes to colorize
 - [x] Ensure math for irrational decimals rounds up (RESOLVED BY num.toFixed())
 - [x] Icons need various colors / new color scheme
+- [x] Ensure input fields are a11y safe and in a form

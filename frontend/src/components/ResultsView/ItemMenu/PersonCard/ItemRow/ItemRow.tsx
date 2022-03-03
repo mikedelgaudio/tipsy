@@ -45,7 +45,6 @@ function ItemRow({ itemId, editing }: any) {
   // Dispatchers
   const dispatchRemoveItem = () => {
     dispatch(removeItem(itemId));
-    dispatch(recalculateEvent());
   };
 
   const [itemInput, setItemsInput] = useState(defaultItem);
@@ -101,12 +100,10 @@ function ItemRow({ itemId, editing }: any) {
             itemInput.priceFloat,
           ),
         );
-        dispatch(recalculateEvent());
       }
 
       if (storeItemData?.name !== itemInput.name) {
         dispatch(editItemName(itemId, itemInput.name));
-        dispatch(recalculateEvent());
       }
     }
   }, [editing]);

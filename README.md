@@ -22,9 +22,10 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 ### Next steps
 
 - [ ] Handle scenario where adding food items triggers toast too many times
-- [ ] Ensure input fields are a11y safe and in a form
 - [ ] Protect names from bad string input
 - [ ] Create docker build and push GitHub Action to deploy alpha site
+- [ ] Ensure components do not trigger multiple recalculate events
+- [ ] Disallow the removal of all products for a person
 
 ### Future ideas
 

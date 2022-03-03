@@ -6,7 +6,7 @@ import TotalsMenu from "./TotalsMenu/TotalsMenu";
 
 function ResultsView() {
   return (
-    <form className="results-view">
+    <form className="results-view" onSubmit={e => e.preventDefault()}>
       <ToastContainer />
       <ItemMenu />
       <TotalsMenu />

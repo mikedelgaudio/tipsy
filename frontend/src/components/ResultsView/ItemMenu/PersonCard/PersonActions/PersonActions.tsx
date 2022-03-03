@@ -22,12 +22,10 @@ function PersonActions({ personId, editing, setEditing }: any) {
   // Dispatchers
   const dispatchRemovePerson = () => {
     dispatch(removePerson(personId));
-    dispatch(recalculateEvent());
   };
 
   const dispatchAddItem = () => {
     dispatch(addItem(personId));
-    dispatch(recalculateEvent());
   };
 
   return (

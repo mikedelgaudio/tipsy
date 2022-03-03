@@ -1,10 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
-import { AppStore, Person } from "../../../models/custom-models";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { AppStore, Item, Person } from "../../../models/custom-models";
 import SharingRow from "../SharingRow/SharingRow";
 import "./ItemMenu.css";
 import PersonCard from "./PersonCard/PersonCard";
 import { useState, useEffect } from "react";
-import { editEventTitle } from "../../../redux/calculation/calculation-actions";
+import {
+  editEventTitle,
+  recalculateEvent,
+} from "../../../redux/calculation/calculation-actions";
 import { didMount } from "../../../hooks/didMount";
 
 function ItemMenu() {
@@ -19,6 +22,14 @@ function ItemMenu() {
   const personIds = useSelector((state: AppStore) => {
     return state.calculation.persons.map((person: Person) => person.id);
   });
+
+  const storeItemsPrices = useSelector(
+    (state: AppStore) =>
+      state.calculation.items.map((item: Item) => {
+        return item.price;
+      }),
+    shallowEqual,
+  );
 
   const [editing, setEditing] = useState(false);
   const [eventTitleInput, setEventTitleInput] = useState(storeEventTitle);
@@ -37,6 +48,10 @@ function ItemMenu() {
       dispatch(editEventTitle(eventTitleInput));
     }
   }, [editing]);
+
+  useEffect(() => {
+    if (!didMountOnce) dispatch(recalculateEvent());
+  }, [storeItemsPrices]);
 
   return (
     <>
