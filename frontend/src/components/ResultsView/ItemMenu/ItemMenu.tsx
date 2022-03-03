@@ -45,7 +45,7 @@ function ItemMenu() {
 
   // Works as intended, need to do research if this is a bad smell?
   useEffect(() => {
-    if (!didMountOnce && !editing) {
+    if (!didMountOnce && !editing && storeEventTitle !== eventTitleInput) {
       dispatch(editEventTitle(eventTitleInput));
     }
   }, [editing]);

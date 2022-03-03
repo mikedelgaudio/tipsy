@@ -21,14 +21,16 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 
 ### Next steps
 
-- [ ] Handle scenario where adding food items triggers toast too many times
 - [ ] Protect names from bad string input
 - [ ] Create docker build and push GitHub Action to deploy alpha site
-- [ ] Ensure components do not trigger multiple recalculate events
+- [ ] Handle scenario where recalculate is called twice when total is updated
 - [ ] Disallow the removal of all products for a person
+- [ ] Error toast when there is syntax error in prices / useRef on warnToasts rather than clearing 
+- [ ] Auto save from edit mode when user clicks out or away from focused box 
 
 ### Future ideas
 
+- [ ] Add warning modal when user is clicks the 'Reset' button
 - [ ] Update components to export {default} rather than duplicate name imports
 - [ ] Add undo functionality
 - [ ] Refactor CSS into CSS Modules
