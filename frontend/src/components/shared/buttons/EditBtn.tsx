@@ -1,3 +1,5 @@
+import PencilIcon from "../icons/PencilIcon";
+
 function EditBtn({ clickSideEffect, ariaTitle, className = "" }: any) {
   return (
     <button
@@ -5,7 +7,7 @@ function EditBtn({ clickSideEffect, ariaTitle, className = "" }: any) {
       onClick={() => clickSideEffect()}
       title={ariaTitle}
     >
-      Edit
+      <PencilIcon className="icons" />
     </button>
   );
 }
