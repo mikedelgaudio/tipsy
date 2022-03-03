@@ -1,10 +1,9 @@
 import "./PersonActions.css";
 import {
   addItem,
-  recalculateEvent,
   removePerson,
 } from "../../../../../redux/calculation/calculation-actions";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import EditBtn from "../../../../shared/buttons/EditBtn";
 import CloseBtn from "../../../../shared/buttons/CloseBtn";
 import AddBtn from "../../../../shared/buttons/AddBtn";
@@ -17,6 +16,7 @@ function PersonActions({ personId, editing, setEditing }: any) {
   // Store Selectors
   const personsLength = useSelector(
     (state: AppStore) => state.calculation.persons.length,
+    shallowEqual,
   );
 
   // Dispatchers

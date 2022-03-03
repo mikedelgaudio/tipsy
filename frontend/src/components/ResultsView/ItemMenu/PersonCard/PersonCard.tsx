@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { didMount } from "../../../../hooks/didMount";
 import { AppStore, Item, Person } from "../../../../models/custom-models";
 import { editPersonName } from "../../../../redux/calculation/calculation-actions";
@@ -22,7 +22,7 @@ function PersonCard({ personId }: any) {
     return state.calculation.items.map((item: Item) => {
       if (item.personId === personId) return item.id;
     });
-  });
+  }, shallowEqual);
 
   const storePersonIndex = useSelector((state: AppStore) => {
     return (
@@ -30,7 +30,7 @@ function PersonCard({ personId }: any) {
         (person: Person) => person.id === personId,
       ) + 1
     );
-  });
+  }, shallowEqual);
 
   const [editing, setEditing] = useState(false);
   const [personNameInput, setPersonNameInput] = useState(storePersonData?.name);

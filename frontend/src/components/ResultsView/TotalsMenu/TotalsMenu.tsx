@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { didMount } from "../../../hooks/didMount";
 import { AppStore, SanitizedCurrency } from "../../../models/custom-models";
 import {
@@ -25,14 +25,17 @@ function TotalsMenu() {
 
   const storeEventTotal = useSelector(
     (state: AppStore) => state.calculation.eventTotal,
+    shallowEqual,
   );
 
   const storeEventTotalFloat = useSelector(
     (state: AppStore) => state.calculation.eventTotalFloat,
+    shallowEqual,
   );
 
   const storeEventTipTaxTotal = useSelector(
     (state: AppStore) => state.calculation.eventTipTaxTotal,
+    shallowEqual,
   );
 
   const [editing, setEditing] = useState(false);
