@@ -18,13 +18,12 @@ function SharingRow({ editing, setEditing }: any) {
         <CloseBtn
           clickSideEffect={() => setEditing(false)}
           ariaTitle={"Stop editing event title"}
-          className="btn-success-dark"
         />
       )}
       <AddPersonBtn
         clickSideEffect={() => dispatch(addPerson())}
         ariaTitle={"Add person"}
-        className="icon-xl"
+        iconClassName="icon-xl"
       />
       {/* <input
         className="btn-danger"

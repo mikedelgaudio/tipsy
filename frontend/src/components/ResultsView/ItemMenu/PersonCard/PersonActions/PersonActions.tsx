@@ -8,7 +8,7 @@ import EditBtn from "../../../../shared/buttons/EditBtn";
 import CloseBtn from "../../../../shared/buttons/CloseBtn";
 import AddBtn from "../../../../shared/buttons/AddBtn";
 import { AppStore } from "../../../../../models/custom-models";
-import DeleteUserBtn from "../../../../shared/buttons/DeleteUserBtn";
+import DeleteUserBtn from "../../../../shared/buttons/DeletePersonBtn";
 
 function PersonActions({ personId, editing, setEditing }: any) {
   const dispatch = useDispatch();
@@ -52,7 +52,7 @@ function PersonActions({ personId, editing, setEditing }: any) {
         clickSideEffect={dispatchDeletePerson}
         ariaTitle={"Delete person"}
         isDisabled={personsLength < 2}
-        className="icon-xl"
+        iconClassName="icon-xl"
       />
     </div>
   );
