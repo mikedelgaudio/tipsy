@@ -2,11 +2,7 @@ import "./SharingRow.css";
 import EditBtn from "../../shared/buttons/EditBtn";
 import CloseBtn from "../../shared/buttons/CloseBtn";
 import { useDispatch } from "react-redux";
-import {
-  addPerson,
-  restartEvent,
-} from "../../../redux/calculation/calculation-actions";
-import AddPersonIcon from "../../shared/icons/AddPersonIcon";
+import { addPerson } from "../../../redux/calculation/calculation-actions";
 import AddPersonBtn from "../../shared/buttons/AddPersonBtn";
 
 function SharingRow({ editing, setEditing }: any) {
@@ -28,7 +24,7 @@ function SharingRow({ editing, setEditing }: any) {
       <AddPersonBtn
         clickSideEffect={() => dispatch(addPerson())}
         ariaTitle={"Add person"}
-        className="icon-xl icon-light"
+        className="icon-xl"
       />
       {/* <input
         className="btn-danger"

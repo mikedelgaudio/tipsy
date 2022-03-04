@@ -16,20 +16,30 @@ button:disabled {
 .btn {
   border-radius: 30px;
   font-weight: 600;
-  display: flex;
-  align-items: center;
+
+  background-color: #f0f0f0; /* TODO make global */
+  border-radius: 30px;
 }
 
-.btn-primary {
-  background-color: transparent;
-  color: var(--brand-x);
+.btn-text {
+  display: none;
+}
+
+.btn-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
   opacity: 1;
 }
-.btn-primary:hover {
+
+.btn-wrapper:hover {
   opacity: 0.75;
 }
-.btn-primary-light {
-  color: var(--brand-off);
+
+@media (min-width: 576px) {
+  .btn-text {
+    display: inline;
+  }
 }
 
 .btn-success {
@@ -40,16 +50,13 @@ button:disabled {
 .btn-success:hover {
   background-color: var(--brand-x);
   color: var(--brand);
+  fill: var(--brand);
 }
 
 .btn-success-dark {
   background-color: var(--brand-x);
   color: var(--brand);
   border: 3px solid transparent;
-  opacity: 1;
-}
-.btn-success-dark:hover {
-  opacity: 0.75;
 }
 
 .icons {
@@ -57,16 +64,13 @@ button:disabled {
   fill: var(--brand-off);
   opacity: 1;
   transition: opacity, fill 0.2s ease-in-out;
+  opacity: 1;
 }
-.icons:hover {
-  opacity: 0.75;
-}
-
-.icon-light {
+.icon-success {
   fill: var(--brand-x);
 }
-.icon-light:hover {
-  fill: var(--brand-x);
+.icon-success:hover {
+  fill: var(--brand);
 }
 
 .icon-sm {

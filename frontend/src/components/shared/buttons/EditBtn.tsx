@@ -1,14 +1,21 @@
 import PencilIcon from "../icons/PencilIcon";
 
-function EditBtn({ clickSideEffect, ariaTitle, className = "" }: any) {
+function EditBtn({
+  clickSideEffect,
+  ariaTitle,
+  className = "",
+  iconClassName = "",
+}: any) {
   return (
     <button
-      className={`btn btn-primary ${className ? className : ""}`}
+      className={`btn ${className ? className : ""}`}
       onClick={() => clickSideEffect()}
       title={ariaTitle}
     >
-      <PencilIcon className="icons" />
-      <span className="btn-text">Edit</span>
+      <div className="btn-wrapper">
+        <PencilIcon className={`icons ${iconClassName ? iconClassName : ""}`} />
+        <span className="btn-text">Edit</span>
+      </div>
     </button>
   );
 }

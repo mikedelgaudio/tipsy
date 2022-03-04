@@ -14,8 +14,10 @@ function DeleteBtn({
       disabled={isDisabled}
       className={`btn ${className ? className : ""}`}
     >
-      <TrashIcon className={`icons ${iconClassName ? iconClassName : ""}`} />
-      <span className="btn-text">Delete</span>
+      <div className="btn-wrapper">
+        <TrashIcon className={`icons ${iconClassName ? iconClassName : ""}`} />
+        <span className="btn-text">Delete</span>
+      </div>
     </button>
   );
 }

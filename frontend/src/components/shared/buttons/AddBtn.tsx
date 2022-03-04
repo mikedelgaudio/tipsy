@@ -1,10 +1,23 @@
 import AddItemIcon from "../icons/AddItemIcon";
 
-function AddBtn({ clickSideEffect, ariaTitle, className = "" }: any) {
+function AddBtn({
+  clickSideEffect,
+  ariaTitle,
+  className = "",
+  iconClassName = "",
+}: any) {
   return (
-    <button className="btn" onClick={() => clickSideEffect()} title={ariaTitle}>
-      <AddItemIcon className={`icons ${className ? className : ""}`} />
-      <span className="btn-text">Add Item</span>
+    <button
+      className={`btn ${className ? className : ""}`}
+      onClick={() => clickSideEffect()}
+      title={ariaTitle}
+    >
+      <div className="btn-wrapper">
+        <AddItemIcon
+          className={`icons ${iconClassName ? iconClassName : ""}`}
+        />
+        <span className="btn-text">Add Item</span>
+      </div>
     </button>
   );
 }
