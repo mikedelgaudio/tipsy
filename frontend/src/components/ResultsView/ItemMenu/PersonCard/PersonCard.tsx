@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { didMount } from "../../../../hooks/didMount";
-import { useOutsideAlerter } from "../../../../hooks/useOutsideAlerter/useOutsideAlerter";
+import { didClickAway } from "../../../../hooks/didClickAway";
 import { AppStore, Item, Person } from "../../../../models/custom-models";
 import { editPersonName } from "../../../../redux/calculation/calculation-actions";
 import ItemRow from "./ItemRow/ItemRow";
@@ -54,7 +54,7 @@ function PersonCard({ personId }: any) {
   }, [editing]);
 
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef, editing, setEditing);
+  didClickAway(wrapperRef, editing, setEditing);
 
   return (
     <div className="personCard" ref={wrapperRef}>

@@ -1,0 +1,1 @@
+export { didMount } from "./didMount";
