@@ -26,8 +26,6 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Handle scenario where recalculate is called twice when total is updated
 - [ ] Disallow the removal of all products for a person
 - [ ] Error toast when there is syntax error in prices / useRef on warnToasts rather than clearing 
-- [ ] Auto save from edit mode when user clicks out or away from focused box 
-
 ### Future ideas
 
 - [ ] Add warning modal when user is clicks the 'Reset' button

@@ -1,6 +1,7 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { didMount } from "../../../../hooks/didMount";
+import { useOutsideAlerter } from "../../../../hooks/useOutsideAlerter/useOutsideAlerter";
 import { AppStore, Item, Person } from "../../../../models/custom-models";
 import { editPersonName } from "../../../../redux/calculation/calculation-actions";
 import ItemRow from "./ItemRow/ItemRow";
@@ -52,8 +53,11 @@ function PersonCard({ personId }: any) {
     }
   }, [editing]);
 
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef, editing, setEditing);
+
   return (
-    <div className="personCard">
+    <div className="personCard" ref={wrapperRef}>
       <div className="personCardHeader">
         {!editing ? (
           <h2 className="personName">{storePersonData?.name}</h2>
