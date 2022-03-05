@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect } from "react";
 
-export const useOutsideAlerter = (
+export const didClickAway = (
   ref: any,
   editing: boolean,
   setEditing: Dispatch<SetStateAction<boolean>>,
