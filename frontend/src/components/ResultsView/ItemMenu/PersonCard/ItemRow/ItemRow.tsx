@@ -90,7 +90,6 @@ function ItemRow({ itemId, editing }: any) {
   useEffect(() => {
     if (!didMountOnce && !editing) {
       // Check if price or name changed
-      // bad smell?
       if (!error && storeItemData?.price !== itemInput.price) {
         dispatch(
           editItemPrice(
