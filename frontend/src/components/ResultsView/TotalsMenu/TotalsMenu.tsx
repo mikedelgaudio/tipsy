@@ -1,5 +1,6 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { didClickAway } from "../../../hooks/didClickAway";
 import { didMount } from "../../../hooks/didMount";
 import { AppStore, SanitizedCurrency } from "../../../models/custom-models";
 import {
@@ -79,8 +80,11 @@ function TotalsMenu() {
     }
   }, [editing]);
 
+  const menuRef = useRef(null);
+  didClickAway(menuRef, editing, setEditing);
+
   return (
-    <div className="totalsMenuView">
+    <div className="totalsMenuView" ref={menuRef}>
       <div className="totalsBreakdownWrapper">
         <ul className="totalsBreakdownList">
           <li className="totalBreakdownItem">

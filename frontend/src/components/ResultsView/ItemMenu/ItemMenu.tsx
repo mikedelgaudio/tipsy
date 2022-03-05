@@ -3,12 +3,13 @@ import { AppStore, Item, Person } from "../../../models/custom-models";
 import SharingRow from "../SharingRow/SharingRow";
 import "./ItemMenu.css";
 import PersonCard from "./PersonCard/PersonCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   editEventTitle,
   recalculateEvent,
 } from "../../../redux/calculation/calculation-actions";
 import { didMount } from "../../../hooks/didMount";
+import { didClickAway } from "../../../hooks/didClickAway";
 
 function ItemMenu() {
   const didMountOnce = didMount();
@@ -54,10 +55,13 @@ function ItemMenu() {
     if (!didMountOnce) dispatch(recalculateEvent());
   }, [storeItemsPrices]);
 
+  const menuRef = useRef(null);
+  didClickAway(menuRef, editing, setEditing);
+
   return (
     <>
       <div className="itemMenu">
-        <div className="itemHeaderWrapper">
+        <div className="itemHeaderWrapper" ref={menuRef}>
           {!editing ? (
             <h1 className="itemHeader">{eventTitleInput}</h1>
           ) : (

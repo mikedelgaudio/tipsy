@@ -21,7 +21,6 @@ export const didClickAway = (
     return () => {
       // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside);
-      console.warn("CLEAN");
     };
   }, [ref, editing]);
 };

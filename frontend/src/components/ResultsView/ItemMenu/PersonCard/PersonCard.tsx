@@ -53,11 +53,11 @@ function PersonCard({ personId }: any) {
     }
   }, [editing]);
 
-  const wrapperRef = useRef(null);
-  didClickAway(wrapperRef, editing, setEditing);
+  const personRef = useRef(null);
+  didClickAway(personRef, editing, setEditing);
 
   return (
-    <div className="personCard" ref={wrapperRef}>
+    <div className="personCard" ref={personRef}>
       <div className="personCardHeader">
         {!editing ? (
           <h2 className="personName">{storePersonData?.name}</h2>
