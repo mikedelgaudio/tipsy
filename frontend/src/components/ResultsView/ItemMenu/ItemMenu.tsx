@@ -25,10 +25,10 @@ function ItemMenu() {
     return state.calculation.persons.map((person: Person) => person.id);
   }, shallowEqual);
 
-  const storeItemsPrices = useSelector(
+  const storeItemsPriceFloats = useSelector(
     (state: AppStore) =>
       state.calculation.items.map((item: Item) => {
-        return item.price;
+        return item.priceFloat;
       }),
     shallowEqual,
   );
@@ -53,7 +53,7 @@ function ItemMenu() {
 
   useEffect(() => {
     if (!didMountOnce) dispatch(recalculateEvent());
-  }, [storeItemsPrices]);
+  }, [storeItemsPriceFloats]);
 
   const menuRef = useRef(null);
   didClickAway(menuRef, editing, setEditing);

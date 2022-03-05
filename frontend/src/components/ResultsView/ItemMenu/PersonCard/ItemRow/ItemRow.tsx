@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { didMount } from "../../../../../hooks/didMount";
 import {
@@ -16,6 +16,7 @@ import {
   sanitizeCurrency,
 } from "../../../../../utilities/sanitize";
 import DeleteBtn from "../../../../shared/buttons/DeleteBtn";
+import { dismissToast, errorToast } from "../../../../shared/toasts/toasts";
 
 const defaultItem: Item = {
   id: "",
@@ -66,6 +67,8 @@ function ItemRow({ itemId, editing }: any) {
 
         if (parsedPriceFloat.error) {
           setError(true);
+          // If state had a valid float before, utilize the cached value instead.
+          parsedPriceFloat.parsed = itemInput.priceFloat;
         } else {
           setError(false);
         }
@@ -87,14 +90,23 @@ function ItemRow({ itemId, editing }: any) {
     setItemsInput(storeItemData || defaultItem);
   }, [storeItemData]);
 
+  const toastId = useRef(null);
+
   useEffect(() => {
     if (!didMountOnce && !editing) {
       // Check if price or name changed
-      if (!error && storeItemData?.price !== itemInput.price) {
+      error
+        ? errorToast(
+            toastId,
+            `Invalid price formatting for "${itemInput?.name}". Format prices such as: 10.99`,
+          )
+        : dismissToast(toastId);
+
+      if (storeItemData?.price !== itemInput.price) {
         dispatch(
           editItemPrice(
             itemId,
-            removeDollarOrComma(itemInput.price),
+            !error ? removeDollarOrComma(itemInput.price) : itemInput.price,
             itemInput.priceFloat,
           ),
         );
@@ -105,6 +117,13 @@ function ItemRow({ itemId, editing }: any) {
       }
     }
   }, [editing]);
+
+  // Component Destroyed
+  useEffect(() => {
+    return () => {
+      dismissToast(toastId);
+    };
+  }, []);
 
   return (
     <li className={`personItem ${editing ? "editing" : ""} `} key={itemId}>
