@@ -18,17 +18,18 @@ function ItemMenu() {
   // Store Selectors
   const storeEventTitle = useSelector(
     (state: AppStore) => state.calculation.eventTitle,
-    shallowEqual,
   );
 
   const personIds = useSelector((state: AppStore) => {
     return state.calculation.persons.map((person: Person) => person.id);
-  }, shallowEqual);
+  });
 
-  const storeItemsPrices = useSelector((state: AppStore) =>
-    state.calculation.items.map((item: Item) => {
-      return item.price;
-    }),
+  const storeItemsPrices = useSelector(
+    (state: AppStore) =>
+      state.calculation.items.map((item: Item) => {
+        return item.price;
+      }),
+    shallowEqual,
   );
 
   const [editing, setEditing] = useState(false);

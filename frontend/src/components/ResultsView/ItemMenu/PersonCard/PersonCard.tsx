@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { didMount } from "../../../../hooks/didMount";
 import { didClickAway } from "../../../../hooks/didClickAway";
 import { AppStore, Item, Person } from "../../../../models/custom-models";
@@ -20,7 +20,7 @@ function PersonCard({ personId }: any) {
     return state.calculation.items.map((item: Item) => {
       if (item.personId === personId) return item.id;
     });
-  }, shallowEqual);
+  });
 
   const storePersonIndex = useSelector((state: AppStore) => {
     return (
@@ -28,7 +28,7 @@ function PersonCard({ personId }: any) {
         (person: Person) => person.id === personId,
       ) + 1
     );
-  }, shallowEqual);
+  });
 
   const didMountOnce = didMount();
   const dispatch = useDispatch();

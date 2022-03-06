@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { didMount } from "../../../../../hooks/didMount";
 import {
   AppStore,
@@ -40,7 +40,7 @@ function ItemRow({ itemId, editing }: any) {
     return (
       state.calculation.items.findIndex((item: Item) => item.id === itemId) + 1
     );
-  }, shallowEqual);
+  });
 
   // Dispatchers
   const dispatchRemoveItem = () => {
