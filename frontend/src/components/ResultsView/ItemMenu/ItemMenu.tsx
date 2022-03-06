@@ -52,7 +52,6 @@ function ItemMenu() {
 
   useEffect(() => {
     if (!didMountOnce) dispatch(recalculateEvent());
-    console.warn("RAN");
   }, [storeItemsPrices]);
 
   const menuRef = useRef(null);
