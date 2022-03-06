@@ -14,12 +14,12 @@ function DeletePersonBtn({
       disabled={isDisabled}
       className={`btn ${className ? className : ""}`}
     >
-      <div className="btn-wrapper">
+      <span className="btn-wrapper">
         <DeletePersonIcon
           className={`icons ${iconClassName ? iconClassName : ""}`}
         />
         <span className="btn-text">Delete Person</span>
-      </div>
+      </span>
     </button>
   );
 }

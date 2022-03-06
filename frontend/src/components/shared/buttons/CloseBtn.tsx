@@ -12,10 +12,10 @@ function CloseBtn({
       onClick={() => clickSideEffect()}
       title={ariaTitle}
     >
-      <div className="btn-wrapper">
+      <span className="btn-wrapper">
         <CheckIcon className={`icons ${iconClassName ? iconClassName : ""}`} />
         <span className="btn-text">Save</span>
-      </div>
+      </span>
     </button>
   );
 }

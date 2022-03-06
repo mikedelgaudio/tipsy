@@ -12,10 +12,10 @@ function EditBtn({
       onClick={() => clickSideEffect()}
       title={ariaTitle}
     >
-      <div className="btn-wrapper">
+      <span className="btn-wrapper">
         <PencilIcon className={`icons ${iconClassName ? iconClassName : ""}`} />
         <span className="btn-text">Edit</span>
-      </div>
+      </span>
     </button>
   );
 }

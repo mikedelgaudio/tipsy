@@ -12,12 +12,12 @@ function AddPersonBtn({
       onClick={() => clickSideEffect()}
       title={ariaTitle}
     >
-      <div className="btn-wrapper">
+      <span className="btn-wrapper">
         <AddPersonIcon
           className={`icons ${iconClassName ? iconClassName : ""}`}
         />
         <span className="btn-text">Add Person</span>
-      </div>
+      </span>
     </button>
   );
 }
