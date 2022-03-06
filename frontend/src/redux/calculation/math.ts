@@ -1,3 +1,4 @@
+import { dismissToast, warnToast } from "../../components/shared/toasts/toasts";
 import { CalculationState, Item } from "../../models/custom-models";
 import { currencyToStr } from "../../utilities/sanitize";
 
@@ -46,8 +47,12 @@ export const calculate = (data: CalculationState) => {
     tempState.eventSubtotalFloat + tempState.eventTipTaxTotalFloat !==
       tempState.eventTotalFloat
   ) {
+    warnToast({ current: "CALCULATION_WRONG" }, "Calculation wrong");
     return data;
   }
+
+  // Bad smell? Using modeled useRef object to dismiss/trigger calculation warnings.
+  dismissToast({ current: "CALCULATION_WRONG" });
 
   // TODO:
   // If the state is the same, maybe break out early to save time?

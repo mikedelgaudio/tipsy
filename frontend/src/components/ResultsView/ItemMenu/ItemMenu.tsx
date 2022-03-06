@@ -25,12 +25,10 @@ function ItemMenu() {
     return state.calculation.persons.map((person: Person) => person.id);
   }, shallowEqual);
 
-  const storeItemsPriceFloats = useSelector(
-    (state: AppStore) =>
-      state.calculation.items.map((item: Item) => {
-        return item.priceFloat;
-      }),
-    shallowEqual,
+  const storeItemsPrices = useSelector((state: AppStore) =>
+    state.calculation.items.map((item: Item) => {
+      return item.price;
+    }),
   );
 
   const [editing, setEditing] = useState(false);
@@ -53,7 +51,8 @@ function ItemMenu() {
 
   useEffect(() => {
     if (!didMountOnce) dispatch(recalculateEvent());
-  }, [storeItemsPriceFloats]);
+    console.warn("RAN");
+  }, [storeItemsPrices]);
 
   const menuRef = useRef(null);
   didClickAway(menuRef, editing, setEditing);

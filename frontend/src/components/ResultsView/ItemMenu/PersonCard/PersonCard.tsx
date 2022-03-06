@@ -9,9 +9,6 @@ import PersonActions from "./PersonActions/PersonActions";
 import "./PersonCard.css";
 
 function PersonCard({ personId }: any) {
-  const didMountOnce = didMount();
-  const dispatch = useDispatch();
-
   // Store Selectors
   const storePersonData = useSelector((state: AppStore) => {
     return state.calculation.persons.find(
@@ -33,8 +30,12 @@ function PersonCard({ personId }: any) {
     );
   }, shallowEqual);
 
+  const didMountOnce = didMount();
+  const dispatch = useDispatch();
   const [editing, setEditing] = useState(false);
   const [personNameInput, setPersonNameInput] = useState(storePersonData?.name);
+  const personRef = useRef(null);
+  didClickAway(personRef, editing, setEditing);
 
   const personNameInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setPersonNameInput(e.target.value);
@@ -46,15 +47,11 @@ function PersonCard({ personId }: any) {
 
   useEffect(() => {
     if (!didMountOnce && !editing) {
-      // bad smell?
       if (storePersonData?.name !== personNameInput) {
         dispatch(editPersonName(personId, personNameInput));
       }
     }
   }, [editing]);
-
-  const personRef = useRef(null);
-  didClickAway(personRef, editing, setEditing);
 
   return (
     <div className="personCard" ref={personRef}>
