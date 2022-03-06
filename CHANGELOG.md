@@ -21,3 +21,4 @@
 - [x] Icons need various colors / new color scheme
 - [x] Ensure input fields are a11y safe and in a form
 - [x] Auto save from edit mode when user clicks out or away from focused box 
+- [x] Disallow the removal of all products for a person *NOT REPRODUCIBLE*
