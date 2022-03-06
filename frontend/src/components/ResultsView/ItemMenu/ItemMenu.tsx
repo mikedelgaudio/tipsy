@@ -27,7 +27,7 @@ function ItemMenu() {
   const storeItemsPrices = useSelector(
     (state: AppStore) =>
       state.calculation.items.map((item: Item) => {
-        return item.price;
+        return item.priceFloat;
       }),
     shallowEqual,
   );

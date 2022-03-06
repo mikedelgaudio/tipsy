@@ -68,7 +68,7 @@ function ItemRow({ itemId, editing }: any) {
         if (parsedPriceFloat.error) {
           setError(true);
           // If state had a valid float before, utilize the cached value instead.
-          //parsedPriceFloat.parsed = itemInput.priceFloat;
+          parsedPriceFloat.parsed = itemInput.priceFloat;
         } else {
           setError(false);
         }
@@ -102,11 +102,11 @@ function ItemRow({ itemId, editing }: any) {
           )
         : dismissToast(toastId);
 
-      if (!error && storeItemData?.price !== itemInput.price) {
+      if (storeItemData?.price !== itemInput.price) {
         dispatch(
           editItemPrice(
             itemId,
-            removeDollarOrComma(itemInput.price),
+            !error ? removeDollarOrComma(itemInput.price) : itemInput.price,
             itemInput.priceFloat,
           ),
         );
