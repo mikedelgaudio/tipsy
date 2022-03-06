@@ -118,7 +118,7 @@ const calculationReducer = (state = INITIAL_STATE, action: any) => {
         ],
       };
     }
-    case actionTypes.REMOVE_ITEM: {
+    case actionTypes.DELETE_ITEM: {
       return {
         ...state,
         items: state.items.filter(item => item.id !== action.payload.id),

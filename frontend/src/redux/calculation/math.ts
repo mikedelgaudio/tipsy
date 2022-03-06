@@ -47,7 +47,10 @@ export const calculate = (data: CalculationState) => {
     tempState.eventSubtotalFloat + tempState.eventTipTaxTotalFloat !==
       tempState.eventTotalFloat
   ) {
-    warnToast({ current: "CALCULATION_WRONG" }, "Calculation wrong");
+    warnToast(
+      { current: "CALCULATION_WRONG" },
+      "Check your price values. The total does not add up correctly.",
+    );
     return data;
   }
 

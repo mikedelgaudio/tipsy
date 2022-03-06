@@ -9,7 +9,7 @@ import {
 import {
   editItemName,
   editItemPrice,
-  removeItem,
+  deleteItem,
 } from "../../../../../redux/calculation/calculation-actions";
 import {
   removeDollarOrComma,
@@ -43,8 +43,8 @@ function ItemRow({ itemId, editing }: any) {
   });
 
   // Dispatchers
-  const dispatchRemoveItem = () => {
-    dispatch(removeItem(itemId));
+  const dispatchDeleteItem = () => {
+    dispatch(deleteItem(itemId));
   };
 
   const [itemInput, setItemsInput] = useState(defaultItem);
@@ -171,7 +171,7 @@ function ItemRow({ itemId, editing }: any) {
       </div>
       <div className="personItemDetailsContainer">
         <DeleteBtn
-          clickSideEffect={dispatchRemoveItem}
+          clickSideEffect={dispatchDeleteItem}
           ariaTitle={`Delete ${storeItemData?.name}`}
         />
       </div>

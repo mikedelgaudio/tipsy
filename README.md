@@ -24,7 +24,6 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Protect names from bad string input
 - [ ] Create docker build and push GitHub Action to deploy alpha site
 - [ ] Handle scenario where recalculate is called twice when total is updated
-- [ ] Disallow the removal of all products for a person
 ### Future ideas
 
 - [ ] Add warning modal when user is clicks the 'Reset' button

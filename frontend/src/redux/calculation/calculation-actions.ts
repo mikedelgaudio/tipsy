@@ -40,9 +40,9 @@ export const addItem = (personId: string) => {
   };
 };
 
-export const removeItem = (itemId: string) => {
+export const deleteItem = (itemId: string) => {
   return {
-    type: actionTypes.REMOVE_ITEM,
+    type: actionTypes.DELETE_ITEM,
     payload: {
       id: itemId,
     },
