@@ -53,6 +53,8 @@ function PersonCard({ personId }: any) {
     }
   }, [editing]);
 
+  if (storePersonIndex > 3) throw new Error("No more than 3 pplx");
+
   return (
     <div className="personCard" ref={personRef}>
       <div className="personCardHeader">

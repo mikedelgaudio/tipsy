@@ -18,8 +18,8 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 ### Next steps
 
 - [ ] Protect names from bad string input
-
 - [ ] Disallow the removal of all products for a person 
+
 
 ### Future ideas
 
@@ -29,7 +29,6 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Add undo functionality
 - [ ] Refactor CSS into CSS Modules
 - [ ] Add About or Walkthrough Section
-- [ ] Add https://reactjs.org/docs/error-boundaries.html
 - [ ] Save session / state to local storage
 - [ ] Ability to split an item with a person
 - [ ] Ability to share a link for 1 week
