@@ -2,12 +2,13 @@ import { Component } from "react";
 import ErrorComponent from "./ErrorComponent";
 
 interface State {
-  error: string | null;
-  errorInfo: string | null;
+  hasError: boolean;
+  error: { message: ""; stack: "" };
+  info: { componentStack: "" };
 }
 
-class ErrorBoundary extends Component {
-  state = {
+class ErrorBoundary extends Component<any, State> {
+  state: State = {
     hasError: false,
     error: { message: "", stack: "" },
     info: { componentStack: "" },
@@ -22,9 +23,8 @@ class ErrorBoundary extends Component {
   };
 
   render() {
-    const { hasError, error, info } = this.state;
+    const { hasError } = this.state;
     const { children } = this.props;
-
     return hasError ? <ErrorComponent /> : children;
   }
 }
