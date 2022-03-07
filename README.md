@@ -11,10 +11,6 @@ The best friend group payment calculator web app.
 - `npm run husky:prepare`
 - `npm run dev`
 
-## Contributions
-
-All contributions must utilize and abide by the husky pre-commit hooks.
-
 ## Roadmap
 
 The roadmap provides a high level storyboard of future for the Tipsy project.
