@@ -37,4 +37,12 @@ const currencyToStr = (input: number): string => {
   return toFixed(input, 2);
 };
 
-export { sanitizeCurrency, currencyToStr, removeDollarOrComma };
+const validString = (string: string): boolean => {
+  if (!string) return false;
+  if (string.length === 0) return false;
+  if (!string.trim().length) return false;
+
+  return true;
+};
+
+export { sanitizeCurrency, currencyToStr, removeDollarOrComma, validString };

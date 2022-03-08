@@ -15,6 +15,10 @@ import {
   removeDollarOrComma,
   sanitizeCurrency,
 } from "../../../../../utilities/sanitize";
+import {
+  ERROR_INPUT_NAME,
+  ERROR_INPUT_PRICE,
+} from "../../../../../utilities/variables";
 import DeleteBtn from "../../../../shared/buttons/DeleteBtn";
 import { dismissToast, errorToast } from "../../../../shared/toasts/toasts";
 
@@ -48,7 +52,9 @@ function ItemRow({ itemId, editing }: any) {
   };
 
   const [itemInput, setItemsInput] = useState(defaultItem);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState({ name: false, price: false });
+  const toastIdName = useRef(null);
+  const toastIdPrice = useRef(null);
 
   const itemInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const attributeIndex = 2;
@@ -66,11 +72,11 @@ function ItemRow({ itemId, editing }: any) {
         const parsedPriceFloat: SanitizedCurrency = sanitizeCurrency(input);
 
         if (parsedPriceFloat.error) {
-          setError(true);
+          setError({ ...error, price: true });
           // If state had a valid float before, utilize the cached value instead.
           parsedPriceFloat.parsed = itemInput.priceFloat;
         } else {
-          setError(false);
+          setError({ ...error, price: false });
         }
 
         setItemsInput({
@@ -90,23 +96,24 @@ function ItemRow({ itemId, editing }: any) {
     setItemsInput(storeItemData || defaultItem);
   }, [storeItemData]);
 
-  const toastId = useRef(null);
-
   useEffect(() => {
     if (!didMountOnce && !editing) {
       // Check if price or name changed
-      error
-        ? errorToast(
-            toastId,
-            `Invalid price formatting for "${itemInput?.name}". Format prices such as: 10.99`,
-          )
-        : dismissToast(toastId);
+      error.name
+        ? errorToast(toastIdName, ERROR_INPUT_NAME(itemInput?.name))
+        : dismissToast(toastIdName);
+
+      error.price
+        ? errorToast(toastIdPrice, ERROR_INPUT_PRICE(itemInput?.name))
+        : dismissToast(toastIdPrice);
 
       if (storeItemData?.price !== itemInput.price) {
         dispatch(
           editItemPrice(
             itemId,
-            !error ? removeDollarOrComma(itemInput.price) : itemInput.price,
+            !error.price
+              ? removeDollarOrComma(itemInput.price)
+              : itemInput.price,
             itemInput.priceFloat,
           ),
         );
@@ -121,7 +128,8 @@ function ItemRow({ itemId, editing }: any) {
   // Component Destroyed
   useEffect(() => {
     return () => {
-      dismissToast(toastId);
+      dismissToast(toastIdName);
+      dismissToast(toastIdPrice);
     };
   }, []);
 
@@ -130,7 +138,9 @@ function ItemRow({ itemId, editing }: any) {
       <div className="personItemInfoRow">
         {!editing ? (
           <>
-            <p className="personItemName">{storeItemData?.name}</p>
+            <p className={`${error.name ? "errorText" : ""} personItemName`}>
+              {storeItemData?.name}
+            </p>
           </>
         ) : (
           <>
@@ -151,7 +161,7 @@ function ItemRow({ itemId, editing }: any) {
           </>
         )}
         {!editing ? (
-          <p className={`${error ? "errorText" : ""} personItemPrice `}>
+          <p className={`${error.price ? "errorText" : ""} personItemPrice`}>
             ${storeItemData?.price}
           </p>
         ) : (
