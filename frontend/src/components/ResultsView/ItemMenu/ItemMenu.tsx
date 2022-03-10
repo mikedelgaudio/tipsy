@@ -42,7 +42,7 @@ function ItemMenu() {
 
   const eventTitleInputHandler = (e: any) => {
     setError(!validString(e.target.value));
-    setEventTitleInput(e.target.value);
+    setEventTitleInput(e.target.value.trim());
   };
 
   useEffect(() => {
@@ -55,7 +55,9 @@ function ItemMenu() {
       error ? errorToast(toastId, ERROR_INPUT_EVENT()) : dismissToast(toastId);
 
       if (storeEventTitle !== eventTitleInput) {
-        dispatch(editEventTitle(!error ? eventTitleInput : storeEventTitle));
+        dispatch(
+          editEventTitle(!error ? eventTitleInput.trim() : storeEventTitle),
+        );
       }
     }
   }, [editing]);

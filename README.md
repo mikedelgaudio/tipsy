@@ -17,7 +17,6 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 
 ### Next steps
 
-- [ ] Protect names from bad string input
 - [ ] Disallow the removal of all products for a person 
 
 ### Future ideas
@@ -31,4 +30,5 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Save session / state to local storage
 - [ ] Ability to split an item with a person
 - [ ] Ability to share a link for 1 week
+- [ ] Determine why some state functions required `undefined` as type safe
 - [ ] Refactor how state is updated, is recalculate a side effect use thunks?

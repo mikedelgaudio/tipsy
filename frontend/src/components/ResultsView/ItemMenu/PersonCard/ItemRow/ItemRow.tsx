@@ -14,6 +14,7 @@ import {
 import {
   removeDollarOrComma,
   sanitizeCurrency,
+  validString,
 } from "../../../../../utilities/sanitize";
 import {
   ERROR_INPUT_NAME,
@@ -61,6 +62,7 @@ function ItemRow({ itemId, editing }: any) {
     const fieldName = e.target.attributes[attributeIndex].textContent;
     switch (fieldName) {
       case "NAME": {
+        setError({ ...error, name: !validString(e.target.value) });
         setItemsInput({
           ...itemInput,
           name: e.target.value,
@@ -76,12 +78,13 @@ function ItemRow({ itemId, editing }: any) {
           // If state had a valid float before, utilize the cached value instead.
           parsedPriceFloat.parsed = itemInput.priceFloat;
         } else {
+          // TODO: To reduce calls in the future, maybe set flag to avoid?
           setError({ ...error, price: false });
         }
 
         setItemsInput({
           ...itemInput,
-          price: e.target.value,
+          price: e.target.value.trim(),
           priceFloat: parsedPriceFloat.parsed,
         });
         break;
@@ -100,11 +103,11 @@ function ItemRow({ itemId, editing }: any) {
     if (!didMountOnce && !editing) {
       // Check if price or name changed
       error.name
-        ? errorToast(toastIdName, ERROR_INPUT_NAME(itemInput?.name))
+        ? errorToast(toastIdName, ERROR_INPUT_NAME(storeItemData?.name))
         : dismissToast(toastIdName);
 
       error.price
-        ? errorToast(toastIdPrice, ERROR_INPUT_PRICE(itemInput?.name))
+        ? errorToast(toastIdPrice, ERROR_INPUT_PRICE(storeItemData?.name))
         : dismissToast(toastIdPrice);
 
       if (storeItemData?.price !== itemInput.price) {
@@ -120,7 +123,12 @@ function ItemRow({ itemId, editing }: any) {
       }
 
       if (storeItemData?.name !== itemInput.name) {
-        dispatch(editItemName(itemId, itemInput.name));
+        dispatch(
+          editItemName(
+            itemId,
+            !error.name ? itemInput.name.trim() : storeItemData?.name,
+          ),
+        );
       }
     }
   }, [editing]);

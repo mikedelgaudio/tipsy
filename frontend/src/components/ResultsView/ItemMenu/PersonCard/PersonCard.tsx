@@ -61,7 +61,7 @@ function PersonCard({ personId }: any) {
         dispatch(
           editPersonName(
             personId,
-            !error ? personNameInput : storePersonData?.name,
+            !error ? personNameInput?.trim() : storePersonData?.name,
           ),
         );
       }
@@ -72,7 +72,9 @@ function PersonCard({ personId }: any) {
     <div className="personCard" ref={personRef}>
       <div className="personCardHeader">
         {!editing ? (
-          <h2 className="personName">{storePersonData?.name}</h2>
+          <h2 className={`${error ? "errorText" : ""} personName`}>
+            {storePersonData?.name}
+          </h2>
         ) : (
           <div className="inputWrapper">
             <label htmlFor={`personNameInput-${personId}`}>

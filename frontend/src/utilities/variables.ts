@@ -12,6 +12,6 @@ export const ERROR_INPUT_EVENT = (): string => {
   return "Invalid input for event name. Format event names such as: Night out with friends";
 };
 
-export const ERROR_INPUT_PRICE = (displayName: string): string => {
+export const ERROR_INPUT_PRICE = (displayName: string | undefined): string => {
   return `Invalid price formatting for "${displayName}". Format prices such as: $10.99`;
 };
