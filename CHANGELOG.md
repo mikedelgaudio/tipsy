@@ -1,4 +1,6 @@
-### Completed
+# Completed
+
+## v0.1.0-beta
 
 - [x] EDIT_START Event Title
 - [x] EDIT_SAVE Event Title
@@ -23,5 +25,8 @@
 - [x] Auto save from edit mode when user clicks out or away from focused box 
 - [x] Handle scenario where recalculate is called twice when total is updated *NOT REPRODUCIBLE*
 - [x] Ensure wording between delete/remove is consistent UX
+
+## v0.1.1-beta
+
 - [x] Add https://reactjs.org/docs/error-boundaries.html
 - [x] Protect names from bad string input
