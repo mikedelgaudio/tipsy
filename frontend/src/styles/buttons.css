@@ -42,7 +42,7 @@ button:disabled {
 }
 
 .btn-success {
-  color: var(--brand);
+  color: var(--brand-off);
   border: 3px solid var(--success);
 }
 
@@ -53,17 +53,9 @@ button:disabled {
   transition: opacity, fill 0.2s ease-in-out;
   opacity: 1;
 }
-.icon-success {
-  fill: var(--brand-x);
-}
-.icon-success:hover {
-  fill: var(--brand);
-}
-
 .icon-sm {
   width: 12px;
 }
-
 .icon-xl {
   width: 25px;
 }
