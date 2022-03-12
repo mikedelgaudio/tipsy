@@ -33,3 +33,7 @@
 - [x] Debug why iOS physical device is showing icons as blue (Due to path css selector)
 - [x] Updated favicon to support dark / light modes
 - [x] Modified CSS theme color
+
+## v0.2.0-beta 
+
+- nil

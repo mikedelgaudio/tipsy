@@ -15,13 +15,9 @@ The best friend group payment calculator web app.
 
 The roadmap provides a high level storyboard of future for the Tipsy project.
 
-### Currently: v0.1.1-beta
+### Currently: v0.2.0-beta 
 
 - nil
-
-### v0.2.0-beta Roadmap
-
-- TBD
 
 ### Backlog
 
