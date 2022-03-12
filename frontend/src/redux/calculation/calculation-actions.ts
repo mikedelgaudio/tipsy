@@ -49,7 +49,7 @@ export const deleteItem = (itemId: string) => {
   };
 };
 
-export const editItemName = (itemId: string, newName: string) => {
+export const editItemName = (itemId: string, newName: string | undefined) => {
   return {
     type: actionTypes.EDIT_ITEM_NAME,
     payload: {

@@ -42,28 +42,25 @@ button:disabled {
 }
 
 .btn-success {
-  color: var(--brand);
+  color: var(--brand-off);
   border: 3px solid var(--success);
 }
 
 .icons {
   width: 20px;
-  fill: var(--brand-off);
   opacity: 1;
   transition: opacity, fill 0.2s ease-in-out;
   opacity: 1;
 }
-.icon-success {
+.icons path {
+  fill: var(--brand-off);
+}
+.icon-light path {
   fill: var(--brand-x);
 }
-.icon-success:hover {
-  fill: var(--brand);
-}
-
 .icon-sm {
   width: 12px;
 }
-
 .icon-xl {
   width: 25px;
 }

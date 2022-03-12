@@ -10,6 +10,9 @@ import {
 } from "../../../redux/calculation/calculation-actions";
 import { didMount } from "../../../hooks/didMount";
 import { didClickAway } from "../../../hooks/didClickAway";
+import { dismissToast, errorToast } from "../../shared/toasts/toasts";
+import { validString } from "../../../utilities/sanitize";
+import { ERROR_INPUT_EVENT } from "../../../utilities/variables";
 
 function ItemMenu() {
   const didMountOnce = didMount();
@@ -33,10 +36,13 @@ function ItemMenu() {
   );
 
   const [editing, setEditing] = useState(false);
+  const [error, setError] = useState(false);
+  const toastId = useRef(null);
   const [eventTitleInput, setEventTitleInput] = useState(storeEventTitle);
 
   const eventTitleInputHandler = (e: any) => {
-    setEventTitleInput(e.target.value);
+    setError(!validString(e.target.value));
+    setEventTitleInput(e.target.value.trim());
   };
 
   useEffect(() => {
@@ -45,8 +51,14 @@ function ItemMenu() {
 
   // Works as intended, need to do research if this is a bad smell?
   useEffect(() => {
-    if (!didMountOnce && !editing && storeEventTitle !== eventTitleInput) {
-      dispatch(editEventTitle(eventTitleInput));
+    if (!didMountOnce && !editing) {
+      error ? errorToast(toastId, ERROR_INPUT_EVENT()) : dismissToast(toastId);
+
+      if (storeEventTitle !== eventTitleInput) {
+        dispatch(
+          editEventTitle(!error ? eventTitleInput.trim() : storeEventTitle),
+        );
+      }
     }
   }, [editing]);
 

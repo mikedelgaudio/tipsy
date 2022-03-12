@@ -11,8 +11,10 @@ import {
   removeDollarOrComma,
   sanitizeCurrency,
 } from "../../../utilities/sanitize";
+import { ERROR_INPUT_PRICE } from "../../../utilities/variables";
 import CloseBtn from "../../shared/buttons/CloseBtn";
 import EditBtn from "../../shared/buttons/EditBtn";
+import { dismissToast, errorToast } from "../../shared/toasts/toasts";
 import "./TotalsMenu.css";
 
 const defaultEventTotals: { eventTotal: string; eventTotalFloat: number } = {
@@ -39,6 +41,7 @@ function TotalsMenu() {
   const [editing, setEditing] = useState(false);
   const [eventTotalInput, setEventTotalInput] = useState(defaultEventTotals);
   const [error, setError] = useState(false);
+  const toastId = useRef(null);
 
   const eventTotalInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const input = removeDollarOrComma(e.target.value);
@@ -66,14 +69,20 @@ function TotalsMenu() {
   }, [storeEventTotal]);
 
   useEffect(() => {
-    if (!didMountOnce && !editing && !error) {
-      dispatch(
-        editEventTotal(
-          removeDollarOrComma(eventTotalInput.eventTotal),
-          eventTotalInput.eventTotalFloat,
-        ),
-      );
-      dispatch(recalculateEvent());
+    if (!didMountOnce && !editing) {
+      error
+        ? errorToast(toastId, ERROR_INPUT_PRICE("Event total"))
+        : dismissToast(toastId);
+
+      if (storeEventTotal !== eventTotalInput.eventTotal) {
+        dispatch(
+          editEventTotal(
+            removeDollarOrComma(eventTotalInput.eventTotal),
+            eventTotalInput.eventTotalFloat,
+          ),
+        );
+        if (!error) dispatch(recalculateEvent());
+      }
     }
   }, [editing]);
 

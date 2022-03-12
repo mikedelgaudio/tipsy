@@ -7,6 +7,9 @@ import { editPersonName } from "../../../../redux/calculation/calculation-action
 import ItemRow from "./ItemRow/ItemRow";
 import PersonActions from "./PersonActions/PersonActions";
 import "./PersonCard.css";
+import { validString } from "../../../../utilities/sanitize";
+import { dismissToast, errorToast } from "../../../shared/toasts/toasts";
+import { ERROR_INPUT_NAME } from "../../../../utilities/variables";
 
 function PersonCard({ personId }: any) {
   // Store Selectors
@@ -32,12 +35,15 @@ function PersonCard({ personId }: any) {
 
   const didMountOnce = didMount();
   const dispatch = useDispatch();
+  const toastId = useRef(null);
   const [editing, setEditing] = useState(false);
+  const [error, setError] = useState(false);
   const [personNameInput, setPersonNameInput] = useState(storePersonData?.name);
   const personRef = useRef(null);
   didClickAway(personRef, editing, setEditing);
 
   const personNameInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setError(!validString(e.target.value));
     setPersonNameInput(e.target.value);
   };
 
@@ -47,8 +53,17 @@ function PersonCard({ personId }: any) {
 
   useEffect(() => {
     if (!didMountOnce && !editing) {
+      error
+        ? errorToast(toastId, ERROR_INPUT_NAME(storePersonData?.name))
+        : dismissToast(toastId);
+
       if (storePersonData?.name !== personNameInput) {
-        dispatch(editPersonName(personId, personNameInput));
+        dispatch(
+          editPersonName(
+            personId,
+            !error ? personNameInput?.trim() : storePersonData?.name,
+          ),
+        );
       }
     }
   }, [editing]);
@@ -57,7 +72,9 @@ function PersonCard({ personId }: any) {
     <div className="personCard" ref={personRef}>
       <div className="personCardHeader">
         {!editing ? (
-          <h2 className="personName">{storePersonData?.name}</h2>
+          <h2 className={`${error ? "errorText" : ""} personName`}>
+            {storePersonData?.name}
+          </h2>
         ) : (
           <div className="inputWrapper">
             <label htmlFor={`personNameInput-${personId}`}>

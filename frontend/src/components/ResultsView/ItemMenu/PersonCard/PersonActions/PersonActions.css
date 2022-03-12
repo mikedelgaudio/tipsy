@@ -1,10 +1,15 @@
 .personActions {
   display: flex;
-  gap: 1em;
   flex-flow: column wrap;
+  flex-direction: column-reverse;
 }
 
-@media (min-width: 376px) {
+/* ? Need to investigate why iOS can't use gap */
+.personActions button {
+  margin: 1em 0;
+}
+
+@media (min-width: 576px) {
   .personActions {
     gap: 1.25em;
     flex-flow: row;
