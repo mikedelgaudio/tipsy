@@ -37,3 +37,13 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Ability to share a link for 1 week
 - [ ] Determine why some state functions required `undefined` as type safe
 - [ ] Refactor how state is updated, is recalculate a side effect use thunks?
+
+## Docker build
+
+```
+docker buildx build --platform linux/arm64 -t mikedelgaudio/tipsy:arm64 .
+docker buildx build --platform linux/amd64 -t mikedelgaudio/tipsy:amd64 .
+
+docker push mikedelgaudio/tipsy:arm64
+docker push mikedelgaudio/tipsy:amd64
+```
