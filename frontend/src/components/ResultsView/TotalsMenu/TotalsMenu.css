@@ -20,6 +20,8 @@
   font-weight: 600;
   font-size: clamp(1.5em, 1.5em + 1vw, 2em);
   word-break: break-word;
+  display: flex;
+  align-items: center;
 }
 
 .totalsBreakdownWrapper {

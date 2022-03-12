@@ -2,9 +2,10 @@
   display: flex;
   gap: 1em;
   flex-flow: column wrap;
+  flex-direction: column-reverse;
 }
 
-@media (min-width: 376px) {
+@media (min-width: 576px) {
   .personActions {
     gap: 1.25em;
     flex-flow: row;
