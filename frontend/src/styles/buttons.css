@@ -48,10 +48,15 @@ button:disabled {
 
 .icons {
   width: 20px;
-  fill: var(--brand-off);
   opacity: 1;
   transition: opacity, fill 0.2s ease-in-out;
   opacity: 1;
+}
+.icons path {
+  fill: var(--brand-off);
+}
+.icon-light path {
+  fill: var(--brand-x);
 }
 .icon-sm {
   width: 12px;
