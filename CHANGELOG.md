@@ -30,3 +30,6 @@
 
 - [x] Add https://reactjs.org/docs/error-boundaries.html
 - [x] Protect names from bad string input
+- [x] Debug why iOS physical device is showing icons as blue (Due to path css selector)
+- [x] Updated favicon to support dark / light modes
+- [x] Modified CSS theme color

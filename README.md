@@ -15,9 +15,9 @@ The best friend group payment calculator web app.
 
 The roadmap provides a high level storyboard of future for the Tipsy project.
 
-### Currently: v0.1.1-bets
+### Currently: v0.1.1-beta
 
-- [ ] Debug why iOS physical device is showing icons as blue
+- nil
 
 ### v0.2.0-beta Roadmap
 
