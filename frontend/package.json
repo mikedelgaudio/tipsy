@@ -7,7 +7,8 @@
     "serve": "vite preview",
     "lint": "eslint --ext .ts,.tsx .",
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
-    "husky:prepare": "cd .. && husky install frontend/.husky"
+    "husky:prepare": "cd .. && husky install frontend/.husky",
+    "e2e": "npx cypress open"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
@@ -19,6 +20,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^8.0.2",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^27.4.0",
     "@types/react": "^17.0.0",
@@ -27,6 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",
     "@vitejs/plugin-react": "^1.0.0",
+    "cypress": "^9.5.1",
     "eslint": "^8.10.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.4",
