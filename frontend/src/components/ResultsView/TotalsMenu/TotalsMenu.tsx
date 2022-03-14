@@ -92,6 +92,7 @@ function TotalsMenu() {
   return (
     <div className="totalsMenuView" ref={menuRef}>
       <div className="totalsBreakdownWrapper">
+        {/* TODO: Remove unused <ul></ul> */}
         <ul className="totalsBreakdownList">
           <li className="totalBreakdownItem">
             <p className="totalBreakdownDesc">Total Tip and Tax</p>
@@ -99,7 +100,7 @@ function TotalsMenu() {
         </ul>
         <ul className="totalsBreakdownList">
           <li className="totalBreakdownItem">
-            <p>${storeEventTipTaxTotal}</p>
+            <p data-cy="eventTotalTipAndTax">${storeEventTipTaxTotal}</p>
           </li>
         </ul>
       </div>
@@ -107,15 +108,22 @@ function TotalsMenu() {
         <h3 className="totalText">Total</h3>
         <div className="totalInputWrapper">
           {!editing ? (
-            <h3 className={`${error ? "errorText" : ""} totalText `}>
+            <h3
+              className={`${error ? "errorText" : ""} totalText `}
+              data-cy="eventTotal"
+            >
               ${storeEventTotal}
             </h3>
           ) : (
-            <input
-              type="text"
-              onChange={eventTotalInputHandler}
-              value={eventTotalInput.eventTotal || ""}
-            />
+            <div className="inputWrapper">
+              <label htmlFor={"eventTotalInput"}>Event total price</label>
+              <input
+                id="eventTotalInput"
+                type="text"
+                onChange={eventTotalInputHandler}
+                value={eventTotalInput.eventTotal || ""}
+              />
+            </div>
           )}
           {!editing ? (
             <EditBtn

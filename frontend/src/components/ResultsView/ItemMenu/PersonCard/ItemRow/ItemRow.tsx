@@ -146,7 +146,10 @@ function ItemRow({ itemId, editing }: any) {
       <div className="personItemInfoRow">
         {!editing ? (
           <>
-            <p className={`${error.name ? "errorText" : ""} personItemName`}>
+            <p
+              className={`${error.name ? "errorText" : ""} personItemName`}
+              data-cy={`${storeItemData?.name}-itemName`}
+            >
               {storeItemData?.name}
             </p>
           </>
@@ -169,7 +172,10 @@ function ItemRow({ itemId, editing }: any) {
           </>
         )}
         {!editing ? (
-          <p className={`${error.price ? "errorText" : ""} personItemPrice`}>
+          <p
+            className={`${error.price ? "errorText" : ""} personItemPrice`}
+            data-cy={`${storeItemData?.name}-itemPrice`}
+          >
             ${storeItemData?.price}
           </p>
         ) : (

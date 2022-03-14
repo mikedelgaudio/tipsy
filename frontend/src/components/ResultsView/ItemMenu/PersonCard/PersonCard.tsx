@@ -72,7 +72,10 @@ function PersonCard({ personId }: any) {
     <div className="personCard" ref={personRef}>
       <div className="personCardHeader">
         {!editing ? (
-          <h2 className={`${error ? "errorText" : ""} personName`}>
+          <h2
+            className={`${error ? "errorText" : ""} personName`}
+            data-cy={`${storePersonData?.name}-personName`}
+          >
             {storePersonData?.name}
           </h2>
         ) : (
@@ -113,10 +116,20 @@ function PersonCard({ personId }: any) {
         </ul>
         <ul className="subtotalList">
           <li className="subtotalItem">
-            <p className="subtotalPrice">${storePersonData?.tipAndTax}</p>
+            <p
+              className="subtotalPrice"
+              data-cy={`${storePersonData?.name}-tipAndTax`}
+            >
+              ${storePersonData?.tipAndTax}
+            </p>
           </li>
           <li className="subtotalItem">
-            <p className="subtotalPrice">${storePersonData?.totalDue}</p>
+            <p
+              className="subtotalPrice"
+              data-cy={`${storePersonData?.name}-totalDue`}
+            >
+              ${storePersonData?.totalDue}
+            </p>
           </li>
         </ul>
       </div>
