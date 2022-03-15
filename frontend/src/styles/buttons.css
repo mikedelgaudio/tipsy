@@ -43,7 +43,8 @@ button:disabled {
 
 .btn-success {
   color: var(--brand-off);
-  border: 3px solid var(--success);
+  border: 3px solid var(--brand-off);
+  background-color: var(--success);
 }
 
 .icons {
