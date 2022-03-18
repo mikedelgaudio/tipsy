@@ -36,4 +36,4 @@
 
 ## v0.2.0-beta 
 
-- nil
+- [x] Event title does not allow whitespaces?

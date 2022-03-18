@@ -17,7 +17,7 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 
 ### Currently: v0.2.0-beta 
 
-- [ ] Event title does not allow whitespaces?
+
 - [ ] Save session / state to local storage
 - [ ] Add warning modal when user is clicks the 'Reset' button
 

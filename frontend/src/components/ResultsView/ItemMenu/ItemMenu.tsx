@@ -42,7 +42,7 @@ function ItemMenu() {
 
   const eventTitleInputHandler = (e: any) => {
     setError(!validString(e.target.value));
-    setEventTitleInput(e.target.value.trim());
+    setEventTitleInput(e.target.value);
   };
 
   useEffect(() => {
