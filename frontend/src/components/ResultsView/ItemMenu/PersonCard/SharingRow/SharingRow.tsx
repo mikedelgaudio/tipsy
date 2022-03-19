@@ -1,9 +1,9 @@
 import "./SharingRow.css";
-import EditBtn from "../../shared/buttons/EditBtn";
-import CloseBtn from "../../shared/buttons/CloseBtn";
+import EditBtn from "../../../../shared/buttons/EditBtn";
+import CloseBtn from "../../../../shared/buttons/CloseBtn";
 import { useDispatch } from "react-redux";
-import { addPerson } from "../../../redux/calculation/calculation-actions";
-import AddPersonBtn from "../../shared/buttons/AddPersonBtn";
+import { addPerson } from "../../../../../redux/calculation/calculation-actions";
+import AddPersonBtn from "../../../../shared/buttons/AddPersonBtn";
 
 function SharingRow({ editing, setEditing }: any) {
   const dispatch = useDispatch();

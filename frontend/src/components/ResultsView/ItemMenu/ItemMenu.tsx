@@ -1,6 +1,6 @@
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { AppStore, Item, Person } from "../../../models/custom-models";
-import SharingRow from "../SharingRow/SharingRow";
+import SharingRow from "./PersonCard/SharingRow/SharingRow";
 import "./ItemMenu.css";
 import PersonCard from "./PersonCard/PersonCard";
 import { useState, useEffect, useRef } from "react";
@@ -13,6 +13,7 @@ import { didClickAway } from "../../../hooks/didClickAway";
 import { dismissToast, errorToast } from "../../shared/toasts/toasts";
 import { validString } from "../../../utilities/sanitize";
 import { ERROR_INPUT_EVENT } from "../../../utilities/variables";
+import TotalsMenu from "./TotalsMenu/TotalsMenu";
 
 function ItemMenu() {
   const didMountOnce = didMount();
@@ -90,6 +91,7 @@ function ItemMenu() {
             <SharingRow editing={editing} setEditing={setEditing} />
           </div>
         </div>
+        <TotalsMenu />
         {personIds.map((id: string) => {
           return <PersonCard key={id} personId={id} />;
         })}

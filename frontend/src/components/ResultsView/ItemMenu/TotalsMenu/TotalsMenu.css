@@ -3,9 +3,8 @@
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   background-color: var(--brand-x);
-  border: 1px solid var(--brand-off);
+  border-bottom: 4px solid var(--brand-off);
   color: var(--brand-off);
-  border-radius: var(--global-radius);
   padding: 1em;
 }
 

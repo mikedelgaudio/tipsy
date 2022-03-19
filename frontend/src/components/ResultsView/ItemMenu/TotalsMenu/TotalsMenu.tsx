@@ -1,20 +1,20 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { didClickAway } from "../../../hooks/didClickAway";
-import { didMount } from "../../../hooks/didMount";
-import { AppStore, SanitizedCurrency } from "../../../models/custom-models";
+import { didClickAway } from "../../../../hooks/didClickAway";
+import { didMount } from "../../../../hooks/didMount";
+import { AppStore, SanitizedCurrency } from "../../../../models/custom-models";
 import {
   editEventTotal,
   recalculateEvent,
-} from "../../../redux/calculation/calculation-actions";
+} from "../../../../redux/calculation/calculation-actions";
 import {
   removeDollarOrComma,
   sanitizeCurrency,
-} from "../../../utilities/sanitize";
-import { ERROR_INPUT_PRICE } from "../../../utilities/variables";
-import CloseBtn from "../../shared/buttons/CloseBtn";
-import EditBtn from "../../shared/buttons/EditBtn";
-import { dismissToast, errorToast } from "../../shared/toasts/toasts";
+} from "../../../../utilities/sanitize";
+import { ERROR_INPUT_PRICE } from "../../../../utilities/variables";
+import CloseBtn from "../../../shared/buttons/CloseBtn";
+import EditBtn from "../../../shared/buttons/EditBtn";
+import { dismissToast, errorToast } from "../../../shared/toasts/toasts";
 import "./TotalsMenu.css";
 
 const defaultEventTotals: { eventTotal: string; eventTotalFloat: number } = {
