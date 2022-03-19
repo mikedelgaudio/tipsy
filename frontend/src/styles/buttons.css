@@ -35,7 +35,7 @@ button:disabled {
   opacity: 0.75;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 630px) {
   .btn-text {
     display: inline;
   }
@@ -43,7 +43,8 @@ button:disabled {
 
 .btn-success {
   color: var(--brand-off);
-  border: 3px solid var(--brand-off);
+  box-shadow: 0px 0px 10px var(--success);
+  border: 2px solid var(--brand-off);
   background-color: var(--success);
 }
 

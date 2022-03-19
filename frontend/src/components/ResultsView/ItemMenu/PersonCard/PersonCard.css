@@ -25,6 +25,7 @@
   align-items: center;
   flex-flow: row nowrap;
   gap: 2em;
+  white-space: nowrap;
 }
 
 .personItemList,
@@ -53,7 +54,7 @@
   align-items: center;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 630px) {
   .personItem.editing {
     flex-flow: row;
     justify-content: space-between;
