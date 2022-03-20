@@ -25,12 +25,6 @@ function EventHeaderActions({ editing, setEditing }: any) {
         ariaTitle={"Add person"}
         iconClassName="icon-xl"
       />
-      {/* <input
-        className="btn-danger"
-        type="reset"
-        onClick={() => dispatch(restartEvent())}
-        value="Reset"
-      /> */}
     </div>
   );
 }

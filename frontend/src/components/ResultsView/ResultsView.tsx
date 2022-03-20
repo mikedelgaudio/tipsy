@@ -3,6 +3,7 @@ import "./ResultsView.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ErrorBoundary from "../shared/errors/ErrorBoundary";
+import EventFooterActions from "./EventFooterActions";
 
 function ResultsView() {
   return (
@@ -10,6 +11,7 @@ function ResultsView() {
       <ToastContainer role="alert" />
       <ErrorBoundary>
         <ItemMenu />
+        <EventFooterActions />
       </ErrorBoundary>
     </form>
   );
