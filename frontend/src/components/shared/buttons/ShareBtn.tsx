@@ -1,22 +1,21 @@
 import ShareIcon from "../icons/ShareIcon";
+import MyCustomDialog from "../Modal";
 
-function ShareBtn({
-  click,
-  ariaTitle,
-  className = "",
-  iconClassName = "",
-}: any) {
+function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
+  const buttonContent = (
+    <span className="btn-wrapper">
+      <ShareIcon className={`icons ${iconClassName ? iconClassName : ""}`} />
+      <span className="btn-text">Share</span>
+    </span>
+  );
   return (
-    <button
-      className={`btn ${className ? className : ""}`}
-      onClick={() => click()}
-      title={ariaTitle}
-    >
-      <span className="btn-wrapper">
-        <ShareIcon className={`icons ${iconClassName ? iconClassName : ""}`} />
-        <span className="btn-text">Share</span>
-      </span>
-    </button>
+    <>
+      <MyCustomDialog
+        buttonContent={buttonContent}
+        ariaTitle={ariaTitle}
+        className={className}
+      />
+    </>
   );
 }
 
