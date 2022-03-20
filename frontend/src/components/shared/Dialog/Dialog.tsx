@@ -2,7 +2,7 @@ import { useA11yDialog } from "react-a11y-dialog";
 import { createPortal } from "react-dom";
 import "./Dialog.css";
 
-const Dialog = ({ className, ariaTitle, buttonContent, modalData }: any) => {
+const Dialog = ({ className, ariaTitle, buttonData, modalData }: any) => {
   // `instance` is the `a11y-dialog` instance.
   // `attr` is an object with the following keys:
   // - `container`: the dialog container
@@ -40,13 +40,7 @@ const Dialog = ({ className, ariaTitle, buttonContent, modalData }: any) => {
 
   return (
     <>
-      <button
-        className={`btn ${className ? className : ""}`}
-        title={ariaTitle}
-        onClick={() => instance.show()}
-      >
-        {buttonContent}
-      </button>
+      {buttonData(() => instance.show())}
       {dialog}
     </>
   );

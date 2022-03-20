@@ -2,14 +2,24 @@ import ShareIcon from "../icons/ShareIcon";
 import Dialog from "../Dialog";
 
 function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
-  const buttonContent = (
-    <span className="btn-wrapper">
-      <ShareIcon className={`icons ${iconClassName ? iconClassName : ""}`} />
-      <span className="btn-text">Share</span>
-    </span>
-  );
+  const buttonData = (click: () => void) => {
+    return (
+      <button
+        onClick={() => click()}
+        className={`btn ${className ? className : ""}`}
+        title={ariaTitle}
+      >
+        <span className="btn-wrapper">
+          <ShareIcon
+            className={`icons ${iconClassName ? iconClassName : ""}`}
+          />
+          <span className="btn-text">Share</span>
+        </span>
+      </button>
+    );
+  };
 
-  const modalTitle = "Share to your friends or family to get paid";
+  const modalTitle = "Share with family or friends";
 
   const modalBody = (
     <div className="share-dialog">
@@ -53,7 +63,7 @@ function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
   return (
     <>
       <Dialog
-        buttonContent={buttonContent}
+        buttonData={buttonData}
         modalData={modalData}
         ariaTitle={ariaTitle}
         className={className}
