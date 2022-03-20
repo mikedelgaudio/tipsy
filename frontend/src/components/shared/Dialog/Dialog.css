@@ -20,6 +20,7 @@
 .dialog-container {
   z-index: 2; /* 1 */
   display: flex; /* 2 */
+  margin: 3em;
 }
 
 /**
@@ -46,5 +47,14 @@
   margin: auto; /* 1 */
   z-index: 2; /* 2 */
   position: relative; /* 2 */
-  background-color: white; /* 3 */
+  background-color: var(--brand-x); /* 3 */
+  max-width: 80ch;
+  padding: 3em;
+  border-radius: var(--global-radius);
+}
+
+.dialog-close {
+  position: absolute;
+  top: 1em;
+  right: 1em;
 }

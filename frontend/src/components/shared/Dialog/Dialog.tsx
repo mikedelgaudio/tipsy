@@ -1,8 +1,8 @@
 import { useA11yDialog } from "react-a11y-dialog";
 import { createPortal } from "react-dom";
-import "./Modal.css";
+import "./Dialog.css";
 
-const MyCustomDialog = (props: any) => {
+const Dialog = ({ className, ariaTitle, buttonContent, modalData }: any) => {
   // `instance` is the `a11y-dialog` instance.
   // `attr` is an object with the following keys:
   // - `container`: the dialog container
@@ -11,37 +11,32 @@ const MyCustomDialog = (props: any) => {
   // - `title`: the dialog mandatory title
   // - `closeButton`:  the dialog close button
   const [instance, attr] = useA11yDialog({
-    // The required HTML `id` attribute of the dialog element, internally used
-    // a11y-dialog to manipulate the dialog.
-    id: "my-dialog",
-    // The optional `role` attribute of the dialog element, either `dialog`
-    // (default) or `alertdialog` to make it a modal (preventing closing on
-    // click outside of ESC key).
+    id: "app-dialog",
     role: "dialog",
-    // The required dialog title, mandatory in the document
-    // to provide context to assistive technology.
-    title: "My dialog",
+    title: `${modalData.title}`,
   });
 
   const dialog = createPortal(
     <div {...attr.container} className="dialog-container">
       <div {...attr.overlay} className="dialog-overlay" />
-
       <div {...attr.dialog} className="dialog-content">
-        <p {...attr.title} className="dialog-title">
-          Your dialog title
-        </p>
-
-        <p>Your dialog content</p>
-
-        <button {...attr.closeButton} className="dialog-close">
-          Close dialog
-        </button>
+        <header>
+          <h2 {...attr.title} className="dialog-title">
+            {modalData.title}
+          </h2>
+          <button
+            className="btn dialog-close"
+            data-a11y-dialog-hide
+            aria-label="Close dialog"
+          >
+            &times;
+          </button>
+        </header>
+        {modalData.body}
       </div>
     </div>,
     document.body,
   );
-  const { className, ariaTitle, buttonContent } = props;
 
   return (
     <>
@@ -57,4 +52,4 @@ const MyCustomDialog = (props: any) => {
   );
 };
 
-export default MyCustomDialog;
+export default Dialog;
