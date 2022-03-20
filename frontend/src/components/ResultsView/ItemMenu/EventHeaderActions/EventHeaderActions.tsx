@@ -1,14 +1,14 @@
-import "./EventActions.css";
+import "./EventHeaderActions.css";
 import EditBtn from "../../../shared/buttons/EditBtn";
 import CloseBtn from "../../../shared/buttons/CloseBtn";
 import { useDispatch } from "react-redux";
 import { addPerson } from "../../../../redux/calculation/calculation-actions";
 import AddPersonBtn from "../../../shared/buttons/AddPersonBtn";
 
-function EventActions({ editing, setEditing }: any) {
+function EventHeaderActions({ editing, setEditing }: any) {
   const dispatch = useDispatch();
   return (
-    <div className="eventActionsRow">
+    <div className="eventHeaderActionsRow">
       {!editing ? (
         <EditBtn
           clickSideEffect={() => setEditing(true)}
@@ -35,4 +35,4 @@ function EventActions({ editing, setEditing }: any) {
   );
 }
 
-export default EventActions;
+export default EventHeaderActions;

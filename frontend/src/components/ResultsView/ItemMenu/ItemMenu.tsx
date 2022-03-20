@@ -13,7 +13,7 @@ import { dismissToast, errorToast } from "../../shared/toasts/toasts";
 import { validString } from "../../../utilities/sanitize";
 import { ERROR_INPUT_EVENT } from "../../../utilities/variables";
 import TotalsMenu from "./TotalsMenu/TotalsMenu";
-import EventActions from "./EventActions/EventActions";
+import EventHeaderActions from "./EventHeaderActions/EventHeaderActions";
 
 function ItemMenu() {
   const didMountOnce = didMount();
@@ -88,7 +88,7 @@ function ItemMenu() {
             </div>
           )}
           <div className="itemHeaderActions">
-            <EventActions editing={editing} setEditing={setEditing} />
+            <EventHeaderActions editing={editing} setEditing={setEditing} />
           </div>
         </div>
         <TotalsMenu />

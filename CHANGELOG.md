@@ -37,3 +37,4 @@
 ## v0.2.0-beta 
 
 - [x] Event title does not allow whitespaces?
+- [x] Save session / state to local storage

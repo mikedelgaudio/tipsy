@@ -17,8 +17,6 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 
 ### Currently: v0.2.0-beta 
 
-
-- [ ] Save session / state to local storage
 - [ ] Add warning modal when user is clicks the 'Reset' button
 
 ### Backlog
@@ -33,6 +31,7 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Ability to share a link for 1 week
 - [ ] Determine why some state functions required `undefined` as type safe
 - [ ] Refactor how state is updated, is recalculate a side effect use thunks?
+- [ ] Ensure multiple calls to save state subscriber is not taking too many calls
 
 ## Docker build
 
