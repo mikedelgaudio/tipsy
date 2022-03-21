@@ -17,8 +17,9 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 
 ### Currently: v0.2.0-beta 
 
-- [ ] Add warning modal when user is clicks the 'Reset' button
-- [ ] Add modal to share on iOS WebShare API or fallback to copy paste
+- [ ] Add modal to share on iOS WebShare API or fallback to copy paste (share button should default to web)
+- [ ] Fix issue when resetting app and error classes or toast not clearing
+- [ ] Fix issue for dialog X icon skewed
 
 ### Backlog
 

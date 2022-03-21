@@ -2,7 +2,7 @@ import ShareIcon from "../icons/ShareIcon";
 import Dialog from "../Dialog";
 
 function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
-  const buttonData = (click: () => void) => {
+  const buttonLayout = (click: () => void) => {
     return (
       <button
         onClick={() => click()}
@@ -63,7 +63,7 @@ function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
   return (
     <>
       <Dialog
-        buttonData={buttonData}
+        buttonLayout={buttonLayout}
         modalData={modalData}
         ariaTitle={ariaTitle}
         className={className}

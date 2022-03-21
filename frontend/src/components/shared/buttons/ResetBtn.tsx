@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
 import { restartEvent } from "../../../redux/calculation/calculation-actions";
 import Dialog from "../Dialog";
-import CheckIcon from "../icons/CheckIcon";
 import ResetIcon from "../icons/ResetIcon";
+import XIcon from "../icons/XIcon";
 
 function ResetBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
   const dispatch = useDispatch();
-  const buttonData = (click: () => void) => {
+  const buttonLayout = (click: () => void) => {
     return (
       <button
         className={`btn ${className ? className : ""}`}
@@ -28,36 +28,39 @@ function ResetBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
   const modalTitle = "Are you sure you want to reset?";
 
   const modalBody = (
-    <div className="reset-dialog">
+    <div className="dialog-body">
       <p>Resetting the app will clear all calculations and inputted data.</p>
-      <button
-        className={`btn  ${className ? className : ""}`}
-        type="reset"
-        onClick={() => dispatch(restartEvent())}
-        value="Reset"
-        data-a11y-dialog-hide
-        aria-label="Close dialog"
-      >
-        <span className="btn-wrapper">
-          <CheckIcon
-            className={`icons ${iconClassName ? iconClassName : ""}`}
-          />
-          <span className="btn-text">Yes reset</span>
-        </span>
-      </button>
-
-      <button
-        className={`btn  ${className ? className : ""}`}
-        data-a11y-dialog-hide
-        aria-label="Close dialog"
-      >
-        <span className="btn-wrapper">
-          <ResetIcon
-            className={`icons ${iconClassName ? iconClassName : ""}`}
-          />
-          <span className="btn-text">Cancel</span>
-        </span>
-      </button>
+      <div className="dialog-btn-row">
+        <button
+          className={`btn  ${className ? className : ""}`}
+          data-a11y-dialog-hide
+          aria-label="Close dialog"
+        >
+          <span className="btn-wrapper">
+            <XIcon
+              className={`icons icon-sm ${iconClassName ? iconClassName : ""}`}
+            />
+            <span className="btn-text">Cancel</span>
+          </span>
+        </button>
+        <button
+          className={`btn btn-danger ${className ? className : ""}`}
+          type="reset"
+          onClick={() => dispatch(restartEvent())}
+          value="Reset"
+          data-a11y-dialog-hide
+          aria-label="Close dialog"
+        >
+          <span className="btn-wrapper">
+            <ResetIcon
+              className={`icons icon-light ${
+                iconClassName ? iconClassName : ""
+              }`}
+            />
+            <span className="btn-text">Reset</span>
+          </span>
+        </button>
+      </div>
     </div>
   );
 
@@ -68,12 +71,7 @@ function ResetBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
 
   return (
     <>
-      <Dialog
-        buttonData={buttonData}
-        modalData={modalData}
-        ariaTitle={ariaTitle}
-        className={className}
-      />
+      <Dialog buttonLayout={buttonLayout} modalData={modalData} />
     </>
   );
 }

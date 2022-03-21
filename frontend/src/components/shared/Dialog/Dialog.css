@@ -58,3 +58,15 @@
   top: 1em;
   right: 1em;
 }
+
+.dialog-body {
+  display: flex;
+  flex-flow: column;
+  gap: 2em;
+}
+
+.dialog-btn-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+}

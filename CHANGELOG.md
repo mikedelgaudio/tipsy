@@ -38,3 +38,4 @@
 
 - [x] Event title does not allow whitespaces?
 - [x] Save session / state to local storage
+- [x] Add warning modal when user is clicks the 'Reset' button

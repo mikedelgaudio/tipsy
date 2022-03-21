@@ -48,6 +48,11 @@ button:disabled {
   background-color: var(--success);
 }
 
+.btn-danger {
+  background-color: var(--error);
+  color: var(--brand-x);
+}
+
 .icons {
   width: 20px;
   opacity: 1;
@@ -59,6 +64,9 @@ button:disabled {
 }
 .icon-light path {
   fill: var(--brand-x);
+}
+.icon-xs {
+  width: 9px;
 }
 .icon-sm {
   width: 12px;

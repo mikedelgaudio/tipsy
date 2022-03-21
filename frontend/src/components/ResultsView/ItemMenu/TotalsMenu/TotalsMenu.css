@@ -3,7 +3,7 @@
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   background-color: var(--brand-x);
-  border-bottom: 4px solid var(--brand-off);
+  border-bottom: 4px solid var(--brand);
   color: var(--brand-off);
   padding: 1em;
 }
