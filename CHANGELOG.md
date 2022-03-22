@@ -44,3 +44,5 @@
 - [x] Created dialog component that is reusable for reset and share
 - [x] Create copy / paste functionality if no WebShare API
 - [x] Create ability to email the WebShare API info 
+- [x] Display full button text on footer event actions 
+

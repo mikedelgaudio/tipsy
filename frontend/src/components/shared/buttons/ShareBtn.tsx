@@ -17,7 +17,7 @@ function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
           <ShareIcon
             className={`icons ${iconClassName ? iconClassName : ""}`}
           />
-          <span className="btn-text">Share</span>
+          <span className="btn-text-allow-full">Share</span>
         </span>
       </button>
     );
@@ -56,7 +56,7 @@ function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
         >
           <span className="btn-wrapper">
             <MailIcon className="icons" />
-            <span className="btn-text">Email</span>
+            <span className="btn-text-allow-full">Email</span>
           </span>
         </button>
         {navigator.clipboard ? (
@@ -68,7 +68,7 @@ function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
           >
             <span className="btn-wrapper">
               <CopyIcon className="icons" />
-              <span className="btn-text">Copy to clipboard</span>
+              <span className="btn-text-allow-full">Copy to clipboard</span>
             </span>
           </button>
         ) : null}

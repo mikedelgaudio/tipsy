@@ -19,7 +19,7 @@ function ResetBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
           <ResetIcon
             className={`icons ${iconClassName ? iconClassName : ""}`}
           />
-          <span className="btn-text">Reset</span>
+          <span className="btn-text-allow-full">Reset</span>
         </span>
       </button>
     );
@@ -40,7 +40,7 @@ function ResetBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
             <XIcon
               className={`icons icon-sm ${iconClassName ? iconClassName : ""}`}
             />
-            <span className="btn-text">Cancel</span>
+            <span className="btn-text-allow-full">Cancel</span>
           </span>
         </button>
         <button
@@ -57,7 +57,7 @@ function ResetBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
                 iconClassName ? iconClassName : ""
               }`}
             />
-            <span className="btn-text">Reset</span>
+            <span className="btn-text-allow-full">Reset</span>
           </span>
         </button>
       </div>

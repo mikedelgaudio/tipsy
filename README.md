@@ -37,7 +37,6 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Refactor how state is updated, is recalculate a side effect use thunks?
 - [ ] Ensure multiple calls to save state subscriber is not taking too many calls
 - [ ] Move dialog layouts to different shared components folder
-- [ ] 
 
 ## Docker build
 

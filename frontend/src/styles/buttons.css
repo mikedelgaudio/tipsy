@@ -17,7 +17,13 @@ button:disabled {
   border-radius: 30px;
   font-weight: 600;
   background-color: #f0f0f0; /* TODO make global */
+  color: var(--brand-off);
   border-radius: 30px;
+}
+
+.btn-text-allow-full {
+  display: inline;
+  color: inherit;
 }
 
 .btn-text {
