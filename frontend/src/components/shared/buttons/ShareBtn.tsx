@@ -1,6 +1,9 @@
 import ShareIcon from "../icons/ShareIcon";
 import Dialog from "../Dialog";
 import store from "../../../redux/store";
+import CopyIcon from "../icons/CopyIcon";
+import MailIcon from "../icons/MailIcon";
+import { errorToast, successToast } from "../toasts/toasts";
 
 function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
   const buttonLayout = (click: () => void) => {
@@ -20,38 +23,55 @@ function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
     );
   };
 
+  const snapshot = ({ isEmail = false }): string => {
+    const newlineChar = isEmail.valueOf() ? "%0d%0a" : "\n";
+
+    const eventTotal = store.getState().calculation.eventTotal;
+    const persons = store.getState().calculation.persons;
+
+    const personData = persons.map(person => {
+      return `${person.name}: $${person.totalDue}${newlineChar}`;
+    });
+
+    const promotion = "Calculated by tipsy.delgaudiomike.com";
+
+    return `How much everyone owes:${newlineChar}${personData.join(
+      "",
+    )}${newlineChar}Total: $${eventTotal}${newlineChar}${newlineChar}${promotion}`;
+  };
+
+  // TODO: Cleanup to different folder?
   const modalTitle = "Share with family or friends";
-
   const modalBody = (
-    <div className="share-dialog">
-      <div className="targets">
-        <a className="btn">
-          <svg>
-            <use href="#facebook"></use>
-          </svg>
-          <span>Facebook</span>
-        </a>
-
-        <a className="btn">
-          <svg>
-            <use href="#twitter"></use>
-          </svg>
-          <span>Twitter</span>
-        </a>
-
-        <a className="btn">
-          <svg>
-            <use href="#linkedin"></use>
-          </svg>
-          <span>LinkedIn</span>
-        </a>
-
-        <a className="btn">
-          <svg>
-            <use href="#email"></use>
-          </svg>
-          <span>Email</span>
-        </a>
+    <div className="dialog-body">
+      <p>
+        Share a snapshot of the calculations by email or copy to your clipboard.
+      </p>
+      <div className="dialog-btn-row">
+        <button
+          className={`btn  ${className ? className : ""}`}
+          data-a11y-dialog-hide
+          aria-label="Close dialog"
+          onClick={() => triggerEmail()}
+        >
+          <span className="btn-wrapper">
+            <MailIcon className="icons" />
+            <span className="btn-text">Email</span>
+          </span>
+        </button>
+        {navigator.clipboard ? (
+          <button
+            className={`btn  ${className ? className : ""}`}
+            data-a11y-dialog-hide
+            aria-label="Close dialog"
+            onClick={() => triggerClipboardCopy()}
+          >
+            <span className="btn-wrapper">
+              <CopyIcon className="icons" />
+              <span className="btn-text">Copy to clipboard</span>
+            </span>
+          </button>
+        ) : null}
       </div>
     </div>
   );
@@ -61,34 +81,44 @@ function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
     body: modalBody,
   };
 
-  const displayShare = () => {
-    if (!navigator.share) return;
-
-    const eventName = store.getState().calculation.eventTitle;
-    const eventTotal = store.getState().calculation.eventTotal;
-    const persons = store.getState().calculation.persons;
-
-    const personData = persons.map(person => {
-      return `${person.name}: $${person.totalDue}\n`;
-    });
-
-    const promotion = "Calculated by tipsy.delgaudiomike.com";
+  const triggerWebShare = () => {
+    if (!navigator.share) return; // TODO: Display error
 
     // TODO: Create a side effect or logger notification?
     navigator
       .share({
-        title: `${eventName}'s Calculations`,
-        text: `How much everyone owes:\n${personData.join(
-          "",
-        )}\nTotal: $${eventTotal}\n\n${promotion}`,
+        title: "Tipsy Calculations",
+        text: `${snapshot({ isEmail: false })}`,
       })
       .catch(console.warn);
+  };
+
+  const triggerEmail = () => {
+    window.location.href = `mailto:Your_friend's_email?subject=How much everyone owes&body=${snapshot(
+      { isEmail: true },
+    )}`;
+  };
+
+  const triggerClipboardCopy = () => {
+    if (!navigator.clipboard) return; // TODO: Display error
+    navigator.clipboard
+      .writeText(snapshot({ isEmail: false }))
+      .then(() =>
+        successToast({ current: "CLIPBOARD_COPY" }, "Copied to clipboard"),
+      )
+      .catch(() =>
+        errorToast(
+          { current: "CLIPBOARD_COPY" },
+          "Failed to copy to clipboard",
+          true,
+        ),
+      );
   };
 
   return (
     <>
       {navigator["share"] ? (
-        buttonLayout(displayShare)
+        buttonLayout(triggerWebShare)
       ) : (
         <Dialog
           buttonLayout={buttonLayout}

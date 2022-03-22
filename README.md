@@ -19,12 +19,9 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 
 ### Currently: v0.2.0-beta 
 
-- [ ] Create default copy / paste functionality if no WebShare API
-- [ ] Create ability to email the WebShare API info 
-- [ ] Fix issue when resetting app and error classes or toast not clearing
+- [ ] Fix issue when resetting app and error classes or toast not clearing (clear all toast too)
 - [ ] Fix issue on mobile screens where edit mode is overflowing due to white-space
 - [ ] Investigate issue when adding in partial decimals rounds down (such as: 6.5, 2.2, etc.)
-
 
 ### Backlog
 
@@ -39,6 +36,8 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Determine why some state functions required `undefined` as type safe
 - [ ] Refactor how state is updated, is recalculate a side effect use thunks?
 - [ ] Ensure multiple calls to save state subscriber is not taking too many calls
+- [ ] Move dialog layouts to different shared components folder
+- [ ] 
 
 ## Docker build
 

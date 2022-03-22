@@ -42,3 +42,5 @@
 - [x] Fix issue for dialog X icon skewed
 - [x] Add ability to use WebShare API (setup localhost https)
 - [x] Created dialog component that is reusable for reset and share
+- [x] Create copy / paste functionality if no WebShare API
+- [x] Create ability to email the WebShare API info 
