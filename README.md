@@ -23,6 +23,7 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Create ability to email the WebShare API info 
 - [ ] Fix issue when resetting app and error classes or toast not clearing
 - [ ] Fix issue on mobile screens where edit mode is overflowing due to white-space
+- [ ] Investigate issue when adding in partial decimals rounds down (such as: 6.5, 2.2, etc.)
 
 
 ### Backlog
