@@ -6,6 +6,8 @@ The best friend group payment calculator web app.
 
 ## Development Frontend
 
+Tipsy runs with `https` on localhost to support the WebShareAPI.
+
 - `cd frontend`
 - `npm install`
 - `npm run cert`
@@ -17,9 +19,11 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 
 ### Currently: v0.2.0-beta 
 
-- [ ] Add modal to share on iOS WebShare API or fallback to copy paste (share button should default to web)
+- [ ] Create default copy / paste functionality if no WebShare API
+- [ ] Create ability to email the WebShare API info 
 - [ ] Fix issue when resetting app and error classes or toast not clearing
-- [ ] Fix issue for dialog X icon skewed
+- [ ] Fix issue on mobile screens where edit mode is overflowing due to white-space
+
 
 ### Backlog
 

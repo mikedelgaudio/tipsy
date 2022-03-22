@@ -39,3 +39,6 @@
 - [x] Event title does not allow whitespaces?
 - [x] Save session / state to local storage
 - [x] Add warning modal when user is clicks the 'Reset' button
+- [x] Fix issue for dialog X icon skewed
+- [x] Add ability to use WebShare API (setup localhost https)
+- [x] Created dialog component that is reusable for reset and share
