@@ -185,7 +185,7 @@ function ItemRow({ itemId, editing }: any) {
             </label>
             <input
               id={`itemPriceInput-${itemId}`}
-              type="text"
+              type="number"
               field-name="PRICE"
               onChange={itemInputHandler}
               value={itemInput.price || ""}

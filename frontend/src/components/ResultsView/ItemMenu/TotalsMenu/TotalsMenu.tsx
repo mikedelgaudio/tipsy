@@ -119,7 +119,7 @@ function TotalsMenu() {
               <label htmlFor={"eventTotalInput"}>Event total price</label>
               <input
                 id="eventTotalInput"
-                type="text"
+                type="number"
                 onChange={eventTotalInputHandler}
                 value={eventTotalInput.eventTotal || ""}
               />
