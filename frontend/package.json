@@ -9,7 +9,8 @@
     "lint": "eslint --ext .ts,.tsx .",
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
     "husky:prepare": "cd .. && husky install frontend/.husky",
-    "e2e": "npx cypress open"
+    "e2e": "npx cypress open",
+    "cert": "mkcert localhost"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
