@@ -48,10 +48,9 @@ button:disabled {
 }
 
 .btn-success {
-  color: var(--brand-off);
-  box-shadow: 0px 0px 10px var(--success);
-  border: 2px solid var(--brand-off);
-  background-color: var(--success);
+  color: var(--brand-x);
+  border: 2px solid var(--brand-x);
+  background-color: var(--brand);
 }
 
 .btn-danger {

@@ -4,7 +4,7 @@ function CheckIcon({ className }: { className: string }) {
       className={className}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 512 512"
+      viewBox="0 0 452 512"
     >
       <path
         fill="currentColor"

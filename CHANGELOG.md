@@ -45,4 +45,4 @@
 - [x] Create copy / paste functionality if no WebShare API
 - [x] Create ability to email the WebShare API info 
 - [x] Display full button text on footer event actions 
-
+- [x] Fix issue on mobile screens where edit mode is overflowing due to white-space
