@@ -20,7 +20,6 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 ### Currently: v0.2.0-beta 
 
 - [ ] Fix issue when resetting app and error classes or toast not clearing (clear all toast too)
-- [ ] Investigate issue when adding in partial decimals rounds down (such as: 6.5, 2.2, etc.)
 
 ### Backlog
 
@@ -33,10 +32,10 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Ability to split an item with a person
 - [ ] Ability to share a link for 1 week
 - [ ] Determine why some state functions required `undefined` as type safe
-- [ ] Refactor how state is updated, is recalculate a side effect use thunks?
 - [ ] Ensure multiple calls to save state subscriber is not taking too many calls
 - [ ] Move dialog layouts to different shared components folder
 - [ ] Update/Fix SEO
+- [ ] Investigate how to reduce calls in `math.ts`; this may involve redesigning the store to search by key.
 
 ## Docker build
 

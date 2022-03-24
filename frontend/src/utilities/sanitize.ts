@@ -10,7 +10,7 @@ const toFixed = (num: number, fixed: number): string => {
 
 const validCurrency = (input: string): boolean => {
   if (!input) return false;
-  const REGEX = /^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$/;
+  const REGEX = /(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/;
   return REGEX.test(input);
 };
 

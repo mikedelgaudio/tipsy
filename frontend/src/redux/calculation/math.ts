@@ -40,6 +40,7 @@ export const calculate = (data: CalculationState) => {
     tempState.eventTotalFloat - tempState.eventSubtotalFloat;
 
   tempState.eventTipTaxTotal = currencyToStr(tempState.eventTipTaxTotalFloat);
+  tempState.eventTotal = currencyToStr(tempState.eventTotalFloat);
 
   // Validation if user types in wrong total overall
   if (
@@ -54,11 +55,10 @@ export const calculate = (data: CalculationState) => {
     return data;
   }
 
-  // Bad smell? Using modeled useRef object to dismiss/trigger calculation warnings.
+  // ? Bad smell? Using modeled useRef object to dismiss/trigger calculation warnings.
   dismissToast({ current: "CALCULATION_WRONG" });
 
-  // TODO:
-  // If the state is the same, maybe break out early to save time?
+  // TODO: If the state is the same, maybe break out early to save time?
   tempState.persons.forEach(person => {
     const tipDollars =
       (person.subtotalFloat / tempState.eventSubtotalFloat) *

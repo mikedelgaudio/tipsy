@@ -59,19 +59,17 @@ function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
             <span className="btn-text-allow-full">Email</span>
           </span>
         </button>
-        {navigator.clipboard ? (
-          <button
-            className={`btn  ${className ? className : ""}`}
-            data-a11y-dialog-hide
-            aria-label="Close dialog"
-            onClick={() => triggerClipboardCopy()}
-          >
-            <span className="btn-wrapper">
-              <CopyIcon className="icons" />
-              <span className="btn-text-allow-full">Copy to clipboard</span>
-            </span>
-          </button>
-        ) : null}
+        <button
+          className={`btn  ${className ? className : ""}`}
+          data-a11y-dialog-hide
+          aria-label="Close dialog"
+          onClick={() => triggerClipboardCopy()}
+        >
+          <span className="btn-wrapper">
+            <CopyIcon className="icons" />
+            <span className="btn-text-allow-full">Copy to clipboard</span>
+          </span>
+        </button>
       </div>
     </div>
   );
