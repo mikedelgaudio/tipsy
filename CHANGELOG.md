@@ -33,3 +33,18 @@
 - [x] Debug why iOS physical device is showing icons as blue (Due to path css selector)
 - [x] Updated favicon to support dark / light modes
 - [x] Modified CSS theme color
+
+## v0.2.0-beta 
+
+- [x] Event title does not allow whitespaces?
+- [x] Save session / state to local storage
+- [x] Add warning modal when user is clicks the 'Reset' button
+- [x] Fix issue for dialog X icon skewed
+- [x] Add ability to use WebShare API (setup localhost https)
+- [x] Created dialog component that is reusable for reset and share
+- [x] Create copy / paste functionality if no WebShare API
+- [x] Create ability to email the WebShare API info 
+- [x] Display full button text on footer event actions 
+- [x] Fix issue on mobile screens where edit mode is overflowing due to white-space
+- [x] Investigate issue when adding in partial decimals rounds down (such as: 6.5, 2.2, etc.)
+- [x] Fix issue when resetting app and error classes or toast not clearing (clear all toast too)

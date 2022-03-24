@@ -1,20 +1,20 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { didClickAway } from "../../../hooks/didClickAway";
-import { didMount } from "../../../hooks/didMount";
-import { AppStore, SanitizedCurrency } from "../../../models/custom-models";
+import { didClickAway } from "../../../../hooks/didClickAway";
+import { didMount } from "../../../../hooks/didMount";
+import { AppStore, SanitizedCurrency } from "../../../../models/custom-models";
 import {
   editEventTotal,
   recalculateEvent,
-} from "../../../redux/calculation/calculation-actions";
+} from "../../../../redux/calculation/calculation-actions";
 import {
   removeDollarOrComma,
   sanitizeCurrency,
-} from "../../../utilities/sanitize";
-import { ERROR_INPUT_PRICE } from "../../../utilities/variables";
-import CloseBtn from "../../shared/buttons/CloseBtn";
-import EditBtn from "../../shared/buttons/EditBtn";
-import { dismissToast, errorToast } from "../../shared/toasts/toasts";
+} from "../../../../utilities/sanitize";
+import { ERROR_INPUT_PRICE } from "../../../../utilities/variables";
+import CloseBtn from "../../../shared/buttons/CloseBtn";
+import EditBtn from "../../../shared/buttons/EditBtn";
+import { dismissToast, errorToast } from "../../../shared/toasts/toasts";
 import "./TotalsMenu.css";
 
 const defaultEventTotals: { eventTotal: string; eventTotalFloat: number } = {
@@ -86,12 +86,21 @@ function TotalsMenu() {
     }
   }, [editing]);
 
+  const storeEventId = useSelector((state: AppStore) => {
+    return state.calculation.eventId;
+  });
+
+  useEffect(() => {
+    if (!didMountOnce) setError(false);
+  }, [storeEventId]);
+
   const menuRef = useRef(null);
   didClickAway(menuRef, editing, setEditing);
 
   return (
     <div className="totalsMenuView" ref={menuRef}>
       <div className="totalsBreakdownWrapper">
+        {/* TODO: Remove unused <ul></ul> */}
         <ul className="totalsBreakdownList">
           <li className="totalBreakdownItem">
             <p className="totalBreakdownDesc">Total Tip and Tax</p>
@@ -99,7 +108,7 @@ function TotalsMenu() {
         </ul>
         <ul className="totalsBreakdownList">
           <li className="totalBreakdownItem">
-            <p>${storeEventTipTaxTotal}</p>
+            <p data-cy="eventTotalTipAndTax">${storeEventTipTaxTotal}</p>
           </li>
         </ul>
       </div>
@@ -107,15 +116,22 @@ function TotalsMenu() {
         <h3 className="totalText">Total</h3>
         <div className="totalInputWrapper">
           {!editing ? (
-            <h3 className={`${error ? "errorText" : ""} totalText `}>
+            <h3
+              className={`${error ? "errorText" : ""} totalText `}
+              data-cy="eventTotal"
+            >
               ${storeEventTotal}
             </h3>
           ) : (
-            <input
-              type="text"
-              onChange={eventTotalInputHandler}
-              value={eventTotalInput.eventTotal || ""}
-            />
+            <div className="inputWrapper">
+              <label htmlFor={"eventTotalInput"}>Event total price</label>
+              <input
+                id="eventTotalInput"
+                type="number"
+                onChange={eventTotalInputHandler}
+                value={eventTotalInput.eventTotal || ""}
+              />
+            </div>
           )}
           {!editing ? (
             <EditBtn

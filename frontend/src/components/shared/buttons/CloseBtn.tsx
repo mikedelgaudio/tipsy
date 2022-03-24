@@ -13,7 +13,9 @@ function CloseBtn({
       title={ariaTitle}
     >
       <span className="btn-wrapper">
-        <CheckIcon className={`icons ${iconClassName ? iconClassName : ""}`} />
+        <CheckIcon
+          className={`icons icon-light ${iconClassName ? iconClassName : ""}`}
+        />
         <span className="btn-text">Save</span>
       </span>
     </button>

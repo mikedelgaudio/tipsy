@@ -30,15 +30,8 @@ export interface CalculationState {
   eventId: string;
 }
 
-export interface UIState {
-  uiEditEventTitle: boolean;
-  uiEditPersonId: string;
-  uiEditEventTotal: boolean;
-}
-
 export interface AppStore {
   calculation: CalculationState;
-  ui: UIState;
 }
 
 export interface SanitizedCurrency {

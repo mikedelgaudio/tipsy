@@ -18,6 +18,11 @@ function PersonActions({ personId, editing, setEditing }: any) {
     (state: AppStore) => state.calculation.persons.length,
   );
 
+  const personName = useSelector(
+    (state: AppStore) =>
+      state.calculation.persons.find(person => person.id === personId)?.name,
+  );
+
   // Dispatchers
   const dispatchDeletePerson = () => {
     dispatch(deletePerson(personId));
@@ -32,24 +37,24 @@ function PersonActions({ personId, editing, setEditing }: any) {
       {!editing ? (
         <EditBtn
           clickSideEffect={() => setEditing(true)}
-          ariaTitle={"Edit person"}
+          ariaTitle={`Edit ${personName}`}
           className="btn-light"
         />
       ) : (
         <CloseBtn
           clickSideEffect={() => setEditing(false)}
-          ariaTitle={"Stop editing person"}
+          ariaTitle={`Stop editing ${personName}`}
         />
       )}
 
       <AddBtn
         clickSideEffect={dispatchAddItem}
-        ariaTitle={"Add item to person"}
+        ariaTitle={`Add item to ${personName}`}
       />
 
       <DeleteUserBtn
         clickSideEffect={dispatchDeletePerson}
-        ariaTitle={"Delete person"}
+        ariaTitle={`Delete ${personName}`}
         isDisabled={personsLength < 2}
         iconClassName="icon-xl"
       />

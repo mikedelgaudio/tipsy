@@ -3,9 +3,8 @@
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   background-color: var(--brand-x);
-  border: 1px solid var(--brand-off);
+  border-bottom: 4px solid var(--brand);
   color: var(--brand-off);
-  border-radius: var(--global-radius);
   padding: 1em;
 }
 
@@ -18,10 +17,11 @@
 
 .totalText {
   font-weight: 600;
-  font-size: clamp(1.5em, 1.5em + 1vw, 2em);
+  font-size: clamp(0.5em, 1.25em + 1vw, 2em);
   word-break: break-word;
   display: flex;
   align-items: center;
+  white-space: nowrap;
 }
 
 .totalsBreakdownWrapper {
@@ -50,5 +50,4 @@
   display: flex;
   align-items: center;
   gap: 1em;
-  max-width: 60%;
 }

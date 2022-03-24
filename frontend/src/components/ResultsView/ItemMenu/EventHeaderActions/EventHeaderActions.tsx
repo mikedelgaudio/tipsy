@@ -1,14 +1,14 @@
-import "./SharingRow.css";
-import EditBtn from "../../shared/buttons/EditBtn";
-import CloseBtn from "../../shared/buttons/CloseBtn";
+import "./EventHeaderActions.css";
+import EditBtn from "../../../shared/buttons/EditBtn";
+import CloseBtn from "../../../shared/buttons/CloseBtn";
 import { useDispatch } from "react-redux";
-import { addPerson } from "../../../redux/calculation/calculation-actions";
-import AddPersonBtn from "../../shared/buttons/AddPersonBtn";
+import { addPerson } from "../../../../redux/calculation/calculation-actions";
+import AddPersonBtn from "../../../shared/buttons/AddPersonBtn";
 
-function SharingRow({ editing, setEditing }: any) {
+function EventHeaderActions({ editing, setEditing }: any) {
   const dispatch = useDispatch();
   return (
-    <div className="sharingRow">
+    <div className="eventHeaderActionsRow">
       {!editing ? (
         <EditBtn
           clickSideEffect={() => setEditing(true)}
@@ -25,14 +25,8 @@ function SharingRow({ editing, setEditing }: any) {
         ariaTitle={"Add person"}
         iconClassName="icon-xl"
       />
-      {/* <input
-        className="btn-danger"
-        type="reset"
-        onClick={() => dispatch(restartEvent())}
-        value="Reset"
-      /> */}
     </div>
   );
 }
 
-export default SharingRow;
+export default EventHeaderActions;

@@ -17,7 +17,13 @@ button:disabled {
   border-radius: 30px;
   font-weight: 600;
   background-color: #f0f0f0; /* TODO make global */
+  color: var(--brand-off);
   border-radius: 30px;
+}
+
+.btn-text-allow-full {
+  display: inline;
+  color: inherit;
 }
 
 .btn-text {
@@ -35,15 +41,21 @@ button:disabled {
   opacity: 0.75;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 630px) {
   .btn-text {
     display: inline;
   }
 }
 
 .btn-success {
-  color: var(--brand-off);
-  border: 3px solid var(--success);
+  color: var(--brand-x);
+  border: 2px solid var(--brand-x);
+  background-color: var(--brand);
+}
+
+.btn-danger {
+  background-color: var(--error);
+  color: var(--brand-x);
 }
 
 .icons {
@@ -57,6 +69,9 @@ button:disabled {
 }
 .icon-light path {
   fill: var(--brand-x);
+}
+.icon-xs {
+  width: 9px;
 }
 .icon-sm {
   width: 12px;

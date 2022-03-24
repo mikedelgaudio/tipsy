@@ -1,0 +1,18 @@
+{
+  "baseUrl": "https://localhost:3000",
+  "projectId": "7s5okt",
+  "viewportHeight": 1000,
+  "viewportWidth": 1280,
+  "retries": {
+    "runMode": 2,
+    "openMode": 1
+  },
+  "env": {
+    "apiUrl": "https://localhost:3001",
+    "mobileViewportWidthBreakpoint": 414,
+    "coverage": false,
+    "codeCoverage": {
+      "url": "https://localhost:3001/__coverage__"
+    }
+  }
+}

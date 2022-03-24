@@ -5,8 +5,7 @@
   --brand-alt-light: hsl(175, 100%, 96%);
   --brand-off-light: hsl(255 30% 24%);
   --background-light: #ffffff;
-  --success-light: hsl(115 100% 39%);
-  --error-light: hsl(0, 95%, 54%);
+  --error-light: hsl(0 80% 42%);
 
   /* dark */
   --brand-dark: hsl(174, 36%, 44%);
@@ -14,7 +13,6 @@
   --brand-alt-dark: hsl(174, 36%, 54%);
   --brand-off-dark: hsl(206, 32%, 86%);
   --background-dark: hsl(0, 0%, 100%);
-  --success-dark: hsl(115 100% 39%);
   --error-dark: hsl(0, 80%, 42%);
 }
 
@@ -28,7 +26,6 @@
   --brand-alt: var(--brand-alt-light);
   --background: var(--background-light);
   --error: var(--error-light);
-  --success: var(--success-light);
 }
 
 /* @media (prefers-color-scheme: dark) { */

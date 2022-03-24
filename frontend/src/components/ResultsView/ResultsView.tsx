@@ -1,9 +1,9 @@
 import ItemMenu from "./ItemMenu/ItemMenu";
 import "./ResultsView.css";
-import TotalsMenu from "./TotalsMenu/TotalsMenu";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ErrorBoundary from "../shared/errors/ErrorBoundary";
+import EventFooterActions from "./EventFooterActions";
 
 function ResultsView() {
   return (
@@ -11,7 +11,7 @@ function ResultsView() {
       <ToastContainer role="alert" />
       <ErrorBoundary>
         <ItemMenu />
-        <TotalsMenu />
+        <EventFooterActions />
       </ErrorBoundary>
     </form>
   );

@@ -32,6 +32,8 @@ const defaultItem: Item = {
   priceFloat: 0.0,
 };
 
+const defaultErrorState = { name: false, price: false };
+
 function ItemRow({ itemId, editing }: any) {
   const dispatch = useDispatch();
   const didMountOnce = didMount();
@@ -47,13 +49,17 @@ function ItemRow({ itemId, editing }: any) {
     );
   });
 
+  const storeEventId = useSelector((state: AppStore) => {
+    return state.calculation.eventId;
+  });
+
   // Dispatchers
   const dispatchDeleteItem = () => {
     dispatch(deleteItem(itemId));
   };
 
   const [itemInput, setItemsInput] = useState(defaultItem);
-  const [error, setError] = useState({ name: false, price: false });
+  const [error, setError] = useState(defaultErrorState);
   const toastIdName = useRef(null);
   const toastIdPrice = useRef(null);
 
@@ -141,12 +147,19 @@ function ItemRow({ itemId, editing }: any) {
     };
   }, []);
 
+  useEffect(() => {
+    if (!didMountOnce) setError(defaultErrorState);
+  }, [storeEventId]);
+
   return (
     <li className={`personItem ${editing ? "editing" : ""} `} key={itemId}>
       <div className="personItemInfoRow">
         {!editing ? (
           <>
-            <p className={`${error.name ? "errorText" : ""} personItemName`}>
+            <p
+              className={`${error.name ? "errorText" : ""} personItemName`}
+              data-cy={`${storeItemData?.name}-itemName`}
+            >
               {storeItemData?.name}
             </p>
           </>
@@ -169,7 +182,10 @@ function ItemRow({ itemId, editing }: any) {
           </>
         )}
         {!editing ? (
-          <p className={`${error.price ? "errorText" : ""} personItemPrice`}>
+          <p
+            className={`${error.price ? "errorText" : ""} personItemPrice`}
+            data-cy={`${storeItemData?.name}-itemPrice`}
+          >
             ${storeItemData?.price}
           </p>
         ) : (
@@ -179,7 +195,7 @@ function ItemRow({ itemId, editing }: any) {
             </label>
             <input
               id={`itemPriceInput-${itemId}`}
-              type="text"
+              type="number"
               field-name="PRICE"
               onChange={itemInputHandler}
               value={itemInput.price || ""}

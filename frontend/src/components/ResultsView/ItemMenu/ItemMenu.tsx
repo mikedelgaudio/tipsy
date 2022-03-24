@@ -1,6 +1,5 @@
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { AppStore, Item, Person } from "../../../models/custom-models";
-import SharingRow from "../SharingRow/SharingRow";
 import "./ItemMenu.css";
 import PersonCard from "./PersonCard/PersonCard";
 import { useState, useEffect, useRef } from "react";
@@ -13,6 +12,8 @@ import { didClickAway } from "../../../hooks/didClickAway";
 import { dismissToast, errorToast } from "../../shared/toasts/toasts";
 import { validString } from "../../../utilities/sanitize";
 import { ERROR_INPUT_EVENT } from "../../../utilities/variables";
+import TotalsMenu from "./TotalsMenu/TotalsMenu";
+import EventHeaderActions from "./EventHeaderActions/EventHeaderActions";
 
 function ItemMenu() {
   const didMountOnce = didMount();
@@ -42,7 +43,7 @@ function ItemMenu() {
 
   const eventTitleInputHandler = (e: any) => {
     setError(!validString(e.target.value));
-    setEventTitleInput(e.target.value.trim());
+    setEventTitleInput(e.target.value);
   };
 
   useEffect(() => {
@@ -87,9 +88,10 @@ function ItemMenu() {
             </div>
           )}
           <div className="itemHeaderActions">
-            <SharingRow editing={editing} setEditing={setEditing} />
+            <EventHeaderActions editing={editing} setEditing={setEditing} />
           </div>
         </div>
+        <TotalsMenu />
         {personIds.map((id: string) => {
           return <PersonCard key={id} personId={id} />;
         })}

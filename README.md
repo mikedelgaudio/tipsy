@@ -6,37 +6,37 @@ The best friend group payment calculator web app.
 
 ## Development Frontend
 
+Tipsy runs with `https` on localhost to support the WebShareAPI.
+
 - `cd frontend`
 - `npm install`
-- `npm run husky:prepare`
+- `npm run cert`
 - `npm run dev`
 
 ## Roadmap
 
 The roadmap provides a high level storyboard of future for the Tipsy project.
 
-### Currently: v0.1.1-beta
+### Currently: v0.2.0-beta 
 
-- nil
 
-### v0.2.0-beta Roadmap
-
-- TBD
 
 ### Backlog
 
-- [ ] Add warning modal when user is clicks the 'Reset' button
 - [ ] Add undo functionality
-- [ ] Disallow the removal of all products for a person (look into Redux entities instead of looping through array)
 - [ ] Create docker build and push GitHub Action to deploy
 - [ ] Update components to export {default} rather than duplicate name imports
+- [ ] Disallow the removal of all products for a person (look into Redux entities instead of looping through array)
 - [ ] Refactor CSS into CSS Modules
 - [ ] Add About or Walkthrough Section
-- [ ] Save session / state to local storage
 - [ ] Ability to split an item with a person
 - [ ] Ability to share a link for 1 week
 - [ ] Determine why some state functions required `undefined` as type safe
-- [ ] Refactor how state is updated, is recalculate a side effect use thunks?
+- [ ] Ensure multiple calls to save state subscriber is not taking too many calls
+- [ ] Move dialog layouts to different shared components folder
+- [ ] Update/Fix SEO
+- [ ] Investigate how to reduce calls in `math.ts`; this may involve redesigning the store to search by key.
+- [ ] When resetting an app always generate a new uuidv4() to ensure error classes reset.
 
 ## Docker build
 
