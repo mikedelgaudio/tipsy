@@ -3,6 +3,7 @@ import { restartEvent } from "../../../redux/calculation/calculation-actions";
 import Dialog from "../Dialog";
 import ResetIcon from "../icons/ResetIcon";
 import XIcon from "../icons/XIcon";
+import { dismissAllToast, dismissToast } from "../toasts/toasts";
 
 function ResetBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
   const dispatch = useDispatch();
@@ -25,8 +26,12 @@ function ResetBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
     );
   };
 
-  const modalTitle = "Are you sure you want to reset?";
+  const handleReset = () => {
+    dispatch(restartEvent());
+    dismissAllToast();
+  };
 
+  const modalTitle = "Are you sure you want to reset?";
   const modalBody = (
     <div className="dialog-body">
       <p>Resetting the app will clear all calculations and inputted data.</p>
@@ -46,7 +51,7 @@ function ResetBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
         <button
           className={`btn btn-danger ${className ? className : ""}`}
           type="reset"
-          onClick={() => dispatch(restartEvent())}
+          onClick={() => handleReset()}
           value="Reset"
           data-a11y-dialog-hide
           aria-label="Close dialog"

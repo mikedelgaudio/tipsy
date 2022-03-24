@@ -47,3 +47,4 @@
 - [x] Display full button text on footer event actions 
 - [x] Fix issue on mobile screens where edit mode is overflowing due to white-space
 - [x] Investigate issue when adding in partial decimals rounds down (such as: 6.5, 2.2, etc.)
+- [x] Fix issue when resetting app and error classes or toast not clearing (clear all toast too)

@@ -52,3 +52,7 @@ export const dismissToast = (toastId: MutableRefObject<any>) => {
   if (!toastId.current) return;
   toast.dismiss(toastId.current);
 };
+
+export const dismissAllToast = () => {
+  toast.dismiss();
+};

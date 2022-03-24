@@ -32,6 +32,8 @@ const defaultItem: Item = {
   priceFloat: 0.0,
 };
 
+const defaultErrorState = { name: false, price: false };
+
 function ItemRow({ itemId, editing }: any) {
   const dispatch = useDispatch();
   const didMountOnce = didMount();
@@ -47,13 +49,17 @@ function ItemRow({ itemId, editing }: any) {
     );
   });
 
+  const storeEventId = useSelector((state: AppStore) => {
+    return state.calculation.eventId;
+  });
+
   // Dispatchers
   const dispatchDeleteItem = () => {
     dispatch(deleteItem(itemId));
   };
 
   const [itemInput, setItemsInput] = useState(defaultItem);
-  const [error, setError] = useState({ name: false, price: false });
+  const [error, setError] = useState(defaultErrorState);
   const toastIdName = useRef(null);
   const toastIdPrice = useRef(null);
 
@@ -140,6 +146,10 @@ function ItemRow({ itemId, editing }: any) {
       dismissToast(toastIdPrice);
     };
   }, []);
+
+  useEffect(() => {
+    if (!didMountOnce) setError(defaultErrorState);
+  }, [storeEventId]);
 
   return (
     <li className={`personItem ${editing ? "editing" : ""} `} key={itemId}>

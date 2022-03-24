@@ -19,7 +19,7 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 
 ### Currently: v0.2.0-beta 
 
-- [ ] Fix issue when resetting app and error classes or toast not clearing (clear all toast too)
+
 
 ### Backlog
 
@@ -36,6 +36,7 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Move dialog layouts to different shared components folder
 - [ ] Update/Fix SEO
 - [ ] Investigate how to reduce calls in `math.ts`; this may involve redesigning the store to search by key.
+- [ ] When resetting an app always generate a new uuidv4() to ensure error classes reset.
 
 ## Docker build
 

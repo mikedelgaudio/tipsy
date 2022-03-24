@@ -86,6 +86,14 @@ function TotalsMenu() {
     }
   }, [editing]);
 
+  const storeEventId = useSelector((state: AppStore) => {
+    return state.calculation.eventId;
+  });
+
+  useEffect(() => {
+    if (!didMountOnce) setError(false);
+  }, [storeEventId]);
+
   const menuRef = useRef(null);
   didClickAway(menuRef, editing, setEditing);
 
