@@ -1,7 +1,7 @@
 describe("Core Calculation E2E Functionality", () => {
   const editEventTotal = (total: string) => {
     cy.findByTitle(/edit event total/i).click();
-    cy.findByRole("textbox", { name: /event total price/i })
+    cy.findByRole("spinbutton", { name: /event total price/i })
       .clear()
       .type(total);
     cy.findByTitle(/stop editing event total/i).click();
@@ -23,8 +23,12 @@ describe("Core Calculation E2E Functionality", () => {
     });
   };
 
-  const editInputField = (title: RegExp, data: string) => {
-    cy.findByRole("textbox", { name: title }).clear().type(data);
+  const editInputField = (
+    title: RegExp,
+    data: string,
+    { role }: { role: string },
+  ) => {
+    cy.findByRole(role, { name: title }).clear().type(data);
   };
 
   const toggleEditPerson = (title: RegExp) => {
@@ -82,13 +86,23 @@ describe("Core Calculation E2E Functionality", () => {
 
     toggleEditPerson(/edit person 1/i);
 
-    editInputField(/person 1 name/i, global.person.name);
+    editInputField(/person 1 name/i, global.person.name, {
+      role: "textbox",
+    });
 
-    editInputField(/item 1 name/i, global.person.item1Name);
-    editInputField(/item 2 name/i, global.person.item2Name);
+    editInputField(/item 1 name/i, global.person.item1Name, {
+      role: "textbox",
+    });
+    editInputField(/item 2 name/i, global.person.item2Name, {
+      role: "textbox",
+    });
 
-    editInputField(/item 1 price/i, global.person.item1Price);
-    editInputField(/item 2 price/i, global.person.item2Price);
+    editInputField(/item 1 price/i, global.person.item1Price, {
+      role: "spinbutton",
+    });
+    editInputField(/item 2 price/i, global.person.item2Price, {
+      role: "spinbutton",
+    });
 
     toggleEditPerson(/stop editing person 1/i);
 
@@ -128,9 +142,15 @@ describe("Core Calculation E2E Functionality", () => {
     editEventTotal(local.event.total);
 
     toggleEditPerson(/edit person 2/i);
-    editInputField(/person 2 name/i, local.person.name);
-    editInputField(/item 3 name/i, local.person.item1Name);
-    editInputField(/item 3 price/i, local.person.item1Price);
+    editInputField(/person 2 name/i, local.person.name, {
+      role: "textbox",
+    });
+    editInputField(/item 3 name/i, local.person.item1Name, {
+      role: "textbox",
+    });
+    editInputField(/item 3 price/i, local.person.item1Price, {
+      role: "spinbutton",
+    });
     toggleEditPerson(/stop editing person 2/i);
 
     verifyPersonName(local.person.name);
