@@ -22,11 +22,11 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Move dialog layouts to different shared components folder
 - [ ] When resetting an app always generate a new uuidv4() to ensure error classes reset.
 - [ ] Update/Fix SEO
-- [ ] Create docker build and push GitHub Action to deploy
 
 ### Backlog
 
 - [ ] Add undo functionality
+- [ ] Create docker build and push GitHub Action to deploy
 - [ ] Update components to export {default} rather than duplicate name imports
 - [ ] Disallow the removal of all products for a person (look into Redux entities instead of looping through array)
 - [ ] Refactor CSS into CSS Modules

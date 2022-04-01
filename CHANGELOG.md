@@ -50,3 +50,4 @@
 - [x] Fix issue when resetting app and error classes or toast not clearing (clear all toast too)
 
  ## v0.2.1-beta 
+ - [x] Display WebShareAPI only on viewports with less than 576px

@@ -113,9 +113,19 @@ function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
       );
   };
 
+  /**
+   * Determines when to use the WebShareAPI
+   * @returns true when allowed to use default WebShareAPI
+   */
+  const displayWebShareAPI = (): boolean => {
+    if (!navigator.share || document.documentElement.clientWidth >= 576)
+      return false;
+    return true;
+  };
+
   return (
     <>
-      {navigator["share"] ? (
+      {displayWebShareAPI() ? (
         buttonLayout(triggerWebShare)
       ) : (
         <Dialog
