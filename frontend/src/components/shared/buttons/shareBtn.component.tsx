@@ -138,4 +138,4 @@ function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
   );
 }
 
-export default ShareBtn;
+export { ShareBtn };

@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { didMount } from "../../../../hooks/didMount";
-import { didClickAway } from "../../../../hooks/didClickAway";
+import { didMount } from "../../../../hooks/didMount/didMount.hook";
+import { didClickAway } from "../../../../hooks/didClickAway/didClickAway.hook";
 import { AppStore, Item, Person } from "../../../../models/custom-models";
 import { editPersonName } from "../../../../redux/calculation/calculation-actions";
 import ItemRow from "./ItemRow/ItemRow";

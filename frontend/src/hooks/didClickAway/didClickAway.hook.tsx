@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect } from "react";
 
-export const didClickAway = (
+const didClickAway = (
   ref: any,
   editing: boolean,
   setEditing: Dispatch<SetStateAction<boolean>>,
@@ -24,3 +24,5 @@ export const didClickAway = (
     };
   }, [ref, editing]);
 };
+
+export { didClickAway };
