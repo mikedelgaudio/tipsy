@@ -1,4 +1,4 @@
-import "./EventHeaderActions.css";
+import "./eventHeaderActions.component.css";
 import { EditBtn } from "../../../shared/buttons/editBtn.component";
 import { CloseBtn } from "../../../shared/buttons/closeBtn.component";
 import { useDispatch } from "react-redux";
@@ -29,4 +29,4 @@ function EventHeaderActions({ editing, setEditing }: any) {
   );
 }
 
-export default EventHeaderActions;
+export { EventHeaderActions };

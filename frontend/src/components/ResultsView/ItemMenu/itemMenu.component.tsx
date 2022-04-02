@@ -13,7 +13,7 @@ import { dismissToast, errorToast } from "../../shared/toasts/toasts";
 import { validString } from "../../../utilities/sanitize";
 import { ERROR_INPUT_EVENT } from "../../../utilities/variables";
 import { TotalsMenu } from "./TotalsMenu";
-import EventHeaderActions from "./EventHeaderActions/EventHeaderActions";
+import { EventHeaderActions } from "./EventHeaderActions";
 
 function ItemMenu() {
   const didMountOnce = didMount();
