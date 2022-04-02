@@ -4,11 +4,13 @@ import {
   deletePerson,
 } from "../../../../../redux/calculation/calculation-actions";
 import { useDispatch, useSelector } from "react-redux";
-import { EditBtn } from "../../../../shared/buttons/editBtn.component";
-import { CloseBtn } from "../../../../shared/buttons/closeBtn.component";
-import { AddBtn } from "../../../../shared/buttons/addBtn.component";
+import {
+  EditBtn,
+  CloseBtn,
+  AddBtn,
+  DeletePersonBtn,
+} from "../../../../shared/buttons";
 import { AppStore } from "../../../../../models/custom-models";
-import { DeletePersonBtn } from "../../../../shared/buttons/deletePersonBtn.component";
 
 function PersonActions({ personId, editing, setEditing }: any) {
   const dispatch = useDispatch();

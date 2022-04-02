@@ -1,9 +1,7 @@
 import "./eventHeaderActions.component.css";
-import { EditBtn } from "../../../shared/buttons/editBtn.component";
-import { CloseBtn } from "../../../shared/buttons/closeBtn.component";
+import { EditBtn, CloseBtn, AddPersonBtn } from "../../../shared/buttons";
 import { useDispatch } from "react-redux";
 import { addPerson } from "../../../../redux/calculation/calculation-actions";
-import { AddPersonBtn } from "../../../shared/buttons/addPersonBtn.component";
 
 function EventHeaderActions({ editing, setEditing }: any) {
   const dispatch = useDispatch();

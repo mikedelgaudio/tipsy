@@ -12,8 +12,7 @@ import {
   sanitizeCurrency,
 } from "../../../../utilities/sanitize";
 import { ERROR_INPUT_PRICE } from "../../../../utilities/variables";
-import { CloseBtn } from "../../../shared/buttons/closeBtn.component";
-import { EditBtn } from "../../../shared/buttons/editBtn.component";
+import { EditBtn, CloseBtn } from "../../../shared/buttons";
 import { dismissToast, errorToast } from "../../../shared/toasts/toasts";
 import "./totalsMenu.component.css";
 
