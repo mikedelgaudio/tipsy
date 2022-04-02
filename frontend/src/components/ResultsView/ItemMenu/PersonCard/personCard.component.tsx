@@ -6,7 +6,7 @@ import { AppStore, Item, Person } from "../../../../models/custom-models";
 import { editPersonName } from "../../../../redux/calculation/calculation-actions";
 import ItemRow from "./ItemRow/ItemRow";
 import PersonActions from "./PersonActions/PersonActions";
-import "./PersonCard.css";
+import "./personCard.component.css";
 import { validString } from "../../../../utilities/sanitize";
 import { dismissToast, errorToast } from "../../../shared/toasts/toasts";
 import { ERROR_INPUT_NAME } from "../../../../utilities/variables";
@@ -137,4 +137,4 @@ function PersonCard({ personId }: any) {
   );
 }
 
-export default PersonCard;
+export { PersonCard };
