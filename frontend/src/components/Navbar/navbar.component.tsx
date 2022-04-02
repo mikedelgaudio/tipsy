@@ -1,4 +1,4 @@
-import "./Navbar.css";
+import "./navbar.component.css";
 import { APP_VERSION } from "../../utilities/variables";
 import ExternalLinkIcon from "../shared/icons/ExternalLinkIcon";
 
@@ -25,4 +25,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export { Navbar };

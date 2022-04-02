@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { didMount } from "../../../../../hooks/didMount/didMount.hook";
+import { didMount } from "../../../../../hooks/didMount";
 import {
   AppStore,
   Item,

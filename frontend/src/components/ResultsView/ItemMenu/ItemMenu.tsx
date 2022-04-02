@@ -7,8 +7,8 @@ import {
   editEventTitle,
   recalculateEvent,
 } from "../../../redux/calculation/calculation-actions";
-import { didMount } from "../../../hooks/didMount/didMount.hook";
-import { didClickAway } from "../../../hooks/didClickAway/didClickAway.hook";
+import { didMount } from "../../../hooks/didMount";
+import { didClickAway } from "../../../hooks/didClickAway";
 import { dismissToast, errorToast } from "../../shared/toasts/toasts";
 import { validString } from "../../../utilities/sanitize";
 import { ERROR_INPUT_EVENT } from "../../../utilities/variables";
