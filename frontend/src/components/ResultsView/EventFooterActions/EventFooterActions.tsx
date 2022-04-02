@@ -1,6 +1,6 @@
 import "./EventFooterActions.css";
-import ShareBtn from "../../shared/buttons/ShareBtn";
-import ResetBtn from "../../shared/buttons/ResetBtn";
+import { ShareBtn } from "../../shared/buttons/shareBtn.component";
+import { ResetBtn } from "../../shared/buttons/resetBtn.component";
 
 function EventFooterActions() {
   return (

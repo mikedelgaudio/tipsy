@@ -12,8 +12,8 @@ import {
   sanitizeCurrency,
 } from "../../../../utilities/sanitize";
 import { ERROR_INPUT_PRICE } from "../../../../utilities/variables";
-import CloseBtn from "../../../shared/buttons/CloseBtn";
-import EditBtn from "../../../shared/buttons/EditBtn";
+import { CloseBtn } from "../../../shared/buttons/closeBtn.component";
+import { EditBtn } from "../../../shared/buttons/editBtn.component";
 import { dismissToast, errorToast } from "../../../shared/toasts/toasts";
 import "./TotalsMenu.css";
 

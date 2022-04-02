@@ -81,4 +81,4 @@ function ResetBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
   );
 }
 
-export default ResetBtn;
+export { ResetBtn };

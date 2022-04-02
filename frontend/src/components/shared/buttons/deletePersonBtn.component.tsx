@@ -1,25 +1,27 @@
-import AddPersonIcon from "../icons/AddPersonIcon";
+import DeletePersonIcon from "../icons/DeletePersonIcon";
 
-function AddPersonBtn({
+function DeletePersonBtn({
   clickSideEffect,
   ariaTitle,
+  isDisabled,
   className = "",
   iconClassName = "",
 }: any) {
   return (
     <button
-      className={`btn ${className ? className : ""}`}
       onClick={() => clickSideEffect()}
       title={ariaTitle}
+      disabled={isDisabled}
+      className={`btn ${className ? className : ""}`}
     >
       <span className="btn-wrapper">
-        <AddPersonIcon
+        <DeletePersonIcon
           className={`icons ${iconClassName ? iconClassName : ""}`}
         />
-        <span className="btn-text">Add Person</span>
+        <span className="btn-text">Delete Person</span>
       </span>
     </button>
   );
 }
 
-export default AddPersonBtn;
+export { DeletePersonBtn };

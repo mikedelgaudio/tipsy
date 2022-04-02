@@ -33,6 +33,7 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 
 Migrate Redux to MobX:
 - [ ] When resetting an app always generate a new uuidv4() to ensure error classes reset.
+- [ ] Debounce inputs to prevent numerous state calls
 - [ ] Ensure multiple calls to save state subscriber is not taking too many calls
 - [ ] Disallow the removal of all products for a person (look into Redux entities instead of looping through array)
 - [ ] Determine why some state functions required `undefined` as type safe

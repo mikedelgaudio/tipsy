@@ -22,4 +22,4 @@ function DeleteBtn({
   );
 }
 
-export default DeleteBtn;
+export { DeleteBtn };

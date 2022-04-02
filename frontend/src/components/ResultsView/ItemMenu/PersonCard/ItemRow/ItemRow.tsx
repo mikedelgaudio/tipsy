@@ -20,7 +20,7 @@ import {
   ERROR_INPUT_NAME,
   ERROR_INPUT_PRICE,
 } from "../../../../../utilities/variables";
-import DeleteBtn from "../../../../shared/buttons/DeleteBtn";
+import { DeleteBtn } from "../../../../shared/buttons/deleteBtn.component";
 import { dismissToast, errorToast } from "../../../../shared/toasts/toasts";
 
 const defaultItem: Item = {

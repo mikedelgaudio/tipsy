@@ -1,6 +1,6 @@
-import PencilIcon from "../icons/PencilIcon";
+import AddItemIcon from "../icons/AddItemIcon";
 
-function EditBtn({
+function AddBtn({
   clickSideEffect,
   ariaTitle,
   className = "",
@@ -13,11 +13,13 @@ function EditBtn({
       title={ariaTitle}
     >
       <span className="btn-wrapper">
-        <PencilIcon className={`icons ${iconClassName ? iconClassName : ""}`} />
-        <span className="btn-text">Edit</span>
+        <AddItemIcon
+          className={`icons ${iconClassName ? iconClassName : ""}`}
+        />
+        <span className="btn-text">Add Item</span>
       </span>
     </button>
   );
 }
 
-export default EditBtn;
+export { AddBtn };

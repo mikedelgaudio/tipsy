@@ -4,11 +4,11 @@ import {
   deletePerson,
 } from "../../../../../redux/calculation/calculation-actions";
 import { useDispatch, useSelector } from "react-redux";
-import EditBtn from "../../../../shared/buttons/EditBtn";
-import CloseBtn from "../../../../shared/buttons/CloseBtn";
-import AddBtn from "../../../../shared/buttons/AddBtn";
+import { EditBtn } from "../../../../shared/buttons/editBtn.component";
+import { CloseBtn } from "../../../../shared/buttons/closeBtn.component";
+import { AddBtn } from "../../../../shared/buttons/addBtn.component";
 import { AppStore } from "../../../../../models/custom-models";
-import DeleteUserBtn from "../../../../shared/buttons/DeletePersonBtn";
+import { DeletePersonBtn } from "../../../../shared/buttons/deletePersonBtn.component";
 
 function PersonActions({ personId, editing, setEditing }: any) {
   const dispatch = useDispatch();
@@ -52,7 +52,7 @@ function PersonActions({ personId, editing, setEditing }: any) {
         ariaTitle={`Add item to ${personName}`}
       />
 
-      <DeleteUserBtn
+      <DeletePersonBtn
         clickSideEffect={dispatchDeletePerson}
         ariaTitle={`Delete ${personName}`}
         isDisabled={personsLength < 2}

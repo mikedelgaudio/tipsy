@@ -22,4 +22,4 @@ function CloseBtn({
   );
 }
 
-export default CloseBtn;
+export { CloseBtn };
