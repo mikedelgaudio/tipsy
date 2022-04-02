@@ -1,1 +1,1 @@
-export { default } from "./EventFooterActions";
+export { EventFooterActions } from "./eventFooterActions.component";
