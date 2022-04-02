@@ -1,4 +1,4 @@
-import ItemMenu from "./ItemMenu/ItemMenu";
+import { ItemMenu } from "./ItemMenu";
 import "./resultsView.component.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

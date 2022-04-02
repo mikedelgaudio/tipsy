@@ -1,6 +1,6 @@
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { AppStore, Item, Person } from "../../../models/custom-models";
-import "./ItemMenu.css";
+import "./itemMenu.component.css";
 import PersonCard from "./PersonCard/PersonCard";
 import { useState, useEffect, useRef } from "react";
 import {
@@ -100,4 +100,4 @@ function ItemMenu() {
   );
 }
 
-export default ItemMenu;
+export { ItemMenu };
