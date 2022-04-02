@@ -4,7 +4,7 @@ import { didMount } from "../../../../hooks/didMount";
 import { didClickAway } from "../../../../hooks/didClickAway";
 import { AppStore, Item, Person } from "../../../../models/custom-models";
 import { editPersonName } from "../../../../redux/calculation/calculation-actions";
-import ItemRow from "./ItemRow/ItemRow";
+import { ItemRow } from "./ItemRow";
 import { PersonActions } from "./PersonActions";
 import "./personCard.component.css";
 import { validString } from "../../../../utilities/sanitize";

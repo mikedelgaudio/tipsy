@@ -213,4 +213,4 @@ function ItemRow({ itemId, editing }: any) {
   );
 }
 
-export default ItemRow;
+export { ItemRow };
