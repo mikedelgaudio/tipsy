@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
 import { restartEvent } from "../../../redux/calculation/calculation-actions";
-import Dialog from "../Dialog";
+import { Modal } from "../modal/modal.component";
 import ResetIcon from "../icons/ResetIcon";
 import XIcon from "../icons/XIcon";
-import { dismissAllToast, dismissToast } from "../toasts/toasts";
+import { dismissAllToast } from "../toasts/toasts";
 
 function ResetBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
   const dispatch = useDispatch();
@@ -76,7 +76,7 @@ function ResetBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
 
   return (
     <>
-      <Dialog buttonLayout={buttonLayout} modalData={modalData} />
+      <Modal buttonLayout={buttonLayout} modalData={modalData} />
     </>
   );
 }

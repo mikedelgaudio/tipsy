@@ -1,9 +1,9 @@
 import { useA11yDialog } from "react-a11y-dialog";
 import { createPortal } from "react-dom";
 import XIcon from "../icons/XIcon";
-import "./Dialog.css";
+import "./modal.component.css";
 
-const Dialog = ({ buttonLayout, modalData }: any) => {
+const Modal = ({ buttonLayout, modalData }: any) => {
   // `instance` is the `a11y-dialog` instance.
   // `attr` is an object with the following keys:
   // - `container`: the dialog container
@@ -17,7 +17,7 @@ const Dialog = ({ buttonLayout, modalData }: any) => {
     title: `${modalData.title}`,
   });
 
-  const dialog = createPortal(
+  const modal = createPortal(
     <div {...attr.container} className="dialog-container">
       <div {...attr.overlay} className="dialog-overlay" />
       <div {...attr.dialog} className="dialog-content">
@@ -42,9 +42,9 @@ const Dialog = ({ buttonLayout, modalData }: any) => {
   return (
     <>
       {buttonLayout(() => instance.show())}
-      {dialog}
+      {modal}
     </>
   );
 };
 
-export default Dialog;
+export { Modal };

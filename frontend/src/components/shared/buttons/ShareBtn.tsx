@@ -1,5 +1,5 @@
 import ShareIcon from "../icons/ShareIcon";
-import Dialog from "../Dialog";
+import { Modal } from "../modal/modal.component";
 import store from "../../../redux/store";
 import CopyIcon from "../icons/CopyIcon";
 import MailIcon from "../icons/MailIcon";
@@ -40,7 +40,6 @@ function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
     )}${newlineChar}Total: $${eventTotal}${newlineChar}${newlineChar}${promotion}`;
   };
 
-  // TODO: Cleanup to different folder?
   const modalTitle = "Share with family or friends";
   const modalBody = (
     <div className="dialog-body">
@@ -128,7 +127,7 @@ function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
       {displayWebShareAPI() ? (
         buttonLayout(triggerWebShare)
       ) : (
-        <Dialog
+        <Modal
           buttonLayout={buttonLayout}
           modalData={modalData}
           ariaTitle={ariaTitle}
