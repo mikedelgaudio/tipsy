@@ -15,7 +15,7 @@ import { ERROR_INPUT_PRICE } from "../../../../utilities/variables";
 import { CloseBtn } from "../../../shared/buttons/closeBtn.component";
 import { EditBtn } from "../../../shared/buttons/editBtn.component";
 import { dismissToast, errorToast } from "../../../shared/toasts/toasts";
-import "./TotalsMenu.css";
+import "./totalsMenu.component.css";
 
 const defaultEventTotals: { eventTotal: string; eventTotalFloat: number } = {
   eventTotal: "0.00",
@@ -151,4 +151,4 @@ function TotalsMenu() {
   );
 }
 
-export default TotalsMenu;
+export { TotalsMenu };
