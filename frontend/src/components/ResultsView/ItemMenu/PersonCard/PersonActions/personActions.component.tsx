@@ -1,4 +1,4 @@
-import "./PersonActions.css";
+import "./personActions.component.css";
 import {
   addItem,
   deletePerson,
@@ -62,4 +62,4 @@ function PersonActions({ personId, editing, setEditing }: any) {
   );
 }
 
-export default PersonActions;
+export { PersonActions };

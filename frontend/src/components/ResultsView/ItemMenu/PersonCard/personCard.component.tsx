@@ -5,7 +5,7 @@ import { didClickAway } from "../../../../hooks/didClickAway";
 import { AppStore, Item, Person } from "../../../../models/custom-models";
 import { editPersonName } from "../../../../redux/calculation/calculation-actions";
 import ItemRow from "./ItemRow/ItemRow";
-import PersonActions from "./PersonActions/PersonActions";
+import { PersonActions } from "./PersonActions";
 import "./personCard.component.css";
 import { validString } from "../../../../utilities/sanitize";
 import { dismissToast, errorToast } from "../../../shared/toasts/toasts";
