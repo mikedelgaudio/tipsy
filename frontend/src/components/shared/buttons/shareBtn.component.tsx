@@ -1,5 +1,5 @@
 import ShareIcon from "../icons/ShareIcon";
-import { Modal } from "../modal/modal.component";
+import { Modal } from "../modal";
 import store from "../../../redux/store";
 import CopyIcon from "../icons/CopyIcon";
 import MailIcon from "../icons/MailIcon";

@@ -1,7 +1,6 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { didClickAway } from "../../../../hooks/didClickAway";
-import { didMount } from "../../../../hooks/didMount";
+import { didMount, didClickAway } from "../../../../hooks";
 import { AppStore, SanitizedCurrency } from "../../../../models/custom-models";
 import {
   editEventTotal,

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { restartEvent } from "../../../redux/calculation/calculation-actions";
-import { Modal } from "../modal/modal.component";
+import { Modal } from "../modal";
 import ResetIcon from "../icons/ResetIcon";
 import XIcon from "../icons/XIcon";
 import { dismissAllToast } from "../toasts/toasts";
