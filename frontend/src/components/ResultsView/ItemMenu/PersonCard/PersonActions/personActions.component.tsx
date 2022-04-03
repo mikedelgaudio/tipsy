@@ -10,7 +10,7 @@ import {
   AddBtn,
   DeletePersonBtn,
 } from "../../../../shared/buttons";
-import { AppStore } from "../../../../../models/custom-models";
+import { AppStore } from "../../../../../models";
 
 function PersonActions({ personId, editing, setEditing }: any) {
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { AppStore, Item, Person } from "../../../models/custom-models";
+import { AppStore, Item, Person } from "../../../models";
 import "./itemMenu.component.css";
 import { PersonCard } from "./PersonCard";
 import { useState, useEffect, useRef } from "react";

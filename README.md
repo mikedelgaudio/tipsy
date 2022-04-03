@@ -20,7 +20,6 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 ### Currently: v0.2.1-beta 
 
 - [ ] Update/Fix SEO
-- [ ] Update components to export {default} and rename to naming pattern of .component, .service, .dto
 
 ### Backlog
 
