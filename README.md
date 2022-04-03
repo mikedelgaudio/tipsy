@@ -15,9 +15,9 @@ Tipsy runs with `https` on localhost to support the WebShareAPI.
 
 The roadmap provides a high level storyboard of future for the Tipsy project.
 
-### Currently: v0.2.1-beta 
+### Currently: v0.3.0-beta 
 
-- nil
+- Add WelcomeView as hero banner and setup logic with react router?
 ### Backlog
 
 - [ ] Add undo functionality
