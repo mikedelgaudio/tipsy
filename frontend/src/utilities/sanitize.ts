@@ -1,4 +1,4 @@
-import { SanitizedCurrency } from "../models/custom-models";
+import { SanitizedCurrency } from "../models";
 
 const toFixed = (num: number, fixed: number): string => {
   // const re = new RegExp("^-?\\d+(?:.\\d{0," + (fixed || -1) + "})?");

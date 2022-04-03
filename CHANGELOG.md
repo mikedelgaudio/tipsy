@@ -48,3 +48,8 @@
 - [x] Fix issue on mobile screens where edit mode is overflowing due to white-space
 - [x] Investigate issue when adding in partial decimals rounds down (such as: 6.5, 2.2, etc.)
 - [x] Fix issue when resetting app and error classes or toast not clearing (clear all toast too)
+
+ ## v0.2.1-beta 
+ - [x] Display WebShareAPI only on viewports with less than 576px
+ - [x] Update components to export {default} and rename to naming pattern of .component, .service, .dto
+ - [x] Update/Fix SEO
