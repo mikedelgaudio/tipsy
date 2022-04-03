@@ -30,18 +30,28 @@
 }
 
 .welcome-col p {
-  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+  font-size: clamp(1.25rem, 3.5vw, 1.45rem);
   line-height: 1.15;
+}
+
+.welcome-col p:first-child {
+  font-weight: 300;
+}
+
+.welcome-subheader-container {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.35em;
 }
 
 .welcome-action-row {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: flex-start;
   gap: 2em;
 }
 
 .welcome-action-row button {
   padding: 1em 2em;
+  border-radius: 10px;
 }
