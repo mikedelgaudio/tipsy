@@ -14,4 +14,4 @@ function CheckIcon({ className }: { className: string }) {
   );
 }
 
-export default CheckIcon;
+export { CheckIcon };

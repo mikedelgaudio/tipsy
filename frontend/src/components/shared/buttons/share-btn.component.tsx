@@ -1,8 +1,6 @@
-import ShareIcon from "../icons/ShareIcon";
 import { Modal } from "../modal";
 import store from "../../../redux/store";
-import CopyIcon from "../icons/CopyIcon";
-import MailIcon from "../icons/MailIcon";
+import { MailIcon, CopyIcon, ShareIcon } from "../icons";
 import { errorToast, successToast } from "../toasts/toasts";
 
 function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {

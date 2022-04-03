@@ -1,8 +1,7 @@
 import { useDispatch } from "react-redux";
 import { restartEvent } from "../../../redux/calculation/calculation-actions";
 import { Modal } from "../modal";
-import ResetIcon from "../icons/ResetIcon";
-import XIcon from "../icons/XIcon";
+import { ResetIcon, XIcon } from "../icons";
 import { dismissAllToast } from "../toasts/toasts";
 
 function ResetBtn({ ariaTitle, className = "", iconClassName = "" }: any) {

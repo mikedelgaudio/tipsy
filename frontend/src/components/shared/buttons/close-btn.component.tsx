@@ -1,4 +1,4 @@
-import CheckIcon from "../icons/CheckIcon";
+import { CheckIcon } from "../icons";
 
 function CloseBtn({
   clickSideEffect,

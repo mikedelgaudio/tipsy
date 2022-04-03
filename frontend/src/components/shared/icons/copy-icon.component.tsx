@@ -14,4 +14,4 @@ function CopyIcon({ className }: { className: string }) {
   );
 }
 
-export default CopyIcon;
+export { CopyIcon };

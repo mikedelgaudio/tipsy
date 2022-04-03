@@ -14,4 +14,4 @@ function PencilIcon({ className }: { className: string }) {
   );
 }
 
-export default PencilIcon;
+export { PencilIcon };

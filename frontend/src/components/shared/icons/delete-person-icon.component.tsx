@@ -14,4 +14,4 @@ function DeletePersonIcon({ className }: { className: string }) {
   );
 }
 
-export default DeletePersonIcon;
+export { DeletePersonIcon };

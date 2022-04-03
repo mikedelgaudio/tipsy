@@ -1,4 +1,4 @@
-import TrashIcon from "../icons/TrashIcon";
+import { TrashIcon } from "../icons";
 
 function DeleteBtn({
   clickSideEffect,

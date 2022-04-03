@@ -1,4 +1,4 @@
-import AddPersonIcon from "../icons/AddPersonIcon";
+import { AddPersonIcon } from "../icons";
 
 function AddPersonBtn({
   clickSideEffect,

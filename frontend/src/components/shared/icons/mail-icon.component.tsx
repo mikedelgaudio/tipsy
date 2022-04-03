@@ -14,4 +14,4 @@ function MailIcon({ className }: { className: string }) {
   );
 }
 
-export default MailIcon;
+export { MailIcon };

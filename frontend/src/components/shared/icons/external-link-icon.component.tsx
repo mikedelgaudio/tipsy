@@ -14,4 +14,4 @@ function ExternalLinkIcon({ className }: { className: string }) {
   );
 }
 
-export default ExternalLinkIcon;
+export { ExternalLinkIcon };

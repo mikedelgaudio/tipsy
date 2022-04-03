@@ -1,4 +1,4 @@
-import AddItemIcon from "../icons/AddItemIcon";
+import { AddItemIcon } from "../icons";
 
 function AddBtn({
   clickSideEffect,

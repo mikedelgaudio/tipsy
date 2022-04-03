@@ -14,4 +14,4 @@ function AddItemIcon({ className }: { className: string }) {
   );
 }
 
-export default AddItemIcon;
+export { AddItemIcon };

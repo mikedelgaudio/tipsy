@@ -1,4 +1,4 @@
-import DeletePersonIcon from "../icons/DeletePersonIcon";
+import { DeletePersonIcon } from "../icons";
 
 function DeletePersonBtn({
   clickSideEffect,

@@ -14,4 +14,4 @@ function ShareIcon({ className }: { className: string }) {
   );
 }
 
-export default ShareIcon;
+export { ShareIcon };

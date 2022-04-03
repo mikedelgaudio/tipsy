@@ -14,4 +14,4 @@ function XIcon({ className }: { className: string }) {
   );
 }
 
-export default XIcon;
+export { XIcon };

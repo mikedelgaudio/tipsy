@@ -14,4 +14,4 @@ function AddPersonIcon({ className }: { className: string }) {
   );
 }
 
-export default AddPersonIcon;
+export { AddPersonIcon };

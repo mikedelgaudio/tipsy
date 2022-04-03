@@ -14,4 +14,4 @@ function ResetIcon({ className }: { className: string }) {
   );
 }
 
-export default ResetIcon;
+export { ResetIcon };

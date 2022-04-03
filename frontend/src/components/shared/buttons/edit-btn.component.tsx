@@ -1,4 +1,4 @@
-import PencilIcon from "../icons/PencilIcon";
+import { PencilIcon } from "../icons";
 
 function EditBtn({
   clickSideEffect,

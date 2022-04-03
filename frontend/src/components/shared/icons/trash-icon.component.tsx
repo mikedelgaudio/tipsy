@@ -14,4 +14,4 @@ function TrashIcon({ className }: { className: string }) {
   );
 }
 
-export default TrashIcon;
+export { TrashIcon };
