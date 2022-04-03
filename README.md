@@ -19,8 +19,7 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 
 ### Currently: v0.2.1-beta 
 
-- [ ] Update/Fix SEO
-
+- nil
 ### Backlog
 
 - [ ] Add undo functionality
