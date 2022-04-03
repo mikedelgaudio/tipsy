@@ -1,8 +1,8 @@
-export { AddBtn } from "./addBtn.component";
-export { AddPersonBtn } from "./addPersonBtn.component";
-export { CloseBtn } from "./closeBtn.component";
-export { DeleteBtn } from "./deleteBtn.component";
-export { DeletePersonBtn } from "./deletePersonBtn.component";
-export { EditBtn } from "./editBtn.component";
-export { ResetBtn } from "./resetBtn.component";
-export { ShareBtn } from "./shareBtn.component";
+export { AddBtn } from "./add-btn.component";
+export { AddPersonBtn } from "./add-person-btn.component";
+export { CloseBtn } from "./close-btn.component";
+export { DeleteBtn } from "./delete-btn.component";
+export { DeletePersonBtn } from "./delete-person-btn.component";
+export { EditBtn } from "./edit-btn.component";
+export { ResetBtn } from "./reset-btn.component";
+export { ShareBtn } from "./share-btn.component";
