@@ -1,8 +1,6 @@
-# Tipsy App
+# Tipsy - Weighted Tip and Tax Calculator
 
-Your best night out partner calculator web app
-
-The best friend group payment calculator web app.
+Paid for a night out with friends or a large dinner party? Add the items from your receipt and determine how much each person owes you with a weighted average of tip and taxes included.
 
 ## Development Frontend
 
@@ -19,9 +17,7 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 
 ### Currently: v0.2.1-beta 
 
-- [ ] Update/Fix SEO
-- [ ] Update components to export {default} and rename to naming pattern of .component, .service, .dto
-
+- nil
 ### Backlog
 
 - [ ] Add undo functionality

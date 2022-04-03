@@ -1,6 +1,6 @@
 import "./navbar.component.css";
 import { APP_VERSION } from "../../utilities/variables";
-import ExternalLinkIcon from "../shared/icons/ExternalLinkIcon";
+import { ExternalLinkIcon } from "../shared/icons";
 
 function Navbar() {
   return (

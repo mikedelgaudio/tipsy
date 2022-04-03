@@ -1,5 +1,5 @@
 import { dismissToast, warnToast } from "../../components/shared/toasts/toasts";
-import { CalculationState, Item } from "../../models/custom-models";
+import { CalculationState, Item } from "../../models";
 import { currencyToStr } from "../../utilities/sanitize";
 
 /**

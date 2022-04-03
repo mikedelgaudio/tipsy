@@ -1,4 +1,4 @@
-import { CalculationState } from "../models/custom-models";
+import { CalculationState } from "../models";
 
 export const loadState = () => {
   try {

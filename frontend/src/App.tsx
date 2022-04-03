@@ -1,6 +1,5 @@
 import { Navbar } from "./components/Navbar";
-import { ResultsView } from "./components/ResultsView";
-import { WelcomeView } from "./components/WelcomeView";
+import { ResultsView } from "./components/Results-View";
 import { saveState } from "./redux/localStorage";
 import store from "./redux/store";
 

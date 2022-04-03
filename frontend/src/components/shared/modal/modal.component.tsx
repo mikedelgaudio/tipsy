@@ -1,6 +1,6 @@
 import { useA11yDialog } from "react-a11y-dialog";
 import { createPortal } from "react-dom";
-import XIcon from "../icons/XIcon";
+import { XIcon } from "../icons";
 import "./modal.component.css";
 
 const Modal = ({ buttonLayout, modalData }: any) => {
