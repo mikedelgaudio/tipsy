@@ -13,7 +13,7 @@ import {
 import { ERROR_INPUT_PRICE } from "../../../../utilities/variables";
 import { EditBtn, CloseBtn } from "../../../shared/buttons";
 import { dismissToast, errorToast } from "../../../shared/toasts/toasts";
-import "./totalsMenu.component.css";
+import "./totals-menu.component.css";
 
 const defaultEventTotals: { eventTotal: string; eventTotalFloat: number } = {
   eventTotal: "0.00",

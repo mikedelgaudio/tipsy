@@ -1,7 +1,7 @@
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { AppStore, Item, Person } from "../../../models";
-import "./itemMenu.component.css";
-import { PersonCard } from "./PersonCard";
+import "./item-menu.component.css";
+import { PersonCard } from "./Person-Card";
 import { useState, useEffect, useRef } from "react";
 import {
   editEventTitle,
@@ -11,8 +11,8 @@ import { didClickAway, didMount } from "../../../hooks";
 import { dismissToast, errorToast } from "../../shared/toasts/toasts";
 import { validString } from "../../../utilities/sanitize";
 import { ERROR_INPUT_EVENT } from "../../../utilities/variables";
-import { TotalsMenu } from "./TotalsMenu";
-import { EventHeaderActions } from "./EventHeaderActions";
+import { TotalsMenu } from "./Totals-Menu";
+import { EventHeaderActions } from "./Event-Header-Actions";
 
 function ItemMenu() {
   const didMountOnce = didMount();

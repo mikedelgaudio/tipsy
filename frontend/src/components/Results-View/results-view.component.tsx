@@ -1,9 +1,9 @@
-import { ItemMenu } from "./ItemMenu";
-import "./resultsView.component.css";
+import { ItemMenu } from "./Item-Menu";
+import "./results-view.component.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ErrorBoundary from "../shared/errors/ErrorBoundary";
-import { EventFooterActions } from "./EventFooterActions";
+import { EventFooterActions } from "./Event-Footer-Actions";
 
 function ResultsView() {
   return (

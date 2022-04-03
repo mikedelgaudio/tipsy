@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react-hooks";
 
-import { didMount } from "./didMount.hook";
+import { didMount } from "./did-mount.hook";
 
 describe("didMount", () => {
   it("should be true on first render and false after", () => {

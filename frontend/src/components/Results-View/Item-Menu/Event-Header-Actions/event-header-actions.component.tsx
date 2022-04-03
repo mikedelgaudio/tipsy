@@ -1,4 +1,4 @@
-import "./eventHeaderActions.component.css";
+import "./event-header-actions.component.css";
 import { EditBtn, CloseBtn, AddPersonBtn } from "../../../shared/buttons";
 import { useDispatch } from "react-redux";
 import { addPerson } from "../../../../redux/calculation/calculation-actions";

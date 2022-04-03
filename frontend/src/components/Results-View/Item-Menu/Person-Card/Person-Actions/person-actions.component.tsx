@@ -1,4 +1,4 @@
-import "./personActions.component.css";
+import "./person-actions.component.css";
 import {
   addItem,
   deletePerson,
