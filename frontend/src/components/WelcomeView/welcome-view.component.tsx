@@ -1,4 +1,4 @@
-import ExternalLinkIcon from "../shared/icons/ExternalLinkIcon";
+import { ExternalLinkIcon } from "../shared/icons";
 import "./welcomeView.component.css";
 
 function WelcomeView() {

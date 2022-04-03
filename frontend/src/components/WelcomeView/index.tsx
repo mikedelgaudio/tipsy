@@ -1,1 +1,1 @@
-export { WelcomeView } from "./welcomeView.component";
+export { WelcomeView } from "./welcome-view.component";
