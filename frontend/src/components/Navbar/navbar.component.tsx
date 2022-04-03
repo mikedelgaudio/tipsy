@@ -5,7 +5,7 @@ import ExternalLinkIcon from "../shared/icons/ExternalLinkIcon";
 function Navbar() {
   return (
     <nav>
-      <div className="nav-container">
+      <div className="container">
         <div className="nav-wrapper">
           <a className="nav-logo" href="/">
             Tipsy

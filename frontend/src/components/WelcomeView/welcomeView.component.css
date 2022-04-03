@@ -1,0 +1,47 @@
+.welcome-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  max-width: var(--max-width);
+  transform: translate(-50%, -50%);
+  gap: 2em;
+}
+
+.welcome-header {
+  font-size: clamp(3rem, 6.5vw, 6rem);
+}
+
+.welcome-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.welcome-col {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 2em;
+  line-height: 1;
+}
+
+.welcome-col p {
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+  line-height: 1.15;
+}
+
+.welcome-action-row {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2em;
+}
+
+.welcome-action-row button {
+  padding: 1em 2em;
+}

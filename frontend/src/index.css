@@ -3,11 +3,17 @@
 @import "./styles/variables.css";
 @import "./styles/buttons.css";
 @import "./styles/utilities.css";
-
+@import "./styles/containers.css";
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -15,7 +21,6 @@ html {
 }
 
 body {
-  margin: 0;
   min-width: 300px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
