@@ -26,6 +26,7 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Add About or Walkthrough Section
 - [ ] Ability to split an item with a person
 - [ ] Ability to share a link for 1 week
+- [ ] Add gtag events
 
 Migrate Redux to MobX:
 - [ ] When resetting an app always generate a new uuidv4() to ensure error classes reset.

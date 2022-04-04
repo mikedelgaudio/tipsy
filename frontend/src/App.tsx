@@ -1,33 +1,23 @@
 import { Navbar } from "./components/Navbar";
-// import { ResultsView } from "./components/Results-View";
-import { WelcomeView } from "./components/WelcomeView";
-import { saveState } from "./redux/localStorage";
-import store from "./redux/store";
+import { WelcomeView } from "./components/Welcome-View";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ResultsView } from "./components/Results-View";
+import { Error404View } from "./components/Error-404-View";
 
 function App() {
-  // TODO: Verify this is the proper way to grab state
-  store.subscribe(() => {
-    saveState({
-      persons: store.getState().calculation.persons,
-      items: store.getState().calculation.items,
-      eventTitle: store.getState().calculation.eventTitle,
-      eventTotal: store.getState().calculation.eventTotal,
-      eventTotalFloat: store.getState().calculation.eventTotalFloat,
-      eventTipTaxTotal: store.getState().calculation.eventTipTaxTotal,
-      eventTipTaxTotalFloat: store.getState().calculation.eventTipTaxTotalFloat,
-      eventSubtotalFloat: store.getState().calculation.eventSubtotalFloat,
-      eventId: store.getState().calculation.eventId,
-    });
-  });
-
   return (
     <>
       <header>
         <Navbar />
       </header>
       <main>
-        <WelcomeView />
-        {/* <ResultsView /> */}
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<WelcomeView />} />
+            <Route path="calculate" element={<ResultsView />} />
+            <Route path="*" element={<Error404View />} />
+          </Routes>
+        </BrowserRouter>
       </main>
     </>
   );
