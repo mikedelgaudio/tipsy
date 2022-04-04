@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { ExternalLinkIcon } from "../shared/icons";
+import { WelcomeViewAsset } from "./welcome-view.asset.component";
 import "./welcome-view.component.css";
 
 function WelcomeView() {
@@ -34,11 +35,7 @@ function WelcomeView() {
         </div>
       </div>
       <div className="welcome-col">
-        <img
-          className="welcome-img"
-          src="https://via.placeholder.com/1000"
-          alt="Money sharing"
-        ></img>
+        <WelcomeViewAsset />
       </div>
     </section>
   );
