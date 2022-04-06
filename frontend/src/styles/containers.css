@@ -1,0 +1,15 @@
+.container {
+  padding-inline: 2em;
+  margin: auto;
+  max-width: var(--max-width);
+}
+
+.c-full-height {
+  min-height: calc(100vh - 5rem);
+}
+
+.c-grid-center {
+  display: grid;
+  place-content: center;
+  gap: var(--size-1);
+}

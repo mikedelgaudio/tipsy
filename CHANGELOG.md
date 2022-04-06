@@ -53,3 +53,10 @@
  - [x] Display WebShareAPI only on viewports with less than 576px
  - [x] Update components to export {default} and rename to naming pattern of .component, .service, .dto
  - [x] Update/Fix SEO
+
+## v0.3.0-beta
+- [x] Add Google Analytics Tag
+- [x] Add WelcomeView as Hero Banner 
+- [x] Setup React Router logic including 404 page
+- [x] Add JIT Open Props library 
+

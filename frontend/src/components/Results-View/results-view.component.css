@@ -1,7 +1,7 @@
 .results-view {
   max-width: var(--max-width);
   margin: auto;
-  padding: 2em;
+  padding: var(--size-4) var(--size-7);
   display: flex;
   flex-flow: column;
   gap: 1.25em;

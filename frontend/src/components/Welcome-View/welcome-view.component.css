@@ -1,0 +1,46 @@
+.welcome-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  align-items: center;
+  width: 100%;
+  max-width: var(--max-width);
+  gap: var(--size-7);
+  padding-block: var(--size-7);
+}
+
+.welcome-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.welcome-col {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 2em;
+  line-height: 1;
+}
+
+.welcome-col p:first-child {
+  font-weight: 300;
+}
+
+.welcome-subheader-container {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.35em;
+}
+
+.welcome-action-row {
+  display: flex;
+  flex-flow: row nowrap;
+  white-space: nowrap;
+  align-items: center;
+  gap: var(--size-5);
+}
+
+.welcome-action-row .btn {
+  padding: 1em 2em;
+  border-radius: 10px;
+}
