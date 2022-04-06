@@ -1,7 +1,6 @@
 .container {
-  padding-inline: 2em;
   margin: auto;
-  max-width: var(--max-width);
+  max-width: min(100% - 2rem, var(--max-width));
 }
 
 .c-full-height {

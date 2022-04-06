@@ -5,6 +5,8 @@
 @import "./styles/utilities.css";
 @import "./styles/containers.css";
 @import "./styles/typography.css";
+@import "./styles/animations.css";
+
 *,
 *::before,
 *::after {

@@ -1,4 +1,4 @@
-export const APP_VERSION = "v0.3.0-beta";
+export const APP_VERSION = "v0.3.1-beta";
 export const GITHUB_URL = "https://github.com/mikedelgaudio/tipsy";
 
 export const ERROR_INPUT_ITEM = (displayName: string): string => {

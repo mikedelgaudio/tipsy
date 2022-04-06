@@ -1,0 +1,12 @@
+.loaded {
+  animation: fadein 600ms var(--ease-1);
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
