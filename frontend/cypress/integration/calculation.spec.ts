@@ -7,8 +7,8 @@ describe("Core Calculation E2E Functionality", () => {
     cy.findByTitle(/stop editing event total/i).click();
   };
 
-  const addNewPerson = () => {
-    cy.findByRole("button", { name: /add person/i }).click();
+  const clickButtonByName = (name: RegExp) => {
+    cy.findByRole("button", { name }).click();
   };
 
   const verifyEventTotal = (expectedTotal: string) => {
@@ -84,6 +84,8 @@ describe("Core Calculation E2E Functionality", () => {
   beforeEach("go to the website", () => {
     cy.visit("/");
 
+    clickButtonByName(/get started/i);
+
     toggleEditPerson(/edit person 1/i);
 
     editInputField(/person 1 name/i, global.person.name, {
@@ -138,7 +140,8 @@ describe("Core Calculation E2E Functionality", () => {
       },
     };
 
-    addNewPerson();
+    clickButtonByName(/add person/i);
+
     editEventTotal(local.event.total);
 
     toggleEditPerson(/edit person 2/i);

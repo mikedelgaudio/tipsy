@@ -27,6 +27,8 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Ability to split an item with a person
 - [ ] Ability to share a link for 1 week
 - [ ] Add gtag events
+- [ ] Investigate issue when clearing item name or person name where the input field auto fills the defaults but error message remains
+- [ ] Investigate if all error toast clear screen when navigating away from /calculate (what happens if an error existed; user left and comes back?)
 
 Migrate Redux to MobX:
 - [ ] When resetting an app always generate a new uuidv4() to ensure error classes reset.
