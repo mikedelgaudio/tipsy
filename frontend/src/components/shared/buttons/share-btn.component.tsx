@@ -33,7 +33,7 @@ function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
 
     const promotion = "Calculated by tipsy.delgaudiomike.com";
 
-    return `How much everyone owes:${newlineChar}${personData.join(
+    return `How much everyone owes (tip and tax included):${newlineChar}${personData.join(
       "",
     )}${newlineChar}Total: $${eventTotal}${newlineChar}${newlineChar}${promotion}`;
   };

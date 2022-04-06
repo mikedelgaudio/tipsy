@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { GITHUB_URL } from "../../utilities/variables";
 import { ExternalLinkIcon } from "../shared/icons";
 import { WelcomeViewAsset } from "./welcome-view.asset.component";
 import "./welcome-view.component.css";
@@ -20,7 +21,7 @@ function WelcomeView() {
         </div>
 
         <div className="welcome-action-row">
-          <a href="#" className="btn secondary">
+          <a href={GITHUB_URL} target="_blank" className="btn secondary">
             GitHub{" "}
             <span>
               <ExternalLinkIcon className="icons icon-sm" />
