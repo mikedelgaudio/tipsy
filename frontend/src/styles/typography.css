@@ -6,3 +6,8 @@
   font-size: var(--font-size-fluid-1);
   line-height: var(--font-lineheight-0);
 }
+
+.errorText {
+  color: var(--error);
+  text-decoration: underline;
+}

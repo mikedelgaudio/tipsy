@@ -56,3 +56,7 @@
 
 ## v0.3.0-beta
 - [x] Add Google Analytics Tag
+- [x] Add WelcomeView as Hero Banner 
+- [x] Setup React Router logic including 404 page
+- [x] Add JIT Open Props library 
+

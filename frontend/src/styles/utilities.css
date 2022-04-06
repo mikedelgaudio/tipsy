@@ -1,8 +1,3 @@
-.errorText {
-  color: var(--error);
-  text-decoration: underline;
-}
-
 .inputWrapper {
   display: flex;
   flex-flow: column wrap;
@@ -29,4 +24,9 @@ a {
 }
 a:hover {
   opacity: 0.75;
+}
+
+.responsive-svg {
+  width: 100%;
+  height: auto;
 }
