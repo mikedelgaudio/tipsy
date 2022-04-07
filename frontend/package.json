@@ -1,6 +1,6 @@
 {
   "name": "tipsy",
-  "version": "0.3.1-beta",
+  "version": "0.4.0-beta",
   "scripts": {
     "start": "vite",
     "dev": "vite --host",
@@ -14,6 +14,8 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
+    "mobx": "^6.5.0",
+    "mobx-react": "^7.3.0",
     "open-props": "^1.3.12",
     "react": "^17.0.0",
     "react-a11y-dialog": "^6.1.3",

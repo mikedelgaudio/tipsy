@@ -15,10 +15,15 @@ Tipsy runs with `https` on localhost to support the WebShareAPI.
 
 The roadmap provides a high level storyboard of future for the Tipsy project.
 
-### Currently: v0.3.0-beta 
+### Currently: v0.4.0-beta 
 
-- nil
-
+Migrate Redux to MobX:
+- [ ] When resetting an app always generate a new uuidv4() to ensure error classes reset.
+- [ ] Debounce inputs to prevent numerous state calls
+- [ ] Ensure multiple calls to save state subscriber is not taking too many calls
+- [ ] Disallow the removal of all products for a person (look into Redux entities instead of looping through array)
+- [ ] Determine why some state functions required `undefined` as type safe
+- [ ] Investigate how to reduce calls in `math.ts`; this may involve redesigning the store to search by key.
 ### Backlog
 
 - [ ] Add undo functionality
@@ -31,13 +36,7 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Investigate issue when clearing item name or person name where the input field auto fills the defaults but error message remains
 - [ ] Investigate if all error toast clear screen when navigating away from /calculate (what happens if an error existed; user left and comes back?)
 
-Migrate Redux to MobX:
-- [ ] When resetting an app always generate a new uuidv4() to ensure error classes reset.
-- [ ] Debounce inputs to prevent numerous state calls
-- [ ] Ensure multiple calls to save state subscriber is not taking too many calls
-- [ ] Disallow the removal of all products for a person (look into Redux entities instead of looping through array)
-- [ ] Determine why some state functions required `undefined` as type safe
-- [ ] Investigate how to reduce calls in `math.ts`; this may involve redesigning the store to search by key.
+
 
 ## Docker build
 
