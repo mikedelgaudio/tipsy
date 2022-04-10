@@ -1,6 +1,6 @@
 {
   "name": "tipsy",
-  "version": "0.4.0-beta",
+  "version": "1.0.0-beta",
   "scripts": {
     "start": "vite",
     "dev": "vite --host",
@@ -34,11 +34,12 @@
     "@types/react-dom": "^17.0.0",
     "@types/uuid": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
-    "@typescript-eslint/parser": "^5.13.0",
+    "@typescript-eslint/parser": "^5.18.0",
     "@vitejs/plugin-react": "^1.0.0",
     "cypress": "^9.5.2",
-    "eslint": "^8.10.0",
+    "eslint": "^8.12.0",
     "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-mobx": "^0.0.8",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.4",
     "postcss-jit-props": "^1.0.5",

@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { CalculationStateMobx } from "../models/calculation-state.mobx.model";
+import { LOCAL_STORAGE_VAR } from "../utilities/variables";
 import { DEFAULT_STATE } from "./defaults/initial.calculation.default";
 
 export class CalculationStore {
@@ -9,15 +10,15 @@ export class CalculationStore {
     makeAutoObservable(this);
   }
 
-  // get event() {
-  //   return this.state.event;
-  // }
+  reset() {
+    localStorage.removeItem(LOCAL_STORAGE_VAR);
+  }
 
-  // get items() {
-  //   return this.state.items;
-  // }
+  get eventTitle() {
+    return this.state.event.title;
+  }
 
-  // get persons() {
-  //   return this.state.persons;
-  // }
+  set eventTitle(value: string) {
+    this.state.event.title = value;
+  }
 }

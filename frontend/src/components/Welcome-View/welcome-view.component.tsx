@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { GITHUB_URL } from "../../utilities/variables";
+import { MobxDemo } from "../Mobx-Demo/mobx-demo.component";
 import { ExternalLinkIcon } from "../shared/icons";
 import { WelcomeViewAsset } from "./welcome-view.asset.component";
 import "./welcome-view.component.css";
@@ -38,6 +39,7 @@ function WelcomeView() {
       <div className="welcome-col">
         <WelcomeViewAsset />
       </div>
+      <MobxDemo />
     </section>
   );
 }

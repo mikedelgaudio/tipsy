@@ -1,5 +1,6 @@
 export const APP_VERSION = "v0.3.1-beta";
 export const GITHUB_URL = "https://github.com/mikedelgaudio/tipsy";
+export const LOCAL_STORAGE_VAR = "TIPSY_APP_STATE";
 
 export const ERROR_INPUT_ITEM = (displayName: string): string => {
   return `Invalid input for "${displayName}". Format item names such as: Food Item 1`;
