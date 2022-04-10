@@ -12,6 +12,9 @@ export const DEFAULT_STATE: CalculationStateMobx = {
       tipAndTaxFloat: 0.0,
       totalDue: "0.00",
       totalDueFloat: 0.0,
+      errors: {
+        name: false,
+      },
     },
   ],
   items: [
@@ -19,26 +22,36 @@ export const DEFAULT_STATE: CalculationStateMobx = {
       id: "1a",
       personId: "1", // to split an item, modify the current to half then add to each person
       name: "Food Item 1",
-      qty: 1,
       price: "0.00",
       priceFloat: 0.0,
+      errors: {
+        name: false,
+        price: false,
+      },
     },
     {
       id: "2a",
       personId: "1",
       name: "Food Item 2",
-      qty: 1,
       price: "0.00",
       priceFloat: 0.0,
+      errors: {
+        name: false,
+        price: false,
+      },
     },
   ],
   event: {
     id: uuidv4(),
-    title: "Event Title",
+    name: "Event Title",
     total: "0.00",
     totalFloat: 0.0,
     tipTaxTotal: "0.00",
     tipTaxTotalFloat: 0.0,
     subtotalFloat: 0.0,
+    errors: {
+      name: false,
+      total: false,
+    },
   },
 };
