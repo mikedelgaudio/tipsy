@@ -5,7 +5,16 @@ export type Item = {
   qty?: number;
   price: string;
   priceFloat: number;
-  errors?: {
+};
+
+export type ItemMobx = {
+  id: string;
+  personId: string;
+  name: string;
+  qty?: number;
+  price: string;
+  priceFloat: number;
+  errors: {
     name: boolean;
     price: boolean;
   };

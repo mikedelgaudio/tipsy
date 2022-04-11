@@ -1,9 +1,9 @@
 import { CalculationEvent } from "./calculation-event.model";
-import { Item } from "./item.model";
-import { Person } from "./person.model";
+import { ItemMobx } from "./item.model";
+import { PersonMobx } from "./person.model";
 
 export type CalculationStateMobx = {
-  persons: Person[];
-  items: Item[];
+  persons: PersonMobx[];
+  items: ItemMobx[];
   event: CalculationEvent;
 };
