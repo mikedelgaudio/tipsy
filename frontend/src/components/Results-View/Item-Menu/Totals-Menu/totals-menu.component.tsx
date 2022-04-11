@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { didMount, didClickAway } from "../../../../hooks";
+import { didClickAway, didMount } from "../../../../hooks";
 import { AppStore, SanitizedCurrency } from "../../../../models";
 import {
   editEventTotal,
@@ -11,7 +11,7 @@ import {
   sanitizeCurrency,
 } from "../../../../utilities/sanitize";
 import { ERROR_INPUT_PRICE } from "../../../../utilities/variables";
-import { EditBtn, CloseBtn } from "../../../shared/buttons";
+import { CloseBtn, EditBtn } from "../../../shared/buttons";
 import { dismissToast, errorToast } from "../../../shared/toasts/toasts";
 import "./totals-menu.component.css";
 
@@ -54,7 +54,7 @@ function TotalsMenu() {
     setEventTotalInput({
       ...eventTotalInput,
       eventTotal: e.target.value,
-      eventTotalFloat: parsedPriceFloat.parsed,
+      eventTotalFloat: parsedPriceFloat.parsedFloat,
     });
   };
 

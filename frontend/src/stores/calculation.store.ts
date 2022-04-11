@@ -2,6 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 import { v4 as uuidv4 } from "uuid";
 import { CalculationStateMobx } from "../models/calculation-state.mobx.model";
+import { sanitizeCurrency } from "../utilities/sanitize";
 import { LOCAL_STORAGE_VAR } from "../utilities/variables";
 import { DEFAULT_STATE } from "./defaults/initial.calculation.default";
 
@@ -17,9 +18,18 @@ export class CalculationStore {
     });
   }
 
-  editEventTotal(total: string, totalFloat: number) {
-    this.state.event.total = total;
-    this.state.event.totalFloat = totalFloat;
+  editEventTotal(total: string) {
+    const { error, parsedFloat, parsedString } = sanitizeCurrency(total);
+
+    if (error) {
+      // errorService.error()
+      this.state.event.errors.total = true;
+      return;
+    }
+
+    this.state.event.errors.total = false;
+    this.state.event.total = parsedString;
+    this.state.event.totalFloat = parsedFloat;
   }
 
   recalculate() {

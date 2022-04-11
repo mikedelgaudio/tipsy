@@ -15,17 +15,18 @@ const validCurrency = (input: string): boolean => {
 };
 
 const sanitizeCurrency = (input: string): SanitizedCurrency => {
-  if (!validCurrency(input)) {
-    return { error: true, parsed: 0.0 };
+  const symbolsRemoved = removeDollarOrComma(input);
+  if (!validCurrency(symbolsRemoved)) {
+    return { error: true, parsedFloat: 0.0, parsedString: symbolsRemoved };
   }
   try {
-    const parsed = parseFloat(input);
+    const parsed = parseFloat(symbolsRemoved);
     if (!parsed && parsed !== 0) {
-      return { error: true, parsed: 0.0 };
+      return { error: true, parsedFloat: 0.0, parsedString: symbolsRemoved };
     }
-    return { error: false, parsed };
+    return { error: false, parsedFloat: parsed, parsedString: symbolsRemoved };
   } catch (e) {
-    return { error: true, parsed: 0.0 };
+    return { error: true, parsedFloat: 0.0, parsedString: symbolsRemoved };
   }
 };
 

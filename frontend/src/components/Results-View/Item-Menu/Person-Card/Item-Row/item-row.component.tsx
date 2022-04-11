@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { didMount } from "../../../../../hooks";
 import { AppStore, Item, SanitizedCurrency } from "../../../../../models";
 import {
+  deleteItem,
   editItemName,
   editItemPrice,
-  deleteItem,
 } from "../../../../../redux/calculation/calculation-actions";
 import {
   removeDollarOrComma,
@@ -78,7 +78,7 @@ function ItemRow({ itemId, editing }: any) {
         if (parsedPriceFloat.error) {
           setError({ ...error, price: true });
           // If state had a valid float before, utilize the cached value instead.
-          parsedPriceFloat.parsed = itemInput.priceFloat;
+          parsedPriceFloat.parsedFloat = itemInput.priceFloat;
         } else {
           // TODO: To reduce calls in the future, maybe set flag to avoid?
           setError({ ...error, price: false });
@@ -87,7 +87,7 @@ function ItemRow({ itemId, editing }: any) {
         setItemsInput({
           ...itemInput,
           price: e.target.value.trim(),
-          priceFloat: parsedPriceFloat.parsed,
+          priceFloat: parsedPriceFloat.parsedFloat,
         });
         break;
       }
