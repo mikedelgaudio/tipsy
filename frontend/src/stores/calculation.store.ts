@@ -163,17 +163,17 @@ export class CalculationStore {
     const { error, parsedFloat, parsedString } = sanitizeCurrency(total);
 
     const TOAST_ID = "EVENT_TOTAL";
+    const eventErrors = observable.map(this.state.event.errors);
 
     if (error) {
       this.toastService.error(TOAST_ID, ERROR_INPUT_PRICE("event total price"));
-      this.state.event.errors.total = true;
+      eventErrors.set("total", true);
       return;
     }
 
     this.toastService.clear(TOAST_ID);
-    const v = observable.map(this.state.event.errors);
     // need to turn into observables and it seems state does not save nested obj
-    v.set("total", false);
+    eventErrors.set("total", false);
     this.state.event.total = parsedString;
     this.state.event.totalFloat = parsedFloat;
   }

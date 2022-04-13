@@ -1,8 +1,8 @@
-import { Navbar } from "./components/Navbar";
-import { WelcomeView } from "./components/Welcome-View";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ResultsView } from "./components/Results-View";
 import { Error404View } from "./components/Error-404-View";
+import { Navbar } from "./components/Navbar";
+import { ResultsView } from "./components/Results-View";
+import { WelcomeView } from "./components/Welcome-View";
 
 function App() {
   return (
