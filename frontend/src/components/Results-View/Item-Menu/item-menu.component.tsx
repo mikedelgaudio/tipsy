@@ -1,44 +1,43 @@
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { AppStore, Item, Person } from "../../../models";
-import "./item-menu.component.css";
-import { PersonCard } from "./Person-Card";
-import { useState, useEffect, useRef } from "react";
-import {
-  editEventTitle,
-  recalculateEvent,
-} from "../../../redux/calculation/calculation-actions";
+import { observer } from "mobx-react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { didClickAway, didMount } from "../../../hooks";
-import { dismissToast, errorToast } from "../../shared/toasts/toasts";
+import { PersonMobx } from "../../../models/person.model";
+import { StoreContext } from "../../../store.context";
 import { validString } from "../../../utilities/sanitize";
 import { ERROR_INPUT_EVENT } from "../../../utilities/variables";
-import { TotalsMenu } from "./Totals-Menu";
+import { dismissToast, errorToast } from "../../shared/toasts/toasts";
 import { EventHeaderActions } from "./Event-Header-Actions";
+import "./item-menu.component.css";
+import { PersonCard } from "./Person-Card";
+import { TotalsMenu } from "./Totals-Menu";
 
-function ItemMenu() {
+const ItemMenu = observer(() => {
+  const { calculationStore } = useContext(StoreContext);
   const didMountOnce = didMount();
-  const dispatch = useDispatch();
 
-  // Store Selectors
-  const storeEventTitle = useSelector(
-    (state: AppStore) => state.calculation.eventTitle,
-  );
+  // // Store Selectors
+  // const storeEventTitle = useSelector(
+  //   (state: AppStore) => state.calculation.eventTitle,
+  // );
 
-  const personIds = useSelector((state: AppStore) => {
-    return state.calculation.persons.map((person: Person) => person.id);
-  });
+  // const personIds = useSelector((state: AppStore) => {
+  //   return state.calculation.persons.map((person: Person) => person.id);
+  // });
 
-  const storeItemsPrices = useSelector(
-    (state: AppStore) =>
-      state.calculation.items.map((item: Item) => {
-        return item.priceFloat;
-      }),
-    shallowEqual,
-  );
+  // const storeItemsPrices = useSelector(
+  //   (state: AppStore) =>
+  //     state.calculation.items.map((item: Item) => {
+  //       return item.priceFloat;
+  //     }),
+  //   shallowEqual,
+  // );
 
   const [editing, setEditing] = useState(false);
   const [error, setError] = useState(false);
   const toastId = useRef(null);
-  const [eventTitleInput, setEventTitleInput] = useState(storeEventTitle);
+  const [eventTitleInput, setEventTitleInput] = useState(
+    calculationStore.eventName,
+  );
 
   const eventTitleInputHandler = (e: any) => {
     setError(!validString(e.target.value));
@@ -46,28 +45,30 @@ function ItemMenu() {
   };
 
   useEffect(() => {
-    setEventTitleInput(storeEventTitle);
-  }, [storeEventTitle]);
+    setEventTitleInput(calculationStore.eventName);
+  }, [calculationStore.eventName]);
 
   // Works as intended, need to do research if this is a bad smell?
   useEffect(() => {
     if (!didMountOnce && !editing) {
       error ? errorToast(toastId, ERROR_INPUT_EVENT()) : dismissToast(toastId);
 
-      if (storeEventTitle !== eventTitleInput) {
-        dispatch(
-          editEventTitle(!error ? eventTitleInput.trim() : storeEventTitle),
-        );
+      if (calculationStore.eventName !== eventTitleInput) {
+        calculationStore.eventName = eventTitleInput;
       }
     }
   }, [editing]);
 
-  useEffect(() => {
-    if (!didMountOnce) dispatch(recalculateEvent());
-  }, [storeItemsPrices]);
+  // useEffect(() => {
+  //   if (!didMountOnce) dispatch(recalculateEvent());
+  // }, [storeItemsPrices]);
 
   const menuRef = useRef(null);
   didClickAway(menuRef, editing, setEditing);
+
+  const personIds = calculationStore.state.persons.map(
+    (person: PersonMobx) => person.id,
+  );
 
   return (
     <>
@@ -97,6 +98,6 @@ function ItemMenu() {
       </div>
     </>
   );
-}
+});
 
 export { ItemMenu };
