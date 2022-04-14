@@ -1,48 +1,37 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { observer } from "mobx-react";
+import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 import { didClickAway, didMount } from "../../../../hooks";
-import { AppStore, Item, Person } from "../../../../models";
-import { editPersonName } from "../../../../redux/calculation/calculation-actions";
+import { ItemMobx } from "../../../../models/item.model";
+import { PersonMobx } from "../../../../models/person.model";
+import { StoreContext } from "../../../../store.context";
 import { ItemRow } from "./Item-Row";
 import { PersonActions } from "./Person-Actions";
 import "./person-card.component.css";
-import { validString } from "../../../../utilities/sanitize";
-import { dismissToast, errorToast } from "../../../shared/toasts/toasts";
-import { ERROR_INPUT_NAME } from "../../../../utilities/variables";
 
-function PersonCard({ personId }: any) {
-  // Store Selectors
-  const storePersonData = useSelector((state: AppStore) => {
-    return state.calculation.persons.find(
-      (person: Person) => person.id === personId,
-    );
-  });
+const PersonCard = observer(({ personId }: any) => {
+  const { calculationStore } = useContext(StoreContext);
 
-  const storeItemsIds = useSelector((state: AppStore) => {
-    return state.calculation.items.map((item: Item) => {
-      if (item.personId === personId) return item.id;
-    });
-  });
+  const storePersonData = calculationStore.persons.find(
+    (person: PersonMobx) => person.id === personId,
+  );
 
-  const storePersonIndex = useSelector((state: AppStore) => {
-    return (
-      state.calculation.persons.findIndex(
-        (person: Person) => person.id === personId,
-      ) + 1
-    );
+  const storePersonIndex =
+    calculationStore.persons.findIndex(
+      (person: PersonMobx) => person.id === personId,
+    ) + 1;
+
+  // TODO: Add if check to remove the | undefined
+  const storeItemsIds = calculationStore.items.map((item: ItemMobx) => {
+    if (item.personId === personId) return item.id;
   });
 
   const didMountOnce = didMount();
-  const dispatch = useDispatch();
-  const toastId = useRef(null);
   const [editing, setEditing] = useState(false);
-  const [error, setError] = useState(false);
   const [personNameInput, setPersonNameInput] = useState(storePersonData?.name);
   const personRef = useRef(null);
   didClickAway(personRef, editing, setEditing);
 
   const personNameInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setError(!validString(e.target.value));
     setPersonNameInput(e.target.value);
   };
 
@@ -52,17 +41,9 @@ function PersonCard({ personId }: any) {
 
   useEffect(() => {
     if (!didMountOnce && !editing) {
-      error
-        ? errorToast(toastId, ERROR_INPUT_NAME(storePersonData?.name))
-        : dismissToast(toastId);
-
       if (storePersonData?.name !== personNameInput) {
-        dispatch(
-          editPersonName(
-            personId,
-            !error ? personNameInput?.trim() : storePersonData?.name,
-          ),
-        );
+        if (personNameInput)
+          calculationStore.editPersonName(personId, personNameInput);
       }
     }
   }, [editing]);
@@ -72,7 +53,7 @@ function PersonCard({ personId }: any) {
       <div className="personCardHeader">
         {!editing ? (
           <h2
-            className={`${error ? "errorText" : ""} personName`}
+            // className={`${error ? "errorText" : ""} personName`}
             data-cy={`${storePersonData?.name}-personName`}
           >
             {storePersonData?.name}
@@ -134,6 +115,6 @@ function PersonCard({ personId }: any) {
       </div>
     </div>
   );
-}
+});
 
 export { PersonCard };

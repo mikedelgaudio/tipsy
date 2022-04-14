@@ -174,6 +174,14 @@ export class CalculationStore {
     return this.state.event.tipTaxTotal;
   }
 
+  get persons() {
+    return this.state.persons;
+  }
+
+  get items() {
+    return this.state.items;
+  }
+
   recalculate() {
     // TODO
   }
