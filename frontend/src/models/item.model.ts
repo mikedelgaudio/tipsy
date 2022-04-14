@@ -14,8 +14,6 @@ export type ItemMobx = {
   qty?: number;
   price: string;
   priceFloat: number;
-  errors: {
-    name: boolean;
-    price: boolean;
-  };
+  errorName: boolean;
+  errorPrice: boolean;
 };

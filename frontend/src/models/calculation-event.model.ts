@@ -6,8 +6,6 @@ export type CalculationEvent = {
   tipTaxTotal: string;
   tipTaxTotalFloat: number;
   subtotalFloat: number;
-  errors: {
-    name: boolean;
-    total: boolean;
-  };
+  errorName: boolean;
+  errorPrice: boolean;
 };

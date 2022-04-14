@@ -18,7 +18,5 @@ export type PersonMobx = {
   tipAndTaxFloat: number;
   totalDue: string;
   totalDueFloat: number;
-  errors: {
-    name: boolean;
-  };
+  errorName: boolean;
 };

@@ -12,9 +12,7 @@ export const DEFAULT_STATE: CalculationStateMobx = {
       tipAndTaxFloat: 0.0,
       totalDue: "0.00",
       totalDueFloat: 0.0,
-      errors: {
-        name: false,
-      },
+      errorName: false,
     },
   ],
   items: [
@@ -24,10 +22,8 @@ export const DEFAULT_STATE: CalculationStateMobx = {
       name: "Food Item 1",
       price: "0.00",
       priceFloat: 0.0,
-      errors: {
-        name: false,
-        price: false,
-      },
+      errorName: false,
+      errorPrice: false,
     },
     {
       id: "2a",
@@ -35,10 +31,8 @@ export const DEFAULT_STATE: CalculationStateMobx = {
       name: "Food Item 2",
       price: "0.00",
       priceFloat: 0.0,
-      errors: {
-        name: false,
-        price: false,
-      },
+      errorName: false,
+      errorPrice: false,
     },
   ],
   event: {
@@ -49,9 +43,7 @@ export const DEFAULT_STATE: CalculationStateMobx = {
     tipTaxTotal: "0.00",
     tipTaxTotalFloat: 0.0,
     subtotalFloat: 0.0,
-    errors: {
-      name: false,
-      total: false,
-    },
+    errorName: false,
+    errorPrice: false,
   },
 };

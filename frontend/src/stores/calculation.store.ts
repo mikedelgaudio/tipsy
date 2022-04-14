@@ -1,4 +1,4 @@
-import { makeAutoObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 import { v4 as uuidv4 } from "uuid";
 import { CalculationStateMobx } from "../models/calculation-state.mobx.model";
@@ -39,9 +39,7 @@ export class CalculationStore {
       tipAndTaxFloat: 0.0,
       totalDue: "0.00",
       totalDueFloat: 0.0,
-      errors: {
-        name: false,
-      },
+      errorName: false,
     };
 
     const item: ItemMobx = {
@@ -50,10 +48,8 @@ export class CalculationStore {
       name: `Person ${this.state.persons.length + 1}'s Item`,
       price: "0.00",
       priceFloat: 0.0,
-      errors: {
-        name: false,
-        price: false,
-      },
+      errorName: false,
+      errorPrice: false,
     };
 
     this.state.persons.push(person);
@@ -73,12 +69,12 @@ export class CalculationStore {
 
     if (!validString(name)) {
       this.toastService.error(TOAST_ID, ERROR_INPUT_NAME(`${person.name}`));
-      person.errors.name = true;
+      person.errorName = false;
       return;
     }
 
     this.toastService.clear(TOAST_ID);
-    person.errors.name = false;
+    person.errorName = false;
     person.name = name.trim();
   }
 
@@ -89,10 +85,8 @@ export class CalculationStore {
       name: `Item ${this.state.items.length + 1}`,
       price: "0.00",
       priceFloat: 0.0,
-      errors: {
-        name: false,
-        price: false,
-      },
+      errorName: false,
+      errorPrice: false,
     };
 
     this.state.items.push(item);
@@ -110,12 +104,12 @@ export class CalculationStore {
 
     if (!validString(name)) {
       this.toastService.error(TOAST_ID, ERROR_INPUT_NAME(`${item.name}`));
-      item.errors.name = true;
+      item.errorName = true;
       return;
     }
 
     this.toastService.clear(TOAST_ID);
-    item.errors.name = false;
+    item.errorName = false;
     item.name = name.trim();
   }
 
@@ -128,11 +122,11 @@ export class CalculationStore {
 
     if (error) {
       this.toastService.error(TOAST_ID, ERROR_INPUT_PRICE("item"));
-      item.errors.price = true;
+      item.errorPrice = true;
     }
 
     this.toastService.clear(TOAST_ID);
-    item.errors.price = false;
+    item.errorPrice = false;
     item.price = parsedString;
     item.priceFloat = parsedFloat;
   }
@@ -146,12 +140,12 @@ export class CalculationStore {
 
     if (!validString(name)) {
       this.toastService.error(TOAST_ID, ERROR_INPUT_EVENT());
-      this.state.event.errors.name = true;
+      this.state.event.errorName = true;
       return;
     }
 
     this.toastService.clear(TOAST_ID);
-    this.state.event.errors.name = false;
+    this.state.event.errorName = false;
     this.state.event.name = name.trim();
   }
 
@@ -163,17 +157,15 @@ export class CalculationStore {
     const { error, parsedFloat, parsedString } = sanitizeCurrency(total);
 
     const TOAST_ID = "EVENT_TOTAL";
-    const eventErrors = observable.map(this.state.event.errors);
 
     if (error) {
       this.toastService.error(TOAST_ID, ERROR_INPUT_PRICE("event total price"));
-      eventErrors.set("total", true);
+      this.state.event.errorPrice = true;
       return;
     }
 
     this.toastService.clear(TOAST_ID);
-    // need to turn into observables and it seems state does not save nested obj
-    eventErrors.set("total", false);
+    this.state.event.errorPrice = false;
     this.state.event.total = parsedString;
     this.state.event.totalFloat = parsedFloat;
   }
