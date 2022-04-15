@@ -11,14 +11,15 @@ import "./person-card.component.css";
 const PersonCard = observer(({ personId }: any) => {
   const { calculationStore } = useContext(StoreContext);
 
-  const storePersonData = calculationStore.persons.find(
-    (person: PersonMobx) => person.id === personId,
-  );
-
   const storePersonIndex =
     calculationStore.persons.findIndex(
       (person: PersonMobx) => person.id === personId,
     ) + 1;
+
+  const storePersonData =
+    storePersonIndex !== -1
+      ? calculationStore.persons[storePersonIndex - 1]
+      : null;
 
   // TODO: Add if check to remove the | undefined
   const storeItemsIds = calculationStore.items.map((item: ItemMobx) => {
@@ -53,7 +54,9 @@ const PersonCard = observer(({ personId }: any) => {
       <div className="personCardHeader">
         {!editing ? (
           <h2
-            // className={`${error ? "errorText" : ""} personName`}
+            className={`${
+              storePersonData?.errorName ? "errorText" : ""
+            } personName`}
             data-cy={`${storePersonData?.name}-personName`}
           >
             {storePersonData?.name}

@@ -13,30 +13,11 @@ import "./person-actions.component.css";
 const PersonActions = observer(({ personId, editing, setEditing }: any) => {
   const { calculationStore } = useContext(StoreContext);
 
-  // Store Selectors
-  // const personsLength = useSelector(
-  //   (state: AppStore) => state.calculation.persons.length,
-  // );
-
-  // const personName = useSelector(
-  //   (state: AppStore) =>
-  //     state.calculation.persons.find(person => person.id === personId)?.name,
-  // );
-
   const personsLength = calculationStore.persons.length;
 
   const personName = calculationStore.persons.find(
     (person: PersonMobx) => person.id === personId,
   )?.name;
-
-  // Dispatchers
-  const dispatchDeletePerson = () => {
-    calculationStore.deletePerson(personId);
-  };
-
-  const dispatchAddItem = () => {
-    calculationStore.addItem(personId);
-  };
 
   return (
     <div className="personActions">
@@ -54,12 +35,12 @@ const PersonActions = observer(({ personId, editing, setEditing }: any) => {
       )}
 
       <AddBtn
-        clickSideEffect={dispatchAddItem}
+        clickSideEffect={() => calculationStore.addItem(personId)}
         ariaTitle={`Add item to ${personName}`}
       />
 
       <DeletePersonBtn
-        clickSideEffect={dispatchDeletePerson}
+        clickSideEffect={() => calculationStore.deletePerson(personId)}
         ariaTitle={`Delete ${personName}`}
         isDisabled={personsLength < 2}
         iconClassName="icon-xl"
