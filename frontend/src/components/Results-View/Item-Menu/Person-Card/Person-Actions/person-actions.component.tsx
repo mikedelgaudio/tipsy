@@ -1,37 +1,41 @@
-import "./person-actions.component.css";
+import { observer } from "mobx-react";
+import { useContext } from "react";
+import { PersonMobx } from "../../../../../models/person.model";
+import { StoreContext } from "../../../../../store.context";
 import {
-  addItem,
-  deletePerson,
-} from "../../../../../redux/calculation/calculation-actions";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  EditBtn,
-  CloseBtn,
   AddBtn,
+  CloseBtn,
   DeletePersonBtn,
+  EditBtn,
 } from "../../../../shared/buttons";
-import { AppStore } from "../../../../../models";
+import "./person-actions.component.css";
 
-function PersonActions({ personId, editing, setEditing }: any) {
-  const dispatch = useDispatch();
+const PersonActions = observer(({ personId, editing, setEditing }: any) => {
+  const { calculationStore } = useContext(StoreContext);
 
   // Store Selectors
-  const personsLength = useSelector(
-    (state: AppStore) => state.calculation.persons.length,
-  );
+  // const personsLength = useSelector(
+  //   (state: AppStore) => state.calculation.persons.length,
+  // );
 
-  const personName = useSelector(
-    (state: AppStore) =>
-      state.calculation.persons.find(person => person.id === personId)?.name,
-  );
+  // const personName = useSelector(
+  //   (state: AppStore) =>
+  //     state.calculation.persons.find(person => person.id === personId)?.name,
+  // );
+
+  const personsLength = calculationStore.persons.length;
+
+  const personName = calculationStore.persons.find(
+    (person: PersonMobx) => person.id === personId,
+  )?.name;
 
   // Dispatchers
   const dispatchDeletePerson = () => {
-    dispatch(deletePerson(personId));
+    calculationStore.deletePerson(personId);
   };
 
   const dispatchAddItem = () => {
-    dispatch(addItem(personId));
+    calculationStore.addItem(personId);
   };
 
   return (
@@ -62,6 +66,6 @@ function PersonActions({ personId, editing, setEditing }: any) {
       />
     </div>
   );
-}
+});
 
 export { PersonActions };

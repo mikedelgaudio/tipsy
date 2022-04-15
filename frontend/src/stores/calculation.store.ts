@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { configure, makeAutoObservable } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 import { v4 as uuidv4 } from "uuid";
 import { CalculationStateMobx } from "../models/calculation-state.mobx.model";
@@ -14,6 +14,7 @@ import {
 } from "../utilities/variables";
 import { DEFAULT_STATE } from "./defaults/initial.calculation.default";
 
+configure({ enforceActions: "observed" });
 export class CalculationStore {
   state: CalculationStateMobx = DEFAULT_STATE;
 
@@ -57,8 +58,12 @@ export class CalculationStore {
   }
 
   deletePerson(personId: string) {
-    this.state.persons.filter(person => person.id !== personId);
-    this.state.items.filter(item => item.personId !== personId);
+    this.state.persons = this.state.persons.filter(
+      person => person.id !== personId,
+    );
+    this.state.items = this.state.items.filter(
+      item => item.personId !== personId,
+    );
   }
 
   editPersonName(personId: string, name: string) {
@@ -93,7 +98,7 @@ export class CalculationStore {
   }
 
   deleteItem(itemId: string) {
-    this.state.items.filter(item => item.id !== itemId);
+    this.state.items = this.state.items.filter(item => item.id !== itemId);
   }
 
   editItemName(itemId: string, name: string) {

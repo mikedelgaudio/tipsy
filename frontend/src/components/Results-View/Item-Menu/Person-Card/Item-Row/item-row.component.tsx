@@ -1,23 +1,10 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { observer } from "mobx-react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { didMount } from "../../../../../hooks";
-import { AppStore, Item, SanitizedCurrency } from "../../../../../models";
-import {
-  deleteItem,
-  editItemName,
-  editItemPrice,
-} from "../../../../../redux/calculation/calculation-actions";
-import {
-  removeDollarOrComma,
-  sanitizeCurrency,
-  validString,
-} from "../../../../../utilities/sanitize";
-import {
-  ERROR_INPUT_NAME,
-  ERROR_INPUT_PRICE,
-} from "../../../../../utilities/variables";
+import { Item } from "../../../../../models";
+import { ItemMobx } from "../../../../../models/item.model";
+import { StoreContext } from "../../../../../store.context";
 import { DeleteBtn } from "../../../../shared/buttons";
-import { dismissToast, errorToast } from "../../../../shared/toasts/toasts";
 
 const defaultItem: Item = {
   id: "",
@@ -28,43 +15,54 @@ const defaultItem: Item = {
   priceFloat: 0.0,
 };
 
-const defaultErrorState = { name: false, price: false };
+// const defaultErrorState = { name: false, price: false };
 
-function ItemRow({ itemId, editing }: any) {
-  const dispatch = useDispatch();
+const ItemRow = observer(({ itemId, editing }: any) => {
+  const { calculationStore } = useContext(StoreContext);
+
+  // const dispatch = useDispatch();
   const didMountOnce = didMount();
 
   // Store Selectors
-  const storeItemData = useSelector((state: AppStore) => {
-    return state.calculation.items.find((item: Item) => item.id === itemId);
-  });
+  // const storeItemData = useSelector((state: AppStore) => {
+  //   return state.calculation.items.find((item: Item) => item.id === itemId);
+  // });
 
-  const storeItemIndex = useSelector((state: AppStore) => {
-    return (
-      state.calculation.items.findIndex((item: Item) => item.id === itemId) + 1
-    );
-  });
+  // const storeItemIndex = useSelector((state: AppStore) => {
+  //   return (
+  //     state.calculation.items.findIndex((item: Item) => item.id === itemId) + 1
+  //   );
+  // });
 
-  const storeEventId = useSelector((state: AppStore) => {
-    return state.calculation.eventId;
-  });
+  // const storeEventId = useSelector((state: AppStore) => {
+  //   return state.calculation.eventId;
+  // });
+
+  const storeItemData = calculationStore.items.find(
+    (item: ItemMobx) => item.id === itemId,
+  );
+
+  const storeItemIndex =
+    calculationStore.items.findIndex((item: ItemMobx) => item.id === itemId) +
+    1;
 
   // Dispatchers
   const dispatchDeleteItem = () => {
-    dispatch(deleteItem(itemId));
+    // dispatch(deleteItem(itemId));
+    calculationStore.deleteItem(itemId);
   };
 
   const [itemInput, setItemsInput] = useState(defaultItem);
-  const [error, setError] = useState(defaultErrorState);
-  const toastIdName = useRef(null);
-  const toastIdPrice = useRef(null);
+  // const [error, setError] = useState(defaultErrorState);
+  // const toastIdName = useRef(null);
+  // const toastIdPrice = useRef(null);
 
   const itemInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const attributeIndex = 2;
     const fieldName = e.target.attributes[attributeIndex].textContent;
     switch (fieldName) {
       case "NAME": {
-        setError({ ...error, name: !validString(e.target.value) });
+        // setError({ ...error, name: !validString(e.target.value) });
         setItemsInput({
           ...itemInput,
           name: e.target.value,
@@ -72,22 +70,21 @@ function ItemRow({ itemId, editing }: any) {
         break;
       }
       case "PRICE": {
-        const input = removeDollarOrComma(e.target.value);
-        const parsedPriceFloat: SanitizedCurrency = sanitizeCurrency(input);
+        // const input = removeDollarOrComma(e.target.value);
+        // const parsedPriceFloat: SanitizedCurrency = sanitizeCurrency(input);
 
-        if (parsedPriceFloat.error) {
-          setError({ ...error, price: true });
-          // If state had a valid float before, utilize the cached value instead.
-          parsedPriceFloat.parsedFloat = itemInput.priceFloat;
-        } else {
-          // TODO: To reduce calls in the future, maybe set flag to avoid?
-          setError({ ...error, price: false });
-        }
+        // if (parsedPriceFloat.error) {
+        //   // setError({ ...error, price: true });
+        //   // If state had a valid float before, utilize the cached value instead.
+        //   parsedPriceFloat.parsedFloat = itemInput.priceFloat;
+        // } else {
+        //   // TODO: To reduce calls in the future, maybe set flag to avoid?
+        //   // setError({ ...error, price: false });
+        // }
 
         setItemsInput({
           ...itemInput,
-          price: e.target.value.trim(),
-          priceFloat: parsedPriceFloat.parsedFloat,
+          price: e.target.value,
         });
         break;
       }
@@ -104,48 +101,52 @@ function ItemRow({ itemId, editing }: any) {
   useEffect(() => {
     if (!didMountOnce && !editing) {
       // Check if price or name changed
-      error.name
-        ? errorToast(toastIdName, ERROR_INPUT_NAME(storeItemData?.name))
-        : dismissToast(toastIdName);
+      // error.name
+      //   ? errorToast(toastIdName, ERROR_INPUT_NAME(storeItemData?.name))
+      //   : dismissToast(toastIdName);
 
-      error.price
-        ? errorToast(toastIdPrice, ERROR_INPUT_PRICE(storeItemData?.name))
-        : dismissToast(toastIdPrice);
+      // error.price
+      //   ? errorToast(toastIdPrice, ERROR_INPUT_PRICE(storeItemData?.name))
+      //   : dismissToast(toastIdPrice);
 
       if (storeItemData?.price !== itemInput.price) {
-        dispatch(
-          editItemPrice(
-            itemId,
-            !error.price
-              ? removeDollarOrComma(itemInput.price)
-              : itemInput.price,
-            itemInput.priceFloat,
-          ),
-        );
+        // dispatch(
+        //   editItemPrice(
+        //     itemId,
+        //     !error.price
+        //       ? removeDollarOrComma(itemInput.price)
+        //       : itemInput.price,
+        //     itemInput.priceFloat,
+        //   ),
+        calculationStore.editItemPrice(itemId, itemInput.price);
+
+        // );
       }
 
       if (storeItemData?.name !== itemInput.name) {
-        dispatch(
-          editItemName(
-            itemId,
-            !error.name ? itemInput.name.trim() : storeItemData?.name,
-          ),
-        );
+        // dispatch(
+        //   editItemName(
+        //     itemId,
+        //     !error.name ? itemInput.name.trim() : storeItemData?.name,
+        //   ),
+        // );
+        calculationStore.editItemName(itemId, itemInput.name);
       }
     }
   }, [editing]);
 
-  // Component Destroyed
-  useEffect(() => {
-    return () => {
-      dismissToast(toastIdName);
-      dismissToast(toastIdPrice);
-    };
-  }, []);
+  // TODO:
+  // ! Component Destroyed
+  // useEffect(() => {
+  //   return () => {
+  //     dismissToast(toastIdName);
+  //     dismissToast(toastIdPrice);
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    if (!didMountOnce) setError(defaultErrorState);
-  }, [storeEventId]);
+  // useEffect(() => {
+  //   if (!didMountOnce) setError(defaultErrorState);
+  // }, [storeEventId]);
 
   return (
     <li className={`personItem ${editing ? "editing" : ""} `} key={itemId}>
@@ -153,7 +154,9 @@ function ItemRow({ itemId, editing }: any) {
         {!editing ? (
           <>
             <p
-              className={`${error.name ? "errorText" : ""} personItemName`}
+              className={`${
+                storeItemData?.errorName ? "errorText" : ""
+              } personItemName`}
               data-cy={`${storeItemData?.name}-itemName`}
             >
               {storeItemData?.name}
@@ -179,7 +182,9 @@ function ItemRow({ itemId, editing }: any) {
         )}
         {!editing ? (
           <p
-            className={`${error.price ? "errorText" : ""} personItemPrice`}
+            className={`${
+              storeItemData?.errorPrice ? "errorText" : ""
+            } personItemPrice`}
             data-cy={`${storeItemData?.name}-itemPrice`}
           >
             ${storeItemData?.price}
@@ -207,6 +212,6 @@ function ItemRow({ itemId, editing }: any) {
       </div>
     </li>
   );
-}
+});
 
 export { ItemRow };
