@@ -1,5 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
+import { DialogData } from "../../../models/dialog.model";
 import { ToastService } from "../../../services/toast.service";
 import { StoreContext } from "../../../store.context";
 import { CopyIcon, MailIcon, ShareIcon } from "../icons";
@@ -78,9 +79,10 @@ const ShareBtn = observer(
       </div>
     );
 
-    const modalData = {
+    const modalData: DialogData = {
       title: modalTitle,
       body: modalBody,
+      open: true,
     };
 
     const triggerWebShare = () => {

@@ -40,6 +40,7 @@ const ResetBtn = observer(
             className={`btn  ${className ? className : ""}`}
             data-a11y-dialog-hide
             aria-label="Close dialog"
+            onClick={() => (modalData.open = false)}
           >
             <span className="btn-wrapper">
               <XIcon
@@ -74,14 +75,13 @@ const ResetBtn = observer(
     const modalData = {
       title: modalTitle,
       body: modalBody,
+      open: false,
     };
-
-    const dialog = document.querySelector("#dialog");
 
     return (
       <>
         {buttonLayout(() => {
-          if (dialog) dialog.showModal();
+          modalData.open = true;
         })}
         <Dialog data={modalData} />
       </>
