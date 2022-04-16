@@ -67,3 +67,4 @@
 - [x] Ensure multiple calls to save state subscriber is not taking too many calls
 - [x] Investigate how to reduce calls in `math.ts`; this may involve redesigning the store to search by key.
 - [x] Refactor CSS into CSS Modules (declining this suggestion for now)
+- [x] Determine why some state functions required `undefined` as type safe (used filter instead of map)
