@@ -21,7 +21,7 @@ const sanitizeCurrency = (input: string): SanitizedCurrency => {
   }
   try {
     const parsed = parseFloat(symbolsRemoved);
-    if (!parsed && parsed !== 0) {
+    if (!parsed && parsed !== 0 && parsed < 0) {
       return { error: true, parsedFloat: 0.0, parsedString: symbolsRemoved };
     }
     return { error: false, parsedFloat: parsed, parsedString: symbolsRemoved };

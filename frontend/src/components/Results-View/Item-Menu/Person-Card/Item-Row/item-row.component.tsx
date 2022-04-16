@@ -1,18 +1,18 @@
 import { observer } from "mobx-react";
 import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { didMount } from "../../../../../hooks";
-import { Item } from "../../../../../models";
 import { ItemMobx } from "../../../../../models/item.model";
 import { StoreContext } from "../../../../../store.context";
 import { DeleteBtn } from "../../../../shared/buttons";
 
-const defaultItem: Item = {
+const defaultItem: ItemMobx = {
   id: "",
   personId: "",
   name: "",
-  qty: 1,
   price: "0.00",
   priceFloat: 0.0,
+  errorName: false,
+  errorPrice: false,
 };
 
 const ItemRow = observer(({ itemId, editing }: any) => {
@@ -38,7 +38,6 @@ const ItemRow = observer(({ itemId, editing }: any) => {
     const fieldName = e.target.attributes[attributeIndex].textContent;
     switch (fieldName) {
       case "NAME": {
-        // setError({ ...error, name: !validString(e.target.value) });
         setItemsInput({
           ...itemInput,
           name: e.target.value,
@@ -46,18 +45,6 @@ const ItemRow = observer(({ itemId, editing }: any) => {
         break;
       }
       case "PRICE": {
-        // const input = removeDollarOrComma(e.target.value);
-        // const parsedPriceFloat: SanitizedCurrency = sanitizeCurrency(input);
-
-        // if (parsedPriceFloat.error) {
-        //   // setError({ ...error, price: true });
-        //   // If state had a valid float before, utilize the cached value instead.
-        //   parsedPriceFloat.parsedFloat = itemInput.priceFloat;
-        // } else {
-        //   // TODO: To reduce calls in the future, maybe set flag to avoid?
-        //   // setError({ ...error, price: false });
-        // }
-
         setItemsInput({
           ...itemInput,
           price: e.target.value,
@@ -71,7 +58,7 @@ const ItemRow = observer(({ itemId, editing }: any) => {
   };
 
   useEffect(() => {
-    setItemsInput(storeItemData || defaultItem);
+    if (storeItemData) setItemsInput(storeItemData);
   }, [storeItemData]);
 
   useEffect(() => {
@@ -86,15 +73,7 @@ const ItemRow = observer(({ itemId, editing }: any) => {
     }
   }, [editing]);
 
-  // TODO:
-  // ! Component Destroyed
-  // useEffect(() => {
-  //   return () => {
-  //     dismissToast(toastIdName);
-  //     dismissToast(toastIdPrice);
-  //   };
-  // }, []);
-
+  // TODO: After page first load if error from event make sure to bring toasts back in on page refresh
   // useEffect(() => {
   //   if (!didMountOnce) setError(defaultErrorState);
   // }, [storeEventId]);

@@ -1,9 +1,12 @@
+import { useContext } from "react";
+import { StoreContext } from "../../../store.context";
+import { CopyIcon, MailIcon, ShareIcon } from "../icons";
 import { Modal } from "../modal";
-import store from "../../../redux/store";
-import { MailIcon, CopyIcon, ShareIcon } from "../icons";
 import { errorToast, successToast } from "../toasts/toasts";
 
 function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
+  const { calculationStore } = useContext(StoreContext);
+
   const buttonLayout = (click: () => void) => {
     return (
       <button
@@ -24,8 +27,8 @@ function ShareBtn({ ariaTitle, className = "", iconClassName = "" }: any) {
   const snapshot = ({ isEmail = false }): string => {
     const newlineChar = isEmail.valueOf() ? "%0d%0a" : "\n";
 
-    const eventTotal = store.getState().calculation.eventTotal;
-    const persons = store.getState().calculation.persons;
+    const eventTotal = calculationStore.eventTotal;
+    const persons = calculationStore.persons;
 
     const personData = persons.map(person => {
       return `${person.name}: $${person.totalDue}${newlineChar}`;

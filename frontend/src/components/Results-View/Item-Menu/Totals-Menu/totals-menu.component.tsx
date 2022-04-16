@@ -16,7 +16,6 @@ const TotalsMenu = observer(() => {
     setEventTotalInput(e.target.value);
   };
 
-  const error = false;
   useEffect(() => {
     setEventTotalInput(calculationStore.eventTotal || "0.00");
   }, [calculationStore.eventTotal]);
@@ -55,7 +54,9 @@ const TotalsMenu = observer(() => {
         <div className="totalInputWrapper">
           {!editing ? (
             <h3
-              className={`${error ? "errorText" : ""} totalText `}
+              className={`${
+                calculationStore.event.errorPrice ? "errorText" : ""
+              } totalText `}
               data-cy="eventTotal"
             >
               ${calculationStore.eventTotal}

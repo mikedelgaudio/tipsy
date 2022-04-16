@@ -5,7 +5,11 @@ import { CalculationStateMobx } from "../models/calculation-state.mobx.model";
 import { ItemMobx } from "../models/item.model";
 import { PersonMobx } from "../models/person.model";
 import { ToastService } from "../services/toast.service";
-import { sanitizeCurrency, validString } from "../utilities/sanitize";
+import {
+  currencyToStr,
+  sanitizeCurrency,
+  validString,
+} from "../utilities/sanitize";
 import {
   ERROR_INPUT_EVENT,
   ERROR_INPUT_NAME,
@@ -61,9 +65,26 @@ export class CalculationStore {
     this.state.persons = this.state.persons.filter(
       person => person.id !== personId,
     );
+
+    const itemIds = this.state.items.map((item: ItemMobx) => {
+      if (item.personId === personId) return item.id;
+    });
+
     this.state.items = this.state.items.filter(
       item => item.personId !== personId,
     );
+
+    this.recalculate();
+
+    const TOAST_ID_NAME = `PERSON_NAME_${personId}`;
+    this.toastService.clear(TOAST_ID_NAME);
+
+    itemIds.forEach((id?: string) => {
+      const TOAST_ID_ITEM_NAME = `ITEM_NAME_${id}`;
+      const TOAST_ID_ITEM_PRICE = `ITEM_PRICE_${id}`;
+      this.toastService.clear(TOAST_ID_ITEM_NAME);
+      this.toastService.clear(TOAST_ID_ITEM_PRICE);
+    });
   }
 
   editPersonName(personId: string, name: string) {
@@ -74,7 +95,7 @@ export class CalculationStore {
 
     if (!validString(name)) {
       this.toastService.error(TOAST_ID, ERROR_INPUT_NAME(`${person.name}`));
-      person.errorName = false;
+      person.errorName = true;
       return;
     }
 
@@ -99,6 +120,9 @@ export class CalculationStore {
 
   deleteItem(itemId: string) {
     this.state.items = this.state.items.filter(item => item.id !== itemId);
+    const TOAST_ID = `ITEM_PRICE_${itemId}`;
+    this.toastService.clear(TOAST_ID);
+    this.recalculate();
   }
 
   editItemName(itemId: string, name: string) {
@@ -128,12 +152,14 @@ export class CalculationStore {
     if (error) {
       this.toastService.error(TOAST_ID, ERROR_INPUT_PRICE("item"));
       item.errorPrice = true;
+      return;
     }
 
     this.toastService.clear(TOAST_ID);
     item.errorPrice = false;
     item.price = parsedString;
     item.priceFloat = parsedFloat;
+    this.recalculate();
   }
 
   get eventName() {
@@ -173,6 +199,7 @@ export class CalculationStore {
     this.state.event.errorPrice = false;
     this.state.event.total = parsedString;
     this.state.event.totalFloat = parsedFloat;
+    this.recalculate();
   }
 
   get eventTipTaxTotal() {
@@ -187,11 +214,82 @@ export class CalculationStore {
     return this.state.items;
   }
 
+  get event() {
+    return this.state.event;
+  }
+
   recalculate() {
-    // TODO
+    const TOAST_ID = "RECALC_WRONG";
+    this.event.subtotalFloat = 0;
+
+    this.persons.forEach((person: PersonMobx) => {
+      let subtotalBeforeTip = 0;
+
+      // Find items
+      const items = this.items.filter(
+        (item: ItemMobx) => person.id === item.personId,
+      );
+
+      items.forEach((item: ItemMobx) => {
+        subtotalBeforeTip += item.priceFloat;
+        item.price = currencyToStr(item.priceFloat);
+      });
+
+      person.subtotalFloat = subtotalBeforeTip;
+      this.event.subtotalFloat += subtotalBeforeTip;
+
+      // Reset
+      person.totalDueFloat = 0.0;
+      person.tipAndTaxFloat = 0.0;
+    });
+
+    if (this.event.subtotalFloat === 0) return;
+
+    this.event.tipTaxTotalFloat =
+      this.event.totalFloat - this.event.subtotalFloat;
+
+    this.event.tipTaxTotal = currencyToStr(this.event.tipTaxTotalFloat);
+
+    this.event.total = currencyToStr(this.event.totalFloat);
+
+    if (
+      this.event.tipTaxTotalFloat < 0 ||
+      this.event.subtotalFloat + this.event.tipTaxTotalFloat !==
+        this.event.totalFloat
+    ) {
+      console.warn(
+        this.event.subtotalFloat,
+        this.event.tipTaxTotalFloat,
+        this.event.totalFloat,
+      );
+      // Throw
+      this.toastService.warn(
+        TOAST_ID,
+        "Check your price values. The total does not add up correctly.",
+      );
+      return;
+    }
+
+    this.toastService.clear(TOAST_ID);
+    // TODO: If the state is the same, break early?
+
+    this.persons.forEach((person: PersonMobx) => {
+      const tipDollars =
+        (person.subtotalFloat / this.event.subtotalFloat) *
+        this.event.tipTaxTotalFloat;
+
+      person.totalDueFloat = person.subtotalFloat + tipDollars || 0.0;
+
+      person.tipAndTaxFloat = tipDollars || 0.0;
+
+      person.subtotal = currencyToStr(person.subtotalFloat);
+      person.tipAndTax = currencyToStr(person.tipAndTaxFloat);
+      person.totalDue = currencyToStr(person.totalDueFloat);
+    });
   }
 
   reset() {
+    this.toastService.clear();
     localStorage.removeItem(LOCAL_STORAGE_VAR);
     this.state = DEFAULT_STATE;
     this.state.event.id = uuidv4();
