@@ -1,13 +1,13 @@
 import { observer } from "mobx-react";
 import { useContext } from "react";
-import { PersonMobx } from "../../../../../models/person.model";
-import { StoreContext } from "../../../../../store.context";
+import { PersonMobx } from "../../../../../../models/person.model";
+import { StoreContext } from "../../../../../../store.context";
 import {
   AddBtn,
   CloseBtn,
   DeletePersonBtn,
   EditBtn,
-} from "../../../../shared/buttons";
+} from "../../../../../shared/buttons";
 import "./person-actions.component.css";
 
 const PersonActions = observer(({ personId, editing, setEditing }: any) => {
