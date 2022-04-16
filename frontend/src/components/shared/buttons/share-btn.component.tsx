@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { ToastService } from "../../../services/toast.service";
 import { StoreContext } from "../../../store.context";
 import { CopyIcon, MailIcon, ShareIcon } from "../icons";
-import { Modal } from "../modal";
 
 const ShareBtn = observer(
   ({ ariaTitle, className = "", iconClassName = "" }: any) => {
@@ -125,7 +124,7 @@ const ShareBtn = observer(
 
     return (
       <>
-        {displayWebShareAPI() ? (
+        {/* {displayWebShareAPI() ? (
           buttonLayout(triggerWebShare)
         ) : (
           <Modal
@@ -134,7 +133,7 @@ const ShareBtn = observer(
             ariaTitle={ariaTitle}
             className={className}
           />
-        )}
+        )} */}
       </>
     );
   },

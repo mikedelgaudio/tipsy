@@ -1,8 +1,8 @@
 import { observer } from "mobx-react";
 import { useContext } from "react";
 import { StoreContext } from "../../../store.context";
+import { Dialog } from "../dialog";
 import { ResetIcon, XIcon } from "../icons";
-import { Modal } from "../modal";
 
 const ResetBtn = observer(
   ({ ariaTitle, className = "", iconClassName = "" }: any) => {
@@ -76,9 +76,14 @@ const ResetBtn = observer(
       body: modalBody,
     };
 
+    const dialog = document.querySelector("#dialog");
+
     return (
       <>
-        <Modal buttonLayout={buttonLayout} modalData={modalData} />
+        {buttonLayout(() => {
+          if (dialog) dialog.showModal();
+        })}
+        <Dialog data={modalData} />
       </>
     );
   },
