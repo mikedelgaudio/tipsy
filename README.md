@@ -19,15 +19,15 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 
 Migrate Redux to MobX:
 - [ ] Debounce inputs to prevent numerous state calls
-- [ ] Disallow the removal of all products for a person (look into Redux entities instead of looping through array)
+- [ ] Disallow the removal of all products for a person
 - [ ] Determine why some state functions required `undefined` as type safe
 - [ ] Add functionality to restore error toasts from previous session
+- [ ] Remove a11y-dialog in favor of native dialog element
 
 ### Backlog
 
 - [ ] Add undo functionality
 - [ ] Create docker build and push GitHub Action to deploy
-- [ ] Refactor CSS into CSS Modules
 - [ ] Add About or Walkthrough Section
 - [ ] Ability to split an item with a person
 - [ ] Ability to share a link for 1 week

@@ -60,3 +60,10 @@
 - [x] Setup React Router logic including 404 page
 - [x] Add JIT Open Props library 
 
+## v1.0.0
+- [x] Remove all of Redux in favor of MobX
+- [x] Refactored all components to use MobX observables
+- [x] When resetting an app always generate a new uuidv4() to ensure error classes reset.
+- [x] Ensure multiple calls to save state subscriber is not taking too many calls
+- [x] Investigate how to reduce calls in `math.ts`; this may involve redesigning the store to search by key.
+- [x] Refactor CSS into CSS Modules (declining this suggestion for now)
