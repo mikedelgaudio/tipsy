@@ -7,7 +7,12 @@ const ItemsView = observer(
     return (
       <>
         {items.map((item: ItemMobx) => (
-          <ItemRow key={item.id} item={item} editing={editing} />
+          <ItemRow
+            key={item.id}
+            item={item}
+            editing={editing}
+            lastItem={items.length < 2}
+          />
         ))}
       </>
     );

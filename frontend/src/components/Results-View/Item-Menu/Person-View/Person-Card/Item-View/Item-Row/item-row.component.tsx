@@ -18,19 +18,17 @@ const defaultItem: ItemMobx = {
 // const ItemRow = observer(({ itemId, editing }: any) => {
 
 const ItemRow = observer(
-  ({ item, editing }: { item: ItemMobx; editing: boolean }) => {
+  ({
+    item,
+    editing,
+    lastItem,
+  }: {
+    item: ItemMobx;
+    editing: boolean;
+    lastItem: boolean;
+  }) => {
     const { calculationStore } = useContext(StoreContext);
     const didMountOnce = didMount();
-
-    // const storeItemIndex =
-    //   calculationStore.items.findIndex((item: ItemMobx) => item.id === itemId) +
-    //   1;
-
-    // Dispatchers
-    const dispatchDeleteItem = () => {
-      calculationStore.deleteItem(item.id);
-    };
-
     const [itemInput, setItemsInput] = useState(defaultItem);
 
     const itemInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -137,7 +135,8 @@ const ItemRow = observer(
         </div>
         <div className="personItemDetailsContainer">
           <DeleteBtn
-            clickSideEffect={dispatchDeleteItem}
+            clickSideEffect={() => calculationStore.deleteItem(item.id)}
+            isDisabled={lastItem}
             ariaTitle={`Delete ${item.name}`}
           />
         </div>

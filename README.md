@@ -17,11 +17,8 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 
 ### Currently: v1.0.0
 
-Migrate Redux to MobX:
-- [ ] Debounce inputs to prevent numerous state calls
-- [ ] Disallow the removal of all products for a person
 - [ ] Add functionality to restore error toasts from previous session
-- [ ] Remove a11y-dialog in favor of native dialog element
+- [ ] Homepage primary button does not have hover effect
 
 ### Backlog
 
@@ -33,8 +30,8 @@ Migrate Redux to MobX:
 - [ ] Add gtag events
 - [ ] Investigate issue when clearing item name or person name where the input field auto fills the defaults but error message remains
 - [ ] Investigate if all error toast clear screen when navigating away from /calculate (what happens if an error existed; user left and comes back?)
-- [ ] Homepage primary button does not have hover effect
-
+- [ ] Debounce inputs to prevent numerous state calls
+- [ ] Remove a11y-dialog in favor of native dialog element
 
 
 ## Docker build
