@@ -1,13 +1,15 @@
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
+import { ToastService } from "../../../services/toast.service";
 import { StoreContext } from "../../../store.context";
 import { CopyIcon, MailIcon, ShareIcon } from "../icons";
 import { Modal } from "../modal";
-import { errorToast, successToast } from "../toasts/toasts";
 
 const ShareBtn = observer(
   ({ ariaTitle, className = "", iconClassName = "" }: any) => {
     const { calculationStore } = useContext(StoreContext);
+
+    const toastService = new ToastService();
 
     const buttonLayout = (click: () => void) => {
       return (
@@ -101,18 +103,13 @@ const ShareBtn = observer(
     };
 
     const triggerClipboardCopy = () => {
+      const TOAST_ID = "CLIPBOARD_COPY";
       if (!navigator.clipboard) return; // TODO: Display error
       navigator.clipboard
         .writeText(snapshot({ isEmail: false }))
-        .then(() =>
-          successToast({ current: "CLIPBOARD_COPY" }, "Copied to clipboard"),
-        )
+        .then(() => toastService.success(TOAST_ID, "Copied to clipboard", true))
         .catch(() =>
-          errorToast(
-            { current: "CLIPBOARD_COPY" },
-            "Failed to copy to clipboard",
-            true,
-          ),
+          toastService.error(TOAST_ID, "Failed to copy to clipboard", true),
         );
     };
 
