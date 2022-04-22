@@ -28,7 +28,7 @@ export class CalculationStore {
       name: LOCAL_STORAGE_VAR,
       properties: ["state"],
       storage: window.localStorage,
-      debugMode: true,
+      debugMode: false,
     }).then(() => {
       const checkForErrors = () => {
         if (this.event.errorName)
