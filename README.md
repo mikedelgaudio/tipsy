@@ -17,7 +17,6 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 
 ### Currently: v1.0.0
 
-- [ ] Add functionality to restore error toasts from previous session
 - [ ] Homepage primary button does not have hover effect
 
 ### Backlog
@@ -32,7 +31,7 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Investigate if all error toast clear screen when navigating away from /calculate (what happens if an error existed; user left and comes back?)
 - [ ] Debounce inputs to prevent numerous state calls
 - [ ] Remove a11y-dialog in favor of native dialog element
-
+- [ ] Consider breaking functions outside of calculation class
 
 ## Docker build
 

@@ -29,6 +29,32 @@ export class CalculationStore {
       properties: ["state"],
       storage: window.localStorage,
       debugMode: true,
+    }).then(() => {
+      const checkForErrors = () => {
+        if (this.event.errorName)
+          this.toastService.error(
+            this.event.id,
+            ERROR_INPUT_NAME("event name"),
+          );
+        if (this.event.errorPrice)
+          this.toastService.error(
+            this.event.id,
+            ERROR_INPUT_PRICE("event price"),
+          );
+
+        this.persons.forEach(p => {
+          if (p.errorName)
+            this.toastService.error(this.event.id, ERROR_INPUT_NAME(p.name));
+        });
+
+        this.items.forEach(i => {
+          if (i.errorName)
+            this.toastService.error(this.event.id, ERROR_INPUT_NAME(i.name));
+          if (i.errorPrice)
+            this.toastService.error(this.event.id, ERROR_INPUT_PRICE(i.name));
+        });
+      };
+      checkForErrors();
     });
   }
 

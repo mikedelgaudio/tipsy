@@ -69,3 +69,4 @@
 - [x] Refactor CSS into CSS Modules (declining this suggestion for now)
 - [x] Determine why some state functions required `undefined` as type safe (used filter instead of map)
 - [x] Disallow the removal of all products for a person
+- [x] Add functionality to restore error toasts from previous session
