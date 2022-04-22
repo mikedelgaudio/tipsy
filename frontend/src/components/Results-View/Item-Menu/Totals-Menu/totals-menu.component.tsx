@@ -24,7 +24,6 @@ const TotalsMenu = observer(() => {
     if (!didMountOnce && !editing) {
       if (calculationStore.eventTotal !== eventTotalInput) {
         calculationStore.editEventTotal(eventTotalInput);
-        // if (!error) dispatch(recalculateEvent());
       }
     }
   }, [editing]);

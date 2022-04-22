@@ -1,6 +1,7 @@
 .container {
   margin: auto;
-  max-width: min(100% - 2rem, var(--max-width));
+  --_gap: 5rem;
+  max-width: min(100% - var(--_gap), var(--max-width));
 }
 
 .c-full-height {

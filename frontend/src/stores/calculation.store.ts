@@ -94,7 +94,7 @@ export class CalculationStore {
     const TOAST_ID = `PERSON_NAME_${person.id}`;
 
     if (!validString(name)) {
-      this.toastService.error(TOAST_ID, ERROR_INPUT_NAME(`${person.name}`));
+      this.toastService.error(TOAST_ID, ERROR_INPUT_NAME(person.name));
       person.errorName = true;
       return;
     }
@@ -132,7 +132,7 @@ export class CalculationStore {
     const TOAST_ID = `ITEM_NAME_${item.id}`;
 
     if (!validString(name)) {
-      this.toastService.error(TOAST_ID, ERROR_INPUT_NAME(`${item.name}`));
+      this.toastService.error(TOAST_ID, ERROR_INPUT_NAME(item.name));
       item.errorName = true;
       return;
     }
@@ -150,7 +150,7 @@ export class CalculationStore {
     const TOAST_ID = `ITEM_PRICE_${item.id}`;
 
     if (error) {
-      this.toastService.error(TOAST_ID, ERROR_INPUT_PRICE("item"));
+      this.toastService.error(TOAST_ID, ERROR_INPUT_PRICE(item.name));
       item.errorPrice = true;
       return;
     }
