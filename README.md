@@ -2,6 +2,17 @@
 
 Paid for a night out with friends or a large dinner party? Add the items from your receipt and determine how much each person owes you with a weighted average of tip and taxes included.
 
+## Technical stack:
+
+- React
+- Typescript
+- CSS
+- Mobx
+- Mobx Persist Store
+- React Toastify
+- Open Props
+- React Router Dom
+
 ## Development Frontend
 
 Tipsy runs with `https` on localhost to support the WebShareAPI.
@@ -17,7 +28,6 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 
 ### Currently: v1.0.0
 
-- [ ] Homepage primary button does not have hover effect
 
 ### Backlog
 
