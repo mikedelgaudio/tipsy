@@ -269,7 +269,11 @@ export class CalculationStore {
       person.tipAndTaxFloat = 0.0;
     });
 
-    if (this.event.subtotalFloat === 0) return;
+    if (this.event.subtotalFloat === 0) {
+      this.event.tipTaxTotalFloat = 0;
+      this.event.tipTaxTotal = currencyToStr(this.event.tipTaxTotalFloat);
+      return;
+    }
 
     this.event.tipTaxTotalFloat =
       this.event.totalFloat - this.event.subtotalFloat;

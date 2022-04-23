@@ -7,8 +7,12 @@ describe("Core Calculation E2E Functionality", () => {
     cy.findByTitle(/stop editing event total/i).click();
   };
 
-  const clickButtonByName = (name: RegExp) => {
-    cy.findByRole("button", { name }).click();
+  const clickByName = (role: string, name: RegExp) => {
+    cy.findByRole(role, { name }).click();
+  };
+
+  const clickByTitle = (title: RegExp) => {
+    cy.findByTitle(title).click();
   };
 
   const verifyEventTotal = (expectedTotal: string) => {
@@ -84,25 +88,25 @@ describe("Core Calculation E2E Functionality", () => {
   beforeEach("go to the website", () => {
     cy.visit("/");
 
-    clickButtonByName(/get started/i);
+    clickByName("button", /get started/i);
 
     toggleEditPerson(/edit person 1/i);
 
-    editInputField(/person 1 name/i, global.person.name, {
+    editInputField(/"person 1" name/i, global.person.name, {
       role: "textbox",
     });
 
-    editInputField(/item 1 name/i, global.person.item1Name, {
+    editInputField(/"food item 1" name/i, global.person.item1Name, {
       role: "textbox",
     });
-    editInputField(/item 2 name/i, global.person.item2Name, {
+    editInputField(/"food item 2" name/i, global.person.item2Name, {
       role: "textbox",
     });
 
-    editInputField(/item 1 price/i, global.person.item1Price, {
+    editInputField(/"food item 1" price/i, global.person.item1Price, {
       role: "spinbutton",
     });
-    editInputField(/item 2 price/i, global.person.item2Price, {
+    editInputField(/"food item 2" price/i, global.person.item2Price, {
       role: "spinbutton",
     });
 
@@ -140,18 +144,18 @@ describe("Core Calculation E2E Functionality", () => {
       },
     };
 
-    clickButtonByName(/add person/i);
+    clickByName("button", /add person/i);
 
     editEventTotal(local.event.total);
 
     toggleEditPerson(/edit person 2/i);
-    editInputField(/person 2 name/i, local.person.name, {
+    editInputField(/"person 2" name/i, local.person.name, {
       role: "textbox",
     });
-    editInputField(/item 3 name/i, local.person.item1Name, {
+    editInputField(/"person 2's item" name/i, local.person.item1Name, {
       role: "textbox",
     });
-    editInputField(/item 3 price/i, local.person.item1Price, {
+    editInputField(/"person 2's item" price/i, local.person.item1Price, {
       role: "spinbutton",
     });
     toggleEditPerson(/stop editing person 2/i);
@@ -171,5 +175,10 @@ describe("Core Calculation E2E Functionality", () => {
     );
     verifyEventTotal(local.event.total);
     verifyEventTipAndTax(local.event.expectedTipAndTax);
+  });
+
+  it("user can delete person", () => {
+    clickByName("button", /add person/i);
+    clickByTitle(/delete mike/i);
   });
 });
