@@ -15,8 +15,6 @@ const defaultItem: ItemMobx = {
   errorPrice: false,
 };
 
-// const ItemRow = observer(({ itemId, editing }: any) => {
-
 const ItemRow = observer(
   ({
     item,
@@ -71,11 +69,6 @@ const ItemRow = observer(
         }
       }
     }, [editing]);
-
-    // TODO: After page first load if error from event make sure to bring toasts back in on page refresh
-    // useEffect(() => {
-    //   if (!didMountOnce) setError(defaultErrorState);
-    // }, [storeEventId]);
 
     return (
       <li className={`personItem ${editing ? "editing" : ""} `}>

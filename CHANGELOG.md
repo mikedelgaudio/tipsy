@@ -71,3 +71,6 @@
 - [x] Disallow the removal of all products for a person
 - [x] Add functionality to restore error toasts from previous session
 - [x] Homepage primary button does not have hover effect
+- [x] Investigate if all error toast clear screen when navigating away from /calculate (what happens if an error existed; user left and comes back?) (***Update***: The toast disappears and reappears as expected)
+- [x] Remove a11y-dialog in favor of native dialog element (***Update***: Due to browser support will hold off on for now)
+- [x] Investigate issue when clearing item name or person name where the input field auto fills the defaults but error message remains (***Update***: Working as intended, potential for future UX design change though)
