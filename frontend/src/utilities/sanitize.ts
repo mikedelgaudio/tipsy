@@ -1,4 +1,4 @@
-import { SanitizedCurrency } from "../models";
+import { SanitizedCurrencyMobx } from "../models";
 
 const toFixed = (num: number, fixed: number): string => {
   // const re = new RegExp("^-?\\d+(?:.\\d{0," + (fixed || -1) + "})?");
@@ -14,18 +14,19 @@ const validCurrency = (input: string): boolean => {
   return REGEX.test(input);
 };
 
-const sanitizeCurrency = (input: string): SanitizedCurrency => {
-  if (!validCurrency(input)) {
-    return { error: true, parsed: 0.0 };
+const sanitizeCurrency = (input: string): SanitizedCurrencyMobx => {
+  const symbolsRemoved = removeDollarOrComma(input);
+  if (!validCurrency(symbolsRemoved)) {
+    return { error: true, parsedFloat: 0.0, parsedString: symbolsRemoved };
   }
   try {
-    const parsed = parseFloat(input);
-    if (!parsed && parsed !== 0) {
-      return { error: true, parsed: 0.0 };
+    const parsed = parseFloat(symbolsRemoved);
+    if (!parsed && parsed !== 0 && parsed < 0) {
+      return { error: true, parsedFloat: 0.0, parsedString: symbolsRemoved };
     }
-    return { error: false, parsed };
+    return { error: false, parsedFloat: parsed, parsedString: symbolsRemoved };
   } catch (e) {
-    return { error: true, parsed: 0.0 };
+    return { error: true, parsedFloat: 0.0, parsedString: symbolsRemoved };
   }
 };
 

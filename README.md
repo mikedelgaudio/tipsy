@@ -2,6 +2,17 @@
 
 Paid for a night out with friends or a large dinner party? Add the items from your receipt and determine how much each person owes you with a weighted average of tip and taxes included.
 
+## Technical stack:
+
+- React
+- Typescript
+- CSS
+- Mobx
+- Mobx Persist Store
+- React Toastify
+- Open Props
+- React Router Dom
+
 ## Development Frontend
 
 Tipsy runs with `https` on localhost to support the WebShareAPI.
@@ -15,29 +26,19 @@ Tipsy runs with `https` on localhost to support the WebShareAPI.
 
 The roadmap provides a high level storyboard of future for the Tipsy project.
 
-### Currently: v0.3.0-beta 
+### Currently: v1.0.0
 
-- nil
 
 ### Backlog
 
 - [ ] Add undo functionality
 - [ ] Create docker build and push GitHub Action to deploy
-- [ ] Refactor CSS into CSS Modules
 - [ ] Add About or Walkthrough Section
 - [ ] Ability to split an item with a person
 - [ ] Ability to share a link for 1 week
 - [ ] Add gtag events
-- [ ] Investigate issue when clearing item name or person name where the input field auto fills the defaults but error message remains
-- [ ] Investigate if all error toast clear screen when navigating away from /calculate (what happens if an error existed; user left and comes back?)
-
-Migrate Redux to MobX:
-- [ ] When resetting an app always generate a new uuidv4() to ensure error classes reset.
 - [ ] Debounce inputs to prevent numerous state calls
-- [ ] Ensure multiple calls to save state subscriber is not taking too many calls
-- [ ] Disallow the removal of all products for a person (look into Redux entities instead of looping through array)
-- [ ] Determine why some state functions required `undefined` as type safe
-- [ ] Investigate how to reduce calls in `math.ts`; this may involve redesigning the store to search by key.
+- [ ] Consider breaking functions outside of calculation class
 
 ## Docker build
 

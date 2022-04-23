@@ -12,11 +12,11 @@
 }
 
 /**
-    * 1. Make sure the dialog container and all its descendants sits on
-    *    top of the rest of the page.
-    * 2. Make the dialog container a flex container to easily center the
-    *    dialog.
-    */
+     * 1. Make sure the dialog container and all its descendants sits on
+     *    top of the rest of the page.
+     * 2. Make the dialog container a flex container to easily center the
+     *    dialog.
+     */
 .dialog-container {
   z-index: 2; /* 1 */
   display: flex; /* 2 */
@@ -26,25 +26,25 @@
 }
 
 /**
-    * 1. Make sure the dialog container and all its descendants are not
-    *    visible and not focusable when it is hidden.
-    */
+     * 1. Make sure the dialog container and all its descendants are not
+     *    visible and not focusable when it is hidden.
+     */
 .dialog-container[aria-hidden="true"] {
   display: none; /* 1 */
 }
 
 /**
-    * 1. Make the overlay look like an overlay.
-    */
+     * 1. Make the overlay look like an overlay.
+     */
 .dialog-overlay {
   background-color: rgba(43, 46, 56, 0.9); /* 1 */
 }
 
 /**
-    * 1. Vertically and horizontally center the dialog in the page.
-    * 2. Make sure the dialog sits on top of the overlay.
-    * 3. Make sure the dialog has an opaque background.
-    */
+     * 1. Vertically and horizontally center the dialog in the page.
+     * 2. Make sure the dialog sits on top of the overlay.
+     * 3. Make sure the dialog has an opaque background.
+     */
 .dialog-content {
   margin: auto; /* 1 */
   z-index: 2; /* 2 */

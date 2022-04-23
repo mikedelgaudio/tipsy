@@ -1,10 +1,11 @@
+import { observer } from "mobx-react";
+import { useContext } from "react";
+import { StoreContext } from "../../../../store.context";
+import { AddPersonBtn, CloseBtn, EditBtn } from "../../../shared/buttons";
 import "./event-header-actions.component.css";
-import { EditBtn, CloseBtn, AddPersonBtn } from "../../../shared/buttons";
-import { useDispatch } from "react-redux";
-import { addPerson } from "../../../../redux/calculation/calculation-actions";
 
-function EventHeaderActions({ editing, setEditing }: any) {
-  const dispatch = useDispatch();
+const EventHeaderActions = observer(({ editing, setEditing }: any) => {
+  const { calculationStore } = useContext(StoreContext);
   return (
     <div className="eventHeaderActionsRow">
       {!editing ? (
@@ -19,12 +20,12 @@ function EventHeaderActions({ editing, setEditing }: any) {
         />
       )}
       <AddPersonBtn
-        clickSideEffect={() => dispatch(addPerson())}
+        clickSideEffect={() => calculationStore.addPerson()}
         ariaTitle={"Add person"}
         iconClassName="icon-xl"
       />
     </div>
   );
-}
+});
 
 export { EventHeaderActions };

@@ -7,7 +7,7 @@ import "./welcome-view.component.css";
 function WelcomeView() {
   const navigate = useNavigate();
   return (
-    <section className="welcome-container container c-full-height">
+    <section className="welcome-container container c-full-height loaded">
       <div className="welcome-col">
         <h1 className="header">The smarter way to get paid back</h1>
         <div className="welcome-subheader-container">

@@ -60,3 +60,17 @@
 - [x] Setup React Router logic including 404 page
 - [x] Add JIT Open Props library 
 
+## v1.0.0
+- [x] Remove all of Redux in favor of MobX
+- [x] Refactored all components to use MobX observables
+- [x] When resetting an app always generate a new uuidv4() to ensure error classes reset.
+- [x] Ensure multiple calls to save state subscriber is not taking too many calls
+- [x] Investigate how to reduce calls in `math.ts`; this may involve redesigning the store to search by key.
+- [x] Refactor CSS into CSS Modules (declining this suggestion for now)
+- [x] Determine why some state functions required `undefined` as type safe (used filter instead of map)
+- [x] Disallow the removal of all products for a person
+- [x] Add functionality to restore error toasts from previous session
+- [x] Homepage primary button does not have hover effect
+- [x] Investigate if all error toast clear screen when navigating away from /calculate (what happens if an error existed; user left and comes back?) (***Update***: The toast disappears and reappears as expected)
+- [x] Remove a11y-dialog in favor of native dialog element (***Update***: Due to browser support will hold off on for now)
+- [x] Investigate issue when clearing item name or person name where the input field auto fills the defaults but error message remains (***Update***: Working as intended, potential for future UX design change though)

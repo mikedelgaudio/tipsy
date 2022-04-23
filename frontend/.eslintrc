@@ -1,7 +1,7 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "mobx"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -11,6 +11,11 @@
   "rules": {
     "semi": ["error", "always"],
     "quotes": ["error", "double"],
-    "no-console": ["error", { "allow": ["warn"] }]
+    "no-console": ["error", { "allow": ["warn"] }],
+    "mobx/exhaustive-make-observable": "warn",
+    "mobx/unconditional-make-observable": "error",
+    "mobx/missing-make-observable": "error",
+    "mobx/missing-observer": "off",
+    "mobx/no-anonymous-observer": "off"
   }
 }

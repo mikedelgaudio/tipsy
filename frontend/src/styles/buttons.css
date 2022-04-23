@@ -18,6 +18,14 @@ button:disabled {
   color: var(--brand-off);
 }
 
+:not(:disabled).btn {
+  opacity: 1;
+}
+
+:not(:disabled).btn:hover {
+  opacity: 0.75;
+}
+
 .btn-text-allow-full {
   display: inline;
   color: inherit;
@@ -31,11 +39,6 @@ button:disabled {
   display: flex;
   align-items: center;
   gap: 0.5em;
-  opacity: 1;
-}
-
-.btn-wrapper:hover {
-  opacity: 0.75;
 }
 
 @media (min-width: 630px) {
