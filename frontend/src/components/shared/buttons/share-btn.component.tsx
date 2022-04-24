@@ -38,7 +38,7 @@ const ShareBtn = observer(
         return `${person.name}: $${person.totalDue}${newlineChar}`;
       });
 
-      const promotion = "Calculated by tipsy.delgaudiomike.com";
+      const promotion = "Calculated by tipsy.delgaudio.dev";
 
       return `How much everyone owes (tip and tax included):${newlineChar}${personData.join(
         "",
