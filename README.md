@@ -26,7 +26,7 @@ Tipsy runs with `https` on localhost to support the WebShareAPI.
 
 The roadmap provides a high level storyboard of future for the Tipsy project.
 
-### Currently: v1.0.1
+### Currently: v1.1.0
 
 
 ### Backlog

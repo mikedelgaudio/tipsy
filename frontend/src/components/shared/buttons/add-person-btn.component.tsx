@@ -16,7 +16,7 @@ function AddPersonBtn({
         <AddPersonIcon
           className={`icons ${iconClassName ? iconClassName : ""}`}
         />
-        <span className="btn-text">Add Person</span>
+        <span className="btn-text-allow-full">Add Person</span>
       </span>
     </button>
   );

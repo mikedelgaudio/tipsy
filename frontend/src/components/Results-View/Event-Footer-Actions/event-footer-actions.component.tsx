@@ -1,11 +1,19 @@
+import { useContext } from "react";
+import { StoreContext } from "../../../store.context";
+import { AddPersonBtn, ShareBtn } from "../../shared/buttons";
 import "./event-footer-actions.component.css";
-import { ResetBtn, ShareBtn } from "../../shared/buttons";
 
 function EventFooterActions() {
+  const { calculationStore } = useContext(StoreContext);
+
   return (
     <div className="eventFooterRow">
-      <ResetBtn />
       <ShareBtn />
+      <AddPersonBtn
+        clickSideEffect={() => calculationStore.addPerson()}
+        ariaTitle={"Add person"}
+        iconClassName="icon-xl"
+      />
     </div>
   );
 }

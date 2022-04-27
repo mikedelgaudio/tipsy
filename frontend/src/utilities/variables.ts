@@ -1,4 +1,4 @@
-export const APP_VERSION = "v1.0.1";
+export const APP_VERSION = "v1.1.0";
 export const GITHUB_URL = "https://github.com/mikedelgaudio/tipsy";
 export const LOCAL_STORAGE_VAR = "TIPSY_APP_STATE";
 
