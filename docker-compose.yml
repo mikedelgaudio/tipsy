@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  tipsy-frontend:
+    image: tipsy-frontend
+    stdin_open: true
+    ports:
+      - "80:80"
+    networks:
+      - tipsy-public
+  tipsy-api:
+    image: tipsy-api
+    ports:
+      - "3001:3001"
+    networks:
+      - tipsy-public
+      - tipsy-private
+    depends_on:
+      - tipsy-db
+  tipsy-db:
+    image: mongo:5.0.8
+    ports:
+      - "27017:27017"
+    networks:
+      - tipsy-private
+    volumes:
+      - mongo-data:/data/db
+networks:
+  tipsy-public:
+    external: true
+  tipsy-private:
+    internal: true
+volumes:
+  mongo-data:
+    driver: local

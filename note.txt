@@ -1,0 +1,2 @@
+docker network create tipsy-public
+docker network create tipsy-private --internal 
