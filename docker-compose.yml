@@ -4,31 +4,50 @@ services:
     image: tipsy-frontend
     stdin_open: true
     ports:
-      - "80:80"
+      - "3000:80"
     networks:
-      - tipsy-public
+      - public
+    restart: unless-stopped
   tipsy-api:
+    container_name: express
     image: tipsy-api
     ports:
       - "3001:3001"
     networks:
-      - tipsy-public
-      - tipsy-private
+      - public
+      - private
     depends_on:
       - tipsy-db
+      - tipsy-db-cache
+    restart: unless-stopped
   tipsy-db:
+    container_name: mongo
     image: mongo:5.0.8
     ports:
-      - "27017:27017"
+      - "3002:27017"
     networks:
-      - tipsy-private
+      - private
     volumes:
       - mongo-data:/data/db
+    restart: unless-stopped
+  tipsy-db-cache:
+    container_name: redis
+    image: redis:7.0.0
+    ports:
+      - "3003:6379"
+    networks:
+      - private
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+
 networks:
-  tipsy-public:
+  public:
     external: true
-  tipsy-private:
+  private:
     internal: true
 volumes:
   mongo-data:
+    driver: local
+  redis-data:
     driver: local
