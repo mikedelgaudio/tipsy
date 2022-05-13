@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-import { CloseBtn, EditBtn, ResetBtn } from "../../../shared/buttons";
+import { CloseBtn, EditBtn } from "../../../shared/buttons";
 import "./event-header-actions.component.css";
 
 const EventHeaderActions = observer(({ editing, setEditing }: any) => {
@@ -16,7 +16,6 @@ const EventHeaderActions = observer(({ editing, setEditing }: any) => {
           ariaTitle={"Stop editing event title"}
         />
       )}
-      <ResetBtn />
     </div>
   );
 });

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { StoreContext } from "../../../store.context";
-import { AddPersonBtn, ShareBtn } from "../../shared/buttons";
+import { AddPersonBtn, ResetBtn, ShareBtn } from "../../shared/buttons";
 import "./event-footer-actions.component.css";
 
 function EventFooterActions() {
@@ -8,6 +8,7 @@ function EventFooterActions() {
 
   return (
     <div className="eventFooterRow">
+      <ResetBtn />
       <ShareBtn />
       <AddPersonBtn
         clickSideEffect={() => calculationStore.addPerson()}
