@@ -2,6 +2,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import helmet from "helmet";
+import testing from "./utils/test";
 
 dotenv.config();
 
@@ -17,4 +18,5 @@ app.get("/", (req: Request, res: Response) => {
 
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is runnings at https://localhost:${port}`);
+  testing();
 });
