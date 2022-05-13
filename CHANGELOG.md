@@ -78,3 +78,6 @@
 ## v1.0.1
 - [x] Fix URL in WebShareAPI to new domain
 - [x] Fix nginx 404 page routing
+
+## v1.1.0
+- [x] Move Reset and Add Person to footer for better UX
