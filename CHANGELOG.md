@@ -81,3 +81,4 @@
 
 ## v1.1.0
 - [x] Move Reset and Add Person to footer for better UX
+- [x] Remove JSX svg icon elements for inline svgs to save rendering and memory usage 
