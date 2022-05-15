@@ -2,11 +2,6 @@ nav {
   background-color: var(--brand);
 }
 
-.nav-container {
-  margin: auto;
-  max-width: var(--max-width);
-}
-
 .nav-wrapper {
   display: flex;
   flex-flow: row nowrap;
