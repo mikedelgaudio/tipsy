@@ -1,3 +1,4 @@
+import { computed } from "mobx";
 import { observer } from "mobx-react";
 import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 import { didClickAway, didMount } from "../../../../../hooks";
@@ -11,9 +12,9 @@ import "./person-card.component.css";
 const PersonCard = observer(({ person }: { person: PersonMobx }) => {
   const { calculationStore } = useContext(StoreContext);
 
-  const items: ItemMobx[] = calculationStore.items.filter((item: ItemMobx) => {
-    if (item.personId === person.id) return item;
-  });
+  const items: ItemMobx[] = computed(() =>
+    calculationStore.getPersonItems(person.id),
+  ).get();
 
   const didMountOnce = didMount();
   const [editing, setEditing] = useState(false);

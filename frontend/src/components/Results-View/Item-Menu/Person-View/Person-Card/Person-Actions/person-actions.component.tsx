@@ -1,6 +1,6 @@
+import { computed } from "mobx";
 import { observer } from "mobx-react";
 import { useContext } from "react";
-import { PersonMobx } from "../../../../../../models/person.model";
 import { StoreContext } from "../../../../../../store.context";
 import {
   AddBtn,
@@ -13,11 +13,11 @@ import "./person-actions.component.css";
 const PersonActions = observer(({ personId, editing, setEditing }: any) => {
   const { calculationStore } = useContext(StoreContext);
 
-  const personsLength = calculationStore.persons.length;
+  const personsLength = computed(() => calculationStore.persons.length).get();
 
-  const personName = calculationStore.persons.find(
-    (person: PersonMobx) => person.id === personId,
-  )?.name;
+  const personName = computed(
+    () => calculationStore.getPerson(personId)?.name,
+  ).get();
 
   return (
     <div className="personActions">

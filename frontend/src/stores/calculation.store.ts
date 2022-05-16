@@ -188,6 +188,34 @@ export class CalculationStore {
     this.recalculate();
   }
 
+  // TODO:
+  // Watch out when editing items - must update both instances
+  // Watch out when deleting items - must either update both or resolve to full amount for other person
+  // Watch out when deleting person - must delete item or update to full amount for other person
+  splitItem(itemId: string, desiredPersonId: string) {
+    // Add item to desired person
+    // Edit item from original person
+    // Recalculate
+  }
+
+  getItem(itemId: string) {
+    const item = this.state.items.find(item => item.id === itemId);
+    if (!item) return null;
+    return item;
+  }
+
+  getPerson(personId: string) {
+    const person = this.state.persons.find(person => person.id === personId);
+    if (!person) return null;
+    return person;
+  }
+
+  getPersonItems(personId: string): ItemMobx[] {
+    return this.items.filter((item: ItemMobx) => {
+      if (item.personId === personId) return item;
+    });
+  }
+
   get eventName() {
     return this.state.event.name;
   }

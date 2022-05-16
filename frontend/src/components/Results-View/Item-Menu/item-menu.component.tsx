@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-import { useContext, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 import { didClickAway, didMount } from "../../../hooks";
 import { StoreContext } from "../../../store.context";
 import { EventHeaderActions } from "./Event-Header-Actions";
@@ -16,7 +16,7 @@ const ItemMenu = observer(() => {
     calculationStore.eventName,
   );
 
-  const eventTitleInputHandler = (e: any) => {
+  const eventTitleInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setEventTitleInput(e.target.value);
   };
 

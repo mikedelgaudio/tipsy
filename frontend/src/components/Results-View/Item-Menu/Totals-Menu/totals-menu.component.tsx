@@ -1,3 +1,4 @@
+import { computed } from "mobx";
 import { observer } from "mobx-react";
 import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 import { didClickAway, didMount } from "../../../../hooks";
@@ -28,6 +29,8 @@ const TotalsMenu = observer(() => {
     }
   }, [editing]);
 
+  const errorPrice = computed(() => calculationStore.event.errorPrice).get();
+
   const menuRef = useRef(null);
   didClickAway(menuRef, editing, setEditing);
 
@@ -53,9 +56,7 @@ const TotalsMenu = observer(() => {
         <div className="totalInputWrapper">
           {!editing ? (
             <h3
-              className={`${
-                calculationStore.event.errorPrice ? "errorText" : ""
-              } totalText `}
+              className={`${errorPrice ? "errorText" : ""} totalText `}
               data-cy="eventTotal"
             >
               ${calculationStore.eventTotal}
