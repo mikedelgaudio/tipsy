@@ -1,11 +1,11 @@
 import { observer } from "mobx-react";
 import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { didMount } from "../../../../../../../hooks";
-import { ItemMobx } from "../../../../../../../models/item.model";
+import { Item } from "../../../../../../../models/item.model";
 import { StoreContext } from "../../../../../../../store.context";
 import { DeleteBtn } from "../../../../../../shared/buttons";
 
-const defaultItem: ItemMobx = {
+const defaultItem: Item = {
   id: "",
   personId: "",
   name: "",
@@ -21,7 +21,7 @@ const ItemRow = observer(
     editing,
     lastItem,
   }: {
-    item: ItemMobx;
+    item: Item;
     editing: boolean;
     lastItem: boolean;
   }) => {

@@ -2,8 +2,8 @@ import { configure, makeAutoObservable } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 import { v4 as uuidv4 } from "uuid";
 import { CalculationStateMobx } from "../models/calculation-state.mobx.model";
-import { ItemMobx } from "../models/item.model";
-import { PersonMobx } from "../models/person.model";
+import { Item } from "../models/item.model";
+import { Person } from "../models/person.model";
 import { ToastService } from "../services/toast.service";
 import {
   currencyToStr,
@@ -61,7 +61,7 @@ export class CalculationStore {
   addPerson() {
     const seededId = uuidv4();
 
-    const person: PersonMobx = {
+    const person: Person = {
       id: seededId,
       name: `Person ${this.state.persons.length + 1}`,
       subtotal: "0.00",
@@ -73,7 +73,7 @@ export class CalculationStore {
       errorName: false,
     };
 
-    const item: ItemMobx = {
+    const item: Item = {
       id: uuidv4(),
       personId: seededId,
       name: `Person ${this.state.persons.length + 1}'s Item`,
@@ -92,7 +92,7 @@ export class CalculationStore {
       person => person.id !== personId,
     );
 
-    const itemIds = this.state.items.map((item: ItemMobx) => {
+    const itemIds = this.state.items.map((item: Item) => {
       if (item.personId === personId) return item.id;
     });
 
@@ -130,13 +130,13 @@ export class CalculationStore {
     person.name = name.trim();
   }
 
-  addItem(personId: string, data?: ItemMobx) {
+  addItem(personId: string, data?: Item) {
     if (data) {
       this.state.items.push(data);
       return;
     }
 
-    const item: ItemMobx = {
+    const item: Item = {
       id: uuidv4(),
       personId,
       name: `Item ${this.state.items.length + 1}`,
@@ -204,8 +204,8 @@ export class CalculationStore {
 
     const splitPriceFloat = Math.ceil(item.priceFloat / 2);
     const splitPrice = currencyToStr(splitPriceFloat);
-    const splitItem: ItemMobx = {
-      id: item.id, // ! Should this be the same as the original id or new id for tracking?
+    const splitItem: Item = {
+      id: uuidv4(), // ! Should this be the same as the original id or new id for tracking?
       personId: desiredPersonId,
       name: item.name,
       price: splitPrice,
@@ -234,8 +234,8 @@ export class CalculationStore {
     return person;
   }
 
-  getPersonItems(personId: string): ItemMobx[] {
-    return this.items.filter((item: ItemMobx) => {
+  getPersonItems(personId: string): Item[] {
+    return this.items.filter((item: Item) => {
       if (item.personId === personId) return item;
     });
   }
@@ -300,13 +300,13 @@ export class CalculationStore {
     const TOAST_ID = "RECALC_WRONG";
     this.event.subtotalFloat = 0;
 
-    this.persons.forEach((person: PersonMobx) => {
+    this.persons.forEach((person: Person) => {
       let subtotalBeforeTip = 0;
 
       // Find items
       const items = this.getPersonItems(person.id);
 
-      items.forEach((item: ItemMobx) => {
+      items.forEach((item: Item) => {
         subtotalBeforeTip += item.priceFloat;
         item.price = currencyToStr(item.priceFloat);
       });
@@ -348,7 +348,7 @@ export class CalculationStore {
     this.toastService.clear(TOAST_ID);
     // TODO: If the state is the same, break early?
 
-    this.persons.forEach((person: PersonMobx) => {
+    this.persons.forEach((person: Person) => {
       const tipDollars =
         (person.subtotalFloat / this.event.subtotalFloat) *
         this.event.tipTaxTotalFloat;

@@ -1,11 +1,11 @@
 import { observer } from "mobx-react";
-import { PersonMobx } from "../../../../models/person.model";
+import { Person } from "../../../../models/person.model";
 import { PersonCard } from "./Person-Card";
 
-const PersonsView = observer(({ persons }: { persons: PersonMobx[] }) => {
+const PersonsView = observer(({ persons }: { persons: Person[] }) => {
   return (
     <>
-      {persons.map((person: PersonMobx) => (
+      {persons.map((person: Person) => (
         <PersonCard key={person.id} person={person} />
       ))}
     </>

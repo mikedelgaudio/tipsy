@@ -14,17 +14,6 @@ export const DEFAULT_STATE: CalculationStateMobx = {
       totalDueFloat: 0.0,
       errorName: false,
     },
-    {
-      id: "2",
-      name: "Person 2",
-      subtotal: "0.00",
-      subtotalFloat: 0.0,
-      tipAndTax: "0.00",
-      tipAndTaxFloat: 0.0,
-      totalDue: "0.00",
-      totalDueFloat: 0.0,
-      errorName: false,
-    },
   ],
   items: [
     {

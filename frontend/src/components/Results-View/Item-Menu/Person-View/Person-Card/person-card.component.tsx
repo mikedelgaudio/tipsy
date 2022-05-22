@@ -2,17 +2,17 @@ import { computed } from "mobx";
 import { observer } from "mobx-react";
 import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 import { didClickAway, didMount } from "../../../../../hooks";
-import { ItemMobx } from "../../../../../models/item.model";
-import { PersonMobx } from "../../../../../models/person.model";
+import { Item } from "../../../../../models/item.model";
+import { Person } from "../../../../../models/person.model";
 import { StoreContext } from "../../../../../store.context";
 import { ItemsView } from "./Item-View/item-view.component";
 import { PersonActions } from "./Person-Actions";
 import "./person-card.component.css";
 
-const PersonCard = observer(({ person }: { person: PersonMobx }) => {
+const PersonCard = observer(({ person }: { person: Person }) => {
   const { calculationStore } = useContext(StoreContext);
 
-  const items: ItemMobx[] = computed(() =>
+  const items: Item[] = computed(() =>
     calculationStore.getPersonItems(person.id),
   ).get();
 
