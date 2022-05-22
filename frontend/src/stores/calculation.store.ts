@@ -114,7 +114,7 @@ export class CalculationStore {
   }
 
   editPersonName(personId: string, name: string) {
-    const person = this.state.persons.find(person => person.id === personId);
+    const person = this.getPerson(personId);
     if (!person) return;
 
     const TOAST_ID = `PERSON_NAME_${person.id}`;
@@ -152,7 +152,7 @@ export class CalculationStore {
   }
 
   editItemName(itemId: string, name: string) {
-    const item = this.state.items.find(item => item.id === itemId);
+    const item = this.getItem(itemId);
     if (!item) return;
 
     const TOAST_ID = `ITEM_NAME_${item.id}`;
@@ -169,7 +169,7 @@ export class CalculationStore {
   }
 
   editItemPrice(itemId: string, price: string) {
-    const item = this.state.items.find(item => item.id === itemId);
+    const item = this.getItem(itemId);
     if (!item) return;
 
     const { error, parsedFloat, parsedString } = sanitizeCurrency(price);
@@ -280,9 +280,7 @@ export class CalculationStore {
       let subtotalBeforeTip = 0;
 
       // Find items
-      const items = this.items.filter(
-        (item: ItemMobx) => person.id === item.personId,
-      );
+      const items = this.getPersonItems(person.id);
 
       items.forEach((item: ItemMobx) => {
         subtotalBeforeTip += item.priceFloat;
@@ -315,11 +313,6 @@ export class CalculationStore {
       this.event.subtotalFloat + this.event.tipTaxTotalFloat !==
         this.event.totalFloat
     ) {
-      console.warn(
-        this.event.subtotalFloat,
-        this.event.tipTaxTotalFloat,
-        this.event.totalFloat,
-      );
       // Throw
       this.toastService.warn(
         TOAST_ID,
