@@ -132,6 +132,9 @@ const ItemRow = observer(
             isDisabled={lastItem}
             ariaTitle={`Delete ${item.name}`}
           />
+          <button onClick={() => calculationStore.splitItem(item.id, "2")}>
+            Split
+          </button>
         </div>
       </li>
     );

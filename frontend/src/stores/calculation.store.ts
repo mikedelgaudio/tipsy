@@ -130,7 +130,12 @@ export class CalculationStore {
     person.name = name.trim();
   }
 
-  addItem(personId: string) {
+  addItem(personId: string, data?: ItemMobx) {
+    if (data) {
+      this.state.items.push(data);
+      return;
+    }
+
     const item: ItemMobx = {
       id: uuidv4(),
       personId,
@@ -194,8 +199,27 @@ export class CalculationStore {
   // Watch out when deleting person - must delete item or update to full amount for other person
   splitItem(itemId: string, desiredPersonId: string) {
     // Add item to desired person
+    const item = this.getItem(itemId);
+    if (!item) return;
+
+    const splitPriceFloat = Math.ceil(item.priceFloat / 2);
+    const splitPrice = currencyToStr(splitPriceFloat);
+    const splitItem: ItemMobx = {
+      id: item.id, // ! Should this be the same as the original id or new id for tracking?
+      personId: desiredPersonId,
+      name: item.name,
+      price: splitPrice,
+      priceFloat: splitPriceFloat,
+      errorName: item.errorName,
+      errorPrice: item.errorPrice,
+    };
+    this.addItem(desiredPersonId, splitItem);
+
     // Edit item from original person
+    this.editItemPrice(item.id, splitPrice);
+
     // Recalculate
+    this.recalculate();
   }
 
   getItem(itemId: string) {
