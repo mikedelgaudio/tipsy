@@ -81,6 +81,7 @@ export class CalculationStore {
       priceFloat: 0.0,
       errorName: false,
       errorPrice: false,
+      splitWith: [],
     };
 
     this.state.persons.push(person);
@@ -144,6 +145,7 @@ export class CalculationStore {
       priceFloat: 0.0,
       errorName: false,
       errorPrice: false,
+      splitWith: [],
     };
 
     this.state.items.push(item);
@@ -193,6 +195,12 @@ export class CalculationStore {
     this.recalculate();
   }
 
+  #addSplitPerson(itemId: string, desiredPersonId: string) {
+    const item = this.getItem(itemId);
+    if (!item) return;
+    item.splitWith.push(desiredPersonId);
+  }
+
   // TODO:
   // Watch out when editing items - must update both instances
   // Watch out when deleting items - must either update both or resolve to full amount for other person
@@ -205,18 +213,20 @@ export class CalculationStore {
     const splitPriceFloat = Math.ceil(item.priceFloat / 2);
     const splitPrice = currencyToStr(splitPriceFloat);
     const splitItem: Item = {
-      id: uuidv4(), // ! Should this be the same as the original id or new id for tracking?
+      id: uuidv4(),
       personId: desiredPersonId,
       name: item.name,
       price: splitPrice,
       priceFloat: splitPriceFloat,
       errorName: item.errorName,
       errorPrice: item.errorPrice,
+      splitWith: [...item.splitWith, desiredPersonId], // ! if user clicks split more than once will result in dups
     };
     this.addItem(desiredPersonId, splitItem);
 
     // Edit item from original person
     this.editItemPrice(item.id, splitPrice);
+    this.#addSplitPerson(item.id, desiredPersonId);
 
     // Recalculate
     this.recalculate();

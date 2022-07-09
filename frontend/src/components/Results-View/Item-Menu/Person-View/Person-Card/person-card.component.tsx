@@ -15,6 +15,7 @@ const PersonCard = observer(({ person }: { person: Person }) => {
   const items: Item[] = computed(() =>
     calculationStore.getPersonItems(person.id),
   ).get();
+  // console.log("RENDER");
 
   const didMountOnce = didMount();
   const [editing, setEditing] = useState(false);

@@ -13,6 +13,7 @@ const defaultItem: Item = {
   priceFloat: 0.0,
   errorName: false,
   errorPrice: false,
+  splitWith: [],
 };
 
 const ItemRow = observer(

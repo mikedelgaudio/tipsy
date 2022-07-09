@@ -7,4 +7,5 @@ export type Item = {
   priceFloat: number;
   errorName: boolean;
   errorPrice: boolean;
+  splitWith: string[];
 };
