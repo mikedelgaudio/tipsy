@@ -1,8 +1,6 @@
-import { computed } from "mobx";
 import { observer } from "mobx-react";
 import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 import { didClickAway, didMount } from "../../../../../hooks";
-import { Item } from "../../../../../models/item.model";
 import { Person } from "../../../../../models/person.model";
 import { StoreContext } from "../../../../../store.context";
 import { ItemsView } from "./Item-View/item-view.component";
@@ -11,11 +9,6 @@ import "./person-card.component.css";
 
 const PersonCard = observer(({ person }: { person: Person }) => {
   const { calculationStore } = useContext(StoreContext);
-
-  const items: Item[] = computed(() =>
-    calculationStore.getPersonItems(person.id),
-  ).get();
-
   const didMountOnce = didMount();
   const [editing, setEditing] = useState(false);
   const [personNameInput, setPersonNameInput] = useState(person.name);
@@ -70,7 +63,7 @@ const PersonCard = observer(({ person }: { person: Person }) => {
       </div>
 
       <ul className="personItemList">
-        <ItemsView items={items} editing={editing} />
+        <ItemsView personId={person.id} editing={editing} />
       </ul>
 
       <div className="subtotalWrapper">

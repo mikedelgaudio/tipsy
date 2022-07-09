@@ -83,3 +83,4 @@
 - [x] Move Reset and Add Person to footer for better UX
 - [x] Remove JSX svg icon elements for inline svgs to save rendering and memory usage @Jason Miller https://twitter.com/_developit/status/1382838799420514317?s=20&t=FmpC-7Nn9VdusS5LayBmtA
 - [x] Migrated state selectors to computed results
+- [x] Performance fix unnecessary re-render when modifying person
