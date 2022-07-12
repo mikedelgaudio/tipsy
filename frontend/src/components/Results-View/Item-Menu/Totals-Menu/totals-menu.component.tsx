@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 import { didClickAway, didMount } from "../../../../hooks";
 import { StoreContext } from "../../../../store.context";
-import { CloseBtn, EditBtn } from "../../../shared/buttons";
+import { EditBtnNew } from "../../../shared/buttons/edit-btn.component";
 import "./totals-menu.component.css";
 
 const TotalsMenu = observer(() => {
@@ -72,18 +72,11 @@ const TotalsMenu = observer(() => {
               />
             </div>
           )}
-          {!editing ? (
-            <EditBtn
-              clickSideEffect={() => setEditing(true)}
-              ariaTitle={"Edit event total"}
-              className="btn-light"
-            />
-          ) : (
-            <CloseBtn
-              clickSideEffect={() => setEditing(false)}
-              ariaTitle={"Stop editing event total"}
-            />
-          )}
+          <EditBtnNew
+            clickSideEffect={() => setEditing(!editing)}
+            editing={editing}
+            ariaTitle={"event total"}
+          />
         </div>
       </div>
     </div>

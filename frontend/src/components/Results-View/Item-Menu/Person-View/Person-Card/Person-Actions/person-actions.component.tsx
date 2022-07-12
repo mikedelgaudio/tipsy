@@ -2,12 +2,8 @@ import { computed } from "mobx";
 import { observer } from "mobx-react";
 import { useContext } from "react";
 import { StoreContext } from "../../../../../../store.context";
-import {
-  AddBtn,
-  CloseBtn,
-  DeletePersonBtn,
-  EditBtn,
-} from "../../../../../shared/buttons";
+import { AddBtn, DeletePersonBtn } from "../../../../../shared/buttons";
+import { EditBtnNew } from "../../../../../shared/buttons/edit-btn.component";
 import "./person-actions.component.css";
 
 const PersonActions = observer(({ personId, editing, setEditing }: any) => {
@@ -21,18 +17,11 @@ const PersonActions = observer(({ personId, editing, setEditing }: any) => {
 
   return (
     <div className="personActions">
-      {!editing ? (
-        <EditBtn
-          clickSideEffect={() => setEditing(true)}
-          ariaTitle={`Edit ${personName}`}
-          className="btn-light"
-        />
-      ) : (
-        <CloseBtn
-          clickSideEffect={() => setEditing(false)}
-          ariaTitle={`Stop editing ${personName}`}
-        />
-      )}
+      <EditBtnNew
+        clickSideEffect={() => setEditing(!editing)}
+        editing={editing}
+        ariaTitle={personName}
+      />
 
       <AddBtn
         clickSideEffect={() => calculationStore.addItem(personId)}
