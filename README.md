@@ -27,7 +27,6 @@ Tipsy runs with `https` on localhost to support the WebShareAPI.
 The roadmap provides a high level storyboard of future for the Tipsy project.
 
 ### Currently: v1.1.0
-- [ ] Ability to split an item with a person
 
 
 ### Backlog
@@ -39,6 +38,7 @@ The roadmap provides a high level storyboard of future for the Tipsy project.
 - [ ] Add gtag events
 - [ ] Debounce inputs to prevent numerous state calls
 - [ ] Consider breaking functions outside of calculation class
+- [ ] Ability to split an item with a person
 
 ## Docker build
 
